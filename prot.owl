@@ -1,0 +1,926 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#"
+     xml:base="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas">
+        <rdfs:comment>Practica sobre la búsqueda de viviendas para un usuario basadas en sus características principales.</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#amueblado -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#amueblado">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Viviendas"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#balcon -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#balcon">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Viviendas"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#barrio -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#barrio">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#localizacion"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                        <rdf:first>Baró de Viver</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                <rdf:first>Can Baró</rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                        <rdf:first>Can Peguera</rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first>Canyelles</rdf:first>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first>Ciutat Meridiana</rdf:first>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                <rdf:first>Diagonal Mar i el Front Marítim del Poblenou</rdf:first>
+                                                                <rdf:rest>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                        <rdf:first>Horta</rdf:first>
+                                                                        <rdf:rest>
+                                                                            <rdf:Description>
+                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                <rdf:first>Hostafrancs
+la Bordeta</rdf:first>
+                                                                                <rdf:rest>
+                                                                                    <rdf:Description>
+                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                        <rdf:first>Montbau</rdf:first>
+                                                                                        <rdf:rest>
+                                                                                            <rdf:Description>
+                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                <rdf:first>Navas</rdf:first>
+                                                                                                <rdf:rest>
+                                                                                                    <rdf:Description>
+                                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                        <rdf:first>Pedralbes</rdf:first>
+                                                                                                        <rdf:rest>
+                                                                                                            <rdf:Description>
+                                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                <rdf:first>Porta</rdf:first>
+                                                                                                                <rdf:rest>
+                                                                                                                    <rdf:Description>
+                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                        <rdf:first>Provençals del Poblenou</rdf:first>
+                                                                                                                        <rdf:rest>
+                                                                                                                            <rdf:Description>
+                                                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                <rdf:first>Sant Andreu</rdf:first>
+                                                                                                                                <rdf:rest>
+                                                                                                                                    <rdf:Description>
+                                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                        <rdf:first>Sant Antoni</rdf:first>
+                                                                                                                                        <rdf:rest>
+                                                                                                                                            <rdf:Description>
+                                                                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                <rdf:first>Sant Genís dels Agudells</rdf:first>
+                                                                                                                                                <rdf:rest>
+                                                                                                                                                    <rdf:Description>
+                                                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                        <rdf:first>Sant Gervasi-Bonanova</rdf:first>
+                                                                                                                                                        <rdf:rest>
+                                                                                                                                                            <rdf:Description>
+                                                                                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                <rdf:first>Sant Gervasi-Galvany</rdf:first>
+                                                                                                                                                                <rdf:rest>
+                                                                                                                                                                    <rdf:Description>
+                                                                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                        <rdf:first>Sant Martí de Provençals</rdf:first>
+                                                                                                                                                                        <rdf:rest>
+                                                                                                                                                                            <rdf:Description>
+                                                                                                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                <rdf:first>Sant Pere, Santa Caterina i la Ribera</rdf:first>
+                                                                                                                                                                                <rdf:rest>
+                                                                                                                                                                                    <rdf:Description>
+                                                                                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                        <rdf:first>Sants</rdf:first>
+                                                                                                                                                                                        <rdf:rest>
+                                                                                                                                                                                            <rdf:Description>
+                                                                                                                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                <rdf:first>Sants-Badal</rdf:first>
+                                                                                                                                                                                                <rdf:rest>
+                                                                                                                                                                                                    <rdf:Description>
+                                                                                                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                        <rdf:first>Torre Baró</rdf:first>
+                                                                                                                                                                                                        <rdf:rest>
+                                                                                                                                                                                                            <rdf:Description>
+                                                                                                                                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                <rdf:first>Vallbona</rdf:first>
+                                                                                                                                                                                                                <rdf:rest>
+                                                                                                                                                                                                                    <rdf:Description>
+                                                                                                                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                        <rdf:first>Vallcarca i els Penitents</rdf:first>
+                                                                                                                                                                                                                        <rdf:rest>
+                                                                                                                                                                                                                            <rdf:Description>
+                                                                                                                                                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                <rdf:first>Vallvidrera, el Tibidabo i les Planes
+Sarrià</rdf:first>
+                                                                                                                                                                                                                                <rdf:rest>
+                                                                                                                                                                                                                                    <rdf:Description>
+                                                                                                                                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                        <rdf:first>Verdun</rdf:first>
+                                                                                                                                                                                                                                        <rdf:rest>
+                                                                                                                                                                                                                                            <rdf:Description>
+                                                                                                                                                                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                <rdf:first>Vila de Gràcia</rdf:first>
+                                                                                                                                                                                                                                                <rdf:rest>
+                                                                                                                                                                                                                                                    <rdf:Description>
+                                                                                                                                                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                        <rdf:first>Vilapicina i la Torre Llobeta</rdf:first>
+                                                                                                                                                                                                                                                        <rdf:rest>
+                                                                                                                                                                                                                                                            <rdf:Description>
+                                                                                                                                                                                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                <rdf:first>el Baix Guinardó</rdf:first>
+                                                                                                                                                                                                                                                                <rdf:rest>
+                                                                                                                                                                                                                                                                    <rdf:Description>
+                                                                                                                                                                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                        <rdf:first>el Besòs i el Maresme</rdf:first>
+                                                                                                                                                                                                                                                                        <rdf:rest>
+                                                                                                                                                                                                                                                                            <rdf:Description>
+                                                                                                                                                                                                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                <rdf:first>el Bon Pastor</rdf:first>
+                                                                                                                                                                                                                                                                                <rdf:rest>
+                                                                                                                                                                                                                                                                                    <rdf:Description>
+                                                                                                                                                                                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                        <rdf:first>el Camp d&apos;en Grassot i Gràcia Nova</rdf:first>
+                                                                                                                                                                                                                                                                                        <rdf:rest>
+                                                                                                                                                                                                                                                                                            <rdf:Description>
+                                                                                                                                                                                                                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                                <rdf:first>el Camp de l&apos;Arpa del Clot</rdf:first>
+                                                                                                                                                                                                                                                                                                <rdf:rest>
+                                                                                                                                                                                                                                                                                                    <rdf:Description>
+                                                                                                                                                                                                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                                        <rdf:first>el Carmel</rdf:first>
+                                                                                                                                                                                                                                                                                                        <rdf:rest>
+                                                                                                                                                                                                                                                                                                            <rdf:Description>
+                                                                                                                                                                                                                                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                                                <rdf:first>el Clot</rdf:first>
+                                                                                                                                                                                                                                                                                                                <rdf:rest>
+                                                                                                                                                                                                                                                                                                                    <rdf:Description>
+                                                                                                                                                                                                                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                                                        <rdf:first>el Coll</rdf:first>
+                                                                                                                                                                                                                                                                                                                        <rdf:rest>
+                                                                                                                                                                                                                                                                                                                            <rdf:Description>
+                                                                                                                                                                                                                                                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                                                                <rdf:first>el Congrés i els Indians</rdf:first>
+                                                                                                                                                                                                                                                                                                                                <rdf:rest>
+                                                                                                                                                                                                                                                                                                                                    <rdf:Description>
+                                                                                                                                                                                                                                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                                                                        <rdf:first>el Fort Pienc</rdf:first>
+                                                                                                                                                                                                                                                                                                                                        <rdf:rest>
+                                                                                                                                                                                                                                                                                                                                            <rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                                                                                <rdf:first>el Guinardó</rdf:first>
+                                                                                                                                                                                                                                                                                                                                                <rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                    <rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                                                                                        <rdf:first>el Gòtic</rdf:first>
+                                                                                                                                                                                                                                                                                                                                                        <rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                            <rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                                                                                                <rdf:first>el Parc i la Llacuna del Poblenou</rdf:first>
+                                                                                                                                                                                                                                                                                                                                                                <rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                    <rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                                                                                                        <rdf:first>el Poble Sec</rdf:first>
+                                                                                                                                                                                                                                                                                                                                                                        <rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                            <rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                                                                                                                <rdf:first>el Poblenou</rdf:first>
+                                                                                                                                                                                                                                                                                                                                                                                <rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                    <rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                                                                                                                        <rdf:first>el Putget i Farró</rdf:first>
+                                                                                                                                                                                                                                                                                                                                                                                        <rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                            <rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                                                                                                                                <rdf:first>el Turó de la Peira</rdf:first>
+                                                                                                                                                                                                                                                                                                                                                                                                <rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                    <rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                                                                                                                                        <rdf:first>l&apos;Antiga Esquerra de l&apos;Eixample</rdf:first>
+                                                                                                                                                                                                                                                                                                                                                                                                        <rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                            <rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                                                                                                                                                <rdf:first>la Barceloneta</rdf:first>
+                                                                                                                                                                                                                                                                                                                                                                                                                <rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                                                                                                                                                        <rdf:first>la Clota</rdf:first>
+                                                                                                                                                                                                                                                                                                                                                                                                                        <rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                            <rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                                                                                                                                                                <rdf:first>la Dreta de l&apos;Eixample</rdf:first>
+                                                                                                                                                                                                                                                                                                                                                                                                                                <rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                    <rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                                                                                                                                                                        <rdf:first>la Font d&apos;en Fargues</rdf:first>
+                                                                                                                                                                                                                                                                                                                                                                                                                                        <rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                            <rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                <rdf:first>la Font de la Guatlla</rdf:first>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                <rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    <rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        <rdf:first>la Guineueta</rdf:first>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        <rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                            <rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                <rdf:first>la Marina de Port</rdf:first>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                <rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <rdf:first>la Marina del Prat Vermell</rdf:first>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <rdf:first>la Maternitat i Sant Ramon</rdf:first>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <rdf:first>la Nova Esquerra de l&apos;Eixample</rdf:first>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <rdf:first>la Prosperitat</rdf:first>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <rdf:first>la Sagrada Família</rdf:first>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <rdf:first>la Sagrera</rdf:first>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <rdf:first>la Salut</rdf:first>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <rdf:first>la Teixonera</rdf:first>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <rdf:first>la Trinitat Nova</rdf:first>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <rdf:first>la Trinitat Vella</rdf:first>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <rdf:first>la Vall d&apos;Hebron</rdf:first>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <rdf:first>la Verneda i la Pau</rdf:first>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <rdf:first>la Vila Olímpica del Poblenou</rdf:first>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <rdf:first>les Corts</rdf:first>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <rdf:first>les Roquetes</rdf:first>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <rdf:first>les Tres Torres</rdf:first>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                </rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                            </rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        </rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    </rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                </rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                            </rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                        </rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                                    </rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                                </rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                            </rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                        </rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                                    </rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                                </rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                            </rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                        </rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                                    </rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                                </rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                            </rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                        </rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                                    </rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                                </rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                            </rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                        </rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                                    </rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                                </rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                            </rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                        </rdf:rest>
+                                                                                                                                                                                                                                                                                                                                                    </rdf:Description>
+                                                                                                                                                                                                                                                                                                                                                </rdf:rest>
+                                                                                                                                                                                                                                                                                                                                            </rdf:Description>
+                                                                                                                                                                                                                                                                                                                                        </rdf:rest>
+                                                                                                                                                                                                                                                                                                                                    </rdf:Description>
+                                                                                                                                                                                                                                                                                                                                </rdf:rest>
+                                                                                                                                                                                                                                                                                                                            </rdf:Description>
+                                                                                                                                                                                                                                                                                                                        </rdf:rest>
+                                                                                                                                                                                                                                                                                                                    </rdf:Description>
+                                                                                                                                                                                                                                                                                                                </rdf:rest>
+                                                                                                                                                                                                                                                                                                            </rdf:Description>
+                                                                                                                                                                                                                                                                                                        </rdf:rest>
+                                                                                                                                                                                                                                                                                                    </rdf:Description>
+                                                                                                                                                                                                                                                                                                </rdf:rest>
+                                                                                                                                                                                                                                                                                            </rdf:Description>
+                                                                                                                                                                                                                                                                                        </rdf:rest>
+                                                                                                                                                                                                                                                                                    </rdf:Description>
+                                                                                                                                                                                                                                                                                </rdf:rest>
+                                                                                                                                                                                                                                                                            </rdf:Description>
+                                                                                                                                                                                                                                                                        </rdf:rest>
+                                                                                                                                                                                                                                                                    </rdf:Description>
+                                                                                                                                                                                                                                                                </rdf:rest>
+                                                                                                                                                                                                                                                            </rdf:Description>
+                                                                                                                                                                                                                                                        </rdf:rest>
+                                                                                                                                                                                                                                                    </rdf:Description>
+                                                                                                                                                                                                                                                </rdf:rest>
+                                                                                                                                                                                                                                            </rdf:Description>
+                                                                                                                                                                                                                                        </rdf:rest>
+                                                                                                                                                                                                                                    </rdf:Description>
+                                                                                                                                                                                                                                </rdf:rest>
+                                                                                                                                                                                                                            </rdf:Description>
+                                                                                                                                                                                                                        </rdf:rest>
+                                                                                                                                                                                                                    </rdf:Description>
+                                                                                                                                                                                                                </rdf:rest>
+                                                                                                                                                                                                            </rdf:Description>
+                                                                                                                                                                                                        </rdf:rest>
+                                                                                                                                                                                                    </rdf:Description>
+                                                                                                                                                                                                </rdf:rest>
+                                                                                                                                                                                            </rdf:Description>
+                                                                                                                                                                                        </rdf:rest>
+                                                                                                                                                                                    </rdf:Description>
+                                                                                                                                                                                </rdf:rest>
+                                                                                                                                                                            </rdf:Description>
+                                                                                                                                                                        </rdf:rest>
+                                                                                                                                                                    </rdf:Description>
+                                                                                                                                                                </rdf:rest>
+                                                                                                                                                            </rdf:Description>
+                                                                                                                                                        </rdf:rest>
+                                                                                                                                                    </rdf:Description>
+                                                                                                                                                </rdf:rest>
+                                                                                                                                            </rdf:Description>
+                                                                                                                                        </rdf:rest>
+                                                                                                                                    </rdf:Description>
+                                                                                                                                </rdf:rest>
+                                                                                                                            </rdf:Description>
+                                                                                                                        </rdf:rest>
+                                                                                                                    </rdf:Description>
+                                                                                                                </rdf:rest>
+                                                                                                            </rdf:Description>
+                                                                                                        </rdf:rest>
+                                                                                                    </rdf:Description>
+                                                                                                </rdf:rest>
+                                                                                            </rdf:Description>
+                                                                                        </rdf:rest>
+                                                                                    </rdf:Description>
+                                                                                </rdf:rest>
+                                                                            </rdf:Description>
+                                                                        </rdf:rest>
+                                                                    </rdf:Description>
+                                                                </rdf:rest>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#certificadoEnergetico -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#certificadoEnergetico">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Viviendas"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#climatizacion -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#climatizacion">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Viviendas"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#comunitaria -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#comunitaria">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#piscina"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Viviendas"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#direccion -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#direccion">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#localizacion"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#discapacidad -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#discapacidad">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#distrito -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#distrito">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#localizacion"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Viviendas"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                        <rdf:first>Ciutat Vella</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                <rdf:first>Gràcia</rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                        <rdf:first>Horta - Guinardó</rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first>L&apos;Eixample</rdf:first>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first>Les Corts</rdf:first>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                <rdf:first>Nou Barris</rdf:first>
+                                                                <rdf:rest>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                        <rdf:first>Sant Andreu</rdf:first>
+                                                                        <rdf:rest>
+                                                                            <rdf:Description>
+                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                <rdf:first>Sant Martí</rdf:first>
+                                                                                <rdf:rest>
+                                                                                    <rdf:Description>
+                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                        <rdf:first>Sant-Montjuic</rdf:first>
+                                                                                        <rdf:rest>
+                                                                                            <rdf:Description>
+                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                <rdf:first>Sarrià - Sant Gervasi</rdf:first>
+                                                                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                                                            </rdf:Description>
+                                                                                        </rdf:rest>
+                                                                                    </rdf:Description>
+                                                                                </rdf:rest>
+                                                                            </rdf:Description>
+                                                                        </rdf:rest>
+                                                                    </rdf:Description>
+                                                                </rdf:rest>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#edad -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#edad">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Usuario"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#electrodomesticos -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#electrodomesticos">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Viviendas"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#garaje -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#garaje">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Viviendas"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#localizacion -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#localizacion"/>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#mascota -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#mascota">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#orientacion -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#orientacion">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Viviendas"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                        <rdf:first>este</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                <rdf:first>nordeste</rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                        <rdf:first>nordoeste</rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first>norte</rdf:first>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first>oeste</rdf:first>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                <rdf:first>sur</rdf:first>
+                                                                <rdf:rest>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                        <rdf:first>sureste</rdf:first>
+                                                                        <rdf:rest>
+                                                                            <rdf:Description>
+                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                <rdf:first>suroeste</rdf:first>
+                                                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                                            </rdf:Description>
+                                                                        </rdf:rest>
+                                                                    </rdf:Description>
+                                                                </rdf:rest>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#piscina -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#piscina">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Viviendas"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#precioMensual -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#precioMensual">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Usuario"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Viviendas"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#superficie -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#superficie">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Viviendas"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#terraza -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#terraza">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Viviendas"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#vistas -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#vistas">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Viviendas"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Adosado -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Adosado">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Chalet"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Apartamento -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Apartamento">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Viviendas"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Atico -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Atico">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Viviendas"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Bajo -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Bajo">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Viviendas"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Buhardilla -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Buhardilla">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Viviendas"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Casa_Independiente -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Casa_Independiente">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Viviendas"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Chalet -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Chalet">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Viviendas"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Duplex -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Duplex">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Viviendas"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Estudiante -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Estudiante">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Indivudal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Estudio -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Estudio">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Viviendas"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Familia -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Familia">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Usuario"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Indivudal -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Indivudal">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Usuario"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Loft -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Loft">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Viviendas"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Pareado -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Pareado">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Chalet"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Piso -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Piso">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Viviendas"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Usuario -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Usuario"/>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Viviendas -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Viviendas"/>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/07/owl#Thing"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Estudiante"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Familia"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Indivudal"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
