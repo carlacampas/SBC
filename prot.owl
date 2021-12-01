@@ -15,11 +15,38 @@
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#permiteMascotas -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#permiteMascotas">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Viviendas"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
     // Data properties
     //
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#altura -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#altura">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    </owl:DatatypeProperty>
     
 
 
@@ -504,6 +531,7 @@ Sarrià</rdf:first>
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#piscina"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Viviendas"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <owl:propertyDisjointWith rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#privada"/>
     </owl:DatatypeProperty>
     
 
@@ -637,6 +665,8 @@ Sarrià</rdf:first>
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#mascota">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Usuario"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Viviendas"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
     </owl:DatatypeProperty>
     
@@ -720,6 +750,14 @@ Sarrià</rdf:first>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Usuario"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Viviendas"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#privada -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#privada">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#piscina"/>
     </owl:DatatypeProperty>
     
 
@@ -831,7 +869,7 @@ Sarrià</rdf:first>
     <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Estudiante -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Estudiante">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Indivudal"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Usuario"/>
     </owl:Class>
     
 
@@ -847,6 +885,14 @@ Sarrià</rdf:first>
     <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Familia -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Familia">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Usuario"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Grupo -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Grupo">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Usuario"/>
     </owl:Class>
     
@@ -876,11 +922,25 @@ Sarrià</rdf:first>
     
 
 
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Pareja -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Pareja">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Usuario"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Piso -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Piso">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Viviendas"/>
     </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Servicios -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Servicios"/>
     
 
 
@@ -905,6 +965,25 @@ Sarrià</rdf:first>
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Pepe -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Pepe">
+        <mascota rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</mascota>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
     // General axioms
     //
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -915,7 +994,9 @@ Sarrià</rdf:first>
         <owl:members rdf:parseType="Collection">
             <rdf:Description rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Estudiante"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Familia"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Grupo"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Indivudal"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Pareja"/>
         </owl:members>
     </rdf:Description>
 </rdf:RDF>
