@@ -1,0 +1,442 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#"
+     xml:base="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#distanciaServicio -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#distanciaServicio">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#servicioCiudad"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Ubicacion"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#distanciaUsuario -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#distanciaUsuario">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Usuario"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Vivienda"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#estaEn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#estaEn">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Vivienda"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Ubicacion"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#interesadoEnServicio -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#interesadoEnServicio">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Usuario"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#servicioCiudad"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#servicioVivienda"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#solicita -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#solicita">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Usuario"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Vivienda"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#tieneServicio -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#tieneServicio">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Vivienda"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#servicioVivienda"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#discapacidad -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#discapacidad">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Usuario"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#mascota -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#mascota">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Usuario"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#numHabitaciones -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#numHabitaciones">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Vivienda"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#tamaño -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#tamaño">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Vivienda"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Casa -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Casa">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Vivienda"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Familia -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Familia">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Usuario"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Individual -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Individual">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Usuario"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Piso -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Piso">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Vivienda"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Ubicacion -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Ubicacion"/>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Usuario -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Usuario"/>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Vivienda -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Vivienda"/>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#escuela -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#escuela">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#servicioCiudad"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#parque -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#parque">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#servicioCiudad"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#servicioCiudad -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#servicioCiudad"/>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#servicioVivienda -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#servicioVivienda"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#aire_acondicionado -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#aire_acondicionado">
+        <rdf:type rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#servicioVivienda"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#alli -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#alli">
+        <rdf:type rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Ubicacion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#alli_mas_lejos -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#alli_mas_lejos">
+        <rdf:type rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Ubicacion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#aqui -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#aqui">
+        <rdf:type rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Ubicacion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#aqui_cerquita -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#aqui_cerquita">
+        <rdf:type rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Ubicacion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#ascensor -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#ascensor">
+        <rdf:type rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#servicioVivienda"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#calefaccion -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#calefaccion">
+        <rdf:type rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#servicioVivienda"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#casa_azul -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#casa_azul">
+        <rdf:type rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Casa"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#casa_los_pinos -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#casa_los_pinos">
+        <rdf:type rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Casa"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#casa_verde -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#casa_verde">
+        <rdf:type rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Casa"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#escuela_hihihihihi -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#escuela_hihihihihi">
+        <rdf:type rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#escuela"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#escuela_primaria -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#escuela_primaria">
+        <rdf:type rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#escuela"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#escuela_secundaria -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#escuela_secundaria">
+        <rdf:type rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#escuela"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#eustakio -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#eustakio">
+        <rdf:type rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Individual"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#famiilia_aguafina -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#famiilia_aguafina">
+        <rdf:type rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Familia"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#familia_chanquete -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#familia_chanquete">
+        <rdf:type rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Familia"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#familia_jimenez -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#familia_jimenez">
+        <rdf:type rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Familia"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#fulgencio -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#fulgencio">
+        <rdf:type rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Individual"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#garaje -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#garaje">
+        <rdf:type rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#servicioVivienda"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#maria -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#maria">
+        <rdf:type rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Individual"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#parque_flores -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#parque_flores">
+        <rdf:type rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#parque"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#pepe -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#pepe">
+        <rdf:type rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Individual"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#piscina -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#piscina">
+        <rdf:type rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#servicioVivienda"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#piso_alto -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#piso_alto">
+        <rdf:type rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Piso"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#piso_bajo -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#piso_bajo">
+        <rdf:type rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Piso"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#piso_medio -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#piso_medio">
+        <rdf:type rdf:resource="http://www.semanticweb.org/carlacampas/ontologies/2021/10/basic#Piso"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
