@@ -27,9 +27,6 @@
     (single-slot discapacidad
         (type SYMBOL)
         (create-accessor read-write))
-    (single-slot edad
-        (type INTEGER)
-        (create-accessor read-write))
     (single-slot mascota
         (type SYMBOL)
         (create-accessor read-write))
@@ -63,24 +60,36 @@
     (single-slot tamañoFamilia
         (type INTEGER)
         (create-accessor read-write))
+    (multislot edad
+        (type INTEGER)
+        (create-accessor read-write))
 )
 
 (defclass Grupo
     (is-a Usuario)
     (role concrete)
     (pattern-match reactive)
+    (multislot edad
+        (type INTEGER)
+        (create-accessor read-write))
 )
 
 (defclass Indivudal
     (is-a Usuario)
     (role concrete)
     (pattern-match reactive)
+    (single-slot edad
+        (type INTEGER)
+        (create-accessor read-write))
 )
 
 (defclass Pareja
     (is-a Usuario)
     (role concrete)
     (pattern-match reactive)
+    (multislot edad
+        (type INTEGER)
+        (create-accessor read-write))
 )
 
 (defclass Viviendas
