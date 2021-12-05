@@ -97,6 +97,14 @@
                                                         rdfs:label "numDormitorios" .
 
 
+###  http://webprotege.stanford.edu/R8dH4GuUF8SGOqote736WTH
+<http://webprotege.stanford.edu/R8dH4GuUF8SGOqote736WTH> rdf:type owl:DatatypeProperty ;
+                                                         rdfs:subPropertyOf owl:topDataProperty ;
+                                                         rdfs:domain :Viviendas ;
+                                                         rdfs:range xsd:boolean ;
+                                                         rdfs:label "ascensor" .
+
+
 ###  http://webprotege.stanford.edu/R8lpBRX3wPRRYiX04xG7FuH
 <http://webprotege.stanford.edu/R8lpBRX3wPRRYiX04xG7FuH> rdf:type owl:DatatypeProperty ;
                                                          rdfs:subPropertyOf owl:topDataProperty ;
@@ -119,6 +127,14 @@
                                                          rdfs:domain :Viviendas ;
                                                          rdfs:range xsd:boolean ;
                                                          rdfs:label "obraNueva" .
+
+
+###  http://webprotege.stanford.edu/R99cDExVngj8jD1VsWmKtco
+<http://webprotege.stanford.edu/R99cDExVngj8jD1VsWmKtco> rdf:type owl:DatatypeProperty ;
+                                                         rdfs:subPropertyOf owl:topDataProperty ;
+                                                         rdfs:domain :Viviendas ;
+                                                         rdfs:range xsd:boolean ;
+                                                         rdfs:label "accesible"^^xsd:string .
 
 
 ###  http://webprotege.stanford.edu/R9L4c53J47xXAQCjn0P0KQY
@@ -672,9 +688,25 @@ owl:Thing rdf:type owl:Class .
 #    Individuals
 #################################################################
 
-###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Pepe
-:Pepe rdf:type owl:NamedIndividual ;
-      :mascota "true"^^xsd:boolean .
+###  http://webprotege.stanford.edu/R9mnqkRmgmngQA3TtdmQYm2
+<http://webprotege.stanford.edu/R9mnqkRmgmngQA3TtdmQYm2> rdf:type owl:NamedIndividual ,
+                                                                  :Piso ;
+                                                         <http://webprotege.stanford.edu/R8dH4GuUF8SGOqote736WTH> "true"^^xsd:boolean ;
+                                                         <http://webprotege.stanford.edu/R99cDExVngj8jD1VsWmKtco> "true"^^xsd:boolean ;
+                                                         <http://webprotege.stanford.edu/RDz7garco5iEjs9MuPHm5Fr> 1 ;
+                                                         <http://webprotege.stanford.edu/RgyAboTYKoqc42I05p5Qjo> 2 ;
+                                                         :precioMensual 1200 ;
+                                                         rdfs:label "vivienda1" .
+
+
+###  http://webprotege.stanford.edu/RDoBlQx4E9SgbEngum7MM8B
+<http://webprotege.stanford.edu/RDoBlQx4E9SgbEngum7MM8B> rdf:type owl:NamedIndividual ,
+                                                                  :Estudio ;
+                                                         <http://webprotege.stanford.edu/R8TkVpOvdkXoX1L4dHecMU> 0 ;
+                                                         <http://webprotege.stanford.edu/R8dH4GuUF8SGOqote736WTH> "false"^^xsd:boolean ;
+                                                         <http://webprotege.stanford.edu/R99cDExVngj8jD1VsWmKtco> "false"^^xsd:boolean ;
+                                                         :precioMensual 550 ;
+                                                         rdfs:label "vivienda2" .
 
 
 #################################################################
