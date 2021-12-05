@@ -4,6 +4,10 @@
 ;;; Translated to CLIPS from ontology SBC_Viviendas.ttl
 ;;; :Date 05/12/2021 17:58:23
 
+;;************************************************
+;;**                    CLASES                  **
+;;************************************************
+
 (defclass Usuario
     (is-a USER)
     (role concrete)
@@ -161,6 +165,24 @@
     (single-slot superficieHabitable
         (type INTEGER)
         (create-accessor read-write))
+    (single-slot numDormitorios
+        (type INTEGER)
+        (create-accessor read-write))
+    (single-slot numDormitoriosSimples
+        (type INTEGER)
+        (create-accessor read-write))
+    (single-slot numDormitoriosDobles
+        (type INTEGER)
+        (create-accessor read-write))
+    (single-slot numBanosEnteros
+        (type INTEGER)
+        (create-accessor read-write))
+    (single-slot numBanosMedios
+        (type INTEGER)
+        (create-accessor read-write))
+    (single-slot estudio
+        (type SYMBOL)
+        (create-accessor read-write))
 )
 
 (defclass Apartamento
@@ -274,13 +296,13 @@
     (pattern-match reactive)
 )
 
-(defclass Centro Comercial
+(defclass Centro_Comercial
     (is-a ServiciosCiudad)
     (role concrete)
     (pattern-match reactive)
 )
 
-(defclass Centro de Dia
+(defclass Centro_de_Dia
     (is-a ServiciosCiudad)
     (role concrete)
     (pattern-match reactive)
@@ -292,7 +314,7 @@
     (pattern-match reactive)
 )
 
-(defclass Club Nocturno
+(defclass Club_Nocturno
     (is-a ServiciosCiudad)
     (role concrete)
     (pattern-match reactive)
@@ -448,6 +470,51 @@
     (pattern-match reactive)
 )
 
+;;************************************************
+;;**           DECLARAR MODULOS                 **
+;;************************************************
+
+;; Modulo principal
+(defmodule MAIN (export ?ALL))
+
+(defmodule PREFERENCIAS
+    (import MAIN ?ALL)
+    (export ?ALL)
+)
+
+;;************************************************
+;;**               DEFFUNCTIONS                 **
+;;************************************************
+
+(deffunction ask-question (?question $?allowed-values)
+   (printout t ?question)
+   (bind ?answer (read))
+   (if (lexemep ?answer)
+       then (bind ?answer (lowcase ?answer)))
+   (while (not (member ?answer ?allowed-values)) do
+      (printout t ?question)
+      (bind ?answer (read))
+      (if (lexemep ?answer)
+          then (bind ?answer (lowcase ?answer))))
+   ?answer)
+
+(deffunction yes-or-no-p (?question)
+   (bind ?response (ask-question ?question yes no y n))
+   (if (or (eq ?response yes) (eq ?response y))
+       then TRUE
+       else FALSE))
+
+
+
+;;************************************************
+;;**               QUERY RULES                  **
+;;************************************************
+
+
+;;************************************************
+;;**                 INSTANCIAS                 **
+;;************************************************
+
 ;(definstances instances
 ;    ([R9mnqkRmgmngQA3TtdmQYm2] of Piso
 ;         (R8dH4GuUF8SGOqote736WTH  "true")
@@ -465,3 +532,33 @@
 ;    )
 
 ;)
+
+;;; Template para los datos de las preguntas al usuario
+(deftemplate MAIN::pregunta-usuario
+    (slot tamano (type INTEGER))
+    (slot ninos (type SYMBOL) (default NONE))
+    (slot jubilados (type SYMBOL) (default NONE))
+    (slot estudiantes (type SYMBOL) (default NONE))
+    (slot maxPrecio (type INTEGER)  (default -1))
+    (slot minPrecio (type INTEGER)  (default -1))
+    (slot minHabitaciones (type INTEGER) (default -1))
+    (slot mascotas (type SYMBOL) (default NONE))
+    (slot nocturnidad (type SYMBOL) (default NONE))
+    (slot coche (type SYMBOL) (default NONE))
+    (slot movilidadReducida (type SYMBOL) (default NONE))
+)
+
+;;************************************************
+;;**            IMPRIMIR VIVIENDAS              **
+;;************************************************
+(defrule MAIN::initialRule "Regla inicial"
+    (declare (salience 10))
+    =>
+    (printout t"----------------------------------------------------------" crlf)
+      (printout t"                RECOMENDACIÓN DE VIVIENDAS              " crlf)
+    (printout t"----------------------------------------------------------" crlf)
+      (printout t crlf)
+    (printout t"¡Bienvenido/a! A continuación se le hará algunas preguntas para averiguar sus preferencias en cuanto a viviendas. De esta manera podremos recomendar vivendas más apropiadas." crlf)
+    (printout t crlf)
+    (focus recopilacion-grupo)
+)
