@@ -486,7 +486,7 @@
 ;; Modulo principal
 (defmodule MAIN (export ?ALL))
 
-(defmodule PREFERENCIAS
+(defmodule preguntas-usuario
     (import MAIN ?ALL)
     (export ?ALL)
 )
@@ -569,5 +569,5 @@
       (printout t crlf)
     (printout t"¡Bienvenido/a! A continuación se le hará algunas preguntas para averiguar sus preferencias en cuanto a viviendas. De esta manera podremos recomendar vivendas más apropiadas." crlf)
     (printout t crlf)
-    (focus recopilacion-grupo)
+    (focus preguntas-usuario)
 )
