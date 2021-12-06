@@ -106,6 +106,9 @@
         (type SYMBOL)
         (create-accessor read-write)
         (default FALSE))
+    (single-slot certificadoEnergetico
+        (type STRING)
+        (create-accessor read-write))
     (single-slot mascota
         (type SYMBOL)
         (create-accessor read-write)
@@ -117,6 +120,14 @@
         (type FLOAT)
         (create-accessor read-write))
     (single-slot vistas
+        (type SYMBOL)
+        (create-accessor read-write)
+        (default FALSE))
+    (single-slot vistasMar
+        (type SYMBOL)
+        (create-accessor read-write)
+        (default FALSE))
+    (single-slot vistasMontaña
         (type SYMBOL)
         (create-accessor read-write)
         (default FALSE))
@@ -156,10 +167,6 @@
         (type SYMBOL)
         (create-accessor read-write)
         (default FALSE))
-    (single-slot pistaDeTenis
-        (type SYMBOL)
-        (create-accessor read-write)
-        (default FALSE))
     (single-slot terraza
         (type SYMBOL)
         (create-accessor read-write)
@@ -182,32 +189,56 @@
         (default FALSE))
     (single-slot añoConstruccion
         (type INTEGER)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (default 0))
     (single-slot planta
         (type INTEGER)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (default 1))
     (single-slot superficieHabitable
         (type INTEGER)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (default 0))
     (single-slot numDormitorios
         (type INTEGER)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (default 0))
     (single-slot numDormitoriosSimples
         (type INTEGER)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (default 0))
     (single-slot numDormitoriosDobles
         (type INTEGER)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (default 0)
     (single-slot numBanosEnteros
         (type INTEGER)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (default 0))
     (single-slot numBanosMedios
         (type INTEGER)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (default 0))
     (single-slot estudio
         (type SYMBOL)
         (create-accessor read-write)
         (default FALSE))
+    (single-slot adaptadoMovilidadReducida
+        (type SYMBOL)
+        (create-accessor read-write)
+        (default FALSE))
+    (single-slot calefaccion
+        (type SYMBOL)
+        (create-accessor read-write)
+        (default FALSE))
+    (single-slot ascensor
+        (type SYMBOL)
+        (create-accessor read-write)
+        (default FALSE))
+    (single-slot anoConstruccion
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0))
 )
 
 (defclass Apartamento
@@ -277,6 +308,12 @@
 )
 
 (defclass Piso
+    (is-a Viviendas)
+    (role concrete)
+    (pattern-match reactive)
+)
+
+(defclass Habitacion
     (is-a Viviendas)
     (role concrete)
     (pattern-match reactive)
