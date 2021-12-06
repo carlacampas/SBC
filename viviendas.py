@@ -57,7 +57,15 @@ barceloneta = [
 ]
 
 stPere = [
-
+    ("Carrer de l'Allada-Vermell", (41.386987,2.181024)),
+    ("Carrer de l'Arc de Sant Cristòfol", (41.387538,2.178864)),
+    ("Carrer dels Mestres Casals i Martorell", (41.387353,2.178306)),
+    ("Pla del Palau", (41.382402,2.184339)),
+    ("Carrer del Consolat de Mar", (41.382446,2.182313)),
+    ("Carrer de la Nau", (41.383009,2.180754)),
+    ("Carrer dels Mirallers", (41.384069,2.180946)), 
+    ("Carrer de Sant Pere Més Baix", (41.387623,2.177858)),
+    ("Via Laietana", (41.385324,2.176964))
 ]
 
 # En google maps buscas el barrio y haces zoom a carrers random,
@@ -79,8 +87,12 @@ for d in districtes:
         dirs = []
         if b == "el Raval":
             dirs = raval
-        if b == "el Gòtic":
+        elif b == "el Gòtic":
             dirs = gotic
+        elif b == "la Barceloneta":
+            dirs = barceloneta
+        elif b == "Sant Pere, Santa Caterina i la Ribera":
+            dirs = stPere
         
         for direc, coords in dirs:
             i += 1
