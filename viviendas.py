@@ -43,6 +43,7 @@ gotic = [
     ("Carrer de Jaume I", (41.383336,2.177973)),
     ("Carrer de Montjuïc del Bisbe", (41.383574,2.175429 )),
     ("Carrer del Paradís", (41.383326,2.177131)),
+    ("Carrer de Santa Llúcia", (41.384148,2.17597)),
     ()
 ]
 
@@ -50,6 +51,7 @@ gotic = [
 # los apuntas y buscas aqui el nombre, te da las coords
 # https://developers-dot-devsite-v2-prod.appspot.com/maps/documentation/utils/geocoder#place_id%3DEiVDYXJyZXIgZGVsIFBhcmFkw61zLCBCYXJjZWxvbmEsIFNwYWluIi4qLAoUChIJ4UlcAPmipBIRfdd-PuHIzo8SFAoSCeUwjnEWmKQSEQpmR089-7BE
 # empieza por sant marti and work your way up :)
+#don't put numero, es inecessario rn creo
 
 tipos = ["Apartamento", "Atico", "Bajo", "Buhardilla", "Casa_Independiente", "Chalet", "Adosado", "Pareado"
     "Duplex", "Estudio", "Loft", "Piso"]
