@@ -608,7 +608,6 @@
 (definstances instances
    ([ubicacion1] of Ubicacion
      (barrio "La Teixonera")
-     (coordenadas [29,39])
      (distrito "Horta-Guinardó")
    )
    ([vivienda1] of Piso
@@ -630,7 +629,6 @@
    )
    ([ubicacion2] of Ubicacion
      (barrio "Sant Andreu del Palomar")
-     (coordenadas [90,89])
      (distrito "Sant Andreu")
    )
    ([vivienda2] of Piso
@@ -652,13 +650,13 @@
    )
    ([ubicacion3] of Ubicacion
      (barrio "El Clot")
-     (coordenadas [70,76])
      (distrito "Sant Martí")
    )
    ([vivienda3] of Duplex
      (seEncuentraEn [ubicacion3])
      (amueblado TRUE)
      (mascota TRUE)
+     (adaptadoMovilidadReducida TRUE)
      (orientacion suroeste)
      (precioMensual 1650)
      (balcon TRUE)
@@ -676,7 +674,6 @@
    )
    ([ubicacion4] of Ubicacion
      (barrio "Pedralbes")
-     (coordenadas [10,95])
      (distrito "Les Corts")
    )
    ([vivienda4] of Piso
@@ -836,10 +833,21 @@
 
 ;;; Reglas del módulo INFERENCIA-DATOS
 
-(defrule inferencia-datos::devuelve-instancias "test"
-  (pregunta-usuario)
-	=>
-  (bind ?lista (find-all-instances ((?inst Viviendas)) (eq ?inst:mascota FALSE)))
-  (progn$ (?var ?lista)
-  (printout t ?var crlf))
+(defrule inferencia-datos::filtrar-viviendas "Filtrar las viviendas que se ajusten a los requisitos mínimos del usuario"
+    ?u <- (pregunta-usuario (maxPrecio ?maxPrecio)
+                            (minPrecio ?minPrecio)
+                            (minHabitaciones ?minHabitaciones)
+                            (mascotas ?mascotas)
+                            (movilidadReducida ?movilidadReducida))
+  	=>
+    (bind ?lista_adecuados (find-all-instances ((?inst Viviendas))
+              (and
+                  (<= ?inst:precioMensual ?maxPrecio)
+                  (>= ?inst:precioMensual ?minPrecio)
+                  (>= ?inst:numDormitorios ?minHabitaciones)
+                  (or (eq ?mascotas FALSE) (eq ?inst:mascota TRUE))
+                  (or (eq ?movilidadReducida FALSE) (eq ?inst:adaptadoMovilidadReducida TRUE))
+              )))
+    (progn$ (?var ?lista_adecuados)
+    (printout t ?var crlf))
 )
