@@ -68,11 +68,71 @@ stPere = [
     ("Via Laietana", (41.385324,2.176964))
 ]
 
+fortPienc = [
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+]
+
+sagradaFamilia = [
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+] 
+
+dretaEixample = [
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+]
+
+antigaEsquerraEixample = [
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+]
+
+novaEsquerraEixample = [
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+]
+
+santAntoni = [
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+]
+
 # En google maps buscas el barrio y haces zoom a carrers random,
 # los apuntas y buscas aqui el nombre, te da las coords
 # https://developers-dot-devsite-v2-prod.appspot.com/maps/documentation/utils/geocoder#place_id%3DEiVDYXJyZXIgZGVsIFBhcmFkw61zLCBCYXJjZWxvbmEsIFNwYWluIi4qLAoUChIJ4UlcAPmipBIRfdd-PuHIzo8SFAoSCeUwjnEWmKQSEQpmR089-7BE
 # empieza por sant marti and work your way up :)
 #don't put numero, es inecessario rn creo
+# USA LOS ESQUEMAS
 
 tipos = ["Apartamento", "Atico", "Bajo", "Buhardilla", "Casa_Independiente", "Chalet", "Adosado", "Pareado"
     "Duplex", "Estudio", "Loft", "Piso"]
