@@ -25,7 +25,8 @@ barris = {
   	 	 	    "Sant Martí de Provençals", "la Verneda i la Pau"],
 }
 
-raval = [("Rambla del Raval", (41.378502, 2.169252)), 
+raval = [
+    ("Rambla del Raval", (41.378502, 2.169252)), 
     ("Carrer de Sant Pacià", (41.378255, 2.168243)),
     ("Carrer dels Tallers", (41.384889, 2.167424)), 
     ("Carrer de la Reina Amàlia", (41.376813, 2.16736)),
@@ -34,6 +35,21 @@ raval = [("Rambla del Raval", (41.378502, 2.169252)),
     ("Carrer d'En Sant Climent", (41.378733, 2.165365))
 ]
 
+gotic = [
+    ("Carrer d'En Brot", (41.384085, 2.172123)),
+    ("Carrer dels Boters", (41.384091,2.174412)),
+    ("Carrer d'Avinyó", (41.380952,2.17726)),
+    ("Carrer de la Mercè", (41.379847,2.1801)),
+    ("Carrer de Jaume I", (41.383336,2.177973)),
+    ("Carrer de Montjuïc del Bisbe", (41.383574,2.175429 )),
+    ("Carrer del Paradís", (41.383326,2.177131)),
+    ()
+]
+
+# En google maps buscas el barrio y haces zoom a carrers random,
+# los apuntas y buscas aqui el nombre, te da las coords
+# https://developers-dot-devsite-v2-prod.appspot.com/maps/documentation/utils/geocoder#place_id%3DEiVDYXJyZXIgZGVsIFBhcmFkw61zLCBCYXJjZWxvbmEsIFNwYWluIi4qLAoUChIJ4UlcAPmipBIRfdd-PuHIzo8SFAoSCeUwjnEWmKQSEQpmR089-7BE
+# empieza por sant marti and work your way up :)
 
 tipos = ["Apartamento", "Atico", "Bajo", "Buhardilla", "Casa_Independiente", "Chalet", "Adosado", "Pareado"
     "Duplex", "Estudio", "Loft", "Piso"]
@@ -45,77 +61,81 @@ i = 0
 
 for d in districtes:
     for b in barris[d]:
-        i += 1
-        c1 = randrange(100)
-        c2 = randrange(200)
-        if (b == "el Raval"):
-            direc, coords = raval[0]
+        dirs = []
+        if b == "el Raval":
+            dirs = raval
+        if b == "el Gòtic":
+            dirs = gotic
+        
+        for direc, coords in dirs:
+            i += 1
             c1, c2 = coords
 
-        print ("([ubicacionVivienda" + str(i) + "] of Ubicacion\n" + 
-        '   (barrio "' + b + '")\n'
-        "   (coordenadas [" + str(c1) + ", " + str(c2) + "])\n"
-        '   (direccion "' + direc + '")\n'
-        '   (distrito "' + d + '")\n' +
-        ")\n")
+            print ("([ubicacionVivienda" + str(i) + "] of Ubicacion\n" + 
+            '   (barrio "' + b + '")\n'
+            "   (coordX " + str(c1) + ")\n"
+            "   (coordY " + str(c1) + ")\n"
+            '   (direccion "' + direc + '")\n'
+            '   (distrito "' + d + '")\n' +
+            ")\n")
 
-        vistas = bools[randrange(len(bools))]
-        vistasMar = bools[1]
-        vistasMont = bools[1]
-        primeraLinea = bools[1]
-        if (vistas == "TRUE"):
-            vistasMar = bools[randrange(len(bools))]
-            if vistasMar == "TRUE":
-                primeraLinea = bools[randrange(len(bools))]
+            vistas = bools[randrange(len(bools))]
+            vistasMar = bools[1]
+            vistasMont = bools[1]
+            primeraLinea = bools[1]
+            if (vistas == "TRUE"):
+                vistasMar = bools[randrange(len(bools))]
+                if vistasMar == "TRUE":
+                    primeraLinea = bools[randrange(len(bools))]
 
-            vistasMont = bools[randrange(len(bools))]
-        
-        garaje = bools[randrange(len(bools))]
-        plazas = 0
-        if garaje == "TRUE":
-            plazas = randrange(3)
+                vistasMont = bools[randrange(len(bools))]
+            
+            garaje = bools[randrange(len(bools))]
+            plazas = 0
+            if garaje == "TRUE":
+                plazas = randrange(3)
 
-        sH = randrange(150) + 10
+            sH = randrange(150) + 10
 
 
-        print ("([vivienda" + str(i) + "] of " + tipos[randrange(len(tipos))] + "\n" +
-        "   (seEncuentraEn [ubicacionVivienda" + str(i) + "])\n" +
-        "   (altura " + str(randrange(200) + 200) + ")\n" +
-        "   (amueblado " + bools[randrange(len(bools))] + ")\n" +
-        '   (certificadoEnergetico "' + certEn[randrange(len(certEn))] + '"\n' +
-        "   (mascota " + bools[randrange(len(bools))] + ")\n" +
-        '   (orientacion "' + orient[randrange(len(orient))] + '")\n' +
-        "   (precioMensual " + str(randrange(5100) + 100) + ")\n" +
-        "   (vistas " + vistas + ")\n" +
-        "   (vistasMar " + vistasMar + ")\n" +
-        "   (vistasMontaña " + vistasMont + ")\n" +
-        "   (balcon " + bools[randrange(len(bools))] + ")\n" +
-        "   (cocinaIntegrada " + bools[randrange(len(bools))] + ")\n" +
-        "   (sistemaAlarma " + bools[randrange(len(bools))] + ")\n" +
-        "   (garaje " + garaje + ")\n" +
-        "   (jardin " + bools[randrange(len(bools))] + ")\n" +
-        "   (plazasAparcamiento " + str(plazas) + ")\n" +
-        "   (sotano " + bools[randrange(len(bools))] + ")\n" +
-        "   (aireAcondicionado " + bools[randrange(len(bools))] + ")\n" +
-        "   (patio " + bools[randrange(len(bools))] + ")\n" +
-        "   (terraza " + bools[randrange(len(bools))] + ")\n" +
-        "   (gimnasio " + bools[randrange(len(bools))] + ")\n" +
-        "   (primeraLineaDeMar " + primeraLinea + ")\n" +
-        "   (obraNueva " + bools[randrange(len(bools))] + ")\n" +
-        "   (piscina " + bools[randrange(len(bools))] + ")\n" +
-        "   (planta " + str(randrange(6) + 1) + ")\n" +
-        "   (superficieHabitable " + str(sH) + ")\n" +
-        "   (numDormitorios " + str(sH) + ")\n" +#change
-        "   (numDormitoriosSimples " + str(sH) + ")\n" +#change
-        "   (numDormitoriosDobles " + str(sH) + ")\n" +#change
-        "   (numBanosEnteros " + str(sH) + ")\n" +#change
-        "   (numBanosMedios " + str(sH) + ")\n" +#change
-        "   (estudio " + bools[randrange(len(bools))] + ")\n" +
-        "   (adaptadoMovilidadReducida " + bools[randrange(len(bools))] + ")\n" +
-        "   (calefaccion " + bools[randrange(len(bools))] + ")\n" +
-        "   (ascensor " + bools[randrange(len(bools))] + ")\n" +
-        "   (añoConstruccion " + str(randrange(221) + 1800) + ")\n" +
-        ")\n")
-
+            print ("([vivienda" + str(i) + "] of " + tipos[randrange(len(tipos))] + "\n" +
+            "   (seEncuentraEn [ubicacionVivienda" + str(i) + "])\n" +
+            "   (altura " + str(randrange(200) + 200) + ")\n" +
+            "   (amueblado " + bools[randrange(len(bools))] + ")\n" +
+            '   (certificadoEnergetico "' + certEn[randrange(len(certEn))] + '"\n' +
+            "   (mascota " + bools[randrange(len(bools))] + ")\n" +
+            '   (orientacion "' + orient[randrange(len(orient))] + '")\n' +
+            "   (precioMensual " + str(randrange(5100) + 100) + ")\n" +
+            "   (vistas " + vistas + ")\n" +
+            "   (vistasMar " + vistasMar + ")\n" +
+            "   (vistasMontaña " + vistasMont + ")\n" +
+            "   (balcon " + bools[randrange(len(bools))] + ")\n" +
+            "   (cocinaIntegrada " + bools[randrange(len(bools))] + ")\n" +
+            "   (sistemaAlarma " + bools[randrange(len(bools))] + ")\n" +
+            "   (garaje " + garaje + ")\n" +
+            "   (jardin " + bools[randrange(len(bools))] + ")\n" +
+            "   (plazasAparcamiento " + str(plazas) + ")\n" +
+            "   (sotano " + bools[randrange(len(bools))] + ")\n" +
+            "   (aireAcondicionado " + bools[randrange(len(bools))] + ")\n" +
+            "   (patio " + bools[randrange(len(bools))] + ")\n" +
+            "   (terraza " + bools[randrange(len(bools))] + ")\n" +
+            "   (gimnasio " + bools[randrange(len(bools))] + ")\n" +
+            "   (primeraLineaDeMar " + primeraLinea + ")\n" +
+            "   (obraNueva " + bools[randrange(len(bools))] + ")\n" +
+            "   (piscina " + bools[randrange(len(bools))] + ")\n" +
+            "   (planta " + str(randrange(6) + 1) + ")\n" +
+            "   (superficieHabitable " + str(sH) + ")\n" +
+            "   (numDormitorios " + str(sH) + ")\n" +#change
+            "   (numDormitoriosSimples " + str(sH) + ")\n" +#change
+            "   (numDormitoriosDobles " + str(sH) + ")\n" +#change
+            "   (numBanosEnteros " + str(sH) + ")\n" +#change
+            "   (numBanosMedios " + str(sH) + ")\n" +#change
+            "   (estudio " + bools[randrange(len(bools))] + ")\n" +
+            "   (adaptadoMovilidadReducida " + bools[randrange(len(bools))] + ")\n" +
+            "   (calefaccion " + bools[randrange(len(bools))] + ")\n" +
+            "   (ascensor " + bools[randrange(len(bools))] + ")\n" +
+            "   (añoConstruccion " + str(randrange(221) + 1800) + ")\n" +
+            ")\n")
+            break
         break
     break
