@@ -99,9 +99,6 @@
     (single-slot seEncuentraEn
         (type INSTANCE)
         (create-accessor read-write))
-    (single-slot tieneServiciosVivienda
-        (type INSTANCE)
-        (create-accessor read-write))
     (single-slot altura
         (type INTEGER)
         (create-accessor read-write))
@@ -449,12 +446,6 @@
     (pattern-match reactive)
 )
 
-(defclass ServiciosVivienda
-    (is-a USER)
-    (role concrete)
-    (pattern-match reactive)
-)
-
 (defclass Ubicacion
     (is-a USER)
     (role concrete)
@@ -519,6 +510,30 @@
     ?response
 )
 
+;;; Funcion para hacer pregunta con indice de respuestas posibles
+(deffunction MAIN::pregunta-indice (?pregunta $?valores-posibles)
+    (bind ?linea (format nil "%s" ?pregunta))
+    (printout t ?linea crlf)
+    (progn$ (?var ?valores-posibles)
+            (bind ?linea (format nil "  %d. %s" ?var-index ?var))
+            (printout t ?linea crlf)
+    )
+    (bind ?respuesta (pregunta-numerica "Escoge una opcion:" 1 (length$ ?valores-posibles)))
+    ?respuesta
+)
+
+(deffunction MAIN::pregunta-test (?pregunta $?valores-posibles)
+    (bind ?linea (format nil "%s" ?pregunta))
+    (printout t ?linea crlf)
+    (progn$ (?var ?valores-posibles)
+            (bind ?linea (format nil "  %d. %s" ?var-index ?var))
+            (printout t ?linea crlf)
+    )
+    (format t "%s" "Indica el número de tu respuesta: ")
+    (bind ?resp (read))
+    ?resp
+)
+
 ;;************************************************
 ;;**               QUERY RULES                  **
 ;;************************************************
@@ -548,9 +563,12 @@
 
 ;;; Template para los datos de las preguntas al usuario
 (deftemplate MAIN::pregunta-usuario
+    (slot tipo (type STRING))
     (slot tamano (type INTEGER))
     (slot ninos (type SYMBOL) (default NONE))
     (slot jubilados (type SYMBOL) (default NONE))
+    (slot numAdultos (type SYMBOL) (default NONE))
+    (slot numNinos (type SYMBOL) (default NONE))
     (slot estudiantes (type SYMBOL) (default NONE))
     (slot maxPrecio (type INTEGER)  (default -1))
     (slot minPrecio (type INTEGER)  (default -1))
@@ -590,6 +608,13 @@
     =>
     (bind ?e (pregunta-si-no "¿Hay menores de 12? "))
     (modify ?u (ninos ?e))
+)
+
+(defrule preguntas-usuario::preguntar-numero-personas "Preguntar el número de inquilinos"
+    (not (pregunta-usuario))
+    =>
+    (bind ?tamano (pregunta-numerica "¿Cuantas personas vivirán en la vivienda? " 1 15 ))
+    (assert (pregunta-usuario (tamano ?tamano)))
 )
 
 (defrule preguntas-usuario::establecer-jubilados "Establecer si hay personas jubiladas"
