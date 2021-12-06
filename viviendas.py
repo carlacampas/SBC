@@ -4,7 +4,7 @@ districtes = ["Ciutat Vella", "Eixample", "Sants-Montjuïc", "Les Corts", "Sarri
                 "Gràcia", "Horta-Guinardó", "Nou Barris", "Sant Andreu", "San Martí"]
 
 barris = {
-    "Ciutat Vella": ["el Raval", "el Gòtic", "la Barceloneta", "Sant Pere", "Santa Caterina i la Ribera"],
+    "Ciutat Vella": ["el Raval", "el Gòtic", "la Barceloneta", "Sant Pere, Santa Caterina i la Ribera"],
     "Eixample": ["el Fort Pienc", "la Sagrada Família", "la Dreta de l'Eixample", "l'Antiga Esquerra de l'Eixample",  
   	 	 	    "la Nova Esquerra de l'Eixample", "Sant Antoni"],
     "Sants-Montjuïc": ["el Poble Sec", "la Marina del Prat Vermell", "la Marina de Port", "la Font de la Guatlla", "Hostafrancs",
@@ -44,7 +44,20 @@ gotic = [
     ("Carrer de Montjuïc del Bisbe", (41.383574,2.175429 )),
     ("Carrer del Paradís", (41.383326,2.177131)),
     ("Carrer de Santa Llúcia", (41.384148,2.17597)),
-    ()
+    ("Carrer de la Cucurulla", (41.384376,2.174116))
+]
+
+barceloneta = [
+    ("Emília Llorca Martín", (41.377315,2.189488)),
+    ("Carrer de Ginebra", (41.381758,2.189036)),
+    ("Carrer de Balboa", (41.382279,2.188832)),
+    ("Carrer de Paredes", (41.381476,2.18783)),
+    ("Carrer dels Mariners", (41.381675,2.188698)),
+    ("Passeig de Joan de Borbó", (41.373391,2.188044)),
+]
+
+stPere = [
+
 ]
 
 # En google maps buscas el barrio y haces zoom a carrers random,
