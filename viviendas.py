@@ -53,7 +53,7 @@ barceloneta = [
     ("Carrer de Balboa", (41.382279,2.188832)),
     ("Carrer de Paredes", (41.381476,2.18783)),
     ("Carrer dels Mariners", (41.381675,2.188698)),
-    ("Passeig de Joan de Borbó", (41.373391,2.188044)),
+    ("Passeig de Joan de Borbó", (41.373391,2.188044))
 ]
 
 stPere = [
@@ -69,62 +69,63 @@ stPere = [
 ]
 
 fortPienc = [
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
+    ("Gran Via de les Corts Catalanes", (41.367203,2.139314)),
+    ("Gran Via de les Corts Catalanes", (41.394342,2.175005)),
+    ("Carrer de la Diputació", (41.388841,2.164994)),
+    ("Carrer del Consell de Cent", (41.391541,2.166303)),
+    ("Carrer de Padilla", (41.40548,2.177473)),
+    ("Carrer d'Alí Bei", (41.394469,2.18205)),
+    ("Carrer de Nàpols", (41.398399,2.175436))
 ]
 
 sagradaFamilia = [
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
+    ("Carrer d'Aragó", (41.395419,2.169196)),
+    ("Carrer de Lepant", (41.404437,2.176713)),
+    ("Carrer de Roselló", (41.397047,2.162261)),
+    ("Carrer de Marina", (41.397958,2.182766)),
+    ("Carrer dels Enamorats", (41.405653,2.182547)),
+    ("Plaça Sagrada Familia", (41.40224,2.172615)),
+    ("Carrer de Provença", (41.395608,2.162645))
 ] 
 
 dretaEixample = [
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
+    ("Carrer de Pau Claris", (41.392422,2.167507)),
+    ("Carrer de València", (41.396715,2.168632)),
+    ("Carrer de Balmes", (41.39801,2.151484)),
+    ("Plaça Catalunya", (41.38736,2.169696)),
+    ("Plaça Catalunya", (41.387076,2.169)),
+    ("Passeig de Gràcia", (41.392667,2.164592)),
+    ("Passeig de Gràcia", (41.390094,2.168183)),
+    ("Carrer de Mallorca", (41.397559,2.167493)),
+    ("Passatge del Mercader", (41.392998,2.159216))
 ]
 
 antigaEsquerraEixample = [
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
+    ("Carrer de Casanova", (41.388074,2.155236)),
+    ("Carrer d'Aribau", (41.393324,2.152843)),
+    ("Passatge de Valeri Serra", (41.386059,2.159033)),
+    ("Carrer de la Diputació", (41.388212,2.16415)),
+    ("Carrer d'Enric Granados", (41.39135,2.157685)),
+    ("Carrer del Rosselló", (41.391562,2.154792))
 ]
 
 novaEsquerraEixample = [
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
+    ("Carrer d'Entença", (41.382163,2.147225)),
+    ("Carrer de Calàbria", (41.381381,2.152818)),
+    ("Carrer del Compte Borrell", (41.383069,2.155053)),
+    ("Carrer de Rocafort", (41.381857,2.149925)),
+    ("Carrer de Tarragona", (41.378013,2.145976)),
+    ("Carrer de Viladomat", (41.382394,2.153731)),
+    ("Avinguda de Roma", (41.383189,2.14988))
 ]
 
 santAntoni = [
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
+    ("Carrer de Sepúlveda", (41.379001,2.156929)),
+    ("Carrer del Parlament", (41.376431,2.162511)),
+    ("Carrer de Viladomat", (41.375744,2.162769)),
+    ("Carrer de Floridablanca", (41.37862,2.158711)),
+    ("Carrer de Villarroel", (41.381399,2.161628)),
+    ("Passatge de Sant Antoni Abat", (41.379592,2.160963))
 ]
 
 # En google maps buscas el barrio y haces zoom a carrers random,
