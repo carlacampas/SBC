@@ -104,10 +104,12 @@
         (create-accessor read-write))
     (single-slot amueblado
         (type SYMBOL)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (default FALSE))
     (single-slot mascota
         (type SYMBOL)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (default FALSE))
     (single-slot orientacion
         (type STRING)
         (create-accessor read-write))
@@ -116,52 +118,68 @@
         (create-accessor read-write))
     (single-slot vistas
         (type SYMBOL)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (default FALSE))
     (single-slot balcon
         (type SYMBOL)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (default FALSE))
     (single-slot cocinaIntegrada
         (type SYMBOL)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (default FALSE))
     (single-slot sistemaAlarma
         (type SYMBOL)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (default FALSE))
     (single-slot garaje
         (type SYMBOL)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (default FALSE))
     (single-slot jardin
         (type SYMBOL)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (default FALSE))
     (single-slot plazasAparcamiento
         (type INTEGER)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (default 0))
     (single-slot sotano
         (type SYMBOL)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (default FALSE))
     (single-slot aireAcondicionado
         (type SYMBOL)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (default FALSE))
     (single-slot patio
         (type SYMBOL)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (default FALSE))
     (single-slot pistaDeTenis
         (type SYMBOL)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (default FALSE))
     (single-slot terraza
         (type SYMBOL)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (default FALSE))
     (single-slot gimnasio
         (type SYMBOL)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (default FALSE))
     (single-slot primeraLineaDeMar
         (type SYMBOL)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (default FALSE))
     (single-slot obraNueva
         (type SYMBOL)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (default FALSE))
     (single-slot piscina
         (type SYMBOL)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (default FALSE))
     (single-slot añoConstruccion
         (type INTEGER)
         (create-accessor read-write))
@@ -188,7 +206,8 @@
         (create-accessor read-write))
     (single-slot estudio
         (type SYMBOL)
-        (create-accessor read-write))
+        (create-accessor read-write)
+        (default FALSE))
 )
 
 (defclass Apartamento
@@ -482,6 +501,13 @@
     (export ?ALL)
 )
 
+;;; Módulo para la inferencia de datos
+(defmodule inferencia-datos
+	(import MAIN ?ALL)
+	(import preguntas-usuario ?ALL)
+	(export ?ALL)
+)
+
 ;;************************************************
 ;;**               DEFFUNCTIONS                 **
 ;;************************************************
@@ -543,23 +569,102 @@
 ;;**                 INSTANCIAS                 **
 ;;************************************************
 
-;(definstances instances
-;    ([R9mnqkRmgmngQA3TtdmQYm2] of Piso
-;         (R8dH4GuUF8SGOqote736WTH  "true")
-;         (R99cDExVngj8jD1VsWmKtco  "true")
-;         (RDz7garco5iEjs9MuPHm5Fr  1)
-;         (RgyAboTYKoqc42I05p5Qjo  2)
-;         (precioMensual  1200)
-;    )
-
-;    ([RDoBlQx4E9SgbEngum7MM8B] of Estudio
-;         (R8TkVpOvdkXoX1L4dHecMU  0)
-;         (R8dH4GuUF8SGOqote736WTH  "false")
-;         (R99cDExVngj8jD1VsWmKtco  "false")
-;         (precioMensual  550)
-;    )
-
-;)
+(definstances instances
+   ([ubicacion1] of Ubicacion
+     (barrio "La Teixonera")
+     (coordenadas [29,39])
+     (distrito "Horta-Guinardó")
+   )
+   ([vivienda1] of Piso
+     (seEncuentraEn [ubicacion1])
+     (mascota TRUE)
+     (orientacion sureste)
+     (precioMensual 900)
+     (balcon TRUE)
+     (cocinaIntegrada TRUE)
+     (aireAcondicionado TRUE)
+     (añoConstruccion 1960)
+     (planta 2)
+     (superficieHabitable 81)
+     (numDormitorios 4)
+     (numDormitoriosSimples 2)
+     (numDormitoriosDobles 4)
+     (numBanosMedios 0)
+     (numBanosEnteros 1)
+   )
+   ([ubicacion2] of Ubicacion
+     (barrio "Sant Andreu del Palomar")
+     (coordenadas [90,89])
+     (distrito "Sant Andreu")
+   )
+   ([vivienda2] of Piso
+     (seEncuentraEn [ubicacion2])
+     (amueblado TRUE)
+     (orientacion oeste)
+     (precioMensual 820)
+     (balcon TRUE)
+     (cocinaIntegrada TRUE)
+     (aireAcondicionado TRUE)
+     (añoConstruccion 1989)
+     (planta 1)
+     (superficieHabitable 70)
+     (numDormitorios 3)
+     (numDormitoriosSimples 2)
+     (numDormitoriosDobles 1)
+     (numBanosMedios 0)
+     (numBanosEnteros 1)
+   )
+   ([ubicacion3] of Ubicacion
+     (barrio "El Clot")
+     (coordenadas [70,76])
+     (distrito "Sant Martí")
+   )
+   ([vivienda3] of Duplex
+     (seEncuentraEn [ubicacion3])
+     (amueblado TRUE)
+     (mascota TRUE)
+     (orientacion suroeste)
+     (precioMensual 1650)
+     (balcon TRUE)
+     (cocinaIntegrada TRUE)
+     (sistemaAlarma TRUE)
+     (aireAcondicionado TRUE)
+     (añoConstruccion 2017)
+     (planta 1)
+     (superficieHabitable 120)
+     (numDormitorios 3)
+     (numDormitoriosSimples 1)
+     (numDormitoriosDobles 2)
+     (numBanosMedios 1)
+     (numBanosEnteros 1)
+   )
+   ([ubicacion4] of Ubicacion
+     (barrio "Pedralbes")
+     (coordenadas [10,95])
+     (distrito "Les Corts")
+   )
+   ([vivienda4] of Piso
+     (orientacion nordoeste)
+     (precioMensual 2530)
+     (vistas TRUE)
+     (balcon TRUE)
+     (cocinaIntegrada TRUE)
+     (sistemaAlarma TRUE)
+     (garaje TRUE)
+     (aireAcondicionado TRUE)
+     (terraza TRUE)
+     (obraNueva TRUE)
+     (piscina TRUE)
+     (añoConstruccion 1992)
+     (planta 4)
+     (superficieHabitable 140)
+     (numDormitorios 4)
+     (numDormitoriosSimples 1)
+     (numDormitoriosDobles 3)
+     (numBanosMedios 1)
+     (numBanosEnteros 2)
+   )
+)
 
 ;;; Template para los datos de las preguntas al usuario
 (deftemplate MAIN::pregunta-usuario
@@ -690,4 +795,15 @@
 =>
 (bind ?e (pregunta-si-no "¿La vivienda tiene que ser accesible en silla de ruedas? "))
 (modify ?u (movilidadReducida ?e))
+(focus inferencia-datos)
+)
+
+;;; Reglas del módulo INFERENCIA-DATOS
+
+(defrule inferencia-datos::devuelve-instancias "test"
+  (pregunta-usuario)
+	=>
+  (bind ?lista (find-all-instances ((?inst Viviendas)) (eq ?inst:mascota FALSE)))
+  (progn$ (?var ?lista)
+  (printout t ?var crlf))
 )
