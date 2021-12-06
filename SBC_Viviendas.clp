@@ -210,7 +210,7 @@
     (single-slot numDormitoriosDobles
         (type INTEGER)
         (create-accessor read-write)
-        (default 0)
+        (default 0))
     (single-slot numBanosEnteros
         (type INTEGER)
         (create-accessor read-write)
