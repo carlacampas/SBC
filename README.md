@@ -1,1 +1,1 @@
-# SBC# Property-Graphs
+# SBC
