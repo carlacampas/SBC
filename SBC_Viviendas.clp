@@ -235,10 +235,6 @@
         (type SYMBOL)
         (create-accessor read-write)
         (default FALSE))
-    (single-slot anoConstruccion
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 0))
 )
 
 (defclass Apartamento
