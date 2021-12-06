@@ -210,7 +210,7 @@
     (single-slot numDormitoriosDobles
         (type INTEGER)
         (create-accessor read-write)
-        (default 0)
+        (default 0))
     (single-slot numBanosEnteros
         (type INTEGER)
         (create-accessor read-write)
@@ -608,7 +608,6 @@
 (definstances instances
    ([ubicacion1] of Ubicacion
      (barrio "La Teixonera")
-     (coordenadas [29,39])
      (distrito "Horta-Guinardó")
    )
    ([vivienda1] of Piso
@@ -630,7 +629,6 @@
    )
    ([ubicacion2] of Ubicacion
      (barrio "Sant Andreu del Palomar")
-     (coordenadas [90,89])
      (distrito "Sant Andreu")
    )
    ([vivienda2] of Piso
@@ -652,13 +650,13 @@
    )
    ([ubicacion3] of Ubicacion
      (barrio "El Clot")
-     (coordenadas [70,76])
      (distrito "Sant Martí")
    )
    ([vivienda3] of Duplex
      (seEncuentraEn [ubicacion3])
      (amueblado TRUE)
      (mascota TRUE)
+     (adaptadoMovilidadReducida TRUE)
      (orientacion suroeste)
      (precioMensual 1650)
      (balcon TRUE)
@@ -676,7 +674,6 @@
    )
    ([ubicacion4] of Ubicacion
      (barrio "Pedralbes")
-     (coordenadas [10,95])
      (distrito "Les Corts")
    )
    ([vivienda4] of Piso
@@ -759,87 +756,98 @@
 )
 
 (defrule preguntas-usuario::establecer-jubilados "Establecer si hay personas jubiladas"
-?u <- (pregunta-usuario (jubilados ?jubilados))
-(test (eq ?jubilados NONE))
-=>
-(bind ?e (pregunta-si-no "¿Hay mayores de 65? "))
-(modify ?u (jubilados ?e))
+    ?u <- (pregunta-usuario (jubilados ?jubilados))
+    (test (eq ?jubilados NONE))
+    =>
+    (bind ?e (pregunta-si-no "¿Hay mayores de 65? "))
+    (modify ?u (jubilados ?e))
 )
 
 (defrule preguntas-usuario::establecer-estudiantes "Establecer si son estudiantes"
-?u <- (pregunta-usuario (ninos ?n) (jubilados ?jubilados) (estudiantes ?est))
-(test (eq ?n FALSE))
-(test (eq ?jubilados FALSE))
-(test (eq ?est NONE))
-=>
-(bind ?e (pregunta-si-no "Será un piso de estudiantes? "))
-(modify ?u (estudiantes ?e))
+    ?u <- (pregunta-usuario (ninos ?n) (jubilados ?jubilados) (estudiantes ?est))
+    (test (eq ?n FALSE))
+    (test (eq ?jubilados FALSE))
+    (test (eq ?est NONE))
+    =>
+    (bind ?e (pregunta-si-no "Será un piso de estudiantes? "))
+    (modify ?u (estudiantes ?e))
 )
 
 (defrule preguntas-usuario::establecer-maxPrecio "Establecer precio máximo"
-?u <- (pregunta-usuario (maxPrecio ?maxPrecio))
-(test (< ?maxPrecio 0))
-=>
-(bind ?e (pregunta-numerica "Qué precio máximo encuentran aceptable?" 100 5000))
-(modify ?u (maxPrecio ?e))
+    ?u <- (pregunta-usuario (maxPrecio ?maxPrecio))
+    (test (< ?maxPrecio 0))
+    =>
+    (bind ?e (pregunta-numerica "Qué precio máximo encuentran aceptable?" 100 5000))
+    (modify ?u (maxPrecio ?e))
 )
 
 (defrule preguntas-usuario::establecer-minPrecio "Establecer precio mínimo"
-?u <- (pregunta-usuario (maxPrecio ?maxPrecio) (minPrecio ?minPrecio))
-(test (< ?minPrecio 0))
-(test (> ?maxPrecio 0))
-=>
-(bind ?e (pregunta-numerica "Qué precio mínimo encuentran aceptable?" 100 ?maxPrecio))
-(modify ?u (minPrecio ?e))
+    ?u <- (pregunta-usuario (maxPrecio ?maxPrecio) (minPrecio ?minPrecio))
+    (test (< ?minPrecio 0))
+    (test (> ?maxPrecio 0))
+    =>
+    (bind ?e (pregunta-numerica "Qué precio mínimo encuentran aceptable?" 100 ?maxPrecio))
+    (modify ?u (minPrecio ?e))
 )
 
 (defrule preguntas-usuario::establecer-minHabitaciones "Establecer mínimo número de habitaciones"
-?u <- (pregunta-usuario (minHabitaciones ?minHabitaciones))
-(test (< ?minHabitaciones 0))
-=>
-(bind ?e (pregunta-numerica "Almenos cuantas habitaciones desean?" 0 10))
-(modify ?u (minHabitaciones ?e))
+    ?u <- (pregunta-usuario (minHabitaciones ?minHabitaciones))
+    (test (< ?minHabitaciones 0))
+    =>
+    (bind ?e (pregunta-numerica "Almenos cuantas habitaciones desean?" 0 10))
+    (modify ?u (minHabitaciones ?e))
 )
 
 (defrule preguntas-usuario::establecer-mascotas "Establecer si hay mascotas"
-?u <- (pregunta-usuario (mascotas ?mascotas))
-(test (eq ?mascotas NONE))
-=>
-(bind ?e (pregunta-si-no "¿Hay mascotas? "))
-(modify ?u (mascotas ?e))
+    ?u <- (pregunta-usuario (mascotas ?mascotas))
+    (test (eq ?mascotas NONE))
+    =>
+    (bind ?e (pregunta-si-no "¿Hay mascotas? "))
+    (modify ?u (mascotas ?e))
 )
 
 (defrule preguntas-usuario::establecer-nocturnidad "Establecer si interés en salir de noche"
-?u <- (pregunta-usuario (nocturnidad ?nocturnidad))
-(test (eq ?nocturnidad NONE))
-=>
-(bind ?e (pregunta-si-no "¿Tienen interés en salir de fiesta por las noches? "))
-(modify ?u (nocturnidad ?e))
+    ?u <- (pregunta-usuario (nocturnidad ?nocturnidad))
+    (test (eq ?nocturnidad NONE))
+    =>
+    (bind ?e (pregunta-si-no "¿Tienen interés en salir de fiesta por las noches? "))
+    (modify ?u (nocturnidad ?e))
 )
 
 (defrule preguntas-usuario::establecer-coche "Establecer si tienen coche"
-?u <- (pregunta-usuario (coche ?coche))
-(test (eq ?coche NONE))
-=>
-(bind ?e (pregunta-si-no "¿Disponen de coche? "))
-(modify ?u (coche ?e))
+    ?u <- (pregunta-usuario (coche ?coche))
+    (test (eq ?coche NONE))
+    =>
+    (bind ?e (pregunta-si-no "¿Disponen de coche? "))
+    (modify ?u (coche ?e))
 )
 
 (defrule preguntas-usuario::establecer-movilidad-reducida "Establecer si tienen movilidad reducida"
-?u <- (pregunta-usuario (movilidadReducida ?movilidadReducida))
-(test (eq ?movilidadReducida NONE))
-=>
-(bind ?e (pregunta-si-no "¿La vivienda tiene que ser accesible en silla de ruedas? "))
-(modify ?u (movilidadReducida ?e))
-(focus inferencia-datos)
+    ?u <- (pregunta-usuario (movilidadReducida ?movilidadReducida))
+    (test (eq ?movilidadReducida NONE))
+    =>
+    (bind ?e (pregunta-si-no "¿La vivienda tiene que ser accesible en silla de ruedas? "))
+    (modify ?u (movilidadReducida ?e))
+    (focus inferencia-datos)
 )
 
 ;;; Reglas del módulo INFERENCIA-DATOS
 
-(defrule inferencia-datos::devuelve-instancias "test"
-  (pregunta-usuario)
-	=>
-  (bind ?lista (find-all-instances ((?inst Viviendas)) (eq ?inst:mascota FALSE)))
-  (progn$ (?var ?lista)
-  (printout t ?var crlf))
+(defrule inferencia-datos::filtrar-viviendas "Filtrar las viviendas que se ajusten a los requisitos mínimos del usuario"
+    ?u <- (pregunta-usuario (maxPrecio ?maxPrecio)
+                            (minPrecio ?minPrecio)
+                            (minHabitaciones ?minHabitaciones)
+                            (mascotas ?mascotas)
+                            (movilidadReducida ?movilidadReducida))
+  	=>
+    (bind ?lista_adecuados (find-all-instances ((?inst Viviendas))
+              (and
+                  (<= ?inst:precioMensual ?maxPrecio)
+                  (>= ?inst:precioMensual ?minPrecio)
+                  (>= ?inst:numDormitorios ?minHabitaciones)
+                  (or (eq ?mascotas FALSE) (eq ?inst:mascota TRUE))
+                  (or (eq ?movilidadReducida FALSE) (eq ?inst:adaptadoMovilidadReducida TRUE))
+              )))
+    (progn$ (?var ?lista_adecuados)
+    (printout t ?var crlf))
 )
