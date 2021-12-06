@@ -25,6 +25,16 @@ barris = {
   	 	 	    "Sant Martí de Provençals", "la Verneda i la Pau"],
 }
 
+raval = [("Rambla del Raval", (41.378502, 2.169252)), 
+    ("Carrer de Sant Pacià", (41.378255, 2.168243)),
+    ("Carrer dels Tallers", (41.384889, 2.167424)), 
+    ("Carrer de la Reina Amàlia", (41.376813, 2.16736)),
+    ("Carrer del Portal de Santa Madrona", (41.375779, 2.175023)),
+    ("Carrer del Carme", (41.381569, 2.168922)),
+    ("Carrer d'En Sant Climent", (41.378733, 2.165365))
+]
+
+
 tipos = ["Apartamento", "Atico", "Bajo", "Buhardilla", "Casa_Independiente", "Chalet", "Adosado", "Pareado"
     "Duplex", "Estudio", "Loft", "Piso"]
 
@@ -34,15 +44,19 @@ bools = ["TRUE", "FALSE"]
 i = 0
 
 for d in districtes:
-    for b in barris:
+    for b in barris[d]:
         i += 1
         c1 = randrange(100)
         c2 = randrange(200)
+        if (b == "el Raval"):
+            direc, coords = raval[0]
+            c1, c2 = coords
 
         print ("([ubicacionVivienda" + str(i) + "] of Ubicacion\n" + 
-        "   (barrio" + b + ")\n"
+        '   (barrio "' + b + '")\n'
         "   (coordenadas [" + str(c1) + ", " + str(c2) + "])\n"
-        "   (distrito " + d + ")\n" +
+        '   (direccion "' + direc + '")\n'
+        '   (distrito "' + d + '")\n' +
         ")\n")
 
         vistas = bools[randrange(len(bools))]
@@ -65,12 +79,12 @@ for d in districtes:
 
 
         print ("([vivienda" + str(i) + "] of " + tipos[randrange(len(tipos))] + "\n" +
-        "   (seEncuentraEn [ubicacion" + str(i) + "])\n" +
+        "   (seEncuentraEn [ubicacionVivienda" + str(i) + "])\n" +
         "   (altura " + str(randrange(200) + 200) + ")\n" +
         "   (amueblado " + bools[randrange(len(bools))] + ")\n" +
-        "   (certificadoEnergetico " + certEn[randrange(len(certEn))] + "\n" +
+        '   (certificadoEnergetico "' + certEn[randrange(len(certEn))] + '"\n' +
         "   (mascota " + bools[randrange(len(bools))] + ")\n" +
-        "   (orientacion " + orient[randrange(len(orient))] + ")\n" +
+        '   (orientacion "' + orient[randrange(len(orient))] + '")\n' +
         "   (precioMensual " + str(randrange(5100) + 100) + ")\n" +
         "   (vistas " + vistas + ")\n" +
         "   (vistasMar " + vistasMar + ")\n" +

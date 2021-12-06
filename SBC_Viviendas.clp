@@ -505,8 +505,11 @@
     (single-slot barrio
         (type STRING)
         (create-accessor read-write))
-    (single-slot coordenadas
-        (type SYMBOL)
+    (single-slot coordX
+        (type FLOAT)
+        (create-accessor read-write))
+    (single-slot coordY
+        (type FLOAT)
         (create-accessor read-write))
     (single-slot direccion
         (type STRING)
