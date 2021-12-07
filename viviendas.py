@@ -219,6 +219,44 @@ sants = [
     ("Carrer de Cros", (41.374529,2.138048)),
 ]
 
+corts = [
+    ("Carrer dels Cavallers", (41.390976,2.112095)),
+    ("Carrer de Manuel Ballbè", (41.384878,2.108344)),
+    ("Avinguda Diagonal 640", (41.39124,2.135599 )),
+    ("Avinguda Diagonal 673", (41.383014,2.109582)),
+    ("Carrer de Fígols", (41.381838,2.130539)),
+    ("Carrer de Caballero", (41.383331,2.137054)),
+    ("Carrer de Déu i Mata", (41.388453,2.13574)),
+    ("Gran Via de Carles III", (41.385706,2.127368)),
+    ("Carrer de Menéndez y Pelayo", (41.384522,2.121742)),
+    ("Carrer del Gran Capità", (41.387831,2.109766)),
+    ("Avinguda de Xile", (41.379314,2.113392)),
+]    
+
+maternitatSantRamon = [
+    ("Carrer de la Torre Melina", (41.382735,2.109071)),
+    ("Carrer de Carles Ferre Salat", (41.378972,2.105705)),
+    ("Carrer Pintor Ribalta", (41.378633,2.114826)),
+    ("Carrer del General Batet", (41.378881,2.108805)),
+    ("Carrer de Pascual i Vila", (41.383882,2.116639)),
+    ("Carrer del Pintor Tapiró", (41.377752,2.11874)),
+    ("Carrer del Pisuegra", (41.377075,2.112805)),
+]
+
+pedralbes = [
+    ("Avinguda Mare de Déu de Lorda", (41.396956,2.108165)),
+    ("Passatge Pearson", (41.394882,2.104148)),
+    ("Carrer de l'Abadessa Olzet", (41.392713,2.111627)),
+    ("Carrer del Torrent de les Roses", (41.389418,2.104573)),
+    ("Carrer Santa Maria Cervelló", (41.387734,2.112103)),
+    ("Carrer de Miret i Sants", (41.392739,2.109294)),
+    ("Carrer del Castell d'Olorda", (41.38996,2.105227)),
+    ("Carrer del Marquès de Mulhacen", (41.39222,2.117558)),
+    ("Carrer de Sant Pere de Romanies", (41.389351,2.104797)),
+    ("Carrer del Doctor Joaquín Albarrán", (41.390897,2.106827)),
+    ("Carrer de Beltràn i Rózpide", (41.389271,2.121981)),
+]
+
 # En google maps buscas el barrio y haces zoom a carrers random,
 # los apuntas y buscas aqui el nombre, te da las coords
 # https://developers-dot-devsite-v2-prod.appspot.com/maps/documentation/utils/geocoder#place_id%3DEiVDYXJyZXIgZGVsIFBhcmFkw61zLCBCYXJjZWxvbmEsIFNwYWluIi4qLAoUChIJ4UlcAPmipBIRfdd-PuHIzo8SFAoSCeUwjnEWmKQSEQpmR089-7BE
@@ -275,6 +313,12 @@ for d in districtes:
             dirs = santsBadal
         elif b == "Sants":
             dirs = sants
+        elif b == "les Corts":
+            dirs = corts
+        elif b == "la Maternitat i Sant Ramon":
+            dirs = maternitatSantRamon
+        elif b ==  "Pedralbes":
+            dirs = pedralbes
 
         for direc, coords in dirs:
             i += 1
