@@ -418,6 +418,46 @@ horta = [
     ("Camí Antic de Sant Llàzter", (41.441141,2.15938)),
 ]
 
+vilapicina = [
+    ("Carrer de l'Escultor Llimona", ()),
+    ("Carrer d'Espiell", ()),
+    ("Carrer de Petrarca", ()),
+    ("Carrer de Cartellà", ()),
+    ("Carrer de Costa i Cuxart", ()),
+    ("Carrer de Santapau", ()),
+    ("Carrer d'Escòcia", ()),
+]
+
+porta = [
+    ("Carrer de l'Estudiant", ()),
+    ("Carrer Torrent de Can Piquer", ()),
+    ("Carrer de la Selva", ()),
+    ("Passatge de la Ciutat de Mallorca", ()),
+    ("Carrer dels Garrofers", ()),
+    ("Carrer de Valldemossa", ()),
+    ("Carrer d'Alloza", ()),
+    ("Carrer de Vèlia", ()),
+]
+
+turoPeira = [
+    ("Carrer de Cadi", ()),
+    ("Carrer del Teide", ()),
+    ("Passeig de la Peira", ()),
+    ("Carrer de la Vall d'Ordesa", ()),
+    ("Carrer de Sant Iscle", ()),
+    ("Passeig d'Urrutia", ()),
+]
+
+canPeguera = [
+    ("Carrer Matamala", ()),
+    ("Carrer de Diana", ()),
+    ("Carrer de Bellcaire", ()),
+    ("Carrer d'Espinauga", ()),
+    ("Plaça de Sant Francesc Xavier", ()),
+    ("Carrer de Camós", ()),
+    ("Carrer de Riells", ()),
+]
+
 # En google maps buscas el barrio y haces zoom a carrers random,
 # los apuntas y buscas aqui el nombre, te da las coords
 # https://developers-dot-devsite-v2-prod.appspot.com/maps/documentation/utils/geocoder#place_id%3DEiVDYXJyZXIgZGVsIFBhcmFkw61zLCBCYXJjZWxvbmEsIFNwYWluIi4qLAoUChIJ4UlcAPmipBIRfdd-PuHIzo8SFAoSCeUwjnEWmKQSEQpmR089-7BE
@@ -512,6 +552,32 @@ for d in districtes:
             dirs = clota
         elif b == "Horta":
             dirs = horta
+        elif b == "Vilapicina i la Torre Llobeta":
+            dirs = vilapicina
+        elif b == "Porta":
+            dirs = porta
+        elif b == "el Turó de la Peira":
+            dirs = turoPeira
+        elif b == "Can Peguera":
+            dis = canPeguera
+        elif b == "la Guineueta":
+            dirs = guineuta
+        elif b == "Canyelles":
+            dirs = canyelles
+        elif b == "les Roquetes":
+            dirs = roquetes
+        elif b == "Verdun":
+            dirs = verdun
+        elif b == "la Prosperitat":
+            dirs = prosperitat
+        elif b == "la Trinitat Nova":
+            dirs = trinitatNova
+        elif b == "Torre Baró":
+            dirs = torreBaro
+        elif b == "Ciutat Meridiana":
+            dirs = ciutatMeridiana
+        elif b == "Vallbona":
+            dirs = vallbona
 
         for direc, coords in dirs:
             i += 1
