@@ -464,7 +464,7 @@ for d in districtes:
             ub = ("([ubicacionVivienda" + str(i) + "] of Ubicacion\n" + 
             '   (barrio "' + b + '")\n'
             "   (coordX " + str(c1) + ")\n"
-            "   (coordY " + str(c1) + ")\n"
+            "   (coordY " + str(c2) + ")\n"
             '   (direccion "' + direc + '")\n'
             '   (distrito "' + d + '")\n' +
             ")\n")
