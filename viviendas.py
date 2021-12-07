@@ -47,7 +47,7 @@ gotic = [
     ("Carrer de la Cucurulla", (41.384376,2.174116))
 ]
 
-barceloneta = [
+barceloneta = [##x
     ("Emília Llorca Martín", (41.377315,2.189488)),
     ("Carrer de Ginebra", (41.381758,2.189036)),
     ("Carrer de Balboa", (41.382279,2.188832)),
@@ -128,6 +128,93 @@ santAntoni = [
     ("Passatge de Sant Antoni Abat", (41.379592,2.160963))
 ]
 
+pobleSec = [##x
+    ("Carrer de Pierre de Coubertin", (41.363237,2.147875)),
+    ("Carrer del Polvorí", (41.365815,2.14475)),
+    ("Cami de la Foixarda", (41.366934,2.14733)),
+    ("Plaça de Carles Buïgas", (41.366934,2.14733)),
+    ("Carrer de l'Olivera", (41.373606,2.1567)),
+    ("Passatge de Prunera", (41.3743,2.155886 )),
+    ("Carrer d'Elkano", (41.373284,2.162742)),
+    ("Carrer de Piquer", (41.373011,2.169998)),
+    ("Plaça del Sortidor", (41.372296,2.162612)),
+    ("Passeig de l'Exposició", (41.371464,2.16246)),
+    ("Carrer Santíssima Trinitat", (41.356671,2.153848)),
+    ("Carrer de Sant Francesc", (41.398701,2.205705)),
+    ("Carretera de Miramar", (41.367673,2.172466)),
+    ("Carrer dels Tarongers", (41.366924,2.165627)),
+]
+
+marinaPratVermell = [##x
+    ("Carrer D", (41.330433,2.129105)),
+    ("Carrer Transversal 4", (41.331032,2.116739)),
+    ("Carrer Major", (41.331438,2.115637)),
+    ("Carrer A", (41.335459,2.14015)),
+    ("Carrer Número 2", (41.343124,2.140124)),
+    ("Avinguda Número 4", (41.340455,2.131133)),
+]
+
+marinaPort = [
+    ("Carrer del Temple", (41.357186,2.135723)),
+    ("Carrer de la Mare de Déu de Port", (41.356887,2.145787)),
+    ("Carrer Negrell", (41.356677,2.14548)),
+    ("Carrer de Can Clos", (41.361199,2.147033)),
+    ("Carrer de Fortuna", (41.364618,2.141715)),
+    ("Carrer dels Ferrocarils Catalans", (41.359724,2.144055)),
+    ("Carrer de la Mecànica", (41.35886,2.137355)),
+    ("Carrer de Gernika", (41.360383,2.136713)),
+]
+
+fontGuatlla = [
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+]
+
+hostafrancs = [
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+]
+
+bordeta = [
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+]
+
+santsBadal = [
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+]
+
+sants = [
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+]
+
 # En google maps buscas el barrio y haces zoom a carrers random,
 # los apuntas y buscas aqui el nombre, te da las coords
 # https://developers-dot-devsite-v2-prod.appspot.com/maps/documentation/utils/geocoder#place_id%3DEiVDYXJyZXIgZGVsIFBhcmFkw61zLCBCYXJjZWxvbmEsIFNwYWluIi4qLAoUChIJ4UlcAPmipBIRfdd-PuHIzo8SFAoSCeUwjnEWmKQSEQpmR089-7BE
@@ -143,6 +230,8 @@ orient = ["sud", "norte", "este", "oeste", "sudeste", "sudoeste", "noreste", "no
 bools = ["TRUE", "FALSE"]
 i = 0
 
+f = open ("instances.clp", "w")
+
 for d in districtes:
     for b in barris[d]:
         dirs = []
@@ -154,18 +243,48 @@ for d in districtes:
             dirs = barceloneta
         elif b == "Sant Pere, Santa Caterina i la Ribera":
             dirs = stPere
-        
+        elif b == "el Fort Pienc":
+            dirs = fortPienc
+        elif b == "la Sagrada Família":
+            dirs = sagradaFamilia
+        elif b == "la Dreta de l'Eixample":
+            dirs = dretaEixample
+        elif b == "l'Antiga Esquerra de l'Eixample":
+            dirs = antigaEsquerraEixample
+        elif b == "la Nova Esquerra de l'Eixample":
+            dirs = novaEsquerraEixample
+        elif b == "Sant Antoni":
+            dirs = santAntoni
+        elif b == "el Poble Sec":
+            dirs = pobleSec
+        elif b == "la Marina del Prat Vermell":
+            dirs = marinaPratVermell
+        elif b == "la Marina de Port":
+            dirs = marinaPort
+        elif b == "la Font de la Guatlla":
+            dirs = fontGuatlla
+        elif b == "Hostafrancs":
+            dirs = hostafrancs
+        elif b == "la Bordeta":
+            dirs = bordeta
+        elif b == "Sants-Badal":
+            dirs = santsBadal
+        elif b == "Sants":
+            dirs = sants
+
         for direc, coords in dirs:
             i += 1
             c1, c2 = coords
 
-            print ("([ubicacionVivienda" + str(i) + "] of Ubicacion\n" + 
+            ub = ("([ubicacionVivienda" + str(i) + "] of Ubicacion\n" + 
             '   (barrio "' + b + '")\n'
             "   (coordX " + str(c1) + ")\n"
             "   (coordY " + str(c1) + ")\n"
             '   (direccion "' + direc + '")\n'
             '   (distrito "' + d + '")\n' +
             ")\n")
+
+            f.write(ub)
 
             vistas = bools[randrange(len(bools))]
             vistasMar = bools[1]
@@ -186,7 +305,7 @@ for d in districtes:
             sH = randrange(150) + 10
 
 
-            print ("([vivienda" + str(i) + "] of " + tipos[randrange(len(tipos))] + "\n" +
+            viv = ("([vivienda" + str(i) + "] of " + tipos[randrange(len(tipos))] + "\n" +
             "   (seEncuentraEn [ubicacionVivienda" + str(i) + "])\n" +
             "   (altura " + str(randrange(200) + 200) + ")\n" +
             "   (amueblado " + bools[randrange(len(bools))] + ")\n" +
@@ -224,6 +343,5 @@ for d in districtes:
             "   (ascensor " + bools[randrange(len(bools))] + ")\n" +
             "   (añoConstruccion " + str(randrange(221) + 1800) + ")\n" +
             ")\n")
-            break
-        break
-    break
+
+            f.write(viv)
