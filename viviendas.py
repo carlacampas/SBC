@@ -13,7 +13,7 @@ barris = {
     "Sarrià-Sant Gervasi": ["Vallvidrera, el Tibidabo i les Planes", "Sarrià", "les Tres Torres", "Sant Gervasi-Bonanova", 
                 "Sant Gervasi-Galvany", "el Putget i Farró"],
     "Gràcia": ["Vallcarca i els Penitents", "el Coll", "la Salut", "Vila de Gràcia", "el Camp d'en Grassot i Gràcia Nova"],
-    "Horta-Guinardó": ["enís dels Agudells",  "Montbau", "la Vall d'Hebron", "la Clota", "Horta"],
+    "Horta-Guinardó": ["Sant Genís dels Agudells",  "Montbau", "la Vall d'Hebron", "la Clota", "Horta"],
     "Nou Barris": ["Vilapicina i la Torre Llobeta",  "Porta", "el Turó de la Peira", "Can Peguera", "la Guineueta",
   	 	 	    "Canyelles", "les Roquetes", "Verdun", "la Prosperitat", "la Trinitat Nova", "Torre Baró", "Ciutat Meridiana"  
   	 	 	    "Vallbona"],
@@ -372,6 +372,52 @@ campGrassot = [
     ("Carrer de Balcells", (41.41049,2.159882)),
 ]
 
+genisAgudells = [
+    ("Carrer de Cànoves", (41.427536,2.132067)),
+    ("Camí de Can Borni", (41.421694,2.124605)),
+    ("Carrer del Lledoner", (41.425312,2.137886)),
+    ("Carrer d'Olvan", (41.429672,2.133092)),
+    ("Carrer de Natzaret", (41.425041,2.13738)),
+    ("Carrer Mont Tabor", (41.423133,2.141052)),
+    ("Carrer de Naïm", (41.425991,2.138445)),
+]
+
+montbau = [
+    ("Carrer de l'Harmonia", (41.433924,2.142234)),
+    ("Carrer de Roig i Solé", (41.430854,2.140946)),
+    ("Carrer Groc de Montbau", (41.432366,2.140532)),
+    ("Camí de Sant Cebrià", (41.436887,2.137049)),
+    ("Carrer d'Hipàtia d'Alexandria", (41.435348,2.143828)),
+]
+
+vallHebron = [
+    ("Carrer de la Granja Vella", (41.426693,2.146674)),
+    ("Carrer de Jorge Manrique", (41.431498,2.14938)),
+    ("Carrer de Berruguete", (41.433024,2.149644)),
+    ("Carrer del Pare Mariana", (41.430276,2.147896)),
+    ("Carrer de la Maternitat d'Elna", (41.435141,2.152591)),
+    ("Carrer de les Basses d'Horta", (41.425438,2.144874)),
+]
+
+clota = [
+    ("Camí de Sant Genís a Horta", (41.42924,2.15239)),
+    ("Carrer d'Alarcón", (41.427851,2.153187)),
+    ("Carrer de la Puríssima", (41.427408,2.151346)),
+    ("Riera de Marcel.li", (41.42975,2.153378)),
+    ("Carrer Juan de Ávila", (41.429578,2.154876)),
+    ("Passatge Feliu", (41.428183,2.15263)),
+]
+
+horta = [
+    ("Cami de Cal Notari", (41.440573,2.150862)),
+    ("Carrer de Rivero", (41.431008,2.157703)),
+    ("Carrer de Campoamor", (41.434154,2.155935)),
+    ("Passeig de Valldaura", (41.438802,2.170545)),
+    ("Carrer de Coïmbra", (41.43248,2.15539)),
+    ("Carrer del Congrés", (41.436564,2.161674)),
+    ("Camí Antic de Sant Llàzter", (41.441141,2.15938)),
+]
+
 # En google maps buscas el barrio y haces zoom a carrers random,
 # los apuntas y buscas aqui el nombre, te da las coords
 # https://developers-dot-devsite-v2-prod.appspot.com/maps/documentation/utils/geocoder#place_id%3DEiVDYXJyZXIgZGVsIFBhcmFkw61zLCBCYXJjZWxvbmEsIFNwYWluIi4qLAoUChIJ4UlcAPmipBIRfdd-PuHIzo8SFAoSCeUwjnEWmKQSEQpmR089-7BE
@@ -456,6 +502,16 @@ for d in districtes:
             dirs = vilaGracia
         elif b == "el Camp d'en Grassot i Gràcia Nova":
             dirs = campGrassot
+        elif b == "Sant Genís dels Agudells":
+            dirs = genisAgudells
+        elif b == "Montbau":
+            dirs = montbau
+        elif b == "la Vall d'Hebron":
+            dirs = vallHebron
+        elif b == "la Clota":
+            dirs = clota
+        elif b == "Horta":
+            dirs = horta
 
         for direc, coords in dirs:
             i += 1
