@@ -13,8 +13,7 @@ barris = {
     "Sarrià-Sant Gervasi": ["Vallvidrera, el Tibidabo i les Planes", "Sarrià", "les Tres Torres", "Sant Gervasi-Bonanova", 
                 "Sant Gervasi-Galvany", "el Putget i Farró"],
     "Gràcia": ["Vallcarca i els Penitents", "el Coll", "la Salut", "Vila de Gràcia", "el Camp d'en Grassot i Gràcia Nova"],
-    "Horta-Guinardó": ["enís dels Agudells",  
-  	 	 	    "Montbau", "la Vall d'Hebron", "la Clota", "Horta"],
+    "Horta-Guinardó": ["enís dels Agudells",  "Montbau", "la Vall d'Hebron", "la Clota", "Horta"],
     "Nou Barris": ["Vilapicina i la Torre Llobeta",  "Porta", "el Turó de la Peira", "Can Peguera", "la Guineueta",
   	 	 	    "Canyelles", "les Roquetes", "Verdun", "la Prosperitat", "la Trinitat Nova", "Torre Baró", "Ciutat Meridiana"  
   	 	 	    "Vallbona"],
@@ -257,6 +256,74 @@ pedralbes = [
     ("Carrer de Beltràn i Rózpide", (41.389271,2.121981)),
 ]
 
+vallvidrera = [
+    ("Carrer de Can Llavallol", (41.411888,2.092929)),
+    ("Carrer Ginestra", (41.391806,2.075093)),
+    ("Carrer de Marco Polo", (41.428252,2.095075)),
+    ("Carrer de Baladre", (41.427845,2.093266)),
+    ("Passeig Solé i Pla", (41.427333,2.08931)),
+    ("Carrer Camí de Can Balasch", (41.425813,2.080653)),
+    ("Camí de Salze", (41.423845,2.107737)),
+]
+
+sarria = [
+    ("Carrer de Carroç", (41.408229,2.107348)),
+    ("Carrer de Montclar", (41.409744,2.113215)),
+    ("Carrer de Plantada", (41.407897,2.119566)),
+    ("Carrer Pins de Can Caralleu", (41.403578,2.10868)),
+    ("Carrer Major de Sarrià", (41.399987,2.121501)),
+    ("Passeig de Jorba", (41.407761,2.118338)),
+    ("Carrer de Dolors Monserdà", (41.401694,2.121823)),
+    ("Carrer del Clos de Sant Francesc", (41.398827,2.121113)),
+    ("Carrer d'Enric Giménez", (41.396395,2.11856)),
+    ("Carrer del Pedró de la Creu", (41.397486,2.121766 )),
+    ("Carrer del Cardenal Vives i Tutó", (41.394256,2.120887)),
+    ("Carrer de Francesc Carbonell", (41.392777,2.125487)),
+    ("Passatge del Roserar", (41.391825,2.121)),
+]
+
+tresTorres = [
+    ("Carrer de Doctor Caraulla", (41.399651,2.128817)),
+    ("Carrer de Calatrava", (41.399059,2.130725)),
+    ("Passatge de Ricard Zamora", (41.392717,2.133503)),
+    ("Carrer de Buïgas", (41.393983,2.131565 )),
+    ("Carrer de Gósol", (41.396396,2.12795)),
+    ("Carrer del Doctor Roux", (41.397967,2.129979)),
+    ("Carrer del Rosari", (41.396857,2.130438)),
+]
+
+santGervasiBonanova = [
+    ("Plaça del Doctor Andreu", (41.415763,2.129751)),
+    ("Avinguda del Tibidabo", (41.413632,2.13453)),
+    ("Carrer Josep Maria Lladó", (41.410757,2.124976)),
+    ("Carrer de Planella", (41.406307,2.125281)),
+    ("Carrer de Quatre Camins", (41.510808,2.38777)),
+    ("Carrer de Garcia Mariño", (41.412885,2.137905)),
+    ("Carrer de Torras i Pujat", (41.401968,2.133832)),
+    ("Carrer de Sant Màrius", (41.40391,2.137619)),
+]
+
+santGervasiGalvany = [
+    ("Carrer de Brusi", (41.400834,2.145919)),
+    ("Carrer de Copèrnic", (41.400533,2.139721)),
+    ("Carrer de Jacinto Benavente", (41.395313,2.137274)),
+    ("Carrer de Beethoven", (41.392559,2.141662)),
+    ("Carrer de Laforja", (41.398065,2.148039)),
+    ("Carrer de Madrazo", (41.548481,2.088284)),
+    ("Carrer de Tuset", (41.395682,2.152345)),
+    ("Carrer de Muntaner", (41.394687,2.14876))
+]
+
+pugetFarro = [
+    ("Carrer de Claudi Sabadell", (41.411229,2.142947)),
+    ("Carrer de Lucà", (41.410824,2.139539)),
+    ("Carrer de Castanyer", (41.407149,2.137973)),
+    ("Plaça Mañé i Flaquer", (41.40381,2.148395)),
+    ("Carrer de Sant Hermeneglid", (41.403535,2.144973)),
+    ("Carrer d'Escipió", (41.407418,2.14581)),
+    ("Carrer de Berna", (41.406291,2.146088)),
+]
+
 # En google maps buscas el barrio y haces zoom a carrers random,
 # los apuntas y buscas aqui el nombre, te da las coords
 # https://developers-dot-devsite-v2-prod.appspot.com/maps/documentation/utils/geocoder#place_id%3DEiVDYXJyZXIgZGVsIFBhcmFkw61zLCBCYXJjZWxvbmEsIFNwYWluIi4qLAoUChIJ4UlcAPmipBIRfdd-PuHIzo8SFAoSCeUwjnEWmKQSEQpmR089-7BE
@@ -319,6 +386,18 @@ for d in districtes:
             dirs = maternitatSantRamon
         elif b ==  "Pedralbes":
             dirs = pedralbes
+        elif b == "Vallvidrera, el Tibidabo i les Planes": 
+            dirs = vallvidrera
+        elif b == "Sarrià": 
+            dirs = sarria
+        elif b == "les Tres Torres": 
+            dirs = tresTorres
+        elif b == "Sant Gervasi-Bonanova":
+            dirs = santGervasiBonanova
+        elif b == "Sant Gervasi-Galvany":
+            dirs = santGervasiGalvany
+        elif b == "el Putget i Farró":
+            dirs = pugetFarro
 
         for direc, coords in dirs:
             i += 1
