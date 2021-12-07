@@ -324,6 +324,54 @@ pugetFarro = [
     ("Carrer de Berna", (41.406291,2.146088)),
 ]
 
+vallcarca = [
+    ("Carrer de Salvador Alarma", (41.419006,2.133942)),
+    ("Carrer de Trullols", (41.420628,2.137203)),
+    ("Carrer de la Rosella", (41.418465,2.1372)),
+    ("Carrer de Palou", (41.419189,2.142652)),
+    ("Carrer de Cardedeu", (41.417426,2.144045)),
+    ("Carrer de Ticià", (41.417221,2.138204)),
+    ("Viaducte de Vallcarca", (41.412526,2.143921)),
+    ("Passeig de Turull", (41.413929,2.148211)),
+]
+
+coll = [
+    ("Carrer Taradell", (41.420606,2.146755)),
+    ("Carrer de Móra la Nova", (41.41917,2.150811)),
+    ("Carrer de Móra d'Ebre", (41.41707,2.148403)),
+    ("Carrer de Rubens", (41.414974,2.146243)),
+    ("Carrer de Pau Ferran", (41.41711,2.150566)),
+    ("Carrer del Beat Almatò", (41.417678,2.148281)),
+]
+
+salut = [
+    ("Rambla de Mercedes", (41.412097,2.153574)),
+    ("Carrer de Maignon", (41.409448,2.152323)),
+    ("Avinguda del Santuari de Sant Josep de la Muntanya", (41.411093,2.153677)),
+    ("Carrer de Molist", (41.41285,2.156281)),
+    ("Riera de Can Toda", (41.413607,2.158277)),
+    ("Carrer de sant Josep Cottolengo", (41.414174,2.156157)),
+]
+
+vilaGracia = [
+    ("Carrer de Verntallat", (41.406737,2.155339)),
+    ("Carrer de Rabassa", (41.408227,2.157446)),
+    ("Carrer de Vallfogona", (41.403208,2.157598)),
+    ("Carrer de Santa Eugènia", (41.400383,2.154849)),
+    ("Carrer Gran de Gràcia", (41.40158,2.153448)),
+    ("Carrer de Martínez de la Rosa", (41.400404,2.158439)),
+    ("Carrer de Siracusa", (41.401301,2.160107)),
+]
+
+campGrassot = [
+    ("Carrer de Roger de Flor", (41.397204,2.174777)),
+    ("Carrer de Nàpols", (41.398399,2.175436)),
+    ("Carrer de Sicília", (41.40081,2.174518 )),
+    ("Carrer de la Legalitat", (41.408558,2.161601)),
+    ("Carrer de Martí", (41.408337,2.158101)),
+    ("Carrer de Balcells", (41.41049,2.159882)),
+]
+
 # En google maps buscas el barrio y haces zoom a carrers random,
 # los apuntas y buscas aqui el nombre, te da las coords
 # https://developers-dot-devsite-v2-prod.appspot.com/maps/documentation/utils/geocoder#place_id%3DEiVDYXJyZXIgZGVsIFBhcmFkw61zLCBCYXJjZWxvbmEsIFNwYWluIi4qLAoUChIJ4UlcAPmipBIRfdd-PuHIzo8SFAoSCeUwjnEWmKQSEQpmR089-7BE
@@ -398,6 +446,16 @@ for d in districtes:
             dirs = santGervasiGalvany
         elif b == "el Putget i Farró":
             dirs = pugetFarro
+        elif b == "Vallcarca i els Penitents":
+            dirs = vallcarca
+        elif b == "el Coll":
+            dirs = coll
+        elif b == "la Salut":
+            dirs = salut
+        elif b == "Vila de Gràcia":
+            dirs = vilaGracia
+        elif b == "el Camp d'en Grassot i Gràcia Nova":
+            dirs = campGrassot
 
         for direc, coords in dirs:
             i += 1
