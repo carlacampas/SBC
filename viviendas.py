@@ -166,53 +166,57 @@ marinaPort = [
 ]
 
 fontGuatlla = [
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
+    ("Carrer de Trajà", (41.368356,2.141924)),
+    ("Carrer de la Dàlia", (41.369623,2.146648)),
+    ("Carrer de Valls", (41.370703,2.147622)),
+    ("Carrer de Sant Ferriol", (1.372611,2.147445)),
+    ("Carrer Pas de Valls", (41.370182,2.145883)),
+    ("Carrer del Gesamí", (41.370182,2.145883)),
+    ("Carrer de Chopin", (41.370587,2.14676)),
 ]
 
 hostafrancs = [
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
+    ("Carrer de la Torre d'En Damians", (41.375855,2.144307)),
+    ("Carrer del Consell de Cent", (41.391541,2.166303)),
+    ("Carrer del Príncep Jordi", (41.376124,2.147341)),
+    ("Carrer de Leiva", (41.373773,2.144179)),
+    ("Carrer del Priorat", (41.374746,2.139342 )),
+    ("Carrer de Miquel Bleach", (41.375838,2.142178)),
+    ("Carrer de l'Elisi", (41.37839,2.144058)),
+    ("Carrer de l'Autonomia", (41.376823,2.138198)),
 ]
 
 bordeta = [
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
+    ("Passatge d'Analusia", (41.370333,2.133543)),
+    ("Carrer d'Olzinelles", (41.372552,2.136766 )),
+    ("Carrer de Juan Bravo", (41.371474,2.138334)),
+    ("Carrer del Corral", (41.370055,2.140468)),
+    ("Avinguda del Carrilet", (41.36588,2.13398)),
+    ("Carrer de Juan Gris", (41.365415,2.132969)),
+    ("Carrer de Parcerisa", (41.367944,2.134902)),
+    ("Carrer de la Constitució", (41.369646,2.134891)),
+    ("Carrer de Mossèn Amadeu Oller", (41.368988,2.138228))
 ]
 
 santsBadal = [
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
+    ("Carrer de Fisas", (41.377111,2.127588)),
+    ("Carrer de Bassegoda", (41.374799,2.125023)),
+    ("Carrer d'Esteràs", (41.371077,2.129799)),
+    ("Carrer Daoiz i Velarde", (41.374303,2.133109)),
+    ("Carrer de les Ànimes", (41.376454,2.128741)),
+    ("Carrer de Ventura Plaja", (41.374769,2.126467)),
+    ("Carrer de Bacardí", (41.373097,2.129179)),
 ]
 
 sants = [
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
-    ("", ()),
+    ("Carrer de Valladolid", (41.377632,2.136053)),
+    ("Carrer de Robrenyo", (41.382369,2.139779)),
+    ("Carrer de Guitard", (41.382542,2.137557)),
+    ("Carrer de Virat", (41.379979,2.139285)),
+    ("Carrer de Sagunt", (41.371743,2.135016)),
+    ("Carrer de Pavia", (41.372593,2.131115)),
+    ("Riera d'Escuder", (41.375493,2.132254)),
+    ("Carrer de Cros", (41.374529,2.138048)),
 ]
 
 # En google maps buscas el barrio y haces zoom a carrers random,
