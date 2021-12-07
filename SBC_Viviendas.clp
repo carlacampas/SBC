@@ -421,12 +421,6 @@
     (pattern-match reactive)
 )
 
-(defclass Habitacion
-    (is-a Viviendas)
-    (role concrete)
-    (pattern-match reactive)
-)
-
 (defclass Ubicacion
     (is-a USER)
     (role concrete)

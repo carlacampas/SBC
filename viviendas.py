@@ -600,7 +600,7 @@ bonPastor = [
 ]
 
 santAndreu = [
-    ("Carrer d'Agustí i Milà", (41.43816125494957, 2.187744270722915))
+    ("Carrer d'Agustí i Milà", (41.43816125494957, 2.187744270722915)),
     ("Carrer Gran de Sant Andreu", (41.43607636836907, 2.1898698688800966)),
     ("Plaça de l'Estació", (41.43808114627561, 2.1970218761064366)),
     ("Carrer de Sant Hipòlit", (41.4376001408188, 2.1873360101024737)),
@@ -650,13 +650,13 @@ campDelArpaDelClot = [
     ("Carrer de Trinxant", (41.4165096451409, 2.1829858891921248)),
     ("Carrer del Degà Bahí", (41.4126769894202, 2.1849819956370027)),
     ("Carrer de Mallorca", (41.40977124079926, 2.1838635013352747)),
-    ("Carrer de la Independència", (41.40929285521374, 2.181391112817716))
-    ("Carrer de Xifré", (41.41030196704949, 2.1815900107533754))
+    ("Carrer de la Independència", (41.40929285521374, 2.181391112817716)),
+    ("Carrer de Xifré", (41.41030196704949, 2.1815900107533754)),
     ("Carrer de la Muntanya", (41.41085477827752, 2.188469539736483))
 ]
 
 elClot = [
-    ("Carrer de Valencia", (41.412260753055634, 2.1894425451210124))
+    ("Carrer de Valencia", (41.412260753055634, 2.1894425451210124)),
     ("Carrer de Bilbao", (41.40913659067683, 2.1950231186443476)),
     ("Carrer de Bolivia", (41.40588099322612, 2.195023118659365)),
     ("Carrer de Lope Vega", (41.41212074272617, 2.1933236578606965)),
@@ -759,7 +759,7 @@ vernedaLaPau = [
 #don't put numero, es inecessario rn creo
 # USA LOS ESQUEMAS
 
-tipos = ["Apartamento", "Atico", "Bajo", "Buhardilla", "Casa_Independiente", "Chalet", "Adosado", "Pareado"
+tipos = ["Apartamento", "Atico", "Bajo", "Buhardilla", "Casa_Independiente", "Chalet", "Adosado", "Pareado",
     "Duplex", "Estudio", "Loft", "Piso"]
 
 certEn = ["A", "B", "C", "D", "E", "F", "G"]
