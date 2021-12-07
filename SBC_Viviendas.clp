@@ -235,6 +235,118 @@
         (type SYMBOL)
         (create-accessor read-write)
         (default FALSE))
+    (single-slot distMinAeropuerto
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0))
+    (single-slot distMinBar
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0))
+    (single-slot distMinBus
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0))
+    (single-slot distMinCafeteria
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0))
+    (single-slot distMinCentroComercial
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0))
+    (single-slot distMinCentroDia
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0))
+    (single-slot distMinCine
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0))
+    (single-slot distMinClubNoct
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0))
+    (single-slot distMinEscuela
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0))
+    (single-slot distMinGeriatrico
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0))
+    (single-slot distMinGrandesAlm
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0))
+    (single-slot distMinHospital
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0))
+    (single-slot distMinInstituto
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0))
+    (single-slot distMinJardin
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0))
+    (single-slot distMinMercado
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0))
+    (single-slot distMinMetro
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0))
+    (single-slot distMinMuseo
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0))
+    (single-slot distMinPabellon
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0))
+    (single-slot distMinParque
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0))
+    (single-slot distMinPlaya
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0))
+    (single-slot distMinPlaza
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0))
+    (single-slot distMinRestaurante
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0))
+    (single-slot distMinRocodromo
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0))
+    (single-slot distMinSupermercado
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0))
+    (single-slot distMinTeatro
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0))
+    (single-slot distMinTram
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0))
+    (single-slot distMinTren
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0))
+    (single-slot distMinUniversidad
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0))
 )
 
 (defclass Apartamento
@@ -311,189 +423,6 @@
 
 (defclass Habitacion
     (is-a Viviendas)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass ServiciosCiudad
-    (is-a USER)
-    (role concrete)
-    (pattern-match reactive)
-    (single-slot seEncuentraEn
-        (type INSTANCE)
-        (create-accessor read-write))
-)
-
-(defclass Tienda
-    (is-a ServiciosCiudad)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Aeropuerto
-    (is-a ServiciosCiudad)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Bar
-    (is-a ServiciosCiudad)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Bus
-    (is-a ServiciosCiudad)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Cafeteria
-    (is-a ServiciosCiudad)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Centro_Comercial
-    (is-a ServiciosCiudad)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Centro_de_Dia
-    (is-a ServiciosCiudad)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Cine
-    (is-a ServiciosCiudad)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Club_Nocturno
-    (is-a ServiciosCiudad)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Escuela
-    (is-a ServiciosCiudad)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Geriatrico
-    (is-a ServiciosCiudad)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Grandes_Almacenes
-    (is-a ServiciosCiudad)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Hospital
-    (is-a ServiciosCiudad)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Instituto
-    (is-a ServiciosCiudad)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Jardines
-    (is-a ServiciosCiudad)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Mercado
-    (is-a ServiciosCiudad)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Metro
-    (is-a ServiciosCiudad)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Museo
-    (is-a ServiciosCiudad)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Pabellon
-    (is-a ServiciosCiudad)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Parque
-    (is-a ServiciosCiudad)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Playa
-    (is-a ServiciosCiudad)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Plaza
-    (is-a ServiciosCiudad)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Restaurante
-    (is-a ServiciosCiudad)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Rocodromo
-    (is-a ServiciosCiudad)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Supermercado
-    (is-a ServiciosCiudad)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Teatro
-    (is-a ServiciosCiudad)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Tram
-    (is-a ServiciosCiudad)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Tren
-    (is-a ServiciosCiudad)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Universidad
-    (is-a ServiciosCiudad)
     (role concrete)
     (pattern-match reactive)
 )
