@@ -14,16 +14,18 @@ barris = {
                 "Sant Gervasi-Galvany", "el Putget i Farró"],
     "Gràcia": ["Vallcarca i els Penitents", "el Coll", "la Salut", "Vila de Gràcia", "el Camp d'en Grassot i Gràcia Nova"],
     "Horta-Guinardó": ["Sant Genís dels Agudells",  "Montbau", "la Vall d'Hebron", "la Clota", "Horta"],
+    
     "Nou Barris": ["Vilapicina i la Torre Llobeta",  "Porta", "el Turó de la Peira", "Can Peguera", "la Guineueta",
   	 	 	    "Canyelles", "les Roquetes", "Verdun", "la Prosperitat", "la Trinitat Nova", "Torre Baró", "Ciutat Meridiana"  
   	 	 	    "Vallbona"],
-    "Sant Andreu": ["a Trinitat Vella", "Baró de Viver", "el Bon Pastor", "Sant Andreu", "la Sagrera", "el Congrés i els Indians", 
+    "Sant Andreu": ["La Trinitat Vella", "Baró de Viver", "el Bon Pastor", "Sant Andreu", "la Sagrera", "el Congrés i els Indians",
                 "Navas"],
     "San Martí": ["el Camp de l'Arpa del Clot", "el Clot", "el Parc i la Llacuna del Poblenou", "la Vila Olímpica del Poblenou",
-  	 	 	    "el Poblenou",  "Diagonal Mar i el Front Marítim del Poblenou", "el Besòs i el Maresme" , "Provençals del Poblenou"  
+  	 	 	    "el Poblenou",  "Diagonal Mar i el Front Marítim del Poblenou", "el Besòs i el Maresme" , "Provençals del Poblenou"
   	 	 	    "Sant Martí de Provençals", "la Verneda i la Pau"],
 }
 
+#CIUTAT VELLA
 raval = [
     ("Rambla del Raval", (41.378502, 2.169252)), 
     ("Carrer de Sant Pacià", (41.378255, 2.168243)),
@@ -67,6 +69,7 @@ stPere = [
     ("Via Laietana", (41.385324,2.176964))
 ]
 
+# EIXAMPLE
 fortPienc = [
     ("Gran Via de les Corts Catalanes", (41.367203,2.139314)),
     ("Gran Via de les Corts Catalanes", (41.394342,2.175005)),
@@ -416,6 +419,331 @@ horta = [
     ("Carrer de Coïmbra", (41.43248,2.15539)),
     ("Carrer del Congrés", (41.436564,2.161674)),
     ("Camí Antic de Sant Llàzter", (41.441141,2.15938)),
+]
+
+#NOU BARRIS
+VilapicinaTorreLlobeta = [
+    ("Carrer de Santa Fe", (41.42775519047973, 2.1748758757814044)),
+    ("Carrer de Ramon Albo", (41.42527513355095, 2.1769399992214176)),
+    ("Carrer de l'Escultor Llimona", (41.42790714575524, 2.1676141567008655)),
+    ("Carrer d'Espiell", (41.42975072521537, 2.1676504941333596)),
+    ("Carrer de Santa Matilde", (41.428960626142754, 2.1708724131477974)),
+    ("Carrer de Pontons", (41.42694446769542, 2.1729920967099274)),
+    ("Carrer del Greco", (41.427353153521004, 2.1712721249052276)),
+    ("Carrer de Serrano", (41.42883348286507, 2.1727982970699617))
+]
+
+Porta = [
+    ("Carrer Nou de Porta", (41.432096478375456, 2.174861164510074)),
+    ("Carrer de Valldemossa", (41.43437889560855, 2.176905424584772)),
+    ("Carrer de la Maladeta", (41.43319910541633, 2.1748905783240984)),
+    ("Carrer de la Selva", (41.437146356677616, 2.176317148304283)),
+    ("Carrer de Deià", (41.43275805684743, 2.1773319248881258)),
+    ("Carrer Torrent de Can Piquer", (41.43216263652605, 2.17915558135764)),
+    ("Carrer d'Alella", (41.431512078450154, 2.1794497194978844)),
+    ("Carrer de Vèlia", (41.431600290096746, 2.1808615825710564))
+]
+
+TuroPeira = [
+    ("Passeig de la Peira", (41.43511688794346, 2.17994472190034)),
+    ("Carrer de Travau", (41.43166284786402, 2.166742680050793)),
+    ("Carrer de la Vall d'Ordesa", (41.43128027194441, 2.1650241091631135)),
+    ("Carrer del Cadí", (41.43181869901246, 2.1691571080043395)),
+    ("Carrer d'Aneto", (41.432642813422284, 2.1705201182192972)),
+    ("Carrer de Rossario Pi", (41.430686898174024, 2.1720296887882995)),
+    ("Carrer d'Inca", (41.43207142854497, 2.1720296887882995)),
+    ("Carrer de Peñalara", (41.43145059119708, 2.1703955421327317))
+]
+
+CanPeguera = [
+    ("Carrer de Bellcaire", (41.43539344874715, 2.1663438594151225)),
+    ("Carrer de Flaçà", (41.434765754529835, 2.1668200226895844)),
+    ("Carrer Matamala", (41.43483715133444, 2.166574004997779)),
+    ("Carrer d'Espinagua", (41.43497696984929, 2.1668954152080406)),
+    ("Carrer del Cistellet", (41.43505431613237, 2.165566126066835)),
+    ("Carrer de Vila-seca", (41.43429274871582, 2.1672565056911743)),
+    ("Carrer dels Riells", (41.43475682992373, 2.167466811137395)),
+    ("Carrer de Fonteta", (41.4345426390093, 2.1673596744006414))
+]
+
+laGuineueta = [
+    ("Carrer de Marie Curie", (41.437435981882246, 2.1670187533908014)),
+    ("Rambla del Caçador", (41.440498376653935, 2.169881548445795)),
+    ("Carrer de la Gasela", (41.43943512956513, 2.168626624586072)),
+    ("Carrer de la Guineueta", (41.439885909259814, 2.166561229066944)),
+    ("Carrer de l'Isard", (41.43923913741692, 2.170548226746273)),
+    ("Passeig de Valldaura", (41.43916074039189, 2.1682083166328305)),
+    ("Carrer  del Marne", (41.43796027411892, 2.167881513544361)),
+    ("Carrer del Castor", (41.44122864084514, 2.1709096124100378))
+]
+
+Canyelles = [
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ())
+]
+
+lesRoquetes = [
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ())
+]
+
+Verdun = [
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ())
+]
+
+laProsperitat = [
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ())
+]
+
+laTrinitatNova = [
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ())
+]
+
+TorreBaró = [
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ())
+]
+
+Ciutat Meridiana = [
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ())
+]
+
+Vallbona = [
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ())
+
+]
+
+#SANT ANDREU
+TrinitatVella = [
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ())
+]
+
+BaroDeViver = [
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ())
+]
+
+BonPastor = [
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ())
+]
+
+Sant Andreu = [
+    ("", (41.42601599125790)),
+("Carrer Gran de Sant Andreu", (41.43607636836907, 2.1898698688800966)),
+("Plaça de l'Estació", (41.43808114627561, 2.1970218761064366)),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ())
+]
+
+laSagrera = [
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ())
+]
+
+CongrésIndians = [
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ())
+]
+
+Navas = [
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ()),
+    ("", ())
+]
+
+# SANT MARTÍ
+campDelArpaDelClot = [
+    ("Carrer del Ripollès", (41.412812969875006, 2.1841558230430245)),
+    ("Carrer del Pistó", (41.411818647487785, 2.1840169278120576)),
+    ("Carrer de Trinxant", (41.4165096451409, 2.1829858891921248)),
+    ("Carrer del Degà Bahí", (41.4126769894202, 2.1849819956370027)),
+    ("Carrer de Mallorca", (41.40977124079926, 2.1838635013352747)),
+    ("Carrer de la Independència", (41.40929285521374, 2.181391112817716))
+    ("Carrer de Xifré", (41.41030196704949, 2.1815900107533754))
+    ("Carrer de la Muntanya", (41.41085477827752, 2.188469539736483))
+]
+
+elClot = [
+    ("Carrer de Valencia", (41.412260753055634, 2.1894425451210124))
+    ("Carrer de Bilbao", (41.40913659067683, 2.1950231186443476)),
+    ("Carrer de Bolivia", (41.40588099322612, 2.195023118659365)),
+    ("Carrer de Lope Vega", (41.41212074272617, 2.1933236578606965)),
+    ("Carrer del Ter", (41.410421825824336, 2.188149160231065)),
+    ("Carrer del Coronel Sanfeliu", (41.40675826086388, 2.188969707387722)),
+    ("Carrer d'Hernán Cortés", (41.40635986104546, 2.1886888952861634)),
+    ("Carrer del Clot", (41.407864632269764, 2.18828290186044)
+]
+
+elParcLaLlacunaPoblenou = [
+    ("Carrer d'Àlaba", (41.39842869138003, 2.191291639204362)),
+    ("Carrer d'Avila", (41.4009235275718, 2.189982721089422)),
+    ("Carrer d'Almogàvers", (41.399080656517214, 2.192704386917285)),
+    ("Carrer de Roc Boronat", (41.40210523687135, 2.195440471104707)),
+    ("Carrer de Pere IV", (41.40009294487535, 2.1955255897220534)),
+    ("Carrer de Badajoz", (41.39856506250252, 2.195476758102337)),
+    ("Passatge d'Iglésias", (41.397955233342465, 2.1946879406967956)),
+    ("Carrer de Wellington", (41.39193981694519, 2.18623499713313))
+]
+VilaOlímpicaPoblenou = [
+    ("Avinguda d'Icària", (41.39150737983844, 2.1971473869821043)),
+    ("Carrer de Joan Miró", (41.3892758597104, 2.1963456717261582)),
+    ("Carrer de ka Marina", (41.39159454706534, 2.19111709390079)),
+    ("Carrer de Rosa Sensat", (41.39239647982617, 2.194591193343224)),
+    ("Carrer del Dr. Trueta", (41.39018855132305, 2.192215155821752)),
+    ("Carrer de Ramon Turó", (41.39078968461476, 2.190760946239673)),
+    ("Carrer de Sardenya", (41.390570772610815, 2.1903008038672955)),
+    ("Carrer de Zamora", (41.394311896940025, 2.1920206896165255))
+]
+Poblenou = [
+    ("Passatge de Bori", (41.39808506725039, 2.2018218678139436)),
+    ("Carrer del Taulat", (41.396655449342425, 2.2022791196917395)),
+    ("Rambla del Poblenou", (41.39920609695088, 2.203790863341082)),
+    ("Carrer de Marià Aguiló", (41.400046557416964, 2.205085828492953)),
+    ("Carrer del Joncar", (41.40138520866695, 2.204893768642047)),
+    ("Carrer de Llull", (41.4018330197824, 2.203239673526311)),
+    ("Passatge de Colomer", (41.40355933601422, 2.204267755874785)),
+    ("Passatge de Rovira", (41.40446752454077, 2.203083679620419))
+]
+DiagonalMarFrontMarítimPoblenou = [
+    ("Carrer de Provençals", (41.40791843995019, 2.2079941611412357)),
+    ("Carrer de Pujades", (41.406289701156915, 2.206779730032781)),
+    ("Carrer de Fluvià", (41.405321723889884, 2.209143175133192)),
+    ("Passatge de Maria Llimona", (41.4052075149472, 2.2088516259974647)),
+    ("Carrer dels Pellaires", (41.404385396180736, 2.2100024513256797)),
+    ("Carrer dels Ferrers", (41.405327570449316, 2.210487778213105)),
+    ("Carrer de la Selva de Mar", (41.404159832649704, 2.215247405938325)),
+    ("Carrer del Treball", (41.4100523727039, 2.2110061944944452))
+]
+BesòsMaresme = [
+    ("Rambla de Prim", (41.41499498724369, 2.2141851684040574)),
+    ("Carrer de Cristobal Moura", (41.415454202952574, 2.2123012849888704)),
+    ("Carrer del Maresme", (41.41413599827972, 2.2134293907213887)),
+    ("Carrer Felip de Malla", (41.41620182953476, 2.2167087678508026)),
+    ("Carrer de Ferrer Bassa", (41.41705765466376, 2.21689241297005)),
+    ("Carrer de Lluis Dalmau", (41.41907420951413, 2.212458695091082)),
+    ("Carrer de Bernat Metge", (41.419202086491055, 2.2104123637623276)),
+    ("Passatge Foret", (41.417628198484884, 2.2097827233534804))
+]
+ProvençalsPoblenou = [
+    ("Carrer del Perú", (41.41553653158104, 2.205497155372208)),
+    ("Carrer de Veneçuela", (41.416831746778136, 2.207479105537505)),
+    ("Carrer del Paraguai", (41.416470787761824, 2.206714639045176)),
+    ("Carrer d'Espronceda", (41.409845771924914, 2.198532016219876)),
+    ("Passatge de Coll", (41.410888374159356, 2.2073149478461325)),
+    ("Carrer de l'Agricultura", (41.41202423580486, 2.2093343143868136)),
+    ("Carrer de Fluvià", (41.40837884197707, 2.2051664357708725))
+]
+SantMartíProvençals = [
+    ("Rambla de Guipúscoa", ()),
+    ("Carrer de Menorca", (41.417442555968215, 2.194011039097861)),
+    ("Carrer d'Andrade", (41.41632935156023, 2.2017513256072405)),
+    ("Carrer del Concili de Trento", (41.41745709289941, 2.2007939170766355)),
+    ("Carrer de Julian Besteiro", (41.415213094768575, 2.1988870038933523)),
+    ("Carrer Dr. Zamenhof", (41.417209948123656, 2.194458752639185)),
+    ("Carrer de Cantàbria", (41.421471743719444, 2.1990097529392028))
+]
+VernedaLaPau = [
+    ("Carrer de Santander", (41.42695504831585, 2.2012497282530337)),
+    ("Carrer de Binèfar", (41.423981400712066, 2.202727451373045)),
+    ("Camí de la Verneda", (41.42417594757076, 2.203885321482779)),
+    ("Carrer de Ca n'Oliva", (41.42518315695669, 2.2032136928986414)),
+    ("Via Trajana", (41.4281759867442, 2.1975571076208333)),
+    ("Carrer de Jaume Brossa", (41.42871742038786, 2.1973328125335825)),
+    ("Passatge Via Trajana B", (41.42928151017212, 2.2011926060384757)),
+    ("Carrer del Cànem", (41.43106918911975, 2.2031294853425103))
 ]
 
 # En google maps buscas el barrio y haces zoom a carrers random,
