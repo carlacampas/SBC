@@ -14,7 +14,6 @@ barris = {
                 "Sant Gervasi-Galvany", "el Putget i Farró"],
     "Gràcia": ["Vallcarca i els Penitents", "el Coll", "la Salut", "Vila de Gràcia", "el Camp d'en Grassot i Gràcia Nova"],
     "Horta-Guinardó": ["Sant Genís dels Agudells",  "Montbau", "la Vall d'Hebron", "la Clota", "Horta"],
-
     "Nou Barris": ["Vilapicina i la Torre Llobeta",  "Porta", "el Turó de la Peira", "Can Peguera", "la Guineueta",
   	 	 	    "Canyelles", "les Roquetes", "Verdun", "la Prosperitat", "la Trinitat Nova", "Torre Baró", "Ciutat Meridiana"
   	 	 	    "Vallbona"],
@@ -422,7 +421,7 @@ horta = [
 ]
 
 #NOU BARRIS
-VilapicinaTorreLlobeta = [
+vilapicinaTorreLlobeta = [
     ("Carrer de Santa Fe", (41.42775519047973, 2.1748758757814044)),
     ("Carrer de Ramon Albo", (41.42527513355095, 2.1769399992214176)),
     ("Carrer de l'Escultor Llimona", (41.42790714575524, 2.1676141567008655)),
@@ -433,7 +432,7 @@ VilapicinaTorreLlobeta = [
     ("Carrer de Serrano", (41.42883348286507, 2.1727982970699617))
 ]
 
-Porta = [
+porta = [
     ("Carrer Nou de Porta", (41.432096478375456, 2.174861164510074)),
     ("Carrer de Valldemossa", (41.43437889560855, 2.176905424584772)),
     ("Carrer de la Maladeta", (41.43319910541633, 2.1748905783240984)),
@@ -444,7 +443,7 @@ Porta = [
     ("Carrer de Vèlia", (41.431600290096746, 2.1808615825710564))
 ]
 
-TuroPeira = [
+turoPeira = [
     ("Passeig de la Peira", (41.43511688794346, 2.17994472190034)),
     ("Carrer de Travau", (41.43166284786402, 2.166742680050793)),
     ("Carrer de la Vall d'Ordesa", (41.43128027194441, 2.1650241091631135)),
@@ -455,7 +454,7 @@ TuroPeira = [
     ("Carrer de Peñalara", (41.43145059119708, 2.1703955421327317))
 ]
 
-CanPeguera = [
+canPeguera = [
     ("Carrer de Bellcaire", (41.43539344874715, 2.1663438594151225)),
     ("Carrer de Flaçà", (41.434765754529835, 2.1668200226895844)),
     ("Carrer Matamala", (41.43483715133444, 2.166574004997779)),
@@ -477,7 +476,7 @@ laGuineueta = [
     ("Carrer del Castor", (41.44122864084514, 2.1709096124100378))
 ]
 
-Canyelles = [
+canyelles = [
     ("Carrer de Frederico García Lorca", (41.44355268902948, 2.1649934094268146)),
     ("cCarrer de Miguel Hernández", (41.44294749388016, 2.164971951755831)),
     ("Carrer d'Antonio Machado", (41.44242070812555, 2.1654279272642354)),
@@ -499,7 +498,7 @@ lesRoquetes = [
     ("Carrer dels Nou Barris", (41.448037726886575, 2.1789696314041573))
 ]
 
-Verdun = [
+verdun = [
     ("Carrer de Ponce de León", (41.44138185385765, 2.1735281922078733)),
     ("Carrer de Góngora", (41.442247369750746, 2.1733330496514793)),
     ("Carrer de Marin", (41.44366142721787, 2.1742274530349524)),
@@ -532,7 +531,7 @@ laTrinitatNova = [
     ("Carrer de sa Tuna", (41.45218036875746, 2.1870593373601173))
 ]
 
-TorreBaró = [
+torreBaro = [
     ("Carrer de Sant Quirze Safaja", (41.45636520627233, 2.17648075069744)),
     ("Carrer de Castellfollit", (41.455358157148645, 2.1745382439016394)),
     ("Carrer de Castelldefels", (41.45547856601904, 2.178277204350699)),
@@ -543,7 +542,7 @@ TorreBaró = [
     ("Calle Pruit", (41.45222744806295, 2.1764077241261695))
 ]
 
-Ciutat Meridiana = [
+ciutatMeridiana = [
     ("Carrer de la CircumVal·lació", (41.46016938862895, 2.1684036906794306)),
     ("Carrer de Perafita", (41.45946613900944, 2.1696524451513435)),
     ("Avinguda dels Rasos de Peguera", (41.46001615200757, 2.169232542331841)),
@@ -554,7 +553,7 @@ Ciutat Meridiana = [
     ("Carrer del Pedraforca", (41.46285169203292, 2.176426865391702))
 ]
 
-Vallbona = [
+vallbona = [
     ("Carrer d'Orpí", (41.46239770479904, 2.1834407639625186)),
     ("Carrer Pierola", (41.46312763735139, 2.182282445511438)),
     ("Carrer de la Torre Vella", (41.46297639074064, 2.185239667617606)),
@@ -567,7 +566,7 @@ Vallbona = [
 ]
 
 #SANT ANDREU
-TrinitatVella = [
+trinitatVella = [
     ("Via de Bàrcino", (41.45159938884375, 2.193061628192612)),
     ("Carrer de Peníscola", (41.45330256545399, 2.190185987023822)),
     ("Carrer de Mireia", (41.45263973657283, 2.1898697250622847)),
@@ -578,7 +577,7 @@ TrinitatVella = [
     ("Carrer Mossèn Epifani Lorda", (41.453318498486205, 2.1936582825325455))
 ]
 
-BaroDeViver = [
+baroDeViver = [
     ("Carrer de Ferran Junoy", (41.446232385890596, 2.1979816546780717)),
     ("Carrer de la Ciutat Asuncion", (41.44581353204932, 2.198853697885187)),
     ("Carrer de Clariana", (41.44691143106998, 2.199505613680798)),
@@ -589,7 +588,7 @@ BaroDeViver = [
     ("Carrer de Clarà", (41.447018691011, 2.1991931649397847))
 ]
 
-BonPastor = [
+bonPastor = [
     ("Carrer de Sas", (41.43739584468657, 2.2042710209053284)),
     ("Carrer de la Costa Brava", (41.43648975453177, 2.201948824440046)),
     ("Carrer d'Alferràs", (41.43732457962708, 2.20493644562345)),
@@ -600,7 +599,7 @@ BonPastor = [
     ("Carrer del Foc Follet", (41.43466816723955, 2.2066514602095366))
 ]
 
-Sant Andreu = [
+santAndreu = [
     ("Carrer d'Agustí i Milà", (41.43816125494957, 2.187744270722915))
     ("Carrer Gran de Sant Andreu", (41.43607636836907, 2.1898698688800966)),
     ("Plaça de l'Estació", (41.43808114627561, 2.1970218761064366)),
@@ -622,7 +621,7 @@ laSagrera = [
     ("Carrer de Berenguer de Palou", (41.4217806109025, 2.1917689908899245))
 ]
 
-CongrésIndians = [
+congresIndians = [
     ("Carrer de la Manigua", (41.4236459180217, 2.179542059499514)),
     ("Carrer de l'Espiga", (41.426456851420575, 2.180028215317481)),
     ("Carrer de Felip Bertran i Güell", (41.424690918999744, 2.183647375295679)),
@@ -633,7 +632,7 @@ CongrésIndians = [
     ("Carrer de la concepción Arenal", (41.427347900006964, 2.184284779590347))
 ]
 
-Navas = [
+navas = [
     ("Passeig de Maragall", (41.41843848009786, 2.180545099292707)),
     ("Carrer de Felip II", (41.41976906622367, 2.1877753709075534)),
     ("Carrer de Palència", (41.41670958251463, 2.1884633934005775)),
@@ -664,7 +663,7 @@ elClot = [
     ("Carrer del Ter", (41.410421825824336, 2.188149160231065)),
     ("Carrer del Coronel Sanfeliu", (41.40675826086388, 2.188969707387722)),
     ("Carrer d'Hernán Cortés", (41.40635986104546, 2.1886888952861634)),
-    ("Carrer del Clot", (41.407864632269764, 2.18828290186044)
+    ("Carrer del Clot", (41.407864632269764, 2.18828290186044))
 ]
 
 elParcLaLlacunaPoblenou = [
@@ -677,7 +676,8 @@ elParcLaLlacunaPoblenou = [
     ("Passatge d'Iglésias", (41.397955233342465, 2.1946879406967956)),
     ("Carrer de Wellington", (41.39193981694519, 2.18623499713313))
 ]
-VilaOlímpicaPoblenou = [
+
+vilaOlimpicaPoblenou = [
     ("Avinguda d'Icària", (41.39150737983844, 2.1971473869821043)),
     ("Carrer de Joan Miró", (41.3892758597104, 2.1963456717261582)),
     ("Carrer de ka Marina", (41.39159454706534, 2.19111709390079)),
@@ -687,7 +687,8 @@ VilaOlímpicaPoblenou = [
     ("Carrer de Sardenya", (41.390570772610815, 2.1903008038672955)),
     ("Carrer de Zamora", (41.394311896940025, 2.1920206896165255))
 ]
-Poblenou = [
+
+poblenou = [
     ("Passatge de Bori", (41.39808506725039, 2.2018218678139436)),
     ("Carrer del Taulat", (41.396655449342425, 2.2022791196917395)),
     ("Rambla del Poblenou", (41.39920609695088, 2.203790863341082)),
@@ -697,7 +698,8 @@ Poblenou = [
     ("Passatge de Colomer", (41.40355933601422, 2.204267755874785)),
     ("Passatge de Rovira", (41.40446752454077, 2.203083679620419))
 ]
-DiagonalMarFrontMarítimPoblenou = [
+
+diagonalMarFrontMaritimPoblenou = [
     ("Carrer de Provençals", (41.40791843995019, 2.2079941611412357)),
     ("Carrer de Pujades", (41.406289701156915, 2.206779730032781)),
     ("Carrer de Fluvià", (41.405321723889884, 2.209143175133192)),
@@ -707,7 +709,8 @@ DiagonalMarFrontMarítimPoblenou = [
     ("Carrer de la Selva de Mar", (41.404159832649704, 2.215247405938325)),
     ("Carrer del Treball", (41.4100523727039, 2.2110061944944452))
 ]
-BesòsMaresme = [
+
+besosMaresme = [
     ("Rambla de Prim", (41.41499498724369, 2.2141851684040574)),
     ("Carrer de Cristobal Moura", (41.415454202952574, 2.2123012849888704)),
     ("Carrer del Maresme", (41.41413599827972, 2.2134293907213887)),
@@ -717,7 +720,8 @@ BesòsMaresme = [
     ("Carrer de Bernat Metge", (41.419202086491055, 2.2104123637623276)),
     ("Passatge Foret", (41.417628198484884, 2.2097827233534804))
 ]
-ProvençalsPoblenou = [
+
+provencalsPoblenou = [
     ("Carrer del Perú", (41.41553653158104, 2.205497155372208)),
     ("Carrer de Veneçuela", (41.416831746778136, 2.207479105537505)),
     ("Carrer del Paraguai", (41.416470787761824, 2.206714639045176)),
@@ -726,7 +730,8 @@ ProvençalsPoblenou = [
     ("Carrer de l'Agricultura", (41.41202423580486, 2.2093343143868136)),
     ("Carrer de Fluvià", (41.40837884197707, 2.2051664357708725))
 ]
-SantMartíProvençals = [
+
+santMartiProvencals = [
     ("Rambla de Guipúscoa", ()),
     ("Carrer de Menorca", (41.417442555968215, 2.194011039097861)),
     ("Carrer d'Andrade", (41.41632935156023, 2.2017513256072405)),
@@ -735,7 +740,8 @@ SantMartíProvençals = [
     ("Carrer Dr. Zamenhof", (41.417209948123656, 2.194458752639185)),
     ("Carrer de Cantàbria", (41.421471743719444, 2.1990097529392028))
 ]
-VernedaLaPau = [
+
+vernedaLaPau = [
     ("Carrer de Santander", (41.42695504831585, 2.2012497282530337)),
     ("Carrer de Binèfar", (41.423981400712066, 2.202727451373045)),
     ("Camí de la Verneda", (41.42417594757076, 2.203885321482779)),
@@ -841,7 +847,7 @@ for d in districtes:
         elif b == "Horta":
             dirs = horta
         elif b == "Vilapicina i la Torre Llobeta":
-            dirs = vilapicina
+            dirs = vilapicinaTorreLlobeta
         elif b == "Porta":
             dirs = porta
         elif b == "el Turó de la Peira":
@@ -849,23 +855,57 @@ for d in districtes:
         elif b == "Can Peguera":
             dis = canPeguera
         elif b == "la Guineueta":
-            dirs = guineuta
+            dirs = laGuineueta
         elif b == "Canyelles":
             dirs = canyelles
         elif b == "les Roquetes":
-            dirs = roquetes
+            dirs = lesRoquetes
         elif b == "Verdun":
             dirs = verdun
         elif b == "la Prosperitat":
-            dirs = prosperitat
+            dirs = laProsperitat
         elif b == "la Trinitat Nova":
-            dirs = trinitatNova
+            dirs = laTrinitatNova
         elif b == "Torre Baró":
             dirs = torreBaro
         elif b == "Ciutat Meridiana":
             dirs = ciutatMeridiana
         elif b == "Vallbona":
             dirs = vallbona
+        elif b == "La Trinitat Vella":
+            dirs = laTrinitatNova
+        elif b == "Baró de Viver":
+            dirs = baroDeViver
+        elif b == "el Bon Pastor":
+            dirs = bonPastor
+        elif b == "Sant Andreu":
+            dirs = santAndreu
+        elif b == "la Sagrera":
+            dirs = laSagrera
+        elif b == "el Congrés i els Indians":
+            dirs = congresIndians
+        elif b == "Navas":
+            dirs = navas
+        elif b == "el Camp de l'Arpa del Clot":
+            dirs = campDelArpaDelClot
+        elif b == "el Clot":
+            dirs = elClot
+        elif b == "el Parc i la Llacuna del Poblenou":
+            dirs = elParcLaLlacunaPoblenou
+        elif b == "la Vila Olímpica del Poblenou":
+            dirs = vilaOlimpicaPoblenou
+        elif b == "el Poblenou":
+            dirs = poblenou
+        elif b == "Diagonal Mar i el Front Marítim del Poblenou":
+            dirs = diagonalMarFrontMaritimPoblenou
+        elif b == "el Besòs i el Maresme":
+            dirs = besosMaresme
+        elif b == "Provençals del Poblenou":
+            dirs = provencalsPoblenou
+        elif b == "Sant Martí de Provençals":
+            dirs = santMartiProvencals
+        elif b == "la Verneda i la Pau":
+            dirs = vernedaLaPau
 
         for direc, coords in dirs:
             i += 1
@@ -904,7 +944,7 @@ for d in districtes:
             "   (seEncuentraEn [ubicacionVivienda" + str(i) + "])\n" +
             "   (altura " + str(randrange(200) + 200) + ")\n" +
             "   (amueblado " + bools[randrange(len(bools))] + ")\n" +
-            '   (certificadoEnergetico "' + certEn[randrange(len(certEn))] + '"\n' +
+            '   (certificadoEnergetico "' + certEn[randrange(len(certEn))] + '")\n' +
             "   (mascota " + bools[randrange(len(bools))] + ")\n" +
             '   (orientacion "' + orient[randrange(len(orient))] + '")\n' +
             "   (precioMensual " + str(randrange(5100) + 100) + ")\n" +
