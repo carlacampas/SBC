@@ -1,21 +1,19 @@
 ;;; run with command: clips -f run.bat
 
+(load templates.clp)
+(load facts.clp)
 (load SBC_Viviendas.clp)
 (load instances.clp)
 (reset)
 (run)
 
 ;;; random answers to questions
-4
-N
-N
-N
-1700
-670
-3
+5
 Y
+2
 N
+1500
+900
 N
 Y
-Y
-2 9 4
+2 4 5
