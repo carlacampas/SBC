@@ -656,7 +656,7 @@
     (slot conPiscina (type SYMBOL) (allowed-values imp pref exc))
     (slot deAntigüedad (type SYMBOL) (allowed-values imp pref exc))
     (slot maxAntiguedad (type INTEGER) (range 0 100)) ;;cambiar para ajustar a las instancias, same que con plazas parking
-    (slot enPlanta (type SYMBOL SYMBOL) (allowed-values imp pref exc)) ;;triggered si tipo == piso
+    (slot enPlanta (type SYMBOL) (allowed-values imp pref exc)) ;;triggered si tipo == piso
     (multislot quierePlantas (type INTEGER) (range 0 15)) ;;ajustar, trigger de la anterior
     (slot conEstudio (type SYMBOL) (allowed-values imp pref exc))
     (slot movilidadReducida (type SYMBOL) (default NONE))
@@ -680,89 +680,88 @@
     
     ;;preferencias sobre los servicios de la ciudad
     (slot defDistMinAeropuerto (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinAeropuerto (type FLOAT) (range 0.0 1000.0) ;;ajustar
+    (slot setDistMinAeropuerto (type FLOAT) (range 0.0 1000.0)) ;;ajustar
     
     (slot defDistMinBar (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinBar (type FLOAT) (range 0.0 1000.0) ;;ajustar
+    (slot setDistMinBar (type FLOAT) (range 0.0 1000.0)) ;;ajustar
     
     (slot defDistMinBus (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinBus (type FLOAT) (range 0.0 1000.0) ;;ajustar
+    (slot setDistMinBus (type FLOAT) (range 0.0 1000.0)) ;;ajustar
         
     (slot defDistMinCafeteria (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinCafeteria (type FLOAT) (range 0.0 1000.0) ;;ajustar
+    (slot setDistMinCafeteria (type FLOAT) (range 0.0 1000.0)) ;;ajustar
         
     (slot defDistMinCentComercial (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinCentComercial (type FLOAT) (range 0.0 1000.0) ;;ajustar
+    (slot setDistMinCentComercial (type FLOAT) (range 0.0 1000.0)) ;;ajustar
         
     (slot defDistMinCentroDia (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinCentroDia (type FLOAT) (range 0.0 1000.0) ;;ajustar
+    (slot setDistMinCentroDia (type FLOAT) (range 0.0 1000.0)) ;;ajustar
             
     (slot defDistMinCine (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinCine (type FLOAT) (range 0.0 1000.0) ;;ajustar
+    (slot setDistMinCine (type FLOAT) (range 0.0 1000.0)) ;;ajustar
         
     (slot defDistMinClubNoct (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinClubNoct (type FLOAT) (range 0.0 1000.0) ;;ajustar
+    (slot setDistMinClubNoct (type FLOAT) (range 0.0 1000.0)) ;;ajustar
 
     (slot defDistMinEscuela (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinEscuela (type FLOAT) (range 0.0 1000.0) ;;ajustar
+    (slot setDistMinEscuela (type FLOAT) (range 0.0 1000.0)) ;;ajustar
         
     (slot defDistMinGeriatrico (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinGeriatrico (type FLOAT) (range 0.0 1000.0) ;;ajustar
+    (slot setDistMinGeriatrico (type FLOAT) (range 0.0 1000.0)) ;;ajustar
         
     (slot defDistMinGrandesAlm (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinGrandesAlm (type FLOAT) (range 0.0 1000.0) ;;ajustar
+    (slot setDistMinGrandesAlm (type FLOAT) (range 0.0 1000.0)) ;;ajustar
             
     (slot defDistMinHospital (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinHospital (type FLOAT) (range 0.0 1000.0) ;;ajustar
+    (slot setDistMinHospital (type FLOAT) (range 0.0 1000.0)) ;;ajustar
         
     (slot defDistMinInstituto (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinInstituto (type FLOAT) (range 0.0 1000.0) ;;ajustar
+    (slot setDistMinInstituto (type FLOAT) (range 0.0 1000.0)) ;;ajustar
 
     (slot defDistMinJardin (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinJardin (type FLOAT) (range 0.0 1000.0) ;;ajustar
+    (slot setDistMinJardin (type FLOAT) (range 0.0 1000.0)) ;;ajustar
         
     (slot defDistMinMercado (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinMercado (type FLOAT) (range 0.0 1000.0) ;;ajustar
+    (slot setDistMinMercado (type FLOAT) (range 0.0 1000.0)) ;;ajustar
         
     (slot defDistMinMetro (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinMetro (type FLOAT) (range 0.0 1000.0) ;;ajustar
+    (slot setDistMinMetro (type FLOAT) (range 0.0 1000.0)) ;;ajustar
             
     (slot defDistMinMuseo (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinMuseo (type FLOAT) (range 0.0 1000.0) ;;ajustar
+    (slot setDistMinMuseo (type FLOAT) (range 0.0 1000.0)) ;;ajustar
         
     (slot defDistMinPabellon (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinPabellon (type FLOAT) (range 0.0 1000.0) ;;ajustar
+    (slot setDistMinPabellon (type FLOAT) (range 0.0 1000.0)) ;;ajustar
 
     (slot defDistMinParque (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinParque (type FLOAT) (range 0.0 1000.0) ;;ajustar
+    (slot setDistMinParque (type FLOAT) (range 0.0 1000.0)) ;;ajustar
         
     (slot defDistMinPlaya (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinPlaya (type FLOAT) (range 0.0 1000.0) ;;ajustar
+    (slot setDistMinPlaya (type FLOAT) (range 0.0 1000.0)) ;;ajustar
         
     (slot defDistMinPlaza (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinPlaza (type FLOAT) (range 0.0 1000.0) ;;ajustar
+    (slot setDistMinPlaza (type FLOAT) (range 0.0 1000.0)) ;;ajustar
             
     (slot defDistMinRestaurante (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinRestaurante (type FLOAT) (range 0.0 1000.0) ;;ajustar
+    (slot setDistMinRestaurante (type FLOAT) (range 0.0 1000.0)) ;;ajustar
         
     (slot defDistMinRocodromo (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinRocodromo (type FLOAT) (range 0.0 1000.0) ;;ajustar
+    (slot setDistMinRocodromo (type FLOAT) (range 0.0 1000.0)) ;;ajustar
         
     (slot defDistMinSupermercado (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinSupermercado (type FLOAT) (range 0.0 1000.0) ;;ajustar
+    (slot setDistMinSupermercado (type FLOAT) (range 0.0 1000.0)) ;;ajustar
         
     (slot defDistMinTeatro (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinTeatro (type FLOAT) (range 0.0 1000.0) ;;ajustar
+    (slot setDistMinTeatro (type FLOAT) (range 0.0 1000.0)) ;;ajustar
         
     (slot defDistMinTram (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinTram (type FLOAT) (range 0.0 1000.0) ;;ajustar
+    (slot setDistMinTram (type FLOAT) (range 0.0 1000.0)) ;;ajustar
             
     (slot defDistMinTren (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinTren (type FLOAT) (range 0.0 1000.0) ;;ajustar
+    (slot setDistMinTren (type FLOAT) (range 0.0 1000.0)) ;;ajustar
         
     (slot defDistMinUniversidad (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinUniversidad (type FLOAT) (range 0.0 1000.0) ;;ajustar
-    )
+    (slot setDistMinUniversidad (type FLOAT) (range 0.0 1000.0)) ;;ajustar
 )
 
 ;;************************************************
