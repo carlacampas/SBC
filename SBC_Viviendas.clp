@@ -460,7 +460,7 @@
     (export ?ALL)
 )
 
-(defmodule recopilacion-preferencias
+(defmodule recopilacion-preferencias-vivienda
     (import MAIN ?ALL)
     (export ?ALL)
 )
@@ -551,159 +551,6 @@
 ;;**               QUERY RULES                  **
 ;;************************************************
 
-;;************************************************
-;;**                TEMPLATES                   **
-;;************************************************
-
-;;; Template para los datos de las preguntas al usuario
-(deftemplate MAIN::pregunta-usuario
-    
-    ;; características sobre el usuario
-    (slot tipo (type STRING))
-    (slot tamano (type INTEGER))
-    (slot ninos (type SYMBOL) (default NONE))
-    (slot jubilados (type SYMBOL) (default NONE))
-    (slot numAdultos (type SYMBOL) (default NONE))
-    (slot numNinos (type SYMBOL) (default NONE))
-    (slot estudiantes (type SYMBOL) (default NONE))
-    (slot maxPrecio (type INTEGER)  (default -1))
-    (slot minPrecio (type INTEGER)  (default -1))
-    (slot mascotas (type SYMBOL) (default NONE))
-    (slot nocturnidad (type SYMBOL) (default NONE))
-    (slot coche (type SYMBOL) (default NONE))
-
-    ;; preferencias sobre la vivienda + servicios vivienda
-    (slot conBalcon (type SYMBOL) (allowed-values imp pref exc))
-    (slot conCocinaIntegrada (type SYMBOL) (allowed-values imp pref exc))
-    (slot conGaraje (type SYMBOL) (allowed-values imp pref exc))
-    (slot conAlarma (type SYMBOL) (allowed-values imp pref exc))
-    (slot conJardin (type SYMBOL) (allowed-values imp pref exc))
-    (slot numPlazasAp (type INTEGER)) ;;generar regla que en caso de querer garaje como imp o pref pregunte por número de plazas
-    (slot conSotano (type SYMBOL) (allowed-values imp pref exc))
-    (slot conAireAcondicionado (type SYMBOL) (allowed-values imp pref exc))
-    (slot conPatio (type SYMBOL) (allowed-values imp pref exc))
-    (slot conTerraza (type SYMBOL) (allowed-values imp pref exc))
-    (slot conGimnasio (type SYMBOL) (allowed-values imp pref exc))
-    (slot enPrimLinMar (type SYMBOL) (allowed-values imp pref exc))
-    (slot deObraNueva (type SYMBOL) (allowed-values imp pref exc))
-    (slot conPiscina (type SYMBOL) (allowed-values imp pref exc))
-    (slot deAntigüedad (type SYMBOL) (allowed-values imp pref exc))
-    (slot maxAntiguedad (type INTEGER) (range 0 100)) ;;cambiar para ajustar a las instancias, same que con plazas parking
-    (slot enPlanta (type SYMBOL) (allowed-values imp pref exc)) ;;triggered si tipo == piso
-    (multislot quierePlantas (type INTEGER) (range 0 15)) ;;ajustar, trigger de la anterior
-    (slot conEstudio (type SYMBOL) (allowed-values imp pref exc))
-    (slot movilidadReducida (type SYMBOL) (default NONE))
-
-    (multislot tipos-vivienda (type SYMBOL))
-)
-
-;;; Template para las preferencias del usuario
-(deftemplate MAIN::preferencias
-	(multislot tipos-vivienda (type SYMBOL))
-    
-    ;;===(slot conmovilidadReducida (type SYMBOL) (allowed-values imp pref exc)
-    (slot conCalefaccion (type SYMBOL) (allowed-values imp pref exc))
-    (slot conAscensor (type SYMBOL) (allowed-values imp pref exc))
-    
-    (slot deSuperficieHab (type SYMBOL) (allowed-values imp pref exc))
-    (slot minSuperficieHab (type INTEGER) (range 30 1000)) ;;m2
-    ;;(slot maxSuperficieHab (type INTEGER) (range 30 1000)) ;;m2
-    
-    (slot deMinHabitaciones (type SYMBOL) (allowed-values imp pref exc))
-    (slot minHabitaciones (type INTEGER) (default -1) (range -1 10)) ;;ajustar
-    (slot numHabDobles (type INTEGER) (default -1) (range -1 10)) ;;ajustar
-    (slot numHabSimples (type INTEGER) (default -1) (range -1 10)) ;;ajustar
-    
-    (slot deMinBaños (type SYMBOL) (allowed-values imp pref exc))
-    (slot minBaños (type INTEGER) (default -1) (range -1 10)) ;;ajustar
-    (slot minBañosEnteros (type INTEGER) (default -1) (range -1 10)) ;;ajustar
-    (slot minBañosMedios (type INTEGER) (default -1) (range -1 10)) ;;ajustar
-    
-    ;;preferencias sobre los servicios de la ciudad
-    (slot defDistMinAeropuerto (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinAeropuerto (type FLOAT) (range 0.0 1000.0)) ;;ajustar
-    
-    (slot defDistMinBar (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinBar (type FLOAT) (range 0.0 1000.0)) ;;ajustar
-    
-    (slot defDistMinBus (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinBus (type FLOAT) (range 0.0 1000.0)) ;;ajustar
-        
-    (slot defDistMinCafeteria (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinCafeteria (type FLOAT) (range 0.0 1000.0)) ;;ajustar
-        
-    (slot defDistMinCentComercial (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinCentComercial (type FLOAT) (range 0.0 1000.0)) ;;ajustar
-        
-    (slot defDistMinCentroDia (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinCentroDia (type FLOAT) (range 0.0 1000.0)) ;;ajustar
-            
-    (slot defDistMinCine (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinCine (type FLOAT) (range 0.0 1000.0)) ;;ajustar
-        
-    (slot defDistMinClubNoct (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinClubNoct (type FLOAT) (range 0.0 1000.0)) ;;ajustar
-
-    (slot defDistMinEscuela (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinEscuela (type FLOAT) (range 0.0 1000.0)) ;;ajustar
-        
-    (slot defDistMinGeriatrico (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinGeriatrico (type FLOAT) (range 0.0 1000.0)) ;;ajustar
-        
-    (slot defDistMinGrandesAlm (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinGrandesAlm (type FLOAT) (range 0.0 1000.0)) ;;ajustar
-            
-    (slot defDistMinHospital (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinHospital (type FLOAT) (range 0.0 1000.0)) ;;ajustar
-        
-    (slot defDistMinInstituto (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinInstituto (type FLOAT) (range 0.0 1000.0)) ;;ajustar
-
-    (slot defDistMinJardin (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinJardin (type FLOAT) (range 0.0 1000.0)) ;;ajustar
-        
-    (slot defDistMinMercado (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinMercado (type FLOAT) (range 0.0 1000.0)) ;;ajustar
-        
-    (slot defDistMinMetro (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinMetro (type FLOAT) (range 0.0 1000.0)) ;;ajustar
-            
-    (slot defDistMinMuseo (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinMuseo (type FLOAT) (range 0.0 1000.0)) ;;ajustar
-        
-    (slot defDistMinPabellon (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinPabellon (type FLOAT) (range 0.0 1000.0)) ;;ajustar
-
-    (slot defDistMinParque (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinParque (type FLOAT) (range 0.0 1000.0)) ;;ajustar
-        
-    (slot defDistMinPlaya (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinPlaya (type FLOAT) (range 0.0 1000.0)) ;;ajustar
-        
-    (slot defDistMinPlaza (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinPlaza (type FLOAT) (range 0.0 1000.0)) ;;ajustar
-            
-    (slot defDistMinRestaurante (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinRestaurante (type FLOAT) (range 0.0 1000.0)) ;;ajustar
-        
-    (slot defDistMinRocodromo (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinRocodromo (type FLOAT) (range 0.0 1000.0)) ;;ajustar
-        
-    (slot defDistMinSupermercado (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinSupermercado (type FLOAT) (range 0.0 1000.0)) ;;ajustar
-        
-    (slot defDistMinTeatro (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinTeatro (type FLOAT) (range 0.0 1000.0)) ;;ajustar
-        
-    (slot defDistMinTram (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinTram (type FLOAT) (range 0.0 1000.0)) ;;ajustar
-            
-    (slot defDistMinTren (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinTren (type FLOAT) (range 0.0 1000.0)) ;;ajustar
-        
-    (slot defDistMinUniversidad (type SYMBOL) (allowed-values imp pref exc))
-    (slot setDistMinUniversidad (type FLOAT) (range 0.0 1000.0)) ;;ajustar
-)
 
 ;;************************************************
 ;;**            IMPRIMIR VIVIENDAS              **
@@ -720,31 +567,32 @@
     (focus preguntas-usuario)
 )
 
+;; MÓDULO PREGUNTAS-USUARIO
+
 (defrule preguntas-usuario::preguntar-numero-personas "Preguntar el número de inquilinos"
-    (not (pregunta-usuario))
+    (not (caracteristicas-usuario))
     =>
     (bind ?tamano (pregunta-numerica "¿Cuantas personas vivirán en la vivienda? " 1 15 ))
-    (assert (pregunta-usuario (tamano ?tamano)))
+    (assert (caracteristicas-usuario (tamano ?tamano)))
 )
 
 (defrule preguntas-usuario::establecer-ninos "Establecer si hay niños"
-    ?u <- (pregunta-usuario (tamano ?tamano) (ninos ?n))
+    ?u <- (caracteristicas-usuario (tamano ?tamano) (numNinos ?n))
     (test (> ?tamano 1))
-    (test (eq ?n NONE))
+    (test (eq ?n -1))
     =>
     (bind ?e (pregunta-si-no "¿Hay menores de 12? "))
-    (modify ?u (ninos ?e))
-)
-
-(defrule preguntas-usuario::preguntar-numero-personas "Preguntar el número de inquilinos"
-    (not (pregunta-usuario))
-    =>
-    (bind ?tamano (pregunta-numerica "¿Cuantas personas vivirán en la vivienda? " 1 15 ))
-    (assert (pregunta-usuario (tamano ?tamano)))
+    (if (eq ?e TRUE)
+      then
+      (bind ?q (pregunta-numerica "¿Cuantos menores de 12 hay? " 1 (- ?tamano 1)))
+      else
+      (bind ?q 0)
+    )
+    (modify ?u (numNinos ?q))
 )
 
 (defrule preguntas-usuario::establecer-jubilados "Establecer si hay personas jubiladas"
-    ?u <- (pregunta-usuario (jubilados ?jubilados))
+    ?u <- (caracteristicas-usuario (jubilados ?jubilados))
     (test (eq ?jubilados NONE))
     =>
     (bind ?e (pregunta-si-no "¿Hay mayores de 65? "))
@@ -752,8 +600,8 @@
 )
 
 (defrule preguntas-usuario::establecer-estudiantes "Establecer si son estudiantes"
-    ?u <- (pregunta-usuario (ninos ?n) (jubilados ?jubilados) (estudiantes ?est))
-    (test (eq ?n FALSE))
+    ?u <- (caracteristicas-usuario (numNinos ?n) (jubilados ?jubilados) (estudiantes ?est))
+    (test (= ?n 0))
     (test (eq ?jubilados FALSE))
     (test (eq ?est NONE))
     =>
@@ -762,7 +610,7 @@
 )
 
 (defrule preguntas-usuario::establecer-maxPrecio "Establecer precio máximo"
-    ?u <- (pregunta-usuario (maxPrecio ?maxPrecio))
+    ?u <- (caracteristicas-usuario (maxPrecio ?maxPrecio))
     (test (< ?maxPrecio 0))
     =>
     (bind ?e (pregunta-numerica "Qué precio máximo encuentran aceptable?" 100 5000))
@@ -770,7 +618,7 @@
 )
 
 (defrule preguntas-usuario::establecer-minPrecio "Establecer precio mínimo"
-    ?u <- (pregunta-usuario (maxPrecio ?maxPrecio) (minPrecio ?minPrecio))
+    ?u <- (caracteristicas-usuario (maxPrecio ?maxPrecio) (minPrecio ?minPrecio))
     (test (< ?minPrecio 0))
     (test (> ?maxPrecio 0))
     =>
@@ -778,54 +626,24 @@
     (modify ?u (minPrecio ?e))
 )
 
-(defrule preguntas-usuario::establecer-minHabitaciones "Establecer mínimo número de habitaciones"
-    ?u <- (pregunta-usuario (minHabitaciones ?minHabitaciones))
-    (test (< ?minHabitaciones 0))
-    =>
-    (bind ?e (pregunta-numerica "Almenos cuantas habitaciones desean?" 0 10))
-    (modify ?u (minHabitaciones ?e))
-)
-
-(defrule preguntas-usuario::establecer-mascotas "Establecer si hay mascotas"
-    ?u <- (pregunta-usuario (mascotas ?mascotas))
-    (test (eq ?mascotas NONE))
-    =>
-    (bind ?e (pregunta-si-no "¿Hay mascotas? "))
-    (modify ?u (mascotas ?e))
-)
-
-(defrule preguntas-usuario::establecer-nocturnidad "Establecer si interés en salir de noche"
-    ?u <- (pregunta-usuario (nocturnidad ?nocturnidad))
-    (test (eq ?nocturnidad NONE))
-    =>
-    (bind ?e (pregunta-si-no "¿Tienen interés en salir de fiesta por las noches? "))
-    (modify ?u (nocturnidad ?e))
-)
-
 (defrule preguntas-usuario::establecer-coche "Establecer si tienen coche"
-    ?u <- (pregunta-usuario (coche ?coche))
+    ?u <- (caracteristicas-usuario (coche ?coche))
     (test (eq ?coche NONE))
     =>
     (bind ?e (pregunta-si-no "¿Disponen de coche? "))
     (modify ?u (coche ?e))
+    (focus recopilacion-preferencias-vivienda)
 )
 
-(defrule preguntas-usuario::establecer-movilidad-reducida "Establecer si tienen movilidad reducida"
-    ?u <- (pregunta-usuario (movilidadReducida ?movilidadReducida))
-    (test (eq ?movilidadReducida NONE))
-    =>
-    (bind ?e (pregunta-si-no "¿La vivienda tiene que ser accesible en silla de ruedas? "))
-    (modify ?u (movilidadReducida ?e))
-    (focus recopilacion-preferencias)
-)
+;; MÓDULO RECOPILACION-PREFERENCIAS-VIVIENDA
 
-(deffacts recopilacion-preferencias::hechos-iniciales "Establece hechos para poder ejecutar las reglas"
+(deffacts recopilacion-preferencias-vivienda::hechos-iniciales "Establece hechos para poder ejecutar las reglas"
     (tipos-vivienda ask)
-    (preferencias)
+    (preferencias-vivienda)
 )
 
-(defrule recopilacion-preferencias::establecer-preferencia-tipo-vivienda "Establecer preferencia sobre los tipos de vivienda"
-    ?pref <- (preferencias)
+(defrule recopilacion-preferencias-vivienda::establecer-preferencia-tipo-vivienda "Establecer preferencia sobre los tipos de vivienda"
+    ?pref <- (preferencias-vivienda)
     ?hecho <- (tipos-vivienda ask)
     =>
     (bind ?e (pregunta-si-no "¿Está interesado en algún tipo de vivienda en concreto?"))
@@ -839,32 +657,50 @@
         (bind ?tipo (nth$ ?index ?tipos))
         (bind $?respuesta (insert$ $?respuesta (+ (length$ $?respuesta) 1) ?tipo))
       )
-      ; Print results
-      ; (progn$ (?var ?respuesta)
-      ; (printout t ?var crlf))
       (modify ?pref (tipos-vivienda $?respuesta))
     )
     (retract ?hecho)
-    (focus inferencia-datos)
+    (assert (caracteristicas-vivienda ask))
 )
+
+(defrule recopilacion-preferencias-vivienda::establecer-preferencia-caracteristicas-vivienda "Establecer qué características son deseables"
+    ?pref <- (preferencias-vivienda)
+    ?hecho <- (caracteristicas-vivienda ask)
+    ?p <- (slots-and-names (nombres $?nombres) (campos $?campos))
+    =>
+    (bind ?escogido (pregunta-multi "¿Qué características encuentra necesarias en una vivienda? " $?nombres))
+    (bind $?respuesta (create$ ))
+    (loop-for-count (?i 1 (length$ ?escogido)) do
+      (bind ?index (nth$ ?i ?escogido))
+      (bind ?slot-name (nth$ ?index $?campos))
+      (bind $?respuesta (insert$ $?respuesta (+ (length$ $?respuesta) 1) ?slot-name))
+    )
+    (progn$ (?var $?respuesta)
+    (printout t ?var crlf))
+    (modify ?pref (caracteristicas-vivienda $?respuesta))
+    (retract ?hecho)
+    ;(assert (caracteristicas-vivienda ask))
+)
+
+
 
 ;;; Reglas del módulo INFERENCIA-DATOS
 
-(defrule inferencia-datos::filtrar-viviendas "Filtrar las viviendas que se ajusten a los requisitos mínimos del usuario"
-    ?u <- (pregunta-usuario (maxPrecio ?maxPrecio)
-                            (minPrecio ?minPrecio)
-                            (minHabitaciones ?minHabitaciones)
-                            (mascotas ?mascotas)
-                            (movilidadReducida ?movilidadReducida))
-  	=>
-    (bind ?lista_adecuados (find-all-instances ((?inst Viviendas))
-              (and
-                  (<= ?inst:precioMensual ?maxPrecio)
-                  (>= ?inst:precioMensual ?minPrecio)
-                  (>= ?inst:numDormitorios ?minHabitaciones)
-                  (or (eq ?mascotas FALSE) (eq ?inst:mascota TRUE))
-                  (or (eq ?movilidadReducida FALSE) (eq ?inst:adaptadoMovilidadReducida TRUE))
-              )))
-    (progn$ (?var ?lista_adecuados)
-    (printout t ?var crlf))
-)
+; (defrule inferencia-datos::filtrar-viviendas "Filtrar las viviendas que se ajusten a los requisitos mínimos del usuario"
+;     ?u <- (caracteristicas-usuario (maxPrecio ?maxPrecio)
+;                             (minPrecio ?minPrecio)
+;                             (minHabitaciones ?minHabitaciones)
+;                             (mascotas ?mascotas)
+;                             (movilidadReducida ?movilidadReducida))
+;   	=>
+;     (bind ?lista_adecuados (find-all-instances ((?inst Viviendas))
+;               (and
+;                   (<= ?inst:precioMensual ?maxPrecio)
+;                   (>= ?inst:precioMensual ?minPrecio)
+;                   (>= ?inst:numDormitorios ?minHabitaciones)
+;                   (or (eq ?mascotas FALSE) (eq ?inst:mascota TRUE))
+;                   (or (eq ?movilidadReducida FALSE) (eq ?inst:adaptadoMovilidadReducida TRUE))
+;               )))
+;     (progn$ (?var ?lista_adecuados)
+;     (printout t ?var crlf))
+; )
