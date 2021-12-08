@@ -1,4 +1,5 @@
 from random import randrange
+import math
 
 districtes = ["Ciutat Vella", "Eixample", "Sants-Montjuïc", "Les Corts", "Sarrià-Sant Gervasi",
                 "Gràcia", "Horta-Guinardó", "Nou Barris", "Sant Andreu", "San Martí"]
@@ -768,6 +769,7 @@ bools = ["TRUE", "FALSE"]
 i = 0
 
 f = open ("instances.clp", "w")
+f.write("(definstances instances\n")
 
 for d in districtes:
     for b in barris[d]:
@@ -938,13 +940,18 @@ for d in districtes:
                 plazas = randrange(3)
 
             sH = randrange(150) + 10
-            max = sH/20
-            dorm = randrange(max) + 1
-            dormSimple = randrange (dorm)
-            dormDoble = dorm - dormSimple
+            max = math.floor(sH/20)
+            dorm = dormDoble = banosEnteros = 1
+            dormSimple = banosMedios = 0
+            if max > 0:
+                dorm = randrange(max)
+            
+            if (dorm-1) > 0:
+                dormSimple = randrange (dorm)
+                dormDoble = dorm - dormSimple
 
-            banosEnteros = randrange (dorm) + 1
-            banosMedios = randrange (banosEnteros)
+                banosEnteros = randrange (dorm - 1) + 1
+                banosMedios = randrange (banosEnteros)
 
             viv = ("([vivienda" + str(i) + "] of " + tipos[randrange(len(tipos))] + "\n" +
             "   (seEncuentraEn [ubicacionVivienda" + str(i) + "])\n" +
@@ -1014,3 +1021,6 @@ for d in districtes:
             ")\n")
 
             f.write(viv)
+
+f.write(")")
+f.close()
