@@ -1,4 +1,5 @@
 from random import randrange
+import math
 
 districtes = ["Ciutat Vella", "Eixample", "Sants-Montjuïc", "Les Corts", "Sarrià-Sant Gervasi",
                 "Gràcia", "Horta-Guinardó", "Nou Barris", "Sant Andreu", "San Martí"]
@@ -768,6 +769,7 @@ bools = ["TRUE", "FALSE"]
 i = 0
 
 f = open ("instances.clp", "w")
+f.write("(definstances instances\n")
 
 for d in districtes:
     for b in barris[d]:
@@ -938,7 +940,18 @@ for d in districtes:
                 plazas = randrange(3)
 
             sH = randrange(150) + 10
-            max = sH/20
+            max = math.floor(sH/20)
+            dorm = dormDoble = banosEnteros = 1
+            dormSimple = banosMedios = 0
+            if max > 0:
+                dorm = randrange(max)
+            
+            if (dorm-1) > 0:
+                dormSimple = randrange (dorm)
+                dormDoble = dorm - dormSimple
+
+                banosEnteros = randrange (dorm - 1) + 1
+                banosMedios = randrange (banosEnteros)
 
             viv = ("([vivienda" + str(i) + "] of " + tipos[randrange(len(tipos))] + "\n" +
             "   (seEncuentraEn [ubicacionVivienda" + str(i) + "])\n" +
@@ -967,16 +980,47 @@ for d in districtes:
             "   (piscina " + bools[randrange(len(bools))] + ")\n" +
             "   (planta " + str(randrange(6) + 1) + ")\n" +
             "   (superficieHabitable " + str(sH) + ")\n" +
-            "   (numDormitorios " + str(sH) + ")\n" +#change
-            "   (numDormitoriosSimples " + str(sH) + ")\n" +#change
-            "   (numDormitoriosDobles " + str(sH) + ")\n" +#change
-            "   (numBanosEnteros " + str(sH) + ")\n" +#change
-            "   (numBanosMedios " + str(sH) + ")\n" +#change
+            "   (numDormitorios " + str(dorm) + ")\n" +#change
+            "   (numDormitoriosSimples " + str(dormSimple) + ")\n" +#change
+            "   (numDormitoriosDobles " + str(dormDoble) + ")\n" +#change
+            "   (numBanosEnteros " + str(banosEnteros) + ")\n" +#change
+            "   (numBanosMedios " + str(banosMedios) + ")\n" +#change
             "   (estudio " + bools[randrange(len(bools))] + ")\n" +
             "   (adaptadoMovilidadReducida " + bools[randrange(len(bools))] + ")\n" +
             "   (calefaccion " + bools[randrange(len(bools))] + ")\n" +
             "   (ascensor " + bools[randrange(len(bools))] + ")\n" +
             "   (añoConstruccion " + str(randrange(221) + 1800) + ")\n" +
+            "   (distMinAeropuerto " + str(randrange(30) + 1) + ")\n" +
+            "   (distMinBar " + str(randrange(5)) + ")\n" +
+            "   (distMinBus " + str(randrange(7)) + ")\n" +
+            "   (distMinCafeteria " + str(randrange(5)) + ")\n" +
+            "   (distMinCentroComercial " + str(randrange(10) + 1) + ")\n" +
+            "   (distMinCentroDia " + str(randrange(5)) + ")\n" +
+            "   (distMinCine " + str(randrange(10)) + ")\n" +
+            "   (distMinClubNoct " + str(randrange(10)) + ")\n" +
+            "   (distMinEscuela " + str(randrange(7)) + ")\n" +
+            "   (distMinGeriatrico " + str(randrange(10)) + ")\n" +
+            "   (distMinGrandesAlm " + str(randrange(20)) + ")\n" +
+            "   (distMinHospital " + str(randrange(10)) + ")\n" +
+            "   (distMinInstituto " + str(randrange(10)) + ")\n" +
+            "   (distMinJardin " + str(randrange(20)) + ")\n" +
+            "   (distMinMercado " + str(randrange(20)) + ")\n" +
+            "   (distMinMetro " + str(randrange(10)) + ")\n" +
+            "   (distMinMuseo " + str(randrange(20)) + ")\n" +
+            "   (distMinPabellon " + str(randrange(7)) + ")\n" +
+            "   (distMinParque " + str(randrange(5)) + ")\n" +
+            "   (distMinPlaya " + str(randrange(30)) + ")\n" +
+            "   (distMinPlaza " + str(randrange(10)) + ")\n" +
+            "   (distMinRestaurante " + str(randrange(7)) + ")\n" +
+            "   (distMinRocodromo " + str(randrange(30)) + ")\n" +
+            "   (distMinSupermercado " + str(randrange(7)) + ")\n" +
+            "   (distMinTeatro " + str(randrange(20)) + ")\n" +
+            "   (distMinTram " + str(randrange(20)) + ")\n" +
+            "   (distMinTren " + str(randrange(10)) + ")\n" +
+            "   (distMinUniversidad " + str(randrange(30)) + ")\n" +
             ")\n")
 
             f.write(viv)
+
+f.write(")")
+f.close()
