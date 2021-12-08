@@ -732,7 +732,7 @@ provencalsPoblenou = [
 ]
 
 santMartiProvencals = [
-    ("Rambla de Guipúscoa", ()),
+    ("Rambla de Guipúscoa", (41.420053,2.202257)),
     ("Carrer de Menorca", (41.417442555968215, 2.194011039097861)),
     ("Carrer d'Andrade", (41.41632935156023, 2.2017513256072405)),
     ("Carrer del Concili de Trento", (41.41745709289941, 2.2007939170766355)),
@@ -938,7 +938,7 @@ for d in districtes:
                 plazas = randrange(3)
 
             sH = randrange(150) + 10
-
+            max = sH/20
 
             viv = ("([vivienda" + str(i) + "] of " + tipos[randrange(len(tipos))] + "\n" +
             "   (seEncuentraEn [ubicacionVivienda" + str(i) + "])\n" +
