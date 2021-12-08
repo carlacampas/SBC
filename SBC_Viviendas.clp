@@ -460,6 +460,11 @@
     (export ?ALL)
 )
 
+(defmodule recopilacion-preferencias
+    (import MAIN ?ALL)
+    (export ?ALL)
+)
+
 ;;; Módulo para la inferencia de datos
 (defmodule inferencia-datos
 	(import MAIN ?ALL)
@@ -507,6 +512,29 @@
     ?respuesta
 )
 
+;;; Funcion para hacer una pregunta multi-respuesta con indices
+(deffunction pregunta-multi (?pregunta $?valores-posibles)
+    (bind ?linea (format nil "%s" ?pregunta))
+    (printout t ?linea crlf)
+    (progn$ (?var ?valores-posibles)
+            (bind ?linea (format nil "  %d. %s" ?var-index ?var))
+            (printout t ?linea crlf)
+    )
+    (format t "%s" "Indica los numeros separados por un espacio: ")
+    (bind ?resp (readline))
+    (bind ?numeros (str-explode ?resp))
+    (bind $?lista (create$ ))
+    (progn$ (?var ?numeros)
+        (if (and (integerp ?var) (and (>= ?var 1) (<= ?var (length$ ?valores-posibles))))
+            then
+                (if (not (member$ ?var ?lista))
+                    then (bind ?lista (insert$ ?lista (+ (length$ ?lista) 1) ?var))
+                )
+        )
+    )
+    ?lista
+)
+
 (deffunction MAIN::pregunta-test (?pregunta $?valores-posibles)
     (bind ?linea (format nil "%s" ?pregunta))
     (printout t ?linea crlf)
@@ -543,6 +571,13 @@
     (slot nocturnidad (type SYMBOL) (default NONE))
     (slot coche (type SYMBOL) (default NONE))
     (slot movilidadReducida (type SYMBOL) (default NONE))
+
+    (multislot tipos-vivienda (type SYMBOL))
+)
+
+;;; Template para las preferencias del usuario
+(deftemplate MAIN::preferencias
+	(multislot tipos-vivienda (type SYMBOL))
 )
 
 ;;************************************************
@@ -656,6 +691,35 @@
     =>
     (bind ?e (pregunta-si-no "¿La vivienda tiene que ser accesible en silla de ruedas? "))
     (modify ?u (movilidadReducida ?e))
+    (focus recopilacion-preferencias)
+)
+
+(deffacts recopilacion-preferencias::hechos-iniciales "Establece hechos para poder ejecutar las reglas"
+    (tipos-vivienda ask)
+    (preferencias)
+)
+
+(defrule recopilacion-preferencias::establecer-preferencia-tipo-vivienda "Establecer preferencia sobre los tipos de vivienda"
+    ?pref <- (preferencias)
+    ?hecho <- (tipos-vivienda ask)
+    =>
+    (bind ?e (pregunta-si-no "¿Está interesado en algún tipo de vivienda en concreto?"))
+    (if (eq ?e TRUE)
+      then
+      (bind $?tipos (class-subclasses Viviendas))
+      (bind ?escogido (pregunta-multi "Escoja el tipo de viviendas en las que está interesado: " $?tipos))
+      (bind $?respuesta (create$ ))
+      (loop-for-count (?i 1 (length$ ?escogido)) do
+        (bind ?index (nth$ ?i ?escogido))
+        (bind ?tipo (nth$ ?index ?tipos))
+        (bind $?respuesta (insert$ $?respuesta (+ (length$ $?respuesta) 1) ?tipo))
+      )
+      ; Print results
+      ; (progn$ (?var ?respuesta)
+      ; (printout t ?var crlf))
+      (modify ?pref (tipos-vivienda $?respuesta))
+    )
+    (retract ?hecho)
     (focus inferencia-datos)
 )
 
