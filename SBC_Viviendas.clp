@@ -460,6 +460,11 @@
     (export ?ALL)
 )
 
+(defmodule recopilacion-preferencias
+    (import MAIN ?ALL)
+    (export ?ALL)
+)
+
 ;;; Módulo para la inferencia de datos
 (defmodule inferencia-datos
 	(import MAIN ?ALL)
@@ -507,6 +512,29 @@
     ?respuesta
 )
 
+;;; Funcion para hacer una pregunta multi-respuesta con indices
+(deffunction pregunta-multi (?pregunta $?valores-posibles)
+    (bind ?linea (format nil "%s" ?pregunta))
+    (printout t ?linea crlf)
+    (progn$ (?var ?valores-posibles)
+            (bind ?linea (format nil "  %d. %s" ?var-index ?var))
+            (printout t ?linea crlf)
+    )
+    (format t "%s" "Indica los numeros separados por un espacio: ")
+    (bind ?resp (readline))
+    (bind ?numeros (str-explode ?resp))
+    (bind $?lista (create$ ))
+    (progn$ (?var ?numeros)
+        (if (and (integerp ?var) (and (>= ?var 1) (<= ?var (length$ ?valores-posibles))))
+            then
+                (if (not (member$ ?var ?lista))
+                    then (bind ?lista (insert$ ?lista (+ (length$ ?lista) 1) ?var))
+                )
+        )
+    )
+    ?lista
+)
+
 (deffunction MAIN::pregunta-test (?pregunta $?valores-posibles)
     (bind ?linea (format nil "%s" ?pregunta))
     (printout t ?linea crlf)
@@ -523,107 +551,14 @@
 ;;**               QUERY RULES                  **
 ;;************************************************
 
-
 ;;************************************************
-;;**                 INSTANCIAS                 **
+;;**                TEMPLATES                   **
 ;;************************************************
-
-(definstances instances
-   ([ubicacion1] of Ubicacion
-     (barrio "La Teixonera")
-     (distrito "Horta-Guinardó")
-   )
-   ([vivienda1] of Piso
-     (seEncuentraEn [ubicacion1])
-     (mascota TRUE)
-     (orientacion sureste)
-     (precioMensual 900)
-     (balcon TRUE)
-     (cocinaIntegrada TRUE)
-     (aireAcondicionado TRUE)
-     (añoConstruccion 1960)
-     (planta 2)
-     (superficieHabitable 81)
-     (numDormitorios 4)
-     (numDormitoriosSimples 2)
-     (numDormitoriosDobles 4)
-     (numBanosMedios 0)
-     (numBanosEnteros 1)
-   )
-   ([ubicacion2] of Ubicacion
-     (barrio "Sant Andreu del Palomar")
-     (distrito "Sant Andreu")
-   )
-   ([vivienda2] of Piso
-     (seEncuentraEn [ubicacion2])
-     (amueblado TRUE)
-     (orientacion oeste)
-     (precioMensual 820)
-     (balcon TRUE)
-     (cocinaIntegrada TRUE)
-     (aireAcondicionado TRUE)
-     (añoConstruccion 1989)
-     (planta 1)
-     (superficieHabitable 70)
-     (numDormitorios 3)
-     (numDormitoriosSimples 2)
-     (numDormitoriosDobles 1)
-     (numBanosMedios 0)
-     (numBanosEnteros 1)
-   )
-   ([ubicacion3] of Ubicacion
-     (barrio "El Clot")
-     (distrito "Sant Martí")
-   )
-   ([vivienda3] of Duplex
-     (seEncuentraEn [ubicacion3])
-     (amueblado TRUE)
-     (mascota TRUE)
-     (adaptadoMovilidadReducida TRUE)
-     (orientacion suroeste)
-     (precioMensual 1650)
-     (balcon TRUE)
-     (cocinaIntegrada TRUE)
-     (sistemaAlarma TRUE)
-     (aireAcondicionado TRUE)
-     (añoConstruccion 2017)
-     (planta 1)
-     (superficieHabitable 120)
-     (numDormitorios 3)
-     (numDormitoriosSimples 1)
-     (numDormitoriosDobles 2)
-     (numBanosMedios 1)
-     (numBanosEnteros 1)
-   )
-   ([ubicacion4] of Ubicacion
-     (barrio "Pedralbes")
-     (distrito "Les Corts")
-   )
-   ([vivienda4] of Piso
-     (orientacion nordoeste)
-     (precioMensual 2530)
-     (vistas TRUE)
-     (balcon TRUE)
-     (cocinaIntegrada TRUE)
-     (sistemaAlarma TRUE)
-     (garaje TRUE)
-     (aireAcondicionado TRUE)
-     (terraza TRUE)
-     (obraNueva TRUE)
-     (piscina TRUE)
-     (añoConstruccion 1992)
-     (planta 4)
-     (superficieHabitable 140)
-     (numDormitorios 4)
-     (numDormitoriosSimples 1)
-     (numDormitoriosDobles 3)
-     (numBanosMedios 1)
-     (numBanosEnteros 2)
-   )
-)
 
 ;;; Template para los datos de las preguntas al usuario
 (deftemplate MAIN::pregunta-usuario
+    
+    ;; características sobre el usuario
     (slot tipo (type STRING))
     (slot tamano (type INTEGER))
     (slot ninos (type SYMBOL) (default NONE))
@@ -633,11 +568,141 @@
     (slot estudiantes (type SYMBOL) (default NONE))
     (slot maxPrecio (type INTEGER)  (default -1))
     (slot minPrecio (type INTEGER)  (default -1))
-    (slot minHabitaciones (type INTEGER) (default -1))
     (slot mascotas (type SYMBOL) (default NONE))
     (slot nocturnidad (type SYMBOL) (default NONE))
     (slot coche (type SYMBOL) (default NONE))
+
+    ;; preferencias sobre la vivienda + servicios vivienda
+    (slot conBalcon (type SYMBOL) (allowed-values imp pref exc))
+    (slot conCocinaIntegrada (type SYMBOL) (allowed-values imp pref exc))
+    (slot conGaraje (type SYMBOL) (allowed-values imp pref exc))
+    (slot conAlarma (type SYMBOL) (allowed-values imp pref exc))
+    (slot conJardin (type SYMBOL) (allowed-values imp pref exc))
+    (slot numPlazasAp (type INTEGER)) ;;generar regla que en caso de querer garaje como imp o pref pregunte por número de plazas
+    (slot conSotano (type SYMBOL) (allowed-values imp pref exc))
+    (slot conAireAcondicionado (type SYMBOL) (allowed-values imp pref exc))
+    (slot conPatio (type SYMBOL) (allowed-values imp pref exc))
+    (slot conTerraza (type SYMBOL) (allowed-values imp pref exc))
+    (slot conGimnasio (type SYMBOL) (allowed-values imp pref exc))
+    (slot enPrimLinMar (type SYMBOL) (allowed-values imp pref exc))
+    (slot deObraNueva (type SYMBOL) (allowed-values imp pref exc))
+    (slot conPiscina (type SYMBOL) (allowed-values imp pref exc))
+    (slot deAntigüedad (type SYMBOL) (allowed-values imp pref exc))
+    (slot maxAntiguedad (type INTEGER) (range 0 100)) ;;cambiar para ajustar a las instancias, same que con plazas parking
+    (slot enPlanta (type SYMBOL) (allowed-values imp pref exc)) ;;triggered si tipo == piso
+    (multislot quierePlantas (type INTEGER) (range 0 15)) ;;ajustar, trigger de la anterior
+    (slot conEstudio (type SYMBOL) (allowed-values imp pref exc))
     (slot movilidadReducida (type SYMBOL) (default NONE))
+
+    (multislot tipos-vivienda (type SYMBOL))
+)
+
+;;; Template para las preferencias del usuario
+(deftemplate MAIN::preferencias
+	(multislot tipos-vivienda (type SYMBOL))
+    
+    ;;===(slot conmovilidadReducida (type SYMBOL) (allowed-values imp pref exc)
+    (slot conCalefaccion (type SYMBOL) (allowed-values imp pref exc))
+    (slot conAscensor (type SYMBOL) (allowed-values imp pref exc))
+    
+    (slot deSuperficieHab (type SYMBOL) (allowed-values imp pref exc))
+    (slot minSuperficieHab (type INTEGER) (range 30 1000)) ;;m2
+    ;;(slot maxSuperficieHab (type INTEGER) (range 30 1000)) ;;m2
+    
+    (slot deMinHabitaciones (type SYMBOL) (allowed-values imp pref exc))
+    (slot minHabitaciones (type INTEGER) (default -1) (range -1 10)) ;;ajustar
+    (slot numHabDobles (type INTEGER) (default -1) (range -1 10)) ;;ajustar
+    (slot numHabSimples (type INTEGER) (default -1) (range -1 10)) ;;ajustar
+    
+    (slot deMinBaños (type SYMBOL) (allowed-values imp pref exc))
+    (slot minBaños (type INTEGER) (default -1) (range -1 10)) ;;ajustar
+    (slot minBañosEnteros (type INTEGER) (default -1) (range -1 10)) ;;ajustar
+    (slot minBañosMedios (type INTEGER) (default -1) (range -1 10)) ;;ajustar
+    
+    ;;preferencias sobre los servicios de la ciudad
+    (slot defDistMinAeropuerto (type SYMBOL) (allowed-values imp pref exc))
+    (slot setDistMinAeropuerto (type FLOAT) (range 0.0 1000.0)) ;;ajustar
+    
+    (slot defDistMinBar (type SYMBOL) (allowed-values imp pref exc))
+    (slot setDistMinBar (type FLOAT) (range 0.0 1000.0)) ;;ajustar
+    
+    (slot defDistMinBus (type SYMBOL) (allowed-values imp pref exc))
+    (slot setDistMinBus (type FLOAT) (range 0.0 1000.0)) ;;ajustar
+        
+    (slot defDistMinCafeteria (type SYMBOL) (allowed-values imp pref exc))
+    (slot setDistMinCafeteria (type FLOAT) (range 0.0 1000.0)) ;;ajustar
+        
+    (slot defDistMinCentComercial (type SYMBOL) (allowed-values imp pref exc))
+    (slot setDistMinCentComercial (type FLOAT) (range 0.0 1000.0)) ;;ajustar
+        
+    (slot defDistMinCentroDia (type SYMBOL) (allowed-values imp pref exc))
+    (slot setDistMinCentroDia (type FLOAT) (range 0.0 1000.0)) ;;ajustar
+            
+    (slot defDistMinCine (type SYMBOL) (allowed-values imp pref exc))
+    (slot setDistMinCine (type FLOAT) (range 0.0 1000.0)) ;;ajustar
+        
+    (slot defDistMinClubNoct (type SYMBOL) (allowed-values imp pref exc))
+    (slot setDistMinClubNoct (type FLOAT) (range 0.0 1000.0)) ;;ajustar
+
+    (slot defDistMinEscuela (type SYMBOL) (allowed-values imp pref exc))
+    (slot setDistMinEscuela (type FLOAT) (range 0.0 1000.0)) ;;ajustar
+        
+    (slot defDistMinGeriatrico (type SYMBOL) (allowed-values imp pref exc))
+    (slot setDistMinGeriatrico (type FLOAT) (range 0.0 1000.0)) ;;ajustar
+        
+    (slot defDistMinGrandesAlm (type SYMBOL) (allowed-values imp pref exc))
+    (slot setDistMinGrandesAlm (type FLOAT) (range 0.0 1000.0)) ;;ajustar
+            
+    (slot defDistMinHospital (type SYMBOL) (allowed-values imp pref exc))
+    (slot setDistMinHospital (type FLOAT) (range 0.0 1000.0)) ;;ajustar
+        
+    (slot defDistMinInstituto (type SYMBOL) (allowed-values imp pref exc))
+    (slot setDistMinInstituto (type FLOAT) (range 0.0 1000.0)) ;;ajustar
+
+    (slot defDistMinJardin (type SYMBOL) (allowed-values imp pref exc))
+    (slot setDistMinJardin (type FLOAT) (range 0.0 1000.0)) ;;ajustar
+        
+    (slot defDistMinMercado (type SYMBOL) (allowed-values imp pref exc))
+    (slot setDistMinMercado (type FLOAT) (range 0.0 1000.0)) ;;ajustar
+        
+    (slot defDistMinMetro (type SYMBOL) (allowed-values imp pref exc))
+    (slot setDistMinMetro (type FLOAT) (range 0.0 1000.0)) ;;ajustar
+            
+    (slot defDistMinMuseo (type SYMBOL) (allowed-values imp pref exc))
+    (slot setDistMinMuseo (type FLOAT) (range 0.0 1000.0)) ;;ajustar
+        
+    (slot defDistMinPabellon (type SYMBOL) (allowed-values imp pref exc))
+    (slot setDistMinPabellon (type FLOAT) (range 0.0 1000.0)) ;;ajustar
+
+    (slot defDistMinParque (type SYMBOL) (allowed-values imp pref exc))
+    (slot setDistMinParque (type FLOAT) (range 0.0 1000.0)) ;;ajustar
+        
+    (slot defDistMinPlaya (type SYMBOL) (allowed-values imp pref exc))
+    (slot setDistMinPlaya (type FLOAT) (range 0.0 1000.0)) ;;ajustar
+        
+    (slot defDistMinPlaza (type SYMBOL) (allowed-values imp pref exc))
+    (slot setDistMinPlaza (type FLOAT) (range 0.0 1000.0)) ;;ajustar
+            
+    (slot defDistMinRestaurante (type SYMBOL) (allowed-values imp pref exc))
+    (slot setDistMinRestaurante (type FLOAT) (range 0.0 1000.0)) ;;ajustar
+        
+    (slot defDistMinRocodromo (type SYMBOL) (allowed-values imp pref exc))
+    (slot setDistMinRocodromo (type FLOAT) (range 0.0 1000.0)) ;;ajustar
+        
+    (slot defDistMinSupermercado (type SYMBOL) (allowed-values imp pref exc))
+    (slot setDistMinSupermercado (type FLOAT) (range 0.0 1000.0)) ;;ajustar
+        
+    (slot defDistMinTeatro (type SYMBOL) (allowed-values imp pref exc))
+    (slot setDistMinTeatro (type FLOAT) (range 0.0 1000.0)) ;;ajustar
+        
+    (slot defDistMinTram (type SYMBOL) (allowed-values imp pref exc))
+    (slot setDistMinTram (type FLOAT) (range 0.0 1000.0)) ;;ajustar
+            
+    (slot defDistMinTren (type SYMBOL) (allowed-values imp pref exc))
+    (slot setDistMinTren (type FLOAT) (range 0.0 1000.0)) ;;ajustar
+        
+    (slot defDistMinUniversidad (type SYMBOL) (allowed-values imp pref exc))
+    (slot setDistMinUniversidad (type FLOAT) (range 0.0 1000.0)) ;;ajustar
 )
 
 ;;************************************************
@@ -751,6 +816,35 @@
     =>
     (bind ?e (pregunta-si-no "¿La vivienda tiene que ser accesible en silla de ruedas? "))
     (modify ?u (movilidadReducida ?e))
+    (focus recopilacion-preferencias)
+)
+
+(deffacts recopilacion-preferencias::hechos-iniciales "Establece hechos para poder ejecutar las reglas"
+    (tipos-vivienda ask)
+    (preferencias)
+)
+
+(defrule recopilacion-preferencias::establecer-preferencia-tipo-vivienda "Establecer preferencia sobre los tipos de vivienda"
+    ?pref <- (preferencias)
+    ?hecho <- (tipos-vivienda ask)
+    =>
+    (bind ?e (pregunta-si-no "¿Está interesado en algún tipo de vivienda en concreto?"))
+    (if (eq ?e TRUE)
+      then
+      (bind $?tipos (class-subclasses Viviendas))
+      (bind ?escogido (pregunta-multi "Escoja el tipo de viviendas en las que está interesado: " $?tipos))
+      (bind $?respuesta (create$ ))
+      (loop-for-count (?i 1 (length$ ?escogido)) do
+        (bind ?index (nth$ ?i ?escogido))
+        (bind ?tipo (nth$ ?index ?tipos))
+        (bind $?respuesta (insert$ $?respuesta (+ (length$ $?respuesta) 1) ?tipo))
+      )
+      ; Print results
+      ; (progn$ (?var ?respuesta)
+      ; (printout t ?var crlf))
+      (modify ?pref (tipos-vivienda $?respuesta))
+    )
+    (retract ?hecho)
     (focus inferencia-datos)
 )
 
