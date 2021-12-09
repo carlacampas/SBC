@@ -1,38 +1,49 @@
 (deffacts MAIN::general-facts
   (slots-and-names
     (nombres
-      "Accesible con silla de ruedas"
-      "Aire acondicionado"
-      "Alarma"
-      "Ascensor"
+      "Amueblado"
+      "Vistas"
+      "Vistas al Mar"
+      "Vistas a la Montaña"
       "Balcon"
       "Cocina Integrada"
+      "Alarma"
       "Garaje"
-      "Gimnasio"
       "Jardín"
-      "Patio"
-      "Piscina"
-      "Primera Línea de Mar"
-      "Se aceptan Mascotas"
       "Sótano"
+      "Aire acondicionado"
+      "Patio"
       "Terraza"
+      "Gimnasio"
+      "Primera Línea de Mar"
+      "Obra Nueva"
+      "Piscina"
+      "Estudio"
+      "Calefacción"
+      "Ascensor"
     )
     (campos
-      conmovilidadReducida
-      conAireAcondicionado
-      conAlarma
-      conAscensor
-      conBalcon
-      conCocinaIntegrada
-      conGaraje
-      conGimnasio
-      conJardin
-      conPatio
-      conPiscina
-      enPrimLinMar
-      seAceptanMascotas
-      conSotano
-      conTerraza
+      amueblado
+      vistas
+      vistasMar
+      vistasMontaña
+      balcon
+      cocinaIntegrada
+      sistemaAlarma
+      garaje
+      jardin
+      sotano
+      aireAcondicionado
+      patio
+      terraza
+      gimnasio
+      primeraLineaDeMar
+      obraNueva
+      pisicina
+      estudio
+      calefaccion
+      ascensor
+
     )
   )
 )

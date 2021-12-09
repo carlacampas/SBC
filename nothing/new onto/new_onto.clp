@@ -773,7 +773,7 @@
 
 ;;; Reglas del módulo INFERENCIA-DATOS
 
-(defrule inferencia-datos::filtrar-viviendas "Filtrar las viviendas que se ajusten a los requisitos mínimos del usuario"
+(defrule inferencia-datos::filtrado-inicial "Filtrar las viviendas que se ajusten a los requisitos mínimos del usuario"
     ?u <- (pregunta-usuario (maxPrecio ?maxPrecio)
                             (minPrecio ?minPrecio)
                             ;(minHabitaciones ?minHabitaciones)
