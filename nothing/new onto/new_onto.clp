@@ -501,9 +501,9 @@
 
     (format t "     DORMITORIOS: %d" ?self:numDormitorios)
     (printout t crlf)
-    (format t "         Dobles: %d" ?self:numDormitoriosDobles)
+    (format t "     Dobles: %d" ?self:numDormitoriosDobles)
     (printout t crlf)
-    (format t "         Simples: %d" ?self:numDormitoriosSimples)
+    (format t "     Simples: %d" ?self:numDormitoriosSimples)
     (printout t crlf)
 
     (format t "     BAÑOS ENTEROS: %d" ?self:numBanosEnteros)
@@ -664,7 +664,7 @@
     (printout t crlf)
     (format t "         COORD: (%f, " ?self:coordX)
     (printout t)
-    (format t "%f)" ?self:coordY)
+    (format t "%f)" ?self:coordX)
     (printout t crlf)
 )
 
