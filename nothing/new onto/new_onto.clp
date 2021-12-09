@@ -8,90 +8,6 @@
 ;;**                    CLASES                  **
 ;;************************************************
 
-(defclass Usuario
-    (is-a USER)
-    (role concrete)
-    (pattern-match reactive)
-    (single-slot estudiaEn
-        (type INSTANCE)
-        (create-accessor read-write))
-    (single-slot interesadoEn
-        (type INSTANCE)
-        (create-accessor read-write))
-    (single-slot seEncuentraEn
-        (type INSTANCE)
-        (create-accessor read-write))
-    (single-slot trabajaEn
-        (type INSTANCE)
-        (create-accessor read-write))
-    (single-slot discapacidad
-        (type SYMBOL)
-        (create-accessor read-write))
-    (single-slot mascota
-        (type SYMBOL)
-        (create-accessor read-write))
-    (single-slot numAncianos
-        (type INTEGER)
-        (create-accessor read-write))
-    (single-slot numCoches
-        (type INTEGER)
-        (create-accessor read-write))
-    (single-slot precioMensual
-        (type FLOAT)
-        (create-accessor read-write))
-)
-
-(defclass Estudiante
-    (is-a Usuario)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Familia
-    (is-a Usuario)
-    (role concrete)
-    (pattern-match reactive)
-    (single-slot monoparental
-        (type SYMBOL)
-        (create-accessor read-write))
-    (single-slot numHijos
-        (type INTEGER)
-        (create-accessor read-write))
-    (single-slot tamañoFamilia
-        (type INTEGER)
-        (create-accessor read-write))
-    (multislot edad
-        (type INTEGER)
-        (create-accessor read-write))
-)
-
-(defclass Grupo
-    (is-a Usuario)
-    (role concrete)
-    (pattern-match reactive)
-    (multislot edad
-        (type INTEGER)
-        (create-accessor read-write))
-)
-
-(defclass Indivudal
-    (is-a Usuario)
-    (role concrete)
-    (pattern-match reactive)
-    (single-slot edad
-        (type INTEGER)
-        (create-accessor read-write))
-)
-
-(defclass Pareja
-    (is-a Usuario)
-    (role concrete)
-    (pattern-match reactive)
-    (multislot edad
-        (type INTEGER)
-        (create-accessor read-write))
-)
-
 (defclass Viviendas
     (is-a USER)
     (role concrete)
@@ -573,17 +489,66 @@
 )
 
 (defmessage-handler MAIN::Viviendas imprimir ()
-    (format t "UBIACACIÓN: ")
+    (format t "     UBIACACIÓN: ")
     (printout t crlf)
     (send ?self:seEncuentraEn imprimir)
+    
+    (format t "     PRECIO MENSUAL: %d" ?self:precioMensual)
+    (printout t crlf)
+
+    (format t "     CARACTERÍSTICAS DE LA VIVIENDA:")
+    (printout t crlf)
+
+    (if (> ?self:altura 0)
+        then
+        (format t "         - altura: %d" ?self:altura)
+        (printout t crlf)
+    )
+    (if (eq ?self:amueblado TRUE)
+        then
+            (format t "         - vivienda amueblada")
+            (printout t crlf)
+        else
+            (format t "         - vivienda no amueblada")
+            (printout t crlf)
+    )
+    (format t "         - certificado energetico: %s" ?self:certificadoEnergetico)
+    (printout t crlf)
+    (if (eq ?self:mascota TRUE)
+        then
+            (format t "         - se permiten mascotas")
+            (printout t crlf)
+        else
+            (format t "         - no se permiten mascotas")
+            (printout t crlf)
+    )
+    (format t "         - orientacion de la vivienda: %s" ?self:orientacion)
+    (printout t crlf)
+    (if (eq ?self:vistas TRUE)
+        then
+        (if (eq ?self:vistasMar TRUE)
+        then
+            (format t "         - vistas al mar")
+            (printout t crlf)
+        else
+            (if (eq ?self:vistasMontaña TRUE)
+            then
+                (format t "         - vistas a la montaña")
+                (printout t crlf)
+            else
+                (format t "         - vistas buenas")
+                (printout t crlf)
+            )
+        )
+    )
 )
 
 (defmessage-handler MAIN::Ubicacion imprimir ()
-    (format t "     %s" ?self:direccion)
+    (format t "         %s" ?self:direccion)
     (printout t crlf)
-    (format t "     %s, %s" ?self:barrio ?self:distrito)
+    (format t "         %s, %s" ?self:barrio ?self:distrito)
     (printout t crlf)
-    (format t "     COORD: (%f, " ?self:coordX)
+    (format t "         COORD: (%f, " ?self:coordX)
     (printout t)
     (format t "%f)" ?self:coordX)
     (printout t crlf)
