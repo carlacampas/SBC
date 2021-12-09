@@ -5,366 +5,6 @@
 ;;; :Date 05/12/2021 17:58:23
 
 ;;************************************************
-;;**                    CLASES                  **
-;;************************************************
-
-(defclass Viviendas
-    (is-a USER)
-    (role concrete)
-    (pattern-match reactive)
-    (single-slot seEncuentraEn
-        (type INSTANCE)
-        (create-accessor read-write))
-    (single-slot altura
-        (type INTEGER)
-        (create-accessor read-write))
-    (single-slot amueblado
-        (type SYMBOL)
-        (create-accessor read-write)
-        (default FALSE))
-    (single-slot certificadoEnergetico
-        (type STRING)
-        (create-accessor read-write))
-    (single-slot mascota
-        (type SYMBOL)
-        (create-accessor read-write)
-        (default FALSE))
-    (single-slot orientacion
-        (type STRING)
-        (create-accessor read-write))
-    (single-slot precioMensual
-        (type FLOAT)
-        (create-accessor read-write))
-    (single-slot vistas
-        (type SYMBOL)
-        (create-accessor read-write)
-        (default FALSE))
-    (single-slot vistasMar
-        (type SYMBOL)
-        (create-accessor read-write)
-        (default FALSE))
-    (single-slot vistasMontaña
-        (type SYMBOL)
-        (create-accessor read-write)
-        (default FALSE))
-    (single-slot balcon
-        (type SYMBOL)
-        (create-accessor read-write)
-        (default FALSE))
-    (single-slot cocinaIntegrada
-        (type SYMBOL)
-        (create-accessor read-write)
-        (default FALSE))
-    (single-slot sistemaAlarma
-        (type SYMBOL)
-        (create-accessor read-write)
-        (default FALSE))
-    (single-slot garaje
-        (type SYMBOL)
-        (create-accessor read-write)
-        (default FALSE))
-    (single-slot jardin
-        (type SYMBOL)
-        (create-accessor read-write)
-        (default FALSE))
-    (single-slot plazasAparcamiento
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 0))
-    (single-slot sotano
-        (type SYMBOL)
-        (create-accessor read-write)
-        (default FALSE))
-    (single-slot aireAcondicionado
-        (type SYMBOL)
-        (create-accessor read-write)
-        (default FALSE))
-    (single-slot patio
-        (type SYMBOL)
-        (create-accessor read-write)
-        (default FALSE))
-    (single-slot terraza
-        (type SYMBOL)
-        (create-accessor read-write)
-        (default FALSE))
-    (single-slot gimnasio
-        (type SYMBOL)
-        (create-accessor read-write)
-        (default FALSE))
-    (single-slot primeraLineaDeMar
-        (type SYMBOL)
-        (create-accessor read-write)
-        (default FALSE))
-    (single-slot obraNueva
-        (type SYMBOL)
-        (create-accessor read-write)
-        (default FALSE))
-    (single-slot piscina
-        (type SYMBOL)
-        (create-accessor read-write)
-        (default FALSE))
-    (single-slot añoConstruccion
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 0))
-    (single-slot planta
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 1))
-    (single-slot superficieHabitable
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 0))
-    (single-slot numDormitorios
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 0))
-    (single-slot numDormitoriosSimples
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 0))
-    (single-slot numDormitoriosDobles
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 0))
-    (single-slot numBanosEnteros
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 0))
-    (single-slot numBanosMedios
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 0))
-    (single-slot estudio
-        (type SYMBOL)
-        (create-accessor read-write)
-        (default FALSE))
-    (single-slot adaptadoMovilidadReducida
-        (type SYMBOL)
-        (create-accessor read-write)
-        (default FALSE))
-    (single-slot calefaccion
-        (type SYMBOL)
-        (create-accessor read-write)
-        (default FALSE))
-    (single-slot ascensor
-        (type SYMBOL)
-        (create-accessor read-write)
-        (default FALSE))
-    (single-slot distMinAeropuerto
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 0))
-    (single-slot distMinBar
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 0))
-    (single-slot distMinBus
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 0))
-    (single-slot distMinCafeteria
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 0))
-    (single-slot distMinCentroComercial
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 0))
-    (single-slot distMinCentroDia
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 0))
-    (single-slot distMinCine
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 0))
-    (single-slot distMinClubNoct
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 0))
-    (single-slot distMinEscuela
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 0))
-    (single-slot distMinGeriatrico
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 0))
-    (single-slot distMinGrandesAlm
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 0))
-    (single-slot distMinHospital
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 0))
-    (single-slot distMinInstituto
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 0))
-    (single-slot distMinJardin
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 0))
-    (single-slot distMinMercado
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 0))
-    (single-slot distMinMetro
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 0))
-    (single-slot distMinMuseo
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 0))
-    (single-slot distMinPabellon
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 0))
-    (single-slot distMinParque
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 0))
-    (single-slot distMinPlaya
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 0))
-    (single-slot distMinPlaza
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 0))
-    (single-slot distMinRestaurante
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 0))
-    (single-slot distMinRocodromo
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 0))
-    (single-slot distMinSupermercado
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 0))
-    (single-slot distMinTeatro
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 0))
-    (single-slot distMinTram
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 0))
-    (single-slot distMinTren
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 0))
-    (single-slot distMinUniversidad
-        (type INTEGER)
-        (create-accessor read-write)
-        (default 0))
-)
-
-(defclass Apartamento
-    (is-a Viviendas)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Atico
-    (is-a Viviendas)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Bajo
-    (is-a Viviendas)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Buhardilla
-    (is-a Viviendas)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Casa_Independiente
-    (is-a Viviendas)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Chalet
-    (is-a Viviendas)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Adosado
-    (is-a Chalet)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Pareado
-    (is-a Chalet)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Duplex
-    (is-a Viviendas)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Estudio
-    (is-a Viviendas)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Loft
-    (is-a Viviendas)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Piso
-    (is-a Viviendas)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-(defclass Ubicacion
-    (is-a USER)
-    (role concrete)
-    (pattern-match reactive)
-    (single-slot barrio
-        (type STRING)
-        (create-accessor read-write))
-    (single-slot coordX
-        (type FLOAT)
-        (create-accessor read-write))
-    (single-slot coordY
-        (type FLOAT)
-        (create-accessor read-write))
-    (single-slot direccion
-        (type STRING)
-        (create-accessor read-write))
-    (single-slot distrito
-        (type STRING)
-        (create-accessor read-write))
-)
-
-(defclass Thing
-    (is-a USER)
-    (role concrete)
-    (pattern-match reactive)
-)
-
-;;************************************************
 ;;**           DECLARAR MODULOS                 **
 ;;************************************************
 
@@ -466,206 +106,6 @@
         )
     )
     ?lista
-)
-
-
-;;************************************************
-;;**               QUERY RULES                  **
-;;************************************************
-
-;;************************************************
-;;**            IMPRIMIR VIVIENDAS              **
-;;************************************************
-(defrule MAIN::initialRule "Regla inicial"
-    (declare (salience 10))
-    =>
-    (printout t"----------------------------------------------------------" crlf)
-      (printout t"                RECOMENDACIÓN DE VIVIENDAS              " crlf)
-    (printout t"----------------------------------------------------------" crlf)
-      (printout t crlf)
-    (printout t"¡Bienvenido/a! A continuación se le hará algunas preguntas para averiguar sus preferencias en cuanto a viviendas. De esta manera podremos recomendar vivendas más apropiadas." crlf)
-    (printout t crlf)
-    (focus preguntas-usuario)
-)
-
-(defmessage-handler MAIN::Viviendas imprimir ()
-    (format t "     UBIACACIÓN: ")
-    (printout t crlf)
-    (send ?self:seEncuentraEn imprimir)
-    
-    (format t "     PRECIO MENSUAL: %d" ?self:precioMensual)
-    (printout t crlf)
-
-    (format t "     SUPERFICIE HABITABLE: %d" ?self:superficieHabitable)
-    (printout t crlf)
-
-    (format t "     DORMITORIOS: %d" ?self:numDormitorios)
-    (printout t crlf)
-    (format t "         Dobles: %d" ?self:numDormitoriosDobles)
-    (printout t crlf)
-    (format t "         Simples: %d" ?self:numDormitoriosSimples)
-    (printout t crlf)
-
-    (format t "     BAÑOS ENTEROS: %d" ?self:numBanosEnteros)
-    (printout t crlf)
-
-    (format t "     BAÑOS MEDIOS: %d" ?self:numBanosMedios)
-    (printout t crlf)
-
-    (format t "     PLANTA: %d" ?self:planta)
-    (printout t crlf)
-
-    (format t "     CARACTERÍSTICAS DE LA VIVIENDA:")
-    (printout t crlf)
-
-    (if (> ?self:altura 0)
-        then
-        (format t "         - altura: %d" ?self:altura)
-        (printout t crlf)
-    )
-    (if (eq ?self:amueblado TRUE)
-        then
-            (format t "         - amueblada")
-            (printout t crlf)
-        else
-            (format t "         - no amueblada")
-            (printout t crlf)
-    )
-    (format t "         - certificado energetico: %s" ?self:certificadoEnergetico)
-    (printout t crlf)
-    (if (eq ?self:mascota TRUE)
-        then
-            (format t "         - se permiten mascotas")
-            (printout t crlf)
-        else
-            (format t "         - NO se permiten mascotas")
-            (printout t crlf)
-    )
-    (format t "         - orientacion de la vivienda: %s" ?self:orientacion)
-    (printout t crlf)
-    (if (eq ?self:vistas TRUE)
-        then
-            (if (eq ?self:vistasMar TRUE)
-            then
-                (if (eq ?self:primeraLineaDeMar TRUE)
-                then
-                    (format t "         - primera linea de mar")
-                    (printout t crlf)
-                else
-                    (format t "         - vistas al mar")
-                    (printout t crlf)
-            )
-            else
-                (if (eq ?self:vistasMontaña TRUE)
-                then
-                    (format t "         - vistas a la montaña")
-                    (printout t crlf)
-                else
-                    (format t "         - vistas buenas")
-                    (printout t crlf)
-                )
-            )
-    )
-    (if (eq ?self:balcon TRUE)
-        then
-            (format t "         - balcon")
-            (printout t crlf)
-    )
-    (if (eq ?self:cocinaIntegrada TRUE)
-        then
-            (format t "         - cocina integrada")
-            (printout t crlf)
-        else
-            (format t "         - NO tiene cocina integrada")
-            (printout t crlf)
-    )
-    (if (eq ?self:sistemaAlarma TRUE)
-        then
-            (format t "         - sistema de alarma")
-            (printout t crlf)
-    )
-    (if (eq ?self:garaje TRUE)
-        then
-            (format t "         - vivienda con garaje de %d plazas de aparcamiento" ?self:plazasAparcamiento)
-            (printout t crlf)
-    )
-    (if (eq ?self:jardin TRUE)
-        then
-            (format t "         - jardin")
-            (printout t crlf)
-    )
-    (if (eq ?self:sotano TRUE)
-        then
-            (format t "         - sotano")
-            (printout t crlf)
-    )
-    (if (eq ?self:aireAcondicionado TRUE)
-        then
-            (format t "         - aire acondicionado")
-            (printout t crlf)
-    )
-    (if (eq ?self:patio TRUE)
-        then
-            (format t "         - patio")
-            (printout t crlf)
-    )
-    (if (eq ?self:terraza TRUE)
-        then
-            (format t "         - terraza")
-            (printout t crlf)
-    )
-    (if (eq ?self:gimnasio TRUE)
-        then
-            (format t "         - gimnasio")
-            (printout t crlf)
-    )
-    (if (eq ?self:obraNueva TRUE)
-        then
-            (format t "         - obra nueva")
-            (printout t crlf)
-        else 
-            (format t "         - se constryó en el año %d" ?self:añoConstruccion)
-            (printout t crlf)
-    )
-    (if (eq ?self:piscina TRUE)
-        then
-            (format t "         - piscina")
-            (printout t crlf)
-    )
-    (if (eq ?self:estudio TRUE)
-        then
-            (format t "         - estudio")
-            (printout t crlf)
-    )
-    (if (eq ?self:adaptadoMovilidadReducida TRUE)
-        then
-            (format t "         - vivienda adaptada para movilidad reducida")
-            (printout t crlf)
-        else
-            (format t "         - vivienda NO adaptada para movilidad reducida")
-            (printout t crlf)
-    )
-    (if (eq ?self:calefaccion TRUE)
-        then
-            (format t "         - calefacción")
-            (printout t crlf)
-    )
-    (if (eq ?self:ascensor TRUE)
-        then
-            (format t "         - ascensor")
-            (printout t crlf)
-    )
-)
-
-(defmessage-handler MAIN::Ubicacion imprimir ()
-    (format t "         %s" ?self:direccion)
-    (printout t crlf)
-    (format t "         %s, %s" ?self:barrio ?self:distrito)
-    (printout t crlf)
-    (format t "         COORD: (%f, " ?self:coordX)
-    (printout t)
-    (format t "%f)" ?self:coordY)
-    (printout t crlf)
 )
 
 ;;************************************************
@@ -772,22 +212,62 @@
 )
 
 ;;; Reglas del módulo INFERENCIA-DATOS
+(deffacts inferencia-datos::hechos-iniciales "Establece hechos para poder ejecutar las reglas"
+    (filtrar-min ask)
+    (viviendas-resultantes)
+)
 
-(defrule inferencia-datos::filtrado-inicial "Filtrar las viviendas que se ajusten a los requisitos mínimos del usuario"
+(defrule inferencia-datos::filtrado-min "Filtrar las viviendas que se ajusten a los requisitos mínimos del usuario"
+    ?hecho <- (filtrar-min ask)
+    ?vv <- (viviendas-resultantes)
+    ;?lista_no_adecuados <- (viviendasInviables)
     ?u <- (pregunta-usuario (maxPrecio ?maxPrecio)
                             (minPrecio ?minPrecio)
                             ;(minHabitaciones ?minHabitaciones)
                             (mascotas ?mascotas)
                             (movilidadReducida ?movilidadReducida))
   	=>
-    (bind ?lista_adecuados (find-all-instances ((?inst Viviendas))
+    (bind $?lista_adecuados (find-all-instances ((?inst Viviendas))
               (and
                   (<= ?inst:precioMensual ?maxPrecio)
                   (>= ?inst:precioMensual ?minPrecio)
                   ;(>= ?inst:numDormitorios ?minHabitaciones)
                   (or (eq ?mascotas FALSE) (eq ?inst:mascota TRUE))
                   (or (eq ?movilidadReducida FALSE) (eq ?inst:adaptadoMovilidadReducida TRUE))
-              )))
+    )))
+    
+    (retract ?hecho)
+    (modify ?vv (viviendas-viables $?lista_adecuados))
+    (assert (filtrar-preferencias-vivienda ask))
+)
+
+(defrule inferencia-datos::filtrado-carac-vivienda "Filtrar las viviendas que se ajusten a los requisitos esperados por las edades"
+    ?vv <- (viviendas-resultantes (viviendas-viables ?viviendas-viables))
+    ?hecho <- (filtrar-preferencias-vivienda ask)
+    ?u <- (preferencias (caracteristicas-vivienda ?caracteristicas-vivienda))
+    =>
+    (format t "length: %d" (length$ ?viviendas-viables))
+    (printout t crlf)
+    (bind $?lista_adecuados (create$ ))
+    (printout t "before loop")
+    (progn$ (?var ?viviendas-viables)
+        (bind ?check TRUE)
+        (printout t "in first loop")
+        (progn$ (?car ?caracteristicas-vivienda)
+            (printout t "in second loop")
+            (format t "get-%s" ?car)
+            (bind ?check-atrib (send ?var t))
+            (if (eq ?check-atrib FALSE)
+                then
+                    (bind ?check FALSE)
+            )
+        )
+        (if (eq ?check TRUE)
+            then
+                (bind $?lista_adecuados (insert$ $?lista_adecuados (+ (length$ $?lista_adecuados) 1) ?var))
+        )
+    )
+
     (if (eq (length$ ?lista_adecuados) 0)
         then
         (format t "No hay viviendas adecuadas para los criterios indicados")
@@ -803,4 +283,5 @@
                 ;(printout t ?var crlf)
             )
     )
+    (retract ?hecho)
 )
