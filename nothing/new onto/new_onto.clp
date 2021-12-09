@@ -465,6 +465,13 @@
     (export ?ALL)
 )
 
+;;; Módulo para la inferencia de datos
+(defmodule inferencia-datos
+	(import MAIN ?ALL)
+	(import preguntas-usuario ?ALL)
+	(export ?ALL)
+)
+
 ;;************************************************
 ;;**               DEFFUNCTIONS                 **
 ;;************************************************
@@ -565,6 +572,23 @@
     (focus preguntas-usuario)
 )
 
+(defmessage-handler MAIN::Viviendas imprimir ()
+    (format t "UBIACACIÓN: ")
+    (printout t crlf)
+    (send ?self:seEncuentraEn imprimir)
+)
+
+(defmessage-handler MAIN::Ubicacion imprimir ()
+    (format t "     %s" ?self:direccion)
+    (printout t crlf)
+    (format t "     %s, %s" ?self:barrio ?self:distrito)
+    (printout t crlf)
+    (format t "     COORD: (%f, " ?self:coordX)
+    (printout t)
+    (format t "%f)" ?self:coordX)
+    (printout t crlf)
+)
+
 ;;************************************************
 ;;**             PREGUNTAS USUARIO              **
 ;;************************************************
@@ -623,7 +647,6 @@
 
 (deffacts recopilacion-preferencias::hechos-iniciales "Establece hechos para poder ejecutar las reglas"
     (tipos-vivienda ask)
-    (caracteristicas-vivienda ask)
     (preferencias)
 )
 
@@ -648,37 +671,57 @@
       (modify ?pref (tipos-vivienda $?respuesta))
     )
     (retract ?hecho)
-    ;(focus inferencia-datos)
+    (assert (caracteristicas-vivienda ask))    
 )
 
 (defrule recopilacion-preferencias::establecer-preferencia-atributos-vivienda "Establecer preferencia de servicios de la vivienda"
     ?pref <- (preferencias)
     ?hecho <- (caracteristicas-vivienda ask)
+    ?p <- (slots-and-names (nombres $?nombres) (campos $?campos))
     =>
-    (bind ?e (pregunta-si-no "¿Está interesado en algún servicio de vivienda en concreto?"))
-    (if (eq ?e TRUE)
-        
+    (bind ?escogido (pregunta-multi "¿Qué características encuentra necesarias en una vivienda? " $?nombres))
+    (bind $?respuesta (create$ ))
+    (loop-for-count (?i 1 (length$ ?escogido)) do
+      (bind ?index (nth$ ?i ?escogido))
+      (bind ?slot-name (nth$ ?index $?campos))
+      (bind $?respuesta (insert$ $?respuesta (+ (length$ $?respuesta) 1) ?slot-name))
     )
+    (progn$ (?var $?respuesta))
+    (modify ?pref (caracteristicas-vivienda $?respuesta))
     (retract ?hecho)
+    (focus inferencia-datos)
 )
 
 ;;; Reglas del módulo INFERENCIA-DATOS
 
-;(defrule inferencia-datos::filtrar-viviendas "Filtrar las viviendas que se ajusten a los requisitos mínimos del usuario"
-;    ?u <- (pregunta-usuario (maxPrecio ?maxPrecio)
-;                            (minPrecio ?minPrecio)
-;                            (minHabitaciones ?minHabitaciones)
-;                            (mascotas ?mascotas)
-;                            (movilidadReducida ?movilidadReducida))
-;  	=>
-;    (bind ?lista_adecuados (find-all-instances ((?inst Viviendas))
-;              (and
-;                  (<= ?inst:precioMensual ?maxPrecio)
-;                  (>= ?inst:precioMensual ?minPrecio)
-;                  (>= ?inst:numDormitorios ?minHabitaciones)
-;                  (or (eq ?mascotas FALSE) (eq ?inst:mascota TRUE))
-;                  (or (eq ?movilidadReducida FALSE) (eq ?inst:adaptadoMovilidadReducida TRUE))
-;              )))
-;    (progn$ (?var ?lista_adecuados)
-;    (printout t ?var crlf))
-;)
+(defrule inferencia-datos::filtrar-viviendas "Filtrar las viviendas que se ajusten a los requisitos mínimos del usuario"
+    ?u <- (pregunta-usuario (maxPrecio ?maxPrecio)
+                            (minPrecio ?minPrecio)
+                            ;(minHabitaciones ?minHabitaciones)
+                            (mascotas ?mascotas)
+                            (movilidadReducida ?movilidadReducida))
+  	=>
+    (bind ?lista_adecuados (find-all-instances ((?inst Viviendas))
+              (and
+                  (<= ?inst:precioMensual ?maxPrecio)
+                  (>= ?inst:precioMensual ?minPrecio)
+                  ;(>= ?inst:numDormitorios ?minHabitaciones)
+                  (or (eq ?mascotas FALSE) (eq ?inst:mascota TRUE))
+                  (or (eq ?movilidadReducida FALSE) (eq ?inst:adaptadoMovilidadReducida TRUE))
+              )))
+    (if (eq (length$ ?lista_adecuados) 0)
+        then
+        (format t "No hay viviendas adecuadas para los criterios indicados")
+        (printout t crlf)
+
+        else
+            (bind ?i 0)
+            (progn$ (?var ?lista_adecuados)
+                (bind ?i(+ ?i 1))
+                (format t "Vivienda %d" ?i)
+                (printout t crlf)
+                (printout t (send ?var imprimir))
+                ;(printout t ?var crlf)
+            )
+    )
+)

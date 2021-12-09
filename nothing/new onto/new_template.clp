@@ -16,3 +16,8 @@
 	(multislot tipos-vivienda (type SYMBOL))
     (multislot caracteristicas-vivienda (type SYMBOL))
 )
+
+(deftemplate slots-and-names
+  (multislot nombres (type STRING))
+  (multislot campos (type SYMBOL))
+)
