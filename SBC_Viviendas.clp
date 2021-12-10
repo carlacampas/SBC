@@ -24,7 +24,7 @@
 ;;; Módulo para la inferencia de datos
 (defmodule inferencia-datos
 	(import MAIN ?ALL)
-	(import preguntas-usuario ?ALL)
+	;(import preguntas-usuario ?ALL)
 	(export ?ALL)
 )
 
@@ -108,6 +108,173 @@
     ?lista
 )
 
+(deffunction respecta-preferencias-caracteristicas (?inst $?car)
+    (bind ?b TRUE)
+    (progn$ (?c ?car)
+        (if (eq ?c amueblado)
+            then
+            (bind ?var (send ?inst get-amueblado))
+            (if (eq ?var FALSE)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c vistas)
+            then
+            (bind ?var (send ?inst get-vistas))
+            (if (eq ?var FALSE)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c vistasMar)
+            then
+            (bind ?var (send ?inst get-vistasMar))
+            (if (eq ?var FALSE)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c vistasMontaña)
+            then
+            (bind ?var (send ?inst get-vistasMontaña))
+            (if (eq ?var FALSE)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c balcon)
+            then
+            (bind ?var (send ?inst get-balcon))
+            (if (eq ?var FALSE)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c cocinaIntegrada)
+            then
+            (bind ?var (send ?inst get-cocinaIntegrada))
+            (if (eq ?var FALSE)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c sistemaAlarma)
+            then
+            (bind ?var (send ?inst get-sistemaAlarma))
+            (if (eq ?var FALSE)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c garaje)
+            then
+            (bind ?var (send ?inst get-garaje))
+            (if (eq ?var FALSE)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c jardin)
+            then
+            (bind ?var (send ?inst get-jardin))
+            (if (eq ?var FALSE)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c sotano)
+            then
+            (bind ?var (send ?inst get-sotano))
+            (if (eq ?var FALSE)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c aireAcondicionado)
+            then
+            (bind ?var (send ?inst get-aireAcondicionado))
+            (if (eq ?var FALSE)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c patio)
+            then
+            (bind ?var (send ?inst get-patio))
+            (if (eq ?var FALSE)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c terraza)
+            then
+            (bind ?var (send ?inst get-terraza))
+            (if (eq ?var FALSE)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c gimnasio)
+            then
+            (bind ?var (send ?inst get-gimnasio))
+            (if (eq ?var FALSE)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c primeraLineaDeMar)
+            then
+            (bind ?var (send ?inst get-primeraLineaDeMar))
+            (if (eq ?var FALSE)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c obraNueva)
+            then
+            (bind ?var (send ?inst get-obraNueva))
+            (if (eq ?var FALSE)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c pisicina)
+            then
+            (bind ?var (send ?inst get-pisicina))
+            (if (eq ?var FALSE)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c estudio)
+            then
+            (bind ?var (send ?inst get-estudio))
+            (if (eq ?var FALSE)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c calefaccion)
+            then
+            (bind ?var (send ?inst get-calefaccion))
+            (if (eq ?var FALSE)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c ascensor)
+            then
+            (bind ?var (send ?inst get-ascensor))
+            (if (eq ?var FALSE)
+                then
+                (bind ?b FALSE)
+            )
+        )
+    )
+    ?b
+)
+
 ;;************************************************
 ;;**             PREGUNTAS USUARIO              **
 ;;************************************************
@@ -164,6 +331,10 @@
     (focus recopilacion-preferencias)
 )
 
+
+;;************************************************
+;;**         RECOPILACION PREFERENCIAS          **
+;;************************************************
 (deffacts recopilacion-preferencias::hechos-iniciales "Establece hechos para poder ejecutar las reglas"
     (tipos-vivienda ask)
     (preferencias)
@@ -194,33 +365,36 @@
 )
 
 (defrule recopilacion-preferencias::establecer-preferencia-atributos-vivienda "Establecer preferencia de servicios de la vivienda"
-    ?pref <- (preferencias)
     ?hecho <- (caracteristicas-vivienda ask)
+    ?pref <- (preferencias)
     ?p <- (slots-and-names (nombres $?nombres) (campos $?campos))
     =>
-    (bind ?escogido (pregunta-multi "¿Qué características encuentra necesarias en una vivienda? " $?nombres))
+    (bind ?escogido (pregunta-multi "¿Qué características encuentra necesarias en una vivienda? (0 si no tiene preferencias) " $?nombres))
     (bind $?respuesta (create$ ))
     (loop-for-count (?i 1 (length$ ?escogido)) do
       (bind ?index (nth$ ?i ?escogido))
-      (bind ?slot-name (nth$ ?index $?campos))
-      (bind $?respuesta (insert$ $?respuesta (+ (length$ $?respuesta) 1) ?slot-name))
+      (if (> ?index 0)
+        then
+        (bind ?slot-name (nth$ ?index $?campos))
+        (bind $?respuesta (insert$ $?respuesta (+ (length$ $?respuesta) 1) ?slot-name))
+      )
     )
-    (progn$ (?var $?respuesta))
-    (modify ?pref (caracteristicas-vivienda $?respuesta))
     (retract ?hecho)
+    (modify ?pref (caracteristicas-vivienda ?respuesta))
     (focus inferencia-datos)
 )
+;;************************************************
+;;**               PROCESAR DATOS               **
+;;************************************************
 
-;;; Reglas del módulo INFERENCIA-DATOS
-(deffacts inferencia-datos::hechos-iniciales "Establece hechos para poder ejecutar las reglas"
-    (filtrar-min ask)
-    (viviendas-resultantes)
-)
+;;************************************************
+;;**             INFERENCIA DATOS              **
+;;************************************************
 
 (defrule inferencia-datos::filtrado-min "Filtrar las viviendas que se ajusten a los requisitos mínimos del usuario"
-    ?hecho <- (filtrar-min ask)
-    ?vv <- (viviendas-resultantes)
-    ;?lista_no_adecuados <- (viviendasInviables)
+    ;?hecho <- (vivienda-viables ask)
+    ;?vv <- (viviendas-usuario)
+    (preferencias (caracteristicas-vivienda $?caracteristicas-vivienda))
     ?u <- (pregunta-usuario (maxPrecio ?maxPrecio)
                             (minPrecio ?minPrecio)
                             ;(minHabitaciones ?minHabitaciones)
@@ -234,39 +408,9 @@
                   ;(>= ?inst:numDormitorios ?minHabitaciones)
                   (or (eq ?mascotas FALSE) (eq ?inst:mascota TRUE))
                   (or (eq ?movilidadReducida FALSE) (eq ?inst:adaptadoMovilidadReducida TRUE))
-    )))
-    
-    (retract ?hecho)
-    (modify ?vv (viviendas-viables $?lista_adecuados))
-    (assert (filtrar-preferencias-vivienda ask))
-)
-
-(defrule inferencia-datos::filtrado-carac-vivienda "Filtrar las viviendas que se ajusten a los requisitos esperados por las edades"
-    ?vv <- (viviendas-resultantes (viviendas-viables ?viviendas-viables))
-    ?hecho <- (filtrar-preferencias-vivienda ask)
-    ?u <- (preferencias (caracteristicas-vivienda ?caracteristicas-vivienda))
-    =>
-    (format t "length: %d" (length$ ?viviendas-viables))
-    (printout t crlf)
-    (bind $?lista_adecuados (create$ ))
-    (printout t "before loop")
-    (progn$ (?var ?viviendas-viables)
-        (bind ?check TRUE)
-        (printout t "in first loop")
-        (progn$ (?car ?caracteristicas-vivienda)
-            (printout t "in second loop")
-            (format t "get-%s" ?car)
-            (bind ?check-atrib (send ?var t))
-            (if (eq ?check-atrib FALSE)
-                then
-                    (bind ?check FALSE)
-            )
-        )
-        (if (eq ?check TRUE)
-            then
-                (bind $?lista_adecuados (insert$ $?lista_adecuados (+ (length$ $?lista_adecuados) 1) ?var))
-        )
-    )
+                  (eq (respecta-preferencias-caracteristicas ?inst $?caracteristicas-vivienda) TRUE)
+                )
+    ))
 
     (if (eq (length$ ?lista_adecuados) 0)
         then
@@ -283,5 +427,7 @@
                 ;(printout t ?var crlf)
             )
     )
-    (retract ?hecho)
+
+    ;(retract ?hecho)
+    ;(assert (viviendas-preferidas ask))
 )
