@@ -1,0 +1,8 @@
+Este prototipo genera una solucion a partir de:
+    - rango de precio del usuario
+    - requerimientos de movilidad
+    - mascotas
+    - preferencias de caracteristicas de la vivienda
+
+Este prototipo unicamente genera soluciones de viviendas ideales para el usuario. 
+Si una vivienda no es acorde con todos los criterios que el usuario pide, esta no se mostrara por pantalla.
