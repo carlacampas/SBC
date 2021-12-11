@@ -26,3 +26,23 @@
   (multislot nombres (type STRING))
   (multislot campos (type SYMBOL))
 )
+
+(deftemplate MAIN::determinacion-edades 
+  (slot bebe (type SYMBOL))
+  (slot pequeno (type SYMBOL))
+  (slot adolescente (type SYMBOL))
+  (slot universitario (type SYMBOL)) 
+  (slot familia (type SYMBOL))
+  (slot jubilado (type SYMBOL))
+  (slot individual (type SYMBOL)) 
+  (slot grupo (type SYMBOL)) ;
+)
+
+;; PEQUEÑO: (< 3 -> TODDLER, > 3, < 12 PEQUEÑO)
+;; ADOLESCENTE: > 12, > 18
+;; ESTUDIANTE: TODOS ENTRE 18 Y 30
+;; FAMILIA: NIÑOS Y ADULTOS
+;; JUBILADO: > 70
+;; GRUPO: DETERMINADO POR TODAS LAS EDADES DEL MISMO RANGO
+;; un universitario sera un individual entre las edades de 18 y 25
+;; un grupo de estudiantes, sera un grupo

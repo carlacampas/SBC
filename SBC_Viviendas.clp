@@ -21,10 +21,15 @@
     (export ?ALL)
 )
 
+(defmodule preproceso-datos
+    (import MAIN ?ALL)
+    (export ?ALL)
+)
+
 ;;; Módulo para la inferencia de datos
 (defmodule inferencia-datos
 	(import MAIN ?ALL)
-	;(import preguntas-usuario ?ALL)
+    ;(import preguntas-usuario ?ALL)
 	(export ?ALL)
 )
 
@@ -330,7 +335,6 @@
     (focus recopilacion-preferencias)
 )
 
-
 ;;************************************************
 ;;**         RECOPILACION PREFERENCIAS          **
 ;;************************************************
@@ -380,12 +384,156 @@
     )
     (retract ?hecho)
     (modify ?pref (caracteristicas-vivienda ?respuesta))
-    (focus inferencia-datos)
+    (focus preproceso-datos)
 )
 ;;************************************************
 ;;**               PROCESAR DATOS               **
 ;;************************************************
+(deffacts preproceso-datos::hechos-iniciales "Establece hechos para poder ejecutar las reglas"
+    (procesar-edades ask)
+    (determinacion-edades)
+)
 
+(defrule preproceso-datos::determinar-personas-edades "Establecer si las edades son correctas"
+    (pregunta-usuario (edades $?edades))
+    ;?val <- (determinacion-edades)
+    ?hecho <- (procesar-edades ask)
+    ?val <- (determinacion-edades (bebe ?bebe) (pequeno ?pequeno) (adolescente ?adolescente) (universitario ?universitario)
+                            (familia ?familia) (jubilado ?jubilado) (individual ?individual) (grupo ?grupo))
+    =>
+    ; inicialización de datos 
+    (bind ?bebe FALSE)
+    (bind ?pequeno FALSE)
+    (bind ?adolescente FALSE)
+    (bind ?universitario FALSE)
+    (bind ?familia FALSE)
+    (bind ?jubilado FALSE)
+    (bind ?individual FALSE)
+    (bind ?grupo TRUE)
+    ;(modify ?val (bebe FALSE))
+    ;(modify ?val (pequeno FALSE))
+    ;(modify ?val (adolescente FALSE))
+    ;(modify ?val (universitario FALSE))
+    ;(modify ?val (familia FALSE))
+    ;(modify ?val (jubilado FALSE))
+    ;(modify ?val (individual FALSE))
+    ;(modify ?val (grupo TRUE))
+
+    (printout t "here" crlf)
+    ; comprobar que haya un adulto, si no hay adulto no se puede pedir vivienda
+    (bind ?hay-adultos FALSE)
+    (bind ?first-age -1)
+
+    (progn$ (?edad ?edades)
+        (if (>= ?edad 18)
+            then
+            (bind ?hay-adultos TRUE)
+            (if (>= ?edad 70)
+                then
+                (bind ?jubilado TRUE)
+                ;(modify ?val (jubilado TRUE))
+            )
+            
+            else (if (<= ?edad 2)
+                    then 
+                    (bind ?bebe TRUE)
+                    (bind ?familia TRUE)
+                    ;(modify ?val (bebe TRUE))
+                    ;(modify ?val (familia TRUE))
+
+                    else (if (<= ?edad 12)
+                        then
+                        (bind ?pequeno TRUE)
+                        (bind ?familia TRUE)
+                        ;(modify ?val (pequeno TRUE))
+                        ;(modify ?val (familia TRUE))
+
+                        else 
+                        (bind ?adolescente TRUE)
+                        (bind ?familia TRUE)
+                        ;(modify ?val (adolescente TRUE))
+                        ;(modify ?val (familia TRUE))
+                    )
+
+                )
+        )
+
+        (if (eq ?first-age -1)
+            then
+            (bind ?first-age ?edad)
+
+            else
+                ;si todos los miembros de la vivienda tienen edades +/- 10 se consideraran un grupo
+                (if (> (abs (- ?edad ?first-age)) 10)
+                    then
+                    (bind ?grupo FALSE)
+                    (bind ?familia TRUE)
+                    ;(modify ?val (grupo FALSE))
+                    ;(modify ?val (familia TRUE))
+                )
+        )
+
+        (if (eq (length$ ?edades) 1)
+            then
+            (bind ?grupo FALSE)
+            ;(modify ?val (grupo FALSE))
+            (bind ?ed (nth$ 1 ?edades))
+            (if (<= ?ed 25)
+                then
+                    (bind ?universitario TRUE)
+                    ;(modify ?val (universitario TRUE))
+                else
+                    (bind ?individual TRUE)
+                    ;(modify ?val (individual TRUE))
+            )
+        )
+    )
+
+    (retract ?hecho)
+    (modify ?val (bebe ?bebe))
+    (modify ?val (pequeno ?pequeno))
+    (modify ?val (adolescente ?adolescente))
+    (modify ?val (universitario ?universitario))
+    (modify ?val (familia ?familia))
+    (modify ?val (jubilado ?jubilado))
+    (modify ?val (individual ?individual))
+    (modify ?val (grupo ?grupo))
+
+    (if (eq ?hay-adultos TRUE)
+        then
+        (printout t "Tiene que haber almenos una persona con más de 18 años para poder buscar vivienda." crlf)
+        (printout t crlf)
+
+        else
+        ;(focus inferencia-datos)
+    )
+    (assert (pr-info-extraida ask))
+)
+
+(defrule preproceso-datos::comprobar "Combrobar que información extraida sea correcta"
+    ?hecho <- (pr-info-extraida ask)
+    (determinacion-edades (bebe ?bebe) (pequeno ?pequeno) (adolescente ?adolescente) (universitario ?universitario)
+                            (familia ?familia) (jubilado ?jubilado) (individual ?individual) (grupo ?grupo))
+    =>
+    (format t "bebe: %s" ?bebe)
+    (printout t crlf)
+    (format t "pequeño: %s" ?pequeno)
+    (printout t crlf)
+    (format t "adolescente: %s" ?adolescente)
+    (printout t crlf)
+    (format t "universitario: %s" ?universitario)
+    (printout t crlf)
+    (format t "familia: %s" ?familia)
+    (printout t crlf)
+    (format t "jubilado: %s" ?jubilado)
+    (printout t crlf)
+    (format t "individual: %s" ?individual)
+    (printout t crlf)
+    (format t "grupo: %s" ?grupo)
+    (printout t crlf)
+    (retract ?hecho)
+    (focus inferencia-datos)
+)
 ;;************************************************
 ;;**             INFERENCIA DATOS              **
 ;;************************************************
@@ -450,3 +598,8 @@
     ;(retract ?hecho)
     ;(assert (viviendas-preferidas ask))
 )
+
+;; FALTA POR HACER
+;; PREPROCESO DE DATOS
+;; DE LAS EDADES INTUIR QUE SERVICIOS DE CIUDAD O DE VIVIENDA LE SON FAVORABLES Y AÑADIR ESTOS
+
