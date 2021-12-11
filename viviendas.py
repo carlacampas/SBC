@@ -940,9 +940,11 @@ for d in districtes:
                 plazas = randrange(3)
 
             sH = randrange(150) + 10
+            tr = randrange(20) + sH
             max = math.floor(sH/20)
             dorm = dormDoble = banosEnteros = 1
             dormSimple = banosMedios = 0
+            vivType = tipos[randrange(len(tipos))]
             if max > 0:
                 dorm = randrange(max)
             
@@ -952,8 +954,11 @@ for d in districtes:
 
                 banosEnteros = randrange (dorm - 1) + 1
                 banosMedios = randrange (banosEnteros)
+            
+            if vivType == "Casa_Independiente" or vivType == "Chalet" or vivType == "Duplex":
+                tr += randrange(200)
 
-            viv = ("([vivienda" + str(i) + "] of " + tipos[randrange(len(tipos))] + "\n" +
+            viv = ("([vivienda" + str(i) + "] of " + vivType + "\n" +
             "   (seEncuentraEn [ubicacionVivienda" + str(i) + "])\n" +
             "   (altura " + str(randrange(200) + 200) + ")\n" +
             "   (amueblado " + bools[randrange(len(bools))] + ")\n" +
@@ -980,6 +985,7 @@ for d in districtes:
             "   (piscina " + bools[randrange(len(bools))] + ")\n" +
             "   (planta " + str(randrange(6) + 1) + ")\n" +
             "   (superficieHabitable " + str(sH) + ")\n" +
+            "   (terreno " + str(tr) + ")\n" +
             "   (numDormitorios " + str(dorm) + ")\n" +#change
             "   (numDormitoriosSimples " + str(dormSimple) + ")\n" +#change
             "   (numDormitoriosDobles " + str(dormDoble) + ")\n" +#change
@@ -989,35 +995,37 @@ for d in districtes:
             "   (adaptadoMovilidadReducida " + bools[randrange(len(bools))] + ")\n" +
             "   (calefaccion " + bools[randrange(len(bools))] + ")\n" +
             "   (ascensor " + bools[randrange(len(bools))] + ")\n" +
+            "   (pistaTenis " + bools[randrange(len(bools))] + ")\n)" +
             "   (añoConstruccion " + str(randrange(221) + 1800) + ")\n" +
-            "   (distMinAeropuerto " + str(randrange(30) + 1) + ")\n" +
-            "   (distMinBar " + str(randrange(5)) + ")\n" +
-            "   (distMinBus " + str(randrange(7)) + ")\n" +
-            "   (distMinCafeteria " + str(randrange(5)) + ")\n" +
-            "   (distMinCentroComercial " + str(randrange(10) + 1) + ")\n" +
-            "   (distMinCentroDia " + str(randrange(5)) + ")\n" +
-            "   (distMinCine " + str(randrange(10)) + ")\n" +
-            "   (distMinClubNoct " + str(randrange(10)) + ")\n" +
-            "   (distMinEscuela " + str(randrange(7)) + ")\n" +
-            "   (distMinGeriatrico " + str(randrange(10)) + ")\n" +
-            "   (distMinGrandesAlm " + str(randrange(20)) + ")\n" +
-            "   (distMinHospital " + str(randrange(10)) + ")\n" +
-            "   (distMinInstituto " + str(randrange(10)) + ")\n" +
-            "   (distMinJardin " + str(randrange(20)) + ")\n" +
-            "   (distMinMercado " + str(randrange(20)) + ")\n" +
-            "   (distMinMetro " + str(randrange(10)) + ")\n" +
-            "   (distMinMuseo " + str(randrange(20)) + ")\n" +
-            "   (distMinPabellon " + str(randrange(7)) + ")\n" +
-            "   (distMinParque " + str(randrange(5)) + ")\n" +
-            "   (distMinPlaya " + str(randrange(30)) + ")\n" +
-            "   (distMinPlaza " + str(randrange(10)) + ")\n" +
-            "   (distMinRestaurante " + str(randrange(7)) + ")\n" +
-            "   (distMinRocodromo " + str(randrange(30)) + ")\n" +
-            "   (distMinSupermercado " + str(randrange(7)) + ")\n" +
-            "   (distMinTeatro " + str(randrange(20)) + ")\n" +
-            "   (distMinTram " + str(randrange(20)) + ")\n" +
-            "   (distMinTren " + str(randrange(10)) + ")\n" +
-            "   (distMinUniversidad " + str(randrange(30)) + ")\n" +
+            "   (distMinAeropuerto " + str(randrange(15000) + 1) + ")\n" +
+            "   (distMinBar " + str(randrange(2000)) + ")\n" +
+            "   (distMinBus " + str(randrange(1500)) + ")\n" +
+            "   (distMinCafeteria " + str(randrange(2000)) + ")\n" +
+            "   (distMinCentroComercial " + str(randrange(5000) + 1) + ")\n" +
+            "   (distMinCentroDia " + str(randrange(5000)) + ")\n" +
+            "   (distMinCine " + str(randrange(5000)) + ")\n" +
+            "   (distMinClubNoct " + str(randrange(5000)) + ")\n" +
+            "   (distMinEscuela " + str(randrange(5000)) + ")\n" +
+            "   (distMinGeriatrico " + str(randrange(5000)) + ")\n" +
+            "   (distMinGrandesAlm " + str(randrange(10000)) + ")\n" +
+            "   (distMinGuarderia " + str(randrange(5000))"
+            "   (distMinHospital " + str(randrange(5000)) + ")\n" +
+            "   (distMinInstituto " + str(randrange(5000)) + ")\n" +
+            "   (distMinJardin " + str(randrange(10000)) + ")\n" +
+            "   (distMinMercado " + str(randrange(5000)) + ")\n" +
+            "   (distMinMetro " + str(randrange(1500)) + ")\n" +
+            "   (distMinMuseo " + str(randrange(5000)) + ")\n" +
+            "   (distMinPabellon " + str(randrange(15000)) + ")\n" +
+            "   (distMinParque " + str(randrange(5000)) + ")\n" +
+            "   (distMinPlaya " + str(randrange(10000)) + ")\n" +
+            "   (distMinPlaza " + str(randrange(2000)) + ")\n" +
+            "   (distMinRestaurante " + str(randrange(2000)) + ")\n" +
+            "   (distMinRocodromo " + str(randrange(5000)) + ")\n" +
+            "   (distMinSupermercado " + str(randrange(2000)) + ")\n" +
+            "   (distMinTeatro " + str(randrange(5000)) + ")\n" +
+            "   (distMinTram " + str(randrange(1500)) + ")\n" +
+            "   (distMinTren " + str(randrange(3000)) + ")\n" +
+            "   (distMinUniversidad " + str(randrange(5000)) + ")\n" +
             ")\n")
 
             f.write(viv)
