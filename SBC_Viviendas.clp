@@ -398,8 +398,7 @@
     (pregunta-usuario (edades $?edades))
     ;?val <- (determinacion-edades)
     ?hecho <- (procesar-edades ask)
-    ?val <- (determinacion-edades (bebe ?bebe) (pequeno ?pequeno) (adolescente ?adolescente) (universitario ?universitario)
-                            (familia ?familia) (jubilado ?jubilado) (individual ?individual) (grupo ?grupo))
+    ?val <- (determinacion-edades)
     =>
     ; inicialización de datos 
     (bind ?bebe FALSE)
@@ -410,14 +409,6 @@
     (bind ?jubilado FALSE)
     (bind ?individual FALSE)
     (bind ?grupo TRUE)
-    ;(modify ?val (bebe FALSE))
-    ;(modify ?val (pequeno FALSE))
-    ;(modify ?val (adolescente FALSE))
-    ;(modify ?val (universitario FALSE))
-    ;(modify ?val (familia FALSE))
-    ;(modify ?val (jubilado FALSE))
-    ;(modify ?val (individual FALSE))
-    ;(modify ?val (grupo TRUE))
 
     (printout t "here" crlf)
     ; comprobar que haya un adulto, si no hay adulto no se puede pedir vivienda
@@ -431,28 +422,21 @@
             (if (>= ?edad 70)
                 then
                 (bind ?jubilado TRUE)
-                ;(modify ?val (jubilado TRUE))
             )
             
             else (if (<= ?edad 2)
                     then 
                     (bind ?bebe TRUE)
                     (bind ?familia TRUE)
-                    ;(modify ?val (bebe TRUE))
-                    ;(modify ?val (familia TRUE))
 
                     else (if (<= ?edad 12)
                         then
                         (bind ?pequeno TRUE)
                         (bind ?familia TRUE)
-                        ;(modify ?val (pequeno TRUE))
-                        ;(modify ?val (familia TRUE))
 
                         else 
                         (bind ?adolescente TRUE)
                         (bind ?familia TRUE)
-                        ;(modify ?val (adolescente TRUE))
-                        ;(modify ?val (familia TRUE))
                     )
 
                 )
@@ -490,30 +474,25 @@
     )
 
     (retract ?hecho)
-    (modify ?val (bebe ?bebe))
-    (modify ?val (pequeno ?pequeno))
-    (modify ?val (adolescente ?adolescente))
-    (modify ?val (universitario ?universitario))
-    (modify ?val (familia ?familia))
-    (modify ?val (jubilado ?jubilado))
-    (modify ?val (individual ?individual))
-    (modify ?val (grupo ?grupo))
-
-    (if (eq ?hay-adultos TRUE)
-        then
-        (printout t "Tiene que haber almenos una persona con más de 18 años para poder buscar vivienda." crlf)
-        (printout t crlf)
-
-        else
-        ;(focus inferencia-datos)
+    (modify ?val (bebe ?bebe)
+            (pequeno ?pequeno)
+            (adolescente ?adolescente)
+            (universitario ?universitario)
+            (familia ?familia)
+            (jubilado ?jubilado)
+            (individual ?individual)
+            (grupo ?grupo)
+            (hay-adultos ?hay-adultos)
     )
+
     (assert (pr-info-extraida ask))
 )
 
 (defrule preproceso-datos::comprobar "Combrobar que información extraida sea correcta"
     ?hecho <- (pr-info-extraida ask)
     (determinacion-edades (bebe ?bebe) (pequeno ?pequeno) (adolescente ?adolescente) (universitario ?universitario)
-                            (familia ?familia) (jubilado ?jubilado) (individual ?individual) (grupo ?grupo))
+                            (familia ?familia) (jubilado ?jubilado) (individual ?individual) (grupo ?grupo)
+                            (hay-adultos ?hay-adultos))
     =>
     (format t "bebe: %s" ?bebe)
     (printout t crlf)
@@ -530,6 +509,8 @@
     (format t "individual: %s" ?individual)
     (printout t crlf)
     (format t "grupo: %s" ?grupo)
+    (printout t crlf)
+    (format t "hay-adultos: %s" ?hay-adultos)
     (printout t crlf)
     (retract ?hecho)
     (focus inferencia-datos)

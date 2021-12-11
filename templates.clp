@@ -15,6 +15,7 @@
 (deftemplate MAIN::preferencias
 	(multislot tipos-vivienda (type SYMBOL))
   (multislot caracteristicas-vivienda (type SYMBOL))
+  (multislot caracteristicas-ciudad (type SYMBOL))
 )
 
 (deftemplate MAIN::viviendas-usuario 
@@ -35,7 +36,8 @@
   (slot familia (type SYMBOL))
   (slot jubilado (type SYMBOL))
   (slot individual (type SYMBOL)) 
-  (slot grupo (type SYMBOL)) ;
+  (slot grupo (type SYMBOL))
+  (slot hay-adultos (type SYMBOL))
 )
 
 ;; PEQUEÑO: (< 3 -> TODDLER, > 3, < 12 PEQUEÑO)
