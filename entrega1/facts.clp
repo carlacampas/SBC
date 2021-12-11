@@ -43,7 +43,6 @@
       estudio
       calefaccion
       ascensor
-
     )
   )
 )

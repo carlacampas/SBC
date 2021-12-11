@@ -14,7 +14,12 @@
 
 (deftemplate MAIN::preferencias
 	(multislot tipos-vivienda (type SYMBOL))
-    (multislot caracteristicas-vivienda (type SYMBOL))
+  (multislot caracteristicas-vivienda (type SYMBOL))
+)
+
+(deftemplate MAIN::viviendas-usuario 
+  (multislot vivienda-viables (type INSTANCE))
+  (multislot viviendas-preferidas (type INSTANCE))
 )
 
 (deftemplate slots-and-names
