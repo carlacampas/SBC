@@ -113,7 +113,7 @@
     ?lista
 )
 
-(deffunction respecta-preferencias-caracteristicas (?inst $?car)
+(deffunction respecta-preferencias-vivienda (?inst $?car)
     (bind ?b TRUE)
     (progn$ (?c ?car)
         (if (eq ?c amueblado)
@@ -272,6 +272,237 @@
             then
             (bind ?var (send ?inst get-ascensor))
             (if (eq ?var FALSE)
+                then
+                (bind ?b FALSE)
+            )
+        )
+    )
+    ?b
+)
+
+(deffunction respecta-preferencias-ciudad (?inst $?car)
+    (bind ?b TRUE)
+    (progn$ (?c ?car)
+        (if (eq ?c aeropuerto)
+            then
+            (bind ?var (send ?inst get-distMinAeropuerto))
+            (if (eq ?var FALSE)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c bar)
+            then
+            (bind ?var (send ?inst get-distMinBar))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c bus)
+            then
+            (bind ?var (send ?inst get-distMinBus))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c cafeteria)
+            then
+            (bind ?var (send ?inst get-distMinCafeteria))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c centroComercial)
+            then
+            (bind ?var (send ?inst get-distMinCentroComercial))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c centroDia)
+            then
+            (bind ?var (send ?inst get-distMinCentroDia))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c cine)
+            then
+            (bind ?var (send ?inst get-distMinCine))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c clubNoct)
+            then
+            (bind ?var (send ?inst get-distMinClubNoct))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c escuela)
+            then
+            (bind ?var (send ?inst get-distMinEscuela))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c geriatrico)
+            then
+            (bind ?var (send ?inst get-distMinGeriatrico))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c grandesAlm)
+            then
+            (bind ?var (send ?inst get-distMinGrandesAlm))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c hospital)
+            then
+            (bind ?var (send ?inst get-distMinHospital))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c instituto)
+            then
+            (bind ?var (send ?inst get-distMinInstituto))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c jardin)
+            then
+            (bind ?var (send ?inst get-distMinJardin))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c mercado)
+            then
+            (bind ?var (send ?inst get-distMinMercado))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c metro)
+            then
+            (bind ?var (send ?inst get-distMinMetro))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c museo)
+            then
+            (bind ?var (send ?inst get-distMinMuseo))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c pabellon)
+            then
+            (bind ?var (send ?inst get-distMinPabellon))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c parque)
+            then
+            (bind ?var (send ?inst get-distMinParque))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c playa)
+            then
+            (bind ?var (send ?inst get-distMinPlaya))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c plaza)
+            then
+            (bind ?var (send ?inst get-distMinPlaza))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c restaurante)
+            then
+            (bind ?var (send ?inst get-distMinRestaurante))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c rocordromo)
+            then
+            (bind ?var (send ?inst get-distMinRocodromo))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c supermercado)
+            then
+            (bind ?var (send ?inst get-distMinSupermercado))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c teatro)
+            then
+            (bind ?var (send ?inst get-distMinTeatro))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c tram)
+            then
+            (bind ?var (send ?inst get-distMinTram))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c tren)
+            then
+            (bind ?var (send ?inst get-distMinTren))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c universidad)
+            then
+            (bind ?var (send ?inst get-distMinUniversidad))
+            (if (> ?var 3000)
                 then
                 (bind ?b FALSE)
             )
@@ -527,7 +758,7 @@
 (defrule inferencia-datos::filtrado-min "Filtrar las viviendas que se ajusten a los requisitos mínimos del usuario"
     ;?hecho <- (vivienda-viables ask)
     ;?vv <- (viviendas-usuario)
-    (preferencias (caracteristicas-vivienda $?caracteristicas-vivienda)
+    (preferencias (caracteristicas-vivienda $?caracteristicas-vivienda) (caracteristicas-ciudad $?caracteristicas-ciudad)
                     (tipos-vivienda $?tipos-vivienda))
     ?u <- (pregunta-usuario (maxPrecio ?maxPrecio)
                             (minPrecio ?minPrecio)
@@ -545,7 +776,8 @@
                 ;(>= ?inst:numDormitorios ?minHabitaciones)
                 (or (eq ?mascotas FALSE) (eq ?inst:mascota TRUE))
                 (or (eq ?movilidadReducida FALSE) (eq ?inst:adaptadoMovilidadReducida TRUE))
-                (eq (respecta-preferencias-caracteristicas ?inst $?caracteristicas-vivienda) TRUE)
+                (eq (respecta-preferencias-vivienda ?inst $?caracteristicas-vivienda) TRUE)
+                (eq (respecta-preferencias-ciudad ?inst $?caracteristicas-ciudad) TRUE)
             )
         ))
         else
@@ -557,7 +789,8 @@
                     ;(>= ?inst:numDormitorios ?minHabitaciones)
                     (or (eq ?mascotas FALSE) (eq ?inst:mascota TRUE))
                     (or (eq ?movilidadReducida FALSE) (eq ?inst:adaptadoMovilidadReducida TRUE))
-                    (eq (respecta-preferencias-caracteristicas ?inst $?caracteristicas-vivienda) TRUE)
+                    (eq (respecta-preferencias-vivienda ?inst $?caracteristicas-vivienda) TRUE)
+                    (eq (respecta-preferencias-ciudad ?inst $?caracteristicas-ciudad) TRUE)
                     )
             ))
             (bind $?lista_adecuados (insert$ $?lista_adecuados (+ (length$ $?lista_adecuados) 1) $?lista))
