@@ -98,6 +98,10 @@
         (type SYMBOL)
         (create-accessor read-write)
         (default FALSE))
+    (single-slot pistaTenis
+        (type SYMBOL)
+        (create-accessor read-write)
+        (default FALSE))
     (single-slot añoConstruccion
         (type INTEGER)
         (create-accessor read-write)
@@ -107,6 +111,10 @@
         (create-accessor read-write)
         (default 1))
     (single-slot superficieHabitable
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0))
+    (single-slot terreno
         (type INTEGER)
         (create-accessor read-write)
         (default 0))
@@ -187,6 +195,10 @@
         (create-accessor read-write)
         (default 0))
     (single-slot distMinGrandesAlm
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0))
+    (single-slot distMinGuarderia
         (type INTEGER)
         (create-accessor read-write)
         (default 0))
