@@ -1,3 +1,5 @@
+# -*- coding: latin-1 -*-
+
 from random import randrange
 import math
 
@@ -995,7 +997,7 @@ for d in districtes:
             "   (adaptadoMovilidadReducida " + bools[randrange(len(bools))] + ")\n" +
             "   (calefaccion " + bools[randrange(len(bools))] + ")\n" +
             "   (ascensor " + bools[randrange(len(bools))] + ")\n" +
-            "   (pistaTenis " + bools[randrange(len(bools))] + ")\n)" +
+            "   (pistaTenis " + bools[randrange(len(bools))] + ")\n" +
             "   (añoConstruccion " + str(randrange(221) + 1800) + ")\n" +
             "   (distMinAeropuerto " + str(randrange(15000) + 1) + ")\n" +
             "   (distMinBar " + str(randrange(2000)) + ")\n" +

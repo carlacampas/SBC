@@ -4,7 +4,6 @@
 (load facts.clp)
 (load classes.clp)
 (load imprimir.clp)
-(load imprimir.clp)
 (load instances.clp)
 (load SBC_Viviendas.clp)
 (reset)
