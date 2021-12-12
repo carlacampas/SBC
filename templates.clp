@@ -24,20 +24,21 @@
 )
 
 (deftemplate slots-and-names
-  (multislot nombres (type STRING))
-  (multislot campos (type SYMBOL))
+  (multislot nombres-vivienda (type STRING))
+  (multislot campos-vivienda (type SYMBOL))
+  (multislot nombres-ciudad (type STRING))
+  (multislot campos-ciudad (type SYMBOL))
 )
 
 (deftemplate MAIN::determinacion-edades 
-  (slot bebe (type SYMBOL))
-  (slot pequeno (type SYMBOL))
-  (slot adolescente (type SYMBOL))
-  (slot universitario (type SYMBOL)) 
+  (slot bebe (type INTEGER))
+  (slot pequeno (type INTEGER))
+  (slot adolescente (type INTEGER))
+  (slot universitario (type INTEGER)) 
+  (slot adultos (type INTEGER)) 
   (slot familia (type SYMBOL))
-  (slot jubilado (type SYMBOL))
-  (slot individual (type SYMBOL)) 
+  (slot jubilado (type INTEGER))
   (slot grupo (type SYMBOL))
-  (slot hay-adultos (type SYMBOL))
 )
 
 ;; PEQUEÑO: (< 3 -> TODDLER, > 3, < 12 PEQUEÑO)

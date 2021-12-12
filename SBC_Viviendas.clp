@@ -370,20 +370,40 @@
 (defrule recopilacion-preferencias::establecer-preferencia-atributos-vivienda "Establecer preferencia de servicios de la vivienda"
     ?hecho <- (caracteristicas-vivienda ask)
     ?pref <- (preferencias)
-    ?p <- (slots-and-names (nombres $?nombres) (campos $?campos))
+    ?p <- (slots-and-names (nombres-vivienda $?nombres-vivienda) (campos-vivienda $?campos-vivienda))
     =>
-    (bind ?escogido (pregunta-multi "¿Qué características encuentra necesarias en una vivienda? (0 si no tiene preferencias) " $?nombres))
+    (bind ?escogido (pregunta-multi "¿Qué características encuentra necesarias en una vivienda? (0 si no tiene preferencias) " $?nombres-vivienda))
     (bind $?respuesta (create$ ))
     (loop-for-count (?i 1 (length$ ?escogido)) do
       (bind ?index (nth$ ?i ?escogido))
       (if (> ?index 0)
         then
-        (bind ?slot-name (nth$ ?index $?campos))
+        (bind ?slot-name (nth$ ?index $?campos-vivienda))
         (bind $?respuesta (insert$ $?respuesta (+ (length$ $?respuesta) 1) ?slot-name))
       )
     )
     (retract ?hecho)
     (modify ?pref (caracteristicas-vivienda ?respuesta))
+    (assert (caracteristicas-ciudad ask))
+)
+
+(defrule recopilacion-preferencias::establecer-preferencia-atributos-ciudad "Establecer preferencia de servicios de la ciudad"
+    ?hecho <- (caracteristicas-ciudad ask)
+    ?pref <- (preferencias)
+    ?p <- (slots-and-names (nombres-ciudad $?nombres-ciudad) (campos-ciudad $?campos-ciudad))
+    =>
+    (bind ?escogido (pregunta-multi "¿Qué servicios preferiria cercanos a su vivienda? (0 si no tiene preferencias) " $?nombres-ciudad))
+    (bind $?respuesta (create$ ))
+    (loop-for-count (?i 1 (length$ ?escogido)) do
+      (bind ?index (nth$ ?i ?escogido))
+      (if (> ?index 0)
+        then
+        (bind ?slot-name (nth$ ?index $?campos-ciudad))
+        (bind $?respuesta (insert$ $?respuesta (+ (length$ $?respuesta) 1) ?slot-name))
+      )
+    )
+    (retract ?hecho)
+    (modify ?pref (caracteristicas-ciudad ?respuesta))
     (focus preproceso-datos)
 )
 ;;************************************************
@@ -401,41 +421,46 @@
     ?val <- (determinacion-edades)
     =>
     ; inicialización de datos 
-    (bind ?bebe FALSE)
-    (bind ?pequeno FALSE)
-    (bind ?adolescente FALSE)
-    (bind ?universitario FALSE)
+    (bind ?bebe 0)
+    (bind ?pequeno 0)
+    (bind ?adolescente 0)
+    (bind ?adultos 0)
+    (bind ?universitario 0)
     (bind ?familia FALSE)
     (bind ?jubilado FALSE)
-    (bind ?individual FALSE)
     (bind ?grupo TRUE)
 
     (printout t "here" crlf)
     ; comprobar que haya un adulto, si no hay adulto no se puede pedir vivienda
-    (bind ?hay-adultos FALSE)
     (bind ?first-age -1)
 
     (progn$ (?edad ?edades)
         (if (>= ?edad 18)
             then
-            (bind ?hay-adultos TRUE)
-            (if (>= ?edad 70)
+            (if (<= ?edad 25)
                 then
-                (bind ?jubilado TRUE)
-            )
+                (bind ?universitario (+ ?universitario 1))
+                else (if (>= ?edad 70)
+                    then
+                        (bind ?jubilado(+ ?jubilado 1))
+
+                    else
+                        (bind ?adultos(+ ?adultos 1))
+                )
+            ) 
             
             else (if (<= ?edad 2)
                     then 
-                    (bind ?bebe TRUE)
+                    (bind ?bebe(+ ?bebe 1))
                     (bind ?familia TRUE)
 
                     else (if (<= ?edad 12)
                         then
-                        (bind ?pequeno TRUE)
+                        (bind ?pequeno(+ ?pequeno 1))
                         (bind ?familia TRUE)
 
                         else 
-                        (bind ?adolescente TRUE)
+                        (bind ?adolescente (+ ?adolescente 1))
                         (bind ?familia TRUE)
                     )
 
@@ -452,24 +477,7 @@
                     then
                     (bind ?grupo FALSE)
                     (bind ?familia TRUE)
-                    ;(modify ?val (grupo FALSE))
-                    ;(modify ?val (familia TRUE))
                 )
-        )
-
-        (if (eq (length$ ?edades) 1)
-            then
-            (bind ?grupo FALSE)
-            ;(modify ?val (grupo FALSE))
-            (bind ?ed (nth$ 1 ?edades))
-            (if (<= ?ed 25)
-                then
-                    (bind ?universitario TRUE)
-                    ;(modify ?val (universitario TRUE))
-                else
-                    (bind ?individual TRUE)
-                    ;(modify ?val (individual TRUE))
-            )
         )
     )
 
@@ -478,11 +486,10 @@
             (pequeno ?pequeno)
             (adolescente ?adolescente)
             (universitario ?universitario)
+            (adultos ?adultos)
             (familia ?familia)
             (jubilado ?jubilado)
-            (individual ?individual)
             (grupo ?grupo)
-            (hay-adultos ?hay-adultos)
     )
 
     (assert (pr-info-extraida ask))
@@ -490,27 +497,25 @@
 
 (defrule preproceso-datos::comprobar "Combrobar que información extraida sea correcta"
     ?hecho <- (pr-info-extraida ask)
+
     (determinacion-edades (bebe ?bebe) (pequeno ?pequeno) (adolescente ?adolescente) (universitario ?universitario)
-                            (familia ?familia) (jubilado ?jubilado) (individual ?individual) (grupo ?grupo)
-                            (hay-adultos ?hay-adultos))
+                            (adultos ?adultos) (familia ?familia) (jubilado ?jubilado) (grupo ?grupo))
     =>
-    (format t "bebe: %s" ?bebe)
+    (format t "bebe: %d" ?bebe)
     (printout t crlf)
-    (format t "pequeño: %s" ?pequeno)
+    (format t "pequeño: %d" ?pequeno)
     (printout t crlf)
-    (format t "adolescente: %s" ?adolescente)
+    (format t "adolescente: %d" ?adolescente)
     (printout t crlf)
-    (format t "universitario: %s" ?universitario)
+    (format t "universitario: %d" ?universitario)
     (printout t crlf)
     (format t "familia: %s" ?familia)
     (printout t crlf)
     (format t "jubilado: %s" ?jubilado)
     (printout t crlf)
-    (format t "individual: %s" ?individual)
+    (format t "adultos: %d" ?adultos)
     (printout t crlf)
     (format t "grupo: %s" ?grupo)
-    (printout t crlf)
-    (format t "hay-adultos: %s" ?hay-adultos)
     (printout t crlf)
     (retract ?hecho)
     (focus inferencia-datos)

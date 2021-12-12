@@ -944,7 +944,7 @@ for d in districtes:
             dorm = dormDoble = banosEnteros = 1
             dormSimple = banosMedios = 0
             if max > 0:
-                dorm = randrange(max)
+                dorm = randrange(max) + 1
             
             if (dorm-1) > 0:
                 dormSimple = randrange (dorm)

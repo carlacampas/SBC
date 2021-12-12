@@ -1,6 +1,6 @@
 (deffacts MAIN::general-facts
   (slots-and-names
-    (nombres
+    (nombres-vivienda
       "Amueblado"
       "Vistas"
       "Vistas al Mar"
@@ -22,7 +22,7 @@
       "Calefacción"
       "Ascensor"
     )
-    (campos
+    (campos-vivienda
       amueblado
       vistas
       vistasMar
@@ -43,6 +43,66 @@
       estudio
       calefaccion
       ascensor
+    )
+    (nombres-ciudad
+      "Aeropuerto"
+      "Bar"
+      "Bus"
+      "Cafeteria"
+      "Centro Comercial"
+      "Centro de Dia"
+      "Cine"
+      "Club Nocturno"
+      "Escuela"
+      "Geriatrico"
+      "Grandes Almacenes"
+      "Hospital"
+      "Instituto"
+      "Jardin"
+      "Mercado"
+      "Metro"
+      "Museo"
+      "Pabellon"
+      "Parque"
+      "Plaza"
+      "Playa"
+      "Restaurante"
+      "Rocodromo"
+      "Supermercado"
+      "Teatro"
+      "Tram"
+      "Tren"
+      "Universidad"
+    )
+    (campos-ciudad
+      aeropuerto
+      bar
+      bus
+      cafeteria
+      centroComercial
+      centroDia
+      cine
+      clubNoct
+      escuela
+      geriatrico
+      grandesAlm
+      hospital
+      instituto
+      jardin
+      mercado
+      metro
+      museo
+      pabellon
+      parque
+      playa
+      plaza
+      restaurante
+      rocordromo
+      supermercado
+      teatro
+      tram
+      tren
+      universidad
     )
   )
 )
