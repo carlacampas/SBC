@@ -946,7 +946,7 @@ for d in districtes:
             dormSimple = banosMedios = 0
             vivType = tipos[randrange(len(tipos))]
             if max > 0:
-                dorm = randrange(max)
+                dorm = randrange(max) + 1
             
             if (dorm-1) > 0:
                 dormSimple = randrange (dorm)
