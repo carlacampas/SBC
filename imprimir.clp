@@ -216,7 +216,7 @@
     
     (if (< ?self:distMinCentroDia 500)
         then
-        (format t "         - Centro de  día a %d metros" ?self:distMinCentroDia)
+        (format t "         - Centro de día a %d metros" ?self:distMinCentroDia)
         (printout t crlf)
     )
     (if (< ?self:distMinCine 500)
@@ -264,11 +264,6 @@
         (format t "         - Jardín a %d metros" ?self:distMinJardin)
         (printout t crlf)
     )
-    (if (< ?self:distMin 500)
-        then
-        (format t "         -  a %d metros" ?self:distMin)
-        (printout t crlf)
-    )
     (if (< ?self:distMinMercado 500)
         then
         (format t "         - Mercado a %d metros" ?self:distMinMercado)
@@ -281,12 +276,12 @@
     )
     (if (< ?self:distMinMuseo 500)
         then
-        (format t "         -  Museo a %d metros" ?self:distMinMuseo)
+        (format t "         - Museo a %d metros" ?self:distMinMuseo)
         (printout t crlf)
     )
     (if (< ?self:distMinPabellon 500)
         then
-        (format t "         -  Pabellón a %d metros" ?self:distMinPabellon)
+        (format t "         - Pabellón a %d metros" ?self:distMinPabellon)
         (printout t crlf)
     )
     (if (< ?self:distMinParque 500)
@@ -296,7 +291,7 @@
     )
     (if (< ?self:distMinPlaya 500)
         then
-        (format t "         -  Playa a %d metros" ?self:distMinPlaya)
+        (format t "         - Playa a %d metros" ?self:distMinPlaya)
         (printout t crlf)
     )
     (if (< ?self:distMinPlaza 500)
@@ -336,7 +331,7 @@
     )
     (if (< ?self:distMinUniversidad 500)
         then
-        (format t "         -  a %d metros" ?self:distMinUniversidad)
+        (format t "         - Universidad a %d metros" ?self:distMinUniversidad)
         (printout t crlf)
     )
 )
