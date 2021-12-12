@@ -1008,7 +1008,7 @@ for d in districtes:
             "   (distMinEscuela " + str(randrange(5000)) + ")\n" +
             "   (distMinGeriatrico " + str(randrange(5000)) + ")\n" +
             "   (distMinGrandesAlm " + str(randrange(10000)) + ")\n" +
-            "   (distMinGuarderia " + str(randrange(5000))"
+            "   (distMinGuarderia " + str(randrange(5000)) + ")\n"
             "   (distMinHospital " + str(randrange(5000)) + ")\n" +
             "   (distMinInstituto " + str(randrange(5000)) + ")\n" +
             "   (distMinJardin " + str(randrange(10000)) + ")\n" +
