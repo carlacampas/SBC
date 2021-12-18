@@ -37,6 +37,7 @@
 (defmodule computar-puntos
     (import MAIN ?ALL)
     (export ?ALL)
+)
 
 ;;************************************************
 ;;**               DEFFUNCTIONS                 **
@@ -927,7 +928,7 @@
                 ;(printout t ?var crlf)
             )
     )
-    (retract ?hecho)
+    ;(retract ?hecho)
     (modify ?r (lista-filtrada ?lista_adecuados))
     (focus computar-puntos)
     ;(retract ?hecho)
@@ -952,7 +953,7 @@
     ?pts-cv-pref-usr <- (calcular-puntos)
     =>
     (bind $?puntos (create$))
-    (loop-for-count (?i 0 (?length ?lista)) do
+    (loop-for-count (?i 0 (length$ ?lista)) do
         (bind ?pts (create$))
         ;;si el piso la contiene y el usuario la ha pedido
         (if (and (eq ?v:amueblado TRUE) (eq ?cv:amueblado TRUE))
@@ -1176,251 +1177,252 @@
                 )
             
         )
-        (bind $puntos (insert$ $?puntos (+ (length$ $?puntos) 1) ?pts)
+        (bind $?puntos (insert$ $?puntos (+ (length$ $?puntos) 1) ?pts)
         
     )
     (retract ?hecho)
     (modify ?pts-cv-pref-usr (puntuacion-vivienda ?puntos))
     (assert (sumar-puntos-cv-inferidos ask))
 )
-    (defrule computar-puntos::puntos-cv-inferidos "Sumar puntos de las características de una vivienda para determinar cómo de deseable es para el usuario"
-        ?hecho <- (sumar-puntos-cv-inferidos ask)
-        (preferencias-inferidas (caracteristicas-vivienda $?cv)) ;(caracteristicas-ciudad $?cc)) la intencion es ponerlas en la misma rule pero quiero asegurarme de que funcione bien con una first
-        (calcular-puntos (lista-filtrada ?lista) (puntuacion-vivienda ?pv))
-        ?pts-cv-pref-usr <- (calcular-puntos)
-        =>
-        (bind $?puntos (create$))
-        (loop-for-count (?i 0 (?length ?lista)) do
-            (bind ?pts (create$))
-            ;;si el piso la contiene y el usuario la ha pedido
-            (if (and (eq ?v:amueblado TRUE) (eq ?cv:amueblado TRUE))
-                then
-                (bind ?pts(+ ?pts 2))
-                
-                else
-                    (if (eq ?cv:amueblado TRUE)
-                        then
-                        (bind ?pts(+ ?pts 1))
-                    )
-                
-            )
-            (if (and (eq ?v:vistas TRUE) (eq ?cv:vistas TRUE))
-                then
-                (bind ?pts(+ ?pts 2))
-                
-                else
-                    (if (eq ?cv:vistas TRUE)
-                        then
-                        (bind ?pts(+ ?pts 1))
-                    )
-                
-            )
-            (if (and (eq ?v:vistasMar TRUE) (eq ?cv:vistasMar TRUE))
-                then
-                (bind ?pts(+ ?pts 2))
-                
-                else
-                    (if (eq ?cv:vistasMar TRUE)
-                        then
-                        (bind ?pts(+ ?pts 1))
-                    )
-                
-            )
-            (if (and (eq ?v:vistasMontaña TRUE) (eq ?cv:vistasMontaña TRUE))
-                then
-                (bind ?pts(+ ?pts 2))
-                
-                else
-                    (if (eq ?cv:vistasMontaña TRUE)
-                        then
-                        (bind ?pts(+ ?pts 1))
-                    )
-                
-            )
-            (if (and (eq ?v:balcon TRUE) (eq ?cv:balcon TRUE))
-                then
-                (bind ?pts(+ ?pts 2))
-                
-                else
-                    (if (eq ?cv:balcon TRUE)
-                        then
-                        (bind ?pts(+ ?pts 1))
-                    )
-                
-            )
-            (if (and (eq ?v:cocinaIntegrada TRUE) (eq ?cv:cocinaIntegrada TRUE))
-                then
-                (bind ?pts(+ ?pts 2))
-                
-                else
-                    (if (eq ?cv:cocinaIntegrada TRUE)
-                        then
-                        (bind ?pts(+ ?pts 1))
-                    )
-                
-            )
-            (if (and (eq ?v:sistemaAlarma TRUE) (eq ?cv:sistemaAlarma TRUE))
-                then
-                (bind ?pts(+ ?pts 2))
-                
-                else
-                    (if (eq ?cv:sistemaAlarma TRUE)
-                        then
-                        (bind ?pts(+ ?pts 1))
-                    )
-                
-            )
-            (if (and (eq ?v:garaje TRUE) (eq ?cv:garaje TRUE))
-                then
-                (bind ?pts(+ ?pts 2))
-                
-                else
-                    (if (eq ?cv:garaje TRUE)
-                        then
-                        (bind ?pts(+ ?pts 1))
-                    )
-                
-            )
-            (if (and (eq ?v:jardin TRUE) (eq ?cv:jardin TRUE))
-                then
-                (bind ?pts(+ ?pts 2))
-                
-                else
-                    (if (eq ?cv:jardin TRUE)
-                        then
-                        (bind ?pts(+ ?pts 1))
-                    )
-                
-            )
-            (if (and (eq ?v:sotano TRUE) (eq ?cv:sotano TRUE))
-                then
-                (bind ?pts(+ ?pts 2))
-                
-                else
-                    (if (eq ?cv:sotano TRUE)
-                        then
-                        (bind ?pts(+ ?pts 1))
-                    )
-                
-            )
-            (if (and (eq ?v:aireAcondicionado TRUE) (eq ?cv:aireAcondicionado TRUE))
-                then
-                (bind ?pts(+ ?pts 2))
-                
-                else
-                    (if (eq ?cv:aireAcondicionado TRUE)
-                        then
-                        (bind ?pts(+ ?pts 1))
-                    )
-                
-            )
-            (if (and (eq ?v:patio TRUE) (eq ?cv:patio TRUE))
-                then
-                (bind ?pts(+ ?pts 2))
-                
-                else
-                    (if (eq ?cv:patio TRUE)
-                        then
-                        (bind ?pts(+ ?pts 1))
-                    )
-                
-            )
-            (if (and (eq ?v:terraza TRUE) (eq ?cv:terraza TRUE))
-                then
-                (bind ?pts(+ ?pts 2))
-                
-                else
-                    (if (eq ?cv:terraza TRUE)
-                        then
-                        (bind ?pts(+ ?pts 1))
-                    )
-                
-            )
-            (if (and (eq ?v:gimnasio TRUE) (eq ?cv:gimnasio TRUE))
-                then
-                (bind ?pts(+ ?pts 2))
-                
-                else
-                    (if (eq ?cv:gimnasio TRUE)
-                        then
-                        (bind ?pts(+ ?pts 1))
-                    )
-                
-            )
-            (if (and (eq ?v:primeraLineaDeMar TRUE) (eq ?cv:primeraLineaDeMar TRUE))
-                then
-                (bind ?pts(+ ?pts 2))
-                
-                else
-                    (if (eq ?cv:primeraLineaDeMar TRUE)
-                        then
-                        (bind ?pts(+ ?pts 1))
-                    )
-                
-            )
-            (if (and (eq ?v:obraNueva TRUE) (eq ?cv:obraNueva TRUE))
-                then
-                (bind ?pts(+ ?pts 2))
-                
-                else
-                    (if (eq ?cv:obraNueva TRUE)
-                        then
-                        (bind ?pts(+ ?pts 1))
-                    )
-                
-            )
-            ;;PISICINA JAJAJAJ
-            (if (and (eq ?v:pisicina TRUE) (eq ?cv:pisicina TRUE))
-                then
-                (bind ?pts(+ ?pts 2))
-                
-                else
-                    (if (eq ?cv:pisicina TRUE)
-                        then
-                        (bind ?pts(+ ?pts 1))
-                    )
-                
-            )
-            (if (and (eq ?v:estudio TRUE) (eq ?cv:estudio TRUE))
-                then
-                (bind ?pts(+ ?pts 2))
-                
-                else
-                    (if (eq ?cv:estudio TRUE)
-                        then
-                        (bind ?pts(+ ?pts 1))
-                    )
-                
-            )
-            (if (and (eq ?v:calefaccion TRUE) (eq ?cv:calefaccion TRUE))
-                then
-                (bind ?pts(+ ?pts 2))
-                
-                else
-                    (if (eq ?cv:calefaccion TRUE)
-                        then
-                        (bind ?pts(+ ?pts 1))
-                    )
-                
-            )
-            (if (and (eq ?v:ascensor TRUE) (eq ?cv:ascensor TRUE))
-                then
-                (bind ?pts(+ ?pts 2))
-                
-                else
-                    (if (eq ?cv:ascensor TRUE)
-                        then
-                        (bind ?pts(+ ?pts 1))
-                    )
-                
-            )
-            (bind $puntos (insert$ $?puntos (+ (length$ $?puntos) 1) ?pts)
+    
+(defrule computar-puntos::puntos-cv-inferidos "Sumar puntos de las características de una vivienda para determinar cómo de deseable es para el usuario"
+    ?hecho <- (sumar-puntos-cv-inferidos ask)
+    (preferencias-inferidas (caracteristicas-vivienda $?cv)) ;(caracteristicas-ciudad $?cc)) la intencion es ponerlas en la misma rule pero quiero asegurarme de que funcione bien con una first
+    (calcular-puntos (lista-filtrada ?lista) (puntuacion-vivienda ?pv))
+    ?pts-cv-pref-usr <- (calcular-puntos)
+    =>
+    (bind $?puntos (create$))
+    (loop-for-count (?i 0 (length$ ?lista)) do
+        (bind ?pts (create$))
+        ;;si el piso la contiene y el usuario la ha pedido
+        (if (and (eq ?v:amueblado TRUE) (eq ?cv:amueblado TRUE))
+            then
+            (bind ?pts(+ ?pts 2))
+            
+            else
+                (if (eq ?cv:amueblado TRUE)
+                    then
+                    (bind ?pts(+ ?pts 1))
+                )
             
         )
-        (retract ?hecho)
-        (modify ?pts-cv-pref-usr (puntuacion-vivienda (bind ?puntos(+ ?pv ?puntos))))
-        ;(assert (puntos-cc-pref-usuario ask))
+        (if (and (eq ?v:vistas TRUE) (eq ?cv:vistas TRUE))
+            then
+            (bind ?pts(+ ?pts 2))
+            
+            else
+                (if (eq ?cv:vistas TRUE)
+                    then
+                    (bind ?pts(+ ?pts 1))
+                )
+            
+        )
+        (if (and (eq ?v:vistasMar TRUE) (eq ?cv:vistasMar TRUE))
+            then
+            (bind ?pts(+ ?pts 2))
+            
+            else
+                (if (eq ?cv:vistasMar TRUE)
+                    then
+                    (bind ?pts(+ ?pts 1))
+                )
+            
+        )
+        (if (and (eq ?v:vistasMontaña TRUE) (eq ?cv:vistasMontaña TRUE))
+            then
+            (bind ?pts(+ ?pts 2))
+            
+            else
+                (if (eq ?cv:vistasMontaña TRUE)
+                    then
+                    (bind ?pts(+ ?pts 1))
+                )
+            
+        )
+        (if (and (eq ?v:balcon TRUE) (eq ?cv:balcon TRUE))
+            then
+            (bind ?pts(+ ?pts 2))
+            
+            else
+                (if (eq ?cv:balcon TRUE)
+                    then
+                    (bind ?pts(+ ?pts 1))
+                )
+            
+        )
+        (if (and (eq ?v:cocinaIntegrada TRUE) (eq ?cv:cocinaIntegrada TRUE))
+            then
+            (bind ?pts(+ ?pts 2))
+            
+            else
+                (if (eq ?cv:cocinaIntegrada TRUE)
+                    then
+                    (bind ?pts(+ ?pts 1))
+                )
+            
+        )
+        (if (and (eq ?v:sistemaAlarma TRUE) (eq ?cv:sistemaAlarma TRUE))
+            then
+            (bind ?pts(+ ?pts 2))
+            
+            else
+                (if (eq ?cv:sistemaAlarma TRUE)
+                    then
+                    (bind ?pts(+ ?pts 1))
+                )
+            
+        )
+        (if (and (eq ?v:garaje TRUE) (eq ?cv:garaje TRUE))
+            then
+            (bind ?pts(+ ?pts 2))
+            
+            else
+                (if (eq ?cv:garaje TRUE)
+                    then
+                    (bind ?pts(+ ?pts 1))
+                )
+            
+        )
+        (if (and (eq ?v:jardin TRUE) (eq ?cv:jardin TRUE))
+            then
+            (bind ?pts(+ ?pts 2))
+            
+            else
+                (if (eq ?cv:jardin TRUE)
+                    then
+                    (bind ?pts(+ ?pts 1))
+                )
+            
+        )
+        (if (and (eq ?v:sotano TRUE) (eq ?cv:sotano TRUE))
+            then
+            (bind ?pts(+ ?pts 2))
+            
+            else
+                (if (eq ?cv:sotano TRUE)
+                    then
+                    (bind ?pts(+ ?pts 1))
+                )
+            
+        )
+        (if (and (eq ?v:aireAcondicionado TRUE) (eq ?cv:aireAcondicionado TRUE))
+            then
+            (bind ?pts(+ ?pts 2))
+            
+            else
+                (if (eq ?cv:aireAcondicionado TRUE)
+                    then
+                    (bind ?pts(+ ?pts 1))
+                )
+            
+        )
+        (if (and (eq ?v:patio TRUE) (eq ?cv:patio TRUE))
+            then
+            (bind ?pts(+ ?pts 2))
+            
+            else
+                (if (eq ?cv:patio TRUE)
+                    then
+                    (bind ?pts(+ ?pts 1))
+                )
+            
+        )
+        (if (and (eq ?v:terraza TRUE) (eq ?cv:terraza TRUE))
+            then
+            (bind ?pts(+ ?pts 2))
+            
+            else
+                (if (eq ?cv:terraza TRUE)
+                    then
+                    (bind ?pts(+ ?pts 1))
+                )
+            
+        )
+        (if (and (eq ?v:gimnasio TRUE) (eq ?cv:gimnasio TRUE))
+            then
+            (bind ?pts(+ ?pts 2))
+            
+            else
+                (if (eq ?cv:gimnasio TRUE)
+                    then
+                    (bind ?pts(+ ?pts 1))
+                )
+            
+        )
+        (if (and (eq ?v:primeraLineaDeMar TRUE) (eq ?cv:primeraLineaDeMar TRUE))
+            then
+            (bind ?pts(+ ?pts 2))
+            
+            else
+                (if (eq ?cv:primeraLineaDeMar TRUE)
+                    then
+                    (bind ?pts(+ ?pts 1))
+                )
+            
+        )
+        (if (and (eq ?v:obraNueva TRUE) (eq ?cv:obraNueva TRUE))
+            then
+            (bind ?pts(+ ?pts 2))
+            
+            else
+                (if (eq ?cv:obraNueva TRUE)
+                    then
+                    (bind ?pts(+ ?pts 1))
+                )
+            
+        )
+        ;;PISICINA JAJAJAJ
+        (if (and (eq ?v:pisicina TRUE) (eq ?cv:pisicina TRUE))
+            then
+            (bind ?pts(+ ?pts 2))
+            
+            else
+                (if (eq ?cv:pisicina TRUE)
+                    then
+                    (bind ?pts(+ ?pts 1))
+                )
+            
+        )
+        (if (and (eq ?v:estudio TRUE) (eq ?cv:estudio TRUE))
+            then
+            (bind ?pts(+ ?pts 2))
+            
+            else
+                (if (eq ?cv:estudio TRUE)
+                    then
+                    (bind ?pts(+ ?pts 1))
+                )
+            
+        )
+        (if (and (eq ?v:calefaccion TRUE) (eq ?cv:calefaccion TRUE))
+            then
+            (bind ?pts(+ ?pts 2))
+            
+            else
+                (if (eq ?cv:calefaccion TRUE)
+                    then
+                    (bind ?pts(+ ?pts 1))
+                )
+            
+        )
+        (if (and (eq ?v:ascensor TRUE) (eq ?cv:ascensor TRUE))
+            then
+            (bind ?pts(+ ?pts 2))
+            
+            else
+                (if (eq ?cv:ascensor TRUE)
+                    then
+                    (bind ?pts(+ ?pts 1))
+                )
+            
+        )
+        (bind $?puntos (insert$ $?puntos (+ (length$ $?puntos) 1) ?pts)
+        
     )
+    (retract ?hecho)
+    (modify ?pts-cv-pref-usr (puntuacion-vivienda (bind ?puntos(+ ?pv ?puntos))))
+    ;(assert (puntos-cc-pref-usuario ask))
+)
     
 
 ;; FALTA POR HACER
