@@ -516,8 +516,8 @@
     )
     ?b
 )
-
-(deffunction suma-puntos (?v $?cv $?lista)
+(deffunction computar-puntos::suma-puntos (?v $?lista)
+    (preferencias (caracteristicas-vivienda $?cv))
     (bind ?pts 0)
     ;;si el piso la contiene y el usuario la ha pedido
     (if (and (eq ?v amueblado) (eq ?cv:amueblado TRUE))
@@ -1181,7 +1181,7 @@
     =>
     (bind $?puntos (create$))
     (progn$ (?v $?lista)
-        (bind ?pts (suma-puntos ?v $?cv $?lista))
+        (bind ?pts(suma-puntos ?v $?lista))
         (bind $?puntos (insert$ $?puntos (+ (length$ $?puntos) 1) ?pts))
     )
     (retract ?hecho)
@@ -1197,7 +1197,7 @@
     =>
     (bind $?puntos (create$))
     (progn$ (?v $?lista)
-        (bind ?pts (suma-puntos ?v $?cv $?lista))
+        (bind ?pts 0);(suma-puntos ?v $?cv $?lista))
         (bind $?puntos (insert$ $?puntos (+ (length$ $?puntos) 1) ?pts))
     )
     (retract ?hecho)
