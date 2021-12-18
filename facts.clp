@@ -53,6 +53,7 @@
       "Centro de Dia"
       "Cine"
       "Club Nocturno"
+      "Guarderia"
       "Escuela"
       "Geriatrico"
       "Grandes Almacenes"
@@ -83,6 +84,7 @@
       centroDia
       cine
       clubNoct
+      guarderia
       escuela
       geriatrico
       grandesAlm
