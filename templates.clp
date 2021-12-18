@@ -20,10 +20,10 @@
 )
 
 (deftemplate MAIN::preferencias-inferidas
-  (slot minSingles (type INTEGER))
-  (slot minDoubles (type INTEGER))
-  (slot maxSingles (type INTEGER))
-  (slot maxDoubles (type INTEGER))
+  (slot minDormSingles (type INTEGER)) ;minimizar dormitorios singles
+  (slot minDormDoubles (type INTEGER)) ;minimizar dormitorios doubles
+  (slot maxSingles (type INTEGER)) ;maximizar dormitorios singles
+  (slot maxDoubles (type INTEGER)) ;maximizar dormitorios doubles
   (multislot caracteristicas-vivienda (type SYMBOL))
   (multislot caracteristicas-ciudad (type SYMBOL))
   (multislot caracteristicas-ciudad-lejos (type SYMBOL))

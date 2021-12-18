@@ -725,12 +725,12 @@
     (assert (pr-info-extraida ask))
 )
 
-(defrule preproceso-datos::comprobar "Combrobar que información extraida sea correcta"
+(defrule preproceso-datos::caracteristicas "Combrobar que información extraida sea correcta"
     ?hecho <- (pr-info-extraida ask)
     (determinacion-edades (bebe ?bebe) (pequeno ?pequeno) (adolescente ?adolescente) (universitario ?universitario)
                             (adultos ?adultos) (familia ?familia) (jubilado ?jubilado) (grupo ?grupo))
     (pregunta-usuario (coche ?coche))
-    ;(preferencias (caracteristicas-ciudad $?caracteristicas-ciudad))
+    ?inf <- (preferencias-inferidas)
     =>
     (bind $?caracteristicas-ciudad (create$ ))
     (bind $?caracteristicas-vivienda (create$ ))
@@ -801,10 +801,76 @@
         (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cine))
     )
 
-    ((if ?coche TRUE)
+    (if (eq ?coche TRUE)
+        then
         (bind $?caracteristicas-vivienda (insert$ $?caracteristicas-vivienda (+ (length$ $?caracteristicas-vivienda) 1) garaje))
     )
 
+    (modify ?inf 
+        (caracteristicas-ciudad ?caracteristicas-ciudad)
+        (caracteristicas-vivienda ?caracteristicas-vivienda))
+    (retract ?hecho)
+    (assert (inferir-dormitorios ask))
+    
+)
+
+(defrule preproceso-datos::dormitorios "Combrobar que información extraida sea correcta"
+    ?hecho <- (inferir-dormitorios ask)
+    (determinacion-edades (bebe ?bebe) (pequeno ?pequeno) (adolescente ?adolescente) (universitario ?universitario)
+                            (adultos ?adultos) (familia ?familia) (jubilado ?jubilado) (grupo ?grupo))
+    =>
+    (bind ?minDormSingles 0)
+    (bind ?minDormDoubles 0)
+    (bind ?maxDormSingles 0)
+    (bind ?maxDormDoubles 0)
+
+    ;min dorm everyone double shared
+    ;max dorm single if they are a family adults share, everyone else gets their own room
+
+    (if (eq (mod ?adultos 2) 0)
+        then
+        (bind ?minDormDoubles (/ ?adultos 2)) 
+        (bind ?maxDormDoubles (/ ?adultos 2)) 
+        
+        else 
+        (bind ?minDormDoubles (/ (- ?adultos 1) 2))
+        (bind ?maxDormDoubles (/ (- ?adultos 1) 2))
+        (bind ?minDormSingles 1)
+        (bind ?maxDormSingles 1)
+    )
+
+    (if (eq familia TRUE)
+        then
+        (if (eq (mod ?pequeno 2) 0)
+            then
+            (bind ?minDormDoubles (+ ?minDormDoubles (/ ?pequeno 2)))
+            else
+            (bind ?minDormDoubles (+ ?minDormDoubles (/ (- ?pequeno 1) 2)))
+            (bind ?minDormSingles (+ ?minDormSingles 1))
+        )
+        (bind ?minDormSingles (+ ?adolescente ?jubilado))
+        (bind ?maxDormSingles (+ ?adolescente ?pequeno ?bebe ?jubilado))
+
+        else (if (eq ?grupo TRUE)
+            then
+            (bind ?minDormDoubles ?adultos 2)
+        )
+    )
+
+    (format t "min dorm doubles: %d" ?minDormDoubles)
+    (printout t crlf)
+    (format t "min dorm singles: %d" ?minDormSingles)
+    (printout t crlf)
+    (format t "max dorm doubles: %d" ?maxDormDoubles)
+    (printout t crlf)
+    (format t "max dorm singles: %d" ?maxDormSingles)
+    (printout t crlf)
+
+    ;padres -> double
+    ;hijos -> single ---> max
+
+    ;padres -> double
+    ;hijos -> double y alguna single si me sobran -----> min
     (retract ?hecho)
     (focus inferencia-datos)
 )
