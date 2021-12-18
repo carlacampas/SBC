@@ -516,7 +516,7 @@
     )
     ?b
 )
-(deffunction computar-puntos::suma-puntos (?v $?lista)
+(deffunction computar-puntos:suma-puntos (?v $?lista)
     (preferencias (caracteristicas-vivienda $?cv))
     (bind ?pts 0)
     ;;si el piso la contiene y el usuario la ha pedido
@@ -1176,12 +1176,12 @@
 (defrule computar-puntos::puntos-cv-pref-usuario "Sumar puntos de las características de una vivienda para determinar cómo de deseable es para el usuario"
     ?hecho <- (sumar-pts-cv-pref-usuario ask)
     (preferencias (caracteristicas-vivienda $?cv)) ;(caracteristicas-ciudad $?cc))la intencion es ponerlas en la misma rule pero quiero asegurarme de que funcione bien con una first
-    (calcular-puntos (lista-filtrada ?lista))
+    (calcular-puntos (lista-filtrada $?lista))
     ?pts-cv-pref-usr <- (calcular-puntos)
     =>
     (bind $?puntos (create$))
     (progn$ (?v $?lista)
-        (bind ?pts(suma-puntos ?v $?lista))
+        (bind ?pts (computar-puntos::suma-puntos ?v $?lista))
         (bind $?puntos (insert$ $?puntos (+ (length$ $?puntos) 1) ?pts))
     )
     (retract ?hecho)
