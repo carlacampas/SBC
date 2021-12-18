@@ -16,6 +16,17 @@
 	(multislot tipos-vivienda (type SYMBOL))
   (multislot caracteristicas-vivienda (type SYMBOL))
   (multislot caracteristicas-ciudad (type SYMBOL))
+  (multislot caracteristicas-ciudad-lejos (type SYMBOL))
+)
+
+(deftemplate MAIN::preferencias-inferidas
+  (slot minSingles (type INTEGER))
+  (slot minDoubles (type INTEGER))
+  (slot maxSingles (type INTEGER))
+  (slot maxDoubles (type INTEGER))
+  (multislot caracteristicas-vivienda (type SYMBOL))
+  (multislot caracteristicas-ciudad (type SYMBOL))
+  (multislot caracteristicas-ciudad-lejos (type SYMBOL))
 )
 
 (deftemplate MAIN::viviendas-usuario 
