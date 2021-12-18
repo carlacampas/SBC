@@ -643,6 +643,7 @@
 (deffacts preproceso-datos::hechos-iniciales "Establece hechos para poder ejecutar las reglas"
     (procesar-edades ask)
     (determinacion-edades)
+    (preferencias-inferidas)
 )
 
 (defrule preproceso-datos::determinar-personas-edades "Establecer si las edades son correctas"
@@ -732,6 +733,7 @@
     (pregunta-usuario (coche ?coche))
     ?inf <- (preferencias-inferidas)
     =>
+
     (bind $?caracteristicas-ciudad (create$ ))
     (bind $?caracteristicas-vivienda (create$ ))
     (if (> ?bebe 0)
@@ -810,8 +812,7 @@
         (caracteristicas-ciudad ?caracteristicas-ciudad)
         (caracteristicas-vivienda ?caracteristicas-vivienda))
     (retract ?hecho)
-    (assert (inferir-dormitorios ask))
-    
+    (assert (inferir-dormitorios ask))   
 )
 
 (defrule preproceso-datos::dormitorios "Combrobar que información extraida sea correcta"
@@ -823,9 +824,6 @@
     (bind ?minDormDoubles 0)
     (bind ?maxDormSingles 0)
     (bind ?maxDormDoubles 0)
-
-    ;min dorm everyone double shared
-    ;max dorm single if they are a family adults share, everyone else gets their own room
 
     (if (eq (mod ?adultos 2) 0)
         then
@@ -839,7 +837,7 @@
         (bind ?maxDormSingles 1)
     )
 
-    (if (eq familia TRUE)
+    (if (eq ?familia TRUE)
         then
         (if (eq (mod ?pequeno 2) 0)
             then
@@ -848,29 +846,16 @@
             (bind ?minDormDoubles (+ ?minDormDoubles (/ (- ?pequeno 1) 2)))
             (bind ?minDormSingles (+ ?minDormSingles 1))
         )
-        (bind ?minDormSingles (+ ?adolescente ?jubilado))
-        (bind ?maxDormSingles (+ ?adolescente ?pequeno ?bebe ?jubilado))
+        (bind ?minDormSingles (+ (+ ?minDormSingles ?adolescente) ?jubilado))
+        (bind ?maxDormSingles (+ ?maxDormSingles ?adolescente ?pequeno ?bebe ?jubilado))
 
         else (if (eq ?grupo TRUE)
             then
-            (bind ?minDormDoubles ?adultos 2)
+            (bind ?maxDormSingles ?adultos)
+            (bind ?maxDormDoubles 0)
         )
     )
 
-    (format t "min dorm doubles: %d" ?minDormDoubles)
-    (printout t crlf)
-    (format t "min dorm singles: %d" ?minDormSingles)
-    (printout t crlf)
-    (format t "max dorm doubles: %d" ?maxDormDoubles)
-    (printout t crlf)
-    (format t "max dorm singles: %d" ?maxDormSingles)
-    (printout t crlf)
-
-    ;padres -> double
-    ;hijos -> single ---> max
-
-    ;padres -> double
-    ;hijos -> double y alguna single si me sobran -----> min
     (retract ?hecho)
     (focus inferencia-datos)
 )
