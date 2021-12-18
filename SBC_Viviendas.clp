@@ -729,6 +729,7 @@
     ?hecho <- (pr-info-extraida ask)
     (determinacion-edades (bebe ?bebe) (pequeno ?pequeno) (adolescente ?adolescente) (universitario ?universitario)
                             (adultos ?adultos) (familia ?familia) (jubilado ?jubilado) (grupo ?grupo))
+    (pregunta-usuario (coche ?coche))
     ;(preferencias (caracteristicas-ciudad $?caracteristicas-ciudad))
     =>
     (bind $?caracteristicas-ciudad (create$ ))
@@ -798,6 +799,10 @@
         (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cafeteria))
         (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) centro-comercial))
         (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cine))
+    )
+
+    ((if ?coche TRUE)
+        (bind $?caracteristicas-vivienda (insert$ $?caracteristicas-vivienda (+ (length$ $?caracteristicas-vivienda) 1) garaje))
     )
 
     (retract ?hecho)
