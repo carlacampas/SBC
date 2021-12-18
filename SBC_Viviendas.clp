@@ -643,6 +643,7 @@
 (deffacts preproceso-datos::hechos-iniciales "Establece hechos para poder ejecutar las reglas"
     (procesar-edades ask)
     (determinacion-edades)
+    (preferencias-inferidas)
 )
 
 (defrule preproceso-datos::determinar-personas-edades "Establecer si las edades son correctas"
@@ -661,7 +662,6 @@
     (bind ?jubilado 0)
     (bind ?grupo TRUE)
 
-    (printout t "here" crlf)
     ; comprobar que haya un adulto, si no hay adulto no se puede pedir vivienda
     (bind ?first-age -1)
 
@@ -726,17 +726,23 @@
     (assert (pr-info-extraida ask))
 )
 
-(defrule preproceso-datos::comprobar "Combrobar que información extraida sea correcta"
+(defrule preproceso-datos::caracteristicas "Combrobar que información extraida sea correcta"
     ?hecho <- (pr-info-extraida ask)
     (determinacion-edades (bebe ?bebe) (pequeno ?pequeno) (adolescente ?adolescente) (universitario ?universitario)
                             (adultos ?adultos) (familia ?familia) (jubilado ?jubilado) (grupo ?grupo))
-    (preferencias (caracteristicas-ciudad $?caracteristicas-ciudad))
+    (pregunta-usuario (coche ?coche))
+    ?inf <- (preferencias-inferidas)
     =>
+
+    (bind $?caracteristicas-ciudad (create$ ))
+    (bind $?caracteristicas-vivienda (create$ ))
     (if (> ?bebe 0)
         then 
         (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) guarderia))
+        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-vivienda (+ (length$ $?caracteristicas-vivienda) 1) adaptadoMovilidadReducida))
+        (bind $?caracteristicas-vivienda (insert$ $?caracteristicas-vivienda (+ (length$ $?caracteristicas-vivienda) 1) ascensor))
     )
-    (if (> ?pequeno 0))
+    (if (> ?pequeno 0)
         then
         (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) escuela))
         (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) parque))
@@ -748,35 +754,108 @@
     )
     (if (> ?universitario 0)
         then
-    )
-    (if (> ?adultos 0)
-        then
+        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) bar))
+        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cafeteria))
+        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cine))
+        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cine))
+        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) universidad))
+        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) centroComercial))
+        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) supermercado))
     )
     (if (eq ?familia TRUE)
         then
+        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cafeteria))
+        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cine))
+        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) centroComercial))
+        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) hospital))
+        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) mercado))
+        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) supermercado))
+        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) plaza))
+        (bind $?caracteristicas-vivienda (insert$ $?caracteristicas-vivienda (+ (length$ $?caracteristicas-vivienda) 1) sistemaAlarma))
     )
     (if (> ?jubilado 0)
         then
+        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cafeteria))
+        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cine))
+        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) centroComercial))
+        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) hospital))
+        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) mercado))
+        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) supermercado))
+        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) plaza))
+        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) geriatrico))
+        (bind $?caracteristicas-vivienda (insert$ $?caracteristicas-vivienda (+ (length$ $?caracteristicas-vivienda) 1) adaptadoMovilidadReducida))
+        (bind $?caracteristicas-vivienda (insert$ $?caracteristicas-vivienda (+ (length$ $?caracteristicas-vivienda) 1) ascensor))
+        (bind $?caracteristicas-vivienda (insert$ $?caracteristicas-vivienda (+ (length$ $?caracteristicas-vivienda) 1) sistemaAlarma))      
+    )
+    (if (and (eq ?adultos 1) (eq ?familia FALSE))
+        then
+        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) bar))
+        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cafeteria))
+        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) centro-comercial))
+        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cine))
+
     )
     (if (eq ?grupo TRUE) 
         then
+        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) bar))
+        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cafeteria))
+        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) centro-comercial))
+        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cine))
     )
-    ;(format t "bebe: %d" ?bebe)
-    ;(printout t crlf)
-    ;(format t "pequeño: %d" ?pequeno)
-    ;(printout t crlf)
-    ;(format t "adolescente: %d" ?adolescente)
-    ;(printout t crlf)
-    ;(format t "universitario: %d" ?universitario)
-    ;(printout t crlf)
-    ;(format t "familia: %s" ?familia)
-    ;(printout t crlf)
-    ;(format t "jubilado: %s" ?jubilado)
-    ;(printout t crlf)
-    ;(format t "adultos: %d" ?adultos)
-    ;(printout t crlf)
-    ;(format t "grupo: %s" ?grupo)
-    ;(printout t crlf)
+
+    (if (eq ?coche TRUE)
+        then
+        (bind $?caracteristicas-vivienda (insert$ $?caracteristicas-vivienda (+ (length$ $?caracteristicas-vivienda) 1) garaje))
+    )
+
+    (modify ?inf 
+        (caracteristicas-ciudad ?caracteristicas-ciudad)
+        (caracteristicas-vivienda ?caracteristicas-vivienda))
+    (retract ?hecho)
+    (assert (inferir-dormitorios ask))   
+)
+
+(defrule preproceso-datos::dormitorios "Combrobar que información extraida sea correcta"
+    ?hecho <- (inferir-dormitorios ask)
+    (determinacion-edades (bebe ?bebe) (pequeno ?pequeno) (adolescente ?adolescente) (universitario ?universitario)
+                            (adultos ?adultos) (familia ?familia) (jubilado ?jubilado) (grupo ?grupo))
+    =>
+    (bind ?minDormSingles 0)
+    (bind ?minDormDoubles 0)
+    (bind ?maxDormSingles 0)
+    (bind ?maxDormDoubles 0)
+
+    (if (eq (mod ?adultos 2) 0)
+        then
+        (bind ?minDormDoubles (/ ?adultos 2)) 
+        (bind ?maxDormDoubles (/ ?adultos 2)) 
+        
+        else 
+        (bind ?minDormDoubles (/ (- ?adultos 1) 2))
+        (bind ?maxDormDoubles (/ (- ?adultos 1) 2))
+        (bind ?minDormSingles 1)
+        (bind ?maxDormSingles 1)
+    )
+
+    (if (eq ?familia TRUE)
+        then
+        (if (eq (mod ?pequeno 2) 0)
+            then
+            (bind ?minDormDoubles (+ ?minDormDoubles (/ ?pequeno 2)))
+            else
+            (bind ?minDormDoubles (+ ?minDormDoubles (/ (- ?pequeno 1) 2)))
+            (bind ?minDormSingles (+ ?minDormSingles 1))
+        )
+        (bind ?minDormSingles (+ (+ ?minDormSingles ?adolescente) ?jubilado))
+        (bind ?maxDormSingles (+ ?maxDormSingles ?adolescente ?pequeno ?bebe ?jubilado))
+
+        else (if (eq ?grupo TRUE)
+            then
+            (bind ?maxDormSingles ?adultos)
+            (bind ?maxDormDoubles 0)
+        )
+    )
+
     (retract ?hecho)
     (focus inferencia-datos)
 )
