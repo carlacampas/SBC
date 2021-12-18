@@ -21,10 +21,15 @@
     (export ?ALL)
 )
 
+(defmodule preproceso-datos
+    (import MAIN ?ALL)
+    (export ?ALL)
+)
+
 ;;; Módulo para la inferencia de datos
 (defmodule inferencia-datos
 	(import MAIN ?ALL)
-	;(import preguntas-usuario ?ALL)
+    ;(import preguntas-usuario ?ALL)
 	(export ?ALL)
 )
 
@@ -108,7 +113,7 @@
     ?lista
 )
 
-(deffunction respecta-preferencias-caracteristicas (?inst $?car)
+(deffunction respecta-preferencias-vivienda (?inst $?car)
     (bind ?b TRUE)
     (progn$ (?c ?car)
         (if (eq ?c amueblado)
@@ -274,6 +279,237 @@
     )
     ?b
 )
+
+(deffunction respecta-preferencias-ciudad (?inst $?car)
+    (bind ?b TRUE)
+    (progn$ (?c ?car)
+        (if (eq ?c aeropuerto)
+            then
+            (bind ?var (send ?inst get-distMinAeropuerto))
+            (if (eq ?var FALSE)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c bar)
+            then
+            (bind ?var (send ?inst get-distMinBar))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c bus)
+            then
+            (bind ?var (send ?inst get-distMinBus))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c cafeteria)
+            then
+            (bind ?var (send ?inst get-distMinCafeteria))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c centroComercial)
+            then
+            (bind ?var (send ?inst get-distMinCentroComercial))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c centroDia)
+            then
+            (bind ?var (send ?inst get-distMinCentroDia))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c cine)
+            then
+            (bind ?var (send ?inst get-distMinCine))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c clubNoct)
+            then
+            (bind ?var (send ?inst get-distMinClubNoct))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c escuela)
+            then
+            (bind ?var (send ?inst get-distMinEscuela))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c geriatrico)
+            then
+            (bind ?var (send ?inst get-distMinGeriatrico))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c grandesAlm)
+            then
+            (bind ?var (send ?inst get-distMinGrandesAlm))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c hospital)
+            then
+            (bind ?var (send ?inst get-distMinHospital))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c instituto)
+            then
+            (bind ?var (send ?inst get-distMinInstituto))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c jardin)
+            then
+            (bind ?var (send ?inst get-distMinJardin))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c mercado)
+            then
+            (bind ?var (send ?inst get-distMinMercado))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c metro)
+            then
+            (bind ?var (send ?inst get-distMinMetro))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c museo)
+            then
+            (bind ?var (send ?inst get-distMinMuseo))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c pabellon)
+            then
+            (bind ?var (send ?inst get-distMinPabellon))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c parque)
+            then
+            (bind ?var (send ?inst get-distMinParque))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c playa)
+            then
+            (bind ?var (send ?inst get-distMinPlaya))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c plaza)
+            then
+            (bind ?var (send ?inst get-distMinPlaza))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c restaurante)
+            then
+            (bind ?var (send ?inst get-distMinRestaurante))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c rocordromo)
+            then
+            (bind ?var (send ?inst get-distMinRocodromo))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c supermercado)
+            then
+            (bind ?var (send ?inst get-distMinSupermercado))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c teatro)
+            then
+            (bind ?var (send ?inst get-distMinTeatro))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c tram)
+            then
+            (bind ?var (send ?inst get-distMinTram))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c tren)
+            then
+            (bind ?var (send ?inst get-distMinTren))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+        (if (eq ?c universidad)
+            then
+            (bind ?var (send ?inst get-distMinUniversidad))
+            (if (> ?var 3000)
+                then
+                (bind ?b FALSE)
+            )
+        )
+    )
+    ?b
+)
 ;;************************************************
 ;;**             PREGUNTAS USUARIO              **
 ;;************************************************
@@ -330,7 +566,6 @@
     (focus recopilacion-preferencias)
 )
 
-
 ;;************************************************
 ;;**         RECOPILACION PREFERENCIAS          **
 ;;************************************************
@@ -366,26 +601,156 @@
 (defrule recopilacion-preferencias::establecer-preferencia-atributos-vivienda "Establecer preferencia de servicios de la vivienda"
     ?hecho <- (caracteristicas-vivienda ask)
     ?pref <- (preferencias)
-    ?p <- (slots-and-names (nombres $?nombres) (campos $?campos))
+    ?p <- (slots-and-names (nombres-vivienda $?nombres-vivienda) (campos-vivienda $?campos-vivienda))
     =>
-    (bind ?escogido (pregunta-multi "¿Qué características encuentra necesarias en una vivienda? (0 si no tiene preferencias) " $?nombres))
+    (bind ?escogido (pregunta-multi "¿Qué características encuentra necesarias en una vivienda? (0 si no tiene preferencias) " $?nombres-vivienda))
     (bind $?respuesta (create$ ))
     (loop-for-count (?i 1 (length$ ?escogido)) do
       (bind ?index (nth$ ?i ?escogido))
       (if (> ?index 0)
         then
-        (bind ?slot-name (nth$ ?index $?campos))
+        (bind ?slot-name (nth$ ?index $?campos-vivienda))
         (bind $?respuesta (insert$ $?respuesta (+ (length$ $?respuesta) 1) ?slot-name))
       )
     )
     (retract ?hecho)
     (modify ?pref (caracteristicas-vivienda ?respuesta))
-    (focus inferencia-datos)
+    (assert (caracteristicas-ciudad ask))
+)
+
+(defrule recopilacion-preferencias::establecer-preferencia-atributos-ciudad "Establecer preferencia de servicios de la ciudad"
+    ?hecho <- (caracteristicas-ciudad ask)
+    ?pref <- (preferencias)
+    ?p <- (slots-and-names (nombres-ciudad $?nombres-ciudad) (campos-ciudad $?campos-ciudad))
+    =>
+    (bind ?escogido (pregunta-multi "¿Qué servicios preferiria cercanos a su vivienda? (0 si no tiene preferencias) " $?nombres-ciudad))
+    (bind $?respuesta (create$ ))
+    (loop-for-count (?i 1 (length$ ?escogido)) do
+      (bind ?index (nth$ ?i ?escogido))
+      (if (> ?index 0)
+        then
+        (bind ?slot-name (nth$ ?index $?campos-ciudad))
+        (bind $?respuesta (insert$ $?respuesta (+ (length$ $?respuesta) 1) ?slot-name))
+      )
+    )
+    (retract ?hecho)
+    (modify ?pref (caracteristicas-ciudad ?respuesta))
+    (focus preproceso-datos)
 )
 ;;************************************************
 ;;**               PROCESAR DATOS               **
 ;;************************************************
+(deffacts preproceso-datos::hechos-iniciales "Establece hechos para poder ejecutar las reglas"
+    (procesar-edades ask)
+    (determinacion-edades)
+)
 
+(defrule preproceso-datos::determinar-personas-edades "Establecer si las edades son correctas"
+    (pregunta-usuario (edades $?edades))
+    ;?val <- (determinacion-edades)
+    ?hecho <- (procesar-edades ask)
+    ?val <- (determinacion-edades)
+    =>
+    ; inicialización de datos 
+    (bind ?bebe 0)
+    (bind ?pequeno 0)
+    (bind ?adolescente 0)
+    (bind ?adultos 0)
+    (bind ?universitario 0)
+    (bind ?familia FALSE)
+    (bind ?jubilado FALSE)
+    (bind ?grupo TRUE)
+
+    (printout t "here" crlf)
+    ; comprobar que haya un adulto, si no hay adulto no se puede pedir vivienda
+    (bind ?first-age -1)
+
+    (progn$ (?edad ?edades)
+        (if (>= ?edad 18)
+            then
+            (if (<= ?edad 25)
+                then
+                (bind ?universitario (+ ?universitario 1))
+                else (if (>= ?edad 70)
+                    then
+                        (bind ?jubilado(+ ?jubilado 1))
+
+                    else
+                        (bind ?adultos(+ ?adultos 1))
+                )
+            ) 
+            
+            else (if (<= ?edad 2)
+                    then 
+                    (bind ?bebe(+ ?bebe 1))
+                    (bind ?familia TRUE)
+
+                    else (if (<= ?edad 12)
+                        then
+                        (bind ?pequeno(+ ?pequeno 1))
+                        (bind ?familia TRUE)
+
+                        else 
+                        (bind ?adolescente (+ ?adolescente 1))
+                        (bind ?familia TRUE)
+                    )
+
+                )
+        )
+
+        (if (eq ?first-age -1)
+            then
+            (bind ?first-age ?edad)
+
+            else
+                ;si todos los miembros de la vivienda tienen edades +/- 10 se consideraran un grupo
+                (if (> (abs (- ?edad ?first-age)) 10)
+                    then
+                    (bind ?grupo FALSE)
+                    (bind ?familia TRUE)
+                )
+        )
+    )
+
+    (retract ?hecho)
+    (modify ?val (bebe ?bebe)
+            (pequeno ?pequeno)
+            (adolescente ?adolescente)
+            (universitario ?universitario)
+            (adultos ?adultos)
+            (familia ?familia)
+            (jubilado ?jubilado)
+            (grupo ?grupo)
+    )
+
+    (assert (pr-info-extraida ask))
+)
+
+(defrule preproceso-datos::comprobar "Combrobar que información extraida sea correcta"
+    ?hecho <- (pr-info-extraida ask)
+
+    (determinacion-edades (bebe ?bebe) (pequeno ?pequeno) (adolescente ?adolescente) (universitario ?universitario)
+                            (adultos ?adultos) (familia ?familia) (jubilado ?jubilado) (grupo ?grupo))
+    =>
+    (format t "bebe: %d" ?bebe)
+    (printout t crlf)
+    (format t "pequeño: %d" ?pequeno)
+    (printout t crlf)
+    (format t "adolescente: %d" ?adolescente)
+    (printout t crlf)
+    (format t "universitario: %d" ?universitario)
+    (printout t crlf)
+    (format t "familia: %s" ?familia)
+    (printout t crlf)
+    (format t "jubilado: %s" ?jubilado)
+    (printout t crlf)
+    (format t "adultos: %d" ?adultos)
+    (printout t crlf)
+    (format t "grupo: %s" ?grupo)
+    (printout t crlf)
+    (retract ?hecho)
+    (focus inferencia-datos)
+)
 ;;************************************************
 ;;**             INFERENCIA DATOS              **
 ;;************************************************
@@ -393,7 +758,7 @@
 (defrule inferencia-datos::filtrado-min "Filtrar las viviendas que se ajusten a los requisitos mínimos del usuario"
     ;?hecho <- (vivienda-viables ask)
     ;?vv <- (viviendas-usuario)
-    (preferencias (caracteristicas-vivienda $?caracteristicas-vivienda)
+    (preferencias (caracteristicas-vivienda $?caracteristicas-vivienda) (caracteristicas-ciudad $?caracteristicas-ciudad)
                     (tipos-vivienda $?tipos-vivienda))
     ?u <- (pregunta-usuario (maxPrecio ?maxPrecio)
                             (minPrecio ?minPrecio)
@@ -411,7 +776,8 @@
                 ;(>= ?inst:numDormitorios ?minHabitaciones)
                 (or (eq ?mascotas FALSE) (eq ?inst:mascota TRUE))
                 (or (eq ?movilidadReducida FALSE) (eq ?inst:adaptadoMovilidadReducida TRUE))
-                (eq (respecta-preferencias-caracteristicas ?inst $?caracteristicas-vivienda) TRUE)
+                (eq (respecta-preferencias-vivienda ?inst $?caracteristicas-vivienda) TRUE)
+                (eq (respecta-preferencias-ciudad ?inst $?caracteristicas-ciudad) TRUE)
             )
         ))
         else
@@ -423,7 +789,8 @@
                     ;(>= ?inst:numDormitorios ?minHabitaciones)
                     (or (eq ?mascotas FALSE) (eq ?inst:mascota TRUE))
                     (or (eq ?movilidadReducida FALSE) (eq ?inst:adaptadoMovilidadReducida TRUE))
-                    (eq (respecta-preferencias-caracteristicas ?inst $?caracteristicas-vivienda) TRUE)
+                    (eq (respecta-preferencias-vivienda ?inst $?caracteristicas-vivienda) TRUE)
+                    (eq (respecta-preferencias-ciudad ?inst $?caracteristicas-ciudad) TRUE)
                     )
             ))
             (bind $?lista_adecuados (insert$ $?lista_adecuados (+ (length$ $?lista_adecuados) 1) $?lista))
@@ -450,3 +817,8 @@
     ;(retract ?hecho)
     ;(assert (viviendas-preferidas ask))
 )
+
+;; FALTA POR HACER
+;; PREPROCESO DE DATOS
+;; DE LAS EDADES INTUIR QUE SERVICIOS DE CIUDAD O DE VIVIENDA LE SON FAVORABLES Y AÑADIR ESTOS
+

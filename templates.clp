@@ -15,6 +15,7 @@
 (deftemplate MAIN::preferencias
 	(multislot tipos-vivienda (type SYMBOL))
   (multislot caracteristicas-vivienda (type SYMBOL))
+  (multislot caracteristicas-ciudad (type SYMBOL))
 )
 
 (deftemplate MAIN::viviendas-usuario 
@@ -23,6 +24,28 @@
 )
 
 (deftemplate slots-and-names
-  (multislot nombres (type STRING))
-  (multislot campos (type SYMBOL))
+  (multislot nombres-vivienda (type STRING))
+  (multislot campos-vivienda (type SYMBOL))
+  (multislot nombres-ciudad (type STRING))
+  (multislot campos-ciudad (type SYMBOL))
 )
+
+(deftemplate MAIN::determinacion-edades 
+  (slot bebe (type INTEGER))
+  (slot pequeno (type INTEGER))
+  (slot adolescente (type INTEGER))
+  (slot universitario (type INTEGER)) 
+  (slot adultos (type INTEGER)) 
+  (slot familia (type SYMBOL))
+  (slot jubilado (type INTEGER))
+  (slot grupo (type SYMBOL))
+)
+
+;; PEQUEÑO: (< 3 -> TODDLER, > 3, < 12 PEQUEÑO)
+;; ADOLESCENTE: > 12, > 18
+;; ESTUDIANTE: TODOS ENTRE 18 Y 30
+;; FAMILIA: NIÑOS Y ADULTOS
+;; JUBILADO: > 70
+;; GRUPO: DETERMINADO POR TODAS LAS EDADES DEL MISMO RANGO
+;; un universitario sera un individual entre las edades de 18 y 25
+;; un grupo de estudiantes, sera un grupo
