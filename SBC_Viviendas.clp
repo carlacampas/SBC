@@ -1214,37 +1214,18 @@
         else
         (bind $?puntos (create$))
         (progn$ (?v $?lista)
-        
-        (bind ?pts 0)
-        
-        ;puntos caract-viv
-        (bind ?pts (suma-puntos-cv ?v ?pts $?cv))           ;;preferencia
-        
-        (format t "cv done %d" ?pts)
-        (printout t crlf)
-        
-        (bind ?pts (+ ?pts (suma-puntos-cv ?v ?pts $?icv))) ;;inferencia
-        
-        (format t "icv done %d" ?pts)
-        (printout t crlf)
-        
-        ;puntos caract-ciudad
-        ;(bind ?cerca TRUE)
-        ;(bind ?pts (+ ?pts (suma-puntos-cc ?v ?pts ?cerca $?cc)))     ;;preferencia
-        
-        ;(format t "cc done %d" ?pts)
-        ;(printout t crlf)
-        
-        ;(bind ?cerca FALSE)
-        ;(bind ?pts (+ ?pts (suma-puntos-cc ?v ?pts ?cerca $?icc)))   ;;inferencia
-
-        ;(format t "icc done %d" ?pts)
-        ;(printout t crlf)
-        
-        ;puntos dormitorios
-        
-        
-        (bind $?puntos (insert$ $?puntos (+ (length$ $?puntos) 1) ?pts))
+            (bind ?pts 0)
+            ;puntos caract-viv
+            (bind ?pts (suma-puntos-cv ?v ?pts $?cv))           ;;preferencia
+            (bind ?pts (+ ?pts (suma-puntos-cv ?v ?pts $?icv))) ;;inferencia
+            ;puntos caract-ciudad
+            ;(bind ?cerca TRUE)
+            ;(bind ?pts (+ ?pts (suma-puntos-cc ?v ?pts ?cerca $?cc)))     ;;preferencia
+            ;(bind ?cerca FALSE)
+            ;(bind ?pts (+ ?pts (suma-puntos-cc ?v ?pts ?cerca $?icc)))   ;;inferencia
+            ;puntos dormitorios
+     
+            (bind $?puntos (insert$ $?puntos (+ (length$ $?puntos) 1) ?pts))
         )
         (retract ?hecho)
         (modify ?pts-cv-pref-usr (puntuacion-vivienda $?puntos))
