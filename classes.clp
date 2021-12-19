@@ -10,6 +10,9 @@
     (single-slot seEncuentraEn
         (type INSTANCE)
         (create-accessor read-write))
+    (single-slot calBarrio
+        (type INTEGER)
+        (create-accessor read-write))
     (single-slot altura
         (type INTEGER)
         (create-accessor read-write))
@@ -178,6 +181,10 @@
         (type INTEGER)
         (create-accessor read-write)
         (default 0))
+    (single-slot distMinCementerio
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0))
     (single-slot distMinCine
         (type INTEGER)
         (create-accessor read-write)
@@ -203,6 +210,10 @@
         (create-accessor read-write)
         (default 0))
     (single-slot distMinHospital
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0))
+    (single-slot distMinHospitalNinos
         (type INTEGER)
         (create-accessor read-write)
         (default 0))
@@ -254,6 +265,10 @@
         (type INTEGER)
         (create-accessor read-write)
         (default 0))
+    (single-slot distMinTanatorio
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0))
     (single-slot distMinTeatro
         (type INTEGER)
         (create-accessor read-write)
@@ -267,6 +282,10 @@
         (create-accessor read-write)
         (default 0))
     (single-slot distMinUniversidad
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0))
+    (single-slot distMinZonaVerde
         (type INTEGER)
         (create-accessor read-write)
         (default 0))

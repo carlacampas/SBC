@@ -1,5 +1,3 @@
-# -*- coding: latin-1 -*-
-
 from random import randrange
 import math
 
@@ -1021,7 +1019,7 @@ for d in districtes:
             "   (distMinGrandesAlm " + str(randrange(10000)) + ")\n" +
             "   (distMinGuarderia " + str(randrange(5000)) + ")\n"
             "   (distMinHospital " + str(randrange(5000)) + ")\n" +
-            "   (distMinHospitalNiños " + str(randrange(5000)) + ")\n" +
+            "   (distMinHospitalNinos " + str(randrange(5000)) + ")\n" +
             "   (distMinInstituto " + str(randrange(5000)) + ")\n" +
             "   (distMinJardin " + str(randrange(10000)) + ")\n" +
             "   (distMinMercado " + str(randrange(5000)) + ")\n" +
