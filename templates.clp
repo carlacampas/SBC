@@ -10,6 +10,8 @@
     (slot movilidadReducida (type SYMBOL) (default NONE))
     (slot mascotas (type SYMBOL) (default NONE))
     (slot coche (type SYMBOL) (default NONE))
+    (slot cortoPlazo (type SYMBOL) (default NONE))
+    (slot bebesFuturo (type SYMBOL) (default NONE))
 )
 
 (deftemplate MAIN::preferencias
