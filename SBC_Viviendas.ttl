@@ -22,24 +22,14 @@
 ###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#interesadoEn
 :interesadoEn rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf owl:topObjectProperty ;
-              rdfs:domain :Usuario ;
-              rdfs:range :ServiciosCiudad ,
-                         :ServiciosVivienda .
+              rdfs:domain :Usuario .
 
 
 ###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#seEncuentraEn
 :seEncuentraEn rdf:type owl:ObjectProperty ;
-               rdfs:domain :ServiciosCiudad ,
-                           :Usuario ,
+               rdfs:domain :Usuario ,
                            :Viviendas ;
                rdfs:range :Ubicacion .
-
-
-###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#tieneServiciosVivienda
-:tieneServiciosVivienda rdf:type owl:ObjectProperty ;
-                        rdfs:subPropertyOf owl:topObjectProperty ;
-                        rdfs:domain :Viviendas ;
-                        rdfs:range :ServiciosVivienda .
 
 
 ###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#trabajaEn
@@ -51,11 +41,6 @@
 #################################################################
 #    Data properties
 #################################################################
-
-###  http://webprotege.stanford.edu/R2zk4TBDvnR4l4slMvyazR
-<http://webprotege.stanford.edu/R2zk4TBDvnR4l4slMvyazR> rdf:type owl:DatatypeProperty ;
-                                                        rdfs:label "tamañoTerreno" .
-
 
 ###  http://webprotege.stanford.edu/R7V3FKc550CSJ9SSX6wSF4V
 <http://webprotege.stanford.edu/R7V3FKc550CSJ9SSX6wSF4V> rdf:type owl:DatatypeProperty ;
@@ -127,14 +112,6 @@
                                                          rdfs:domain :Viviendas ;
                                                          rdfs:range xsd:boolean ;
                                                          rdfs:label "obraNueva" .
-
-
-###  http://webprotege.stanford.edu/R99cDExVngj8jD1VsWmKtco
-<http://webprotege.stanford.edu/R99cDExVngj8jD1VsWmKtco> rdf:type owl:DatatypeProperty ;
-                                                         rdfs:subPropertyOf owl:topDataProperty ;
-                                                         rdfs:domain :Viviendas ;
-                                                         rdfs:range xsd:boolean ;
-                                                         rdfs:label "accesible"^^xsd:string .
 
 
 ###  http://webprotege.stanford.edu/R9L4c53J47xXAQCjn0P0KQY
@@ -209,14 +186,6 @@
                                                         rdfs:label "terraza" .
 
 
-###  http://webprotege.stanford.edu/RXKx33h5Rv957Sxk7xGx2k
-<http://webprotege.stanford.edu/RXKx33h5Rv957Sxk7xGx2k> rdf:type owl:DatatypeProperty ;
-                                                        rdfs:subPropertyOf owl:topDataProperty ;
-                                                        rdfs:domain :Viviendas ;
-                                                        rdfs:range xsd:boolean ;
-                                                        rdfs:label "pistaDeTenis" .
-
-
 ###  http://webprotege.stanford.edu/Relb4cf2l9IyGJsGDnyA5T
 <http://webprotege.stanford.edu/Relb4cf2l9IyGJsGDnyA5T> rdf:type owl:DatatypeProperty ;
                                                         rdfs:subPropertyOf owl:topDataProperty ;
@@ -239,6 +208,12 @@
                                                         rdfs:domain :Viviendas ;
                                                         rdfs:range xsd:boolean ;
                                                         rdfs:label "vistasAlMar" .
+
+
+###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#adaptadoMovilidadReducida
+:adaptadoMovilidadReducida rdf:type owl:DatatypeProperty ;
+                           rdfs:domain :Viviendas ;
+                           rdfs:range xsd:boolean .
 
 
 ###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#altura
@@ -273,11 +248,200 @@
            rdfs:range xsd:string .
 
 
-###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#discapacidad
-:discapacidad rdf:type owl:DatatypeProperty ;
+###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#distMinAeropuerto
+:distMinAeropuerto rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf owl:topDataProperty ;
+                   rdfs:domain :Viviendas ;
+                   rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#distMinBar
+:distMinBar rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:domain :Viviendas ;
+            rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#distMinBus
+:distMinBus rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:domain :Viviendas ;
+            rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#distMinCafeteria
+:distMinCafeteria rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf owl:topDataProperty ;
+                  rdfs:domain :Viviendas ;
+                  rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#distMinCentroComercial
+:distMinCentroComercial rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf owl:topDataProperty ;
+                        rdfs:domain :Viviendas ;
+                        rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#distMinCentroDia
+:distMinCentroDia rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf owl:topDataProperty ;
+                  rdfs:domain :Viviendas ;
+                  rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#distMinCine
+:distMinCine rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:domain :Viviendas ;
+             rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#distMinClubNoct
+:distMinClubNoct rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf owl:topDataProperty ;
+                 rdfs:domain :Viviendas ;
+                 rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#distMinEscuela
+:distMinEscuela rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf owl:topDataProperty ;
+                rdfs:domain :Viviendas ;
+                rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#distMinGeriatrico
+:distMinGeriatrico rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf owl:topDataProperty ;
+                   rdfs:domain :Viviendas ;
+                   rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#distMinGrandesAlm
+:distMinGrandesAlm rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf owl:topDataProperty ;
+                   rdfs:domain :Viviendas ;
+                   rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#distMinHospital
+:distMinHospital rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf owl:topDataProperty ;
+                 rdfs:domain :Viviendas ;
+                 rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#distMinInstituto
+:distMinInstituto rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf owl:topDataProperty ;
+                  rdfs:domain :Viviendas ;
+                  rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#distMinJardin
+:distMinJardin rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty ;
+               rdfs:domain :Viviendas ;
+               rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#distMinMercado
+:distMinMercado rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf owl:topDataProperty ;
+                rdfs:domain :Viviendas ;
+                rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#distMinMetro
+:distMinMetro rdf:type owl:DatatypeProperty ;
               rdfs:subPropertyOf owl:topDataProperty ;
-              rdfs:domain :Usuario ;
-              rdfs:range xsd:boolean .
+              rdfs:domain :Viviendas ;
+              rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#distMinMuseo
+:distMinMuseo rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:domain :Viviendas ;
+              rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#distMinPabellon
+:distMinPabellon rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf owl:topDataProperty ;
+                 rdfs:domain :Viviendas ;
+                 rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#distMinParque
+:distMinParque rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty ;
+               rdfs:domain :Viviendas ;
+               rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#distMinPlaya
+:distMinPlaya rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:domain :Viviendas ;
+              rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#distMinPlaza
+:distMinPlaza rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:domain :Viviendas ;
+              rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#distMinRestaurante
+:distMinRestaurante rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf owl:topDataProperty ;
+                    rdfs:domain :Viviendas ;
+                    rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#distMinRocodromo
+:distMinRocodromo rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf owl:topDataProperty ;
+                  rdfs:domain :Viviendas ;
+                  rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#distMinSupermercado
+:distMinSupermercado rdf:type owl:DatatypeProperty ;
+                     rdfs:subPropertyOf owl:topDataProperty ;
+                     rdfs:domain :Viviendas ;
+                     rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#distMinTeatro
+:distMinTeatro rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty ;
+               rdfs:domain :Viviendas ;
+               rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#distMinTram
+:distMinTram rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:domain :Viviendas ;
+             rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#distMinTren
+:distMinTren rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:domain :Viviendas ;
+             rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#distMinUniversidad
+:distMinUniversidad rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf owl:topDataProperty ;
+                    rdfs:domain :Viviendas ;
+                    rdfs:range xsd:integer .
 
 
 ###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#distrito
@@ -305,6 +469,13 @@
 :monoparental rdf:type owl:DatatypeProperty ;
               rdfs:domain :Familia ;
               rdfs:range xsd:boolean .
+
+
+###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#movilidadReducida
+:movilidadReducida rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf owl:topDataProperty ;
+                   rdfs:domain :Usuario ;
+                   rdfs:range xsd:boolean .
 
 
 ###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#numAncianos
@@ -401,180 +572,6 @@
 #    Classes
 #################################################################
 
-###  http://webprotege.stanford.edu/R17iiMaI1pVmMQfuOIREi0
-<http://webprotege.stanford.edu/R17iiMaI1pVmMQfuOIREi0> rdf:type owl:Class ;
-                                                        rdfs:subClassOf :ServiciosCiudad ;
-                                                        rdfs:label "Escuela" .
-
-
-###  http://webprotege.stanford.edu/R7v6NCeBA36GPxdpF1qtqYy
-<http://webprotege.stanford.edu/R7v6NCeBA36GPxdpF1qtqYy> rdf:type owl:Class ;
-                                                         rdfs:subClassOf :ServiciosCiudad ;
-                                                         rdfs:label "Cafetería" .
-
-
-###  http://webprotege.stanford.edu/R85Qj5kB9NE8OjtDCtwibTt
-<http://webprotege.stanford.edu/R85Qj5kB9NE8OjtDCtwibTt> rdf:type owl:Class ;
-                                                         rdfs:subClassOf :ServiciosCiudad ;
-                                                         rdfs:label "Universidad" .
-
-
-###  http://webprotege.stanford.edu/R8ApNMyCLWgs4nd7KM7aUrk
-<http://webprotege.stanford.edu/R8ApNMyCLWgs4nd7KM7aUrk> rdf:type owl:Class ;
-                                                         rdfs:subClassOf :ServiciosCiudad ;
-                                                         rdfs:label "Mercado" .
-
-
-###  http://webprotege.stanford.edu/R8Cy7fCKLJ59SJTASFMC2Zs
-<http://webprotege.stanford.edu/R8Cy7fCKLJ59SJTASFMC2Zs> rdf:type owl:Class ;
-                                                         rdfs:subClassOf :ServiciosCiudad ;
-                                                         rdfs:label "Pabellón" .
-
-
-###  http://webprotege.stanford.edu/R9PaTdrUpGpuDlrPN9QaQnr
-<http://webprotege.stanford.edu/R9PaTdrUpGpuDlrPN9QaQnr> rdf:type owl:Class ;
-                                                         rdfs:subClassOf :ServiciosCiudad ;
-                                                         rdfs:label "Tren" .
-
-
-###  http://webprotege.stanford.edu/R9xtOujDfITSH7CxGhhvH4T
-<http://webprotege.stanford.edu/R9xtOujDfITSH7CxGhhvH4T> rdf:type owl:Class ;
-                                                         rdfs:subClassOf :ServiciosCiudad ;
-                                                         rdfs:label "Centro de día" .
-
-
-###  http://webprotege.stanford.edu/RBKXT6huZQUbexAD3I1ic48
-<http://webprotege.stanford.edu/RBKXT6huZQUbexAD3I1ic48> rdf:type owl:Class ;
-                                                         rdfs:subClassOf :ServiciosCiudad ;
-                                                         rdfs:label "Hospital" .
-
-
-###  http://webprotege.stanford.edu/RBSrsYoJF5wAz2WOvbKiwam
-<http://webprotege.stanford.edu/RBSrsYoJF5wAz2WOvbKiwam> rdf:type owl:Class ;
-                                                         rdfs:subClassOf :ServiciosCiudad ;
-                                                         rdfs:label "Playa" .
-
-
-###  http://webprotege.stanford.edu/RBvxNyzVKoWPrMstIaFbJvO
-<http://webprotege.stanford.edu/RBvxNyzVKoWPrMstIaFbJvO> rdf:type owl:Class ;
-                                                         rdfs:subClassOf :ServiciosCiudad ;
-                                                         rdfs:label "Centro comercial" .
-
-
-###  http://webprotege.stanford.edu/RCKoOf6ugjSVtNefud2TGDn
-<http://webprotege.stanford.edu/RCKoOf6ugjSVtNefud2TGDn> rdf:type owl:Class ;
-                                                         rdfs:subClassOf :ServiciosCiudad ;
-                                                         rdfs:label "Jardins" .
-
-
-###  http://webprotege.stanford.edu/RCMof42RaEkZsRuvETowCVV
-<http://webprotege.stanford.edu/RCMof42RaEkZsRuvETowCVV> rdf:type owl:Class ;
-                                                         rdfs:subClassOf :ServiciosCiudad ;
-                                                         rdfs:label "Aeropuertos" .
-
-
-###  http://webprotege.stanford.edu/RCVBwJjlc5EjQc2E7MGXqXv
-<http://webprotege.stanford.edu/RCVBwJjlc5EjQc2E7MGXqXv> rdf:type owl:Class ;
-                                                         rdfs:subClassOf :ServiciosCiudad ;
-                                                         rdfs:label "Parque" .
-
-
-###  http://webprotege.stanford.edu/RCnCtF5YBEhpgxqOQrFvCRv
-<http://webprotege.stanford.edu/RCnCtF5YBEhpgxqOQrFvCRv> rdf:type owl:Class ;
-                                                         rdfs:subClassOf :ServiciosCiudad ;
-                                                         rdfs:label "Metro" .
-
-
-###  http://webprotege.stanford.edu/RCnUzUikuiY845G8RTMDXnS
-<http://webprotege.stanford.edu/RCnUzUikuiY845G8RTMDXnS> rdf:type owl:Class ;
-                                                         rdfs:subClassOf :ServiciosCiudad ;
-                                                         rdfs:label "Supermercado" .
-
-
-###  http://webprotege.stanford.edu/RDGMyU466e4oCDAVaj6AY2h
-<http://webprotege.stanford.edu/RDGMyU466e4oCDAVaj6AY2h> rdf:type owl:Class ;
-                                                         rdfs:subClassOf :ServiciosCiudad ;
-                                                         rdfs:label "Club nocturno" .
-
-
-###  http://webprotege.stanford.edu/RDHcZJDkIrg1kM2Dd5r5lFE
-<http://webprotege.stanford.edu/RDHcZJDkIrg1kM2Dd5r5lFE> rdf:type owl:Class ;
-                                                         rdfs:subClassOf :ServiciosCiudad ;
-                                                         rdfs:label "Cine" .
-
-
-###  http://webprotege.stanford.edu/RDbkhCmbbzmNPacuxjIPPQE
-<http://webprotege.stanford.edu/RDbkhCmbbzmNPacuxjIPPQE> rdf:type owl:Class ;
-                                                         rdfs:subClassOf :ServiciosCiudad ;
-                                                         rdfs:label "Bar" .
-
-
-###  http://webprotege.stanford.edu/RFuWJafRhqt0D0GiA3dK3e
-<http://webprotege.stanford.edu/RFuWJafRhqt0D0GiA3dK3e> rdf:type owl:Class ;
-                                                        rdfs:subClassOf :ServiciosCiudad ;
-                                                        rdfs:label "Geriátrico" .
-
-
-###  http://webprotege.stanford.edu/RKYNGOeuReFYH4MaTOa6ak
-<http://webprotege.stanford.edu/RKYNGOeuReFYH4MaTOa6ak> rdf:type owl:Class ;
-                                                        rdfs:subClassOf :ServiciosCiudad ;
-                                                        rdfs:label "Museo" .
-
-
-###  http://webprotege.stanford.edu/RTiZRV94vDymVtCbUHnq6T
-<http://webprotege.stanford.edu/RTiZRV94vDymVtCbUHnq6T> rdf:type owl:Class ;
-                                                        rdfs:subClassOf :ServiciosCiudad ;
-                                                        rdfs:label "Restaurante" .
-
-
-###  http://webprotege.stanford.edu/RbmGBKIoAp07BKHWVnT6Co
-<http://webprotege.stanford.edu/RbmGBKIoAp07BKHWVnT6Co> rdf:type owl:Class ;
-                                                        rdfs:subClassOf :ServiciosCiudad ;
-                                                        rdfs:label "Tram" .
-
-
-###  http://webprotege.stanford.edu/Rfa6pt2pq6sbHgykZAfaG5
-<http://webprotege.stanford.edu/Rfa6pt2pq6sbHgykZAfaG5> rdf:type owl:Class ;
-                                                        rdfs:subClassOf :ServiciosCiudad ;
-                                                        rdfs:label "Bus" .
-
-
-###  http://webprotege.stanford.edu/RfpZbiem0iErEpto36bnN
-<http://webprotege.stanford.edu/RfpZbiem0iErEpto36bnN> rdf:type owl:Class ;
-                                                       rdfs:subClassOf :ServiciosCiudad ;
-                                                       rdfs:label "Rocódromo" .
-
-
-###  http://webprotege.stanford.edu/RnYVsyTCj8vOuwWLTrKMMJ
-<http://webprotege.stanford.edu/RnYVsyTCj8vOuwWLTrKMMJ> rdf:type owl:Class ;
-                                                        rdfs:subClassOf :ServiciosCiudad ;
-                                                        rdfs:label "Instituto" .
-
-
-###  http://webprotege.stanford.edu/RtlnD8nlK1Ia2S3aCj5oZl
-<http://webprotege.stanford.edu/RtlnD8nlK1Ia2S3aCj5oZl> rdf:type owl:Class ;
-                                                        rdfs:subClassOf :ServiciosCiudad ;
-                                                        rdfs:label "Plaza" .
-
-
-###  http://webprotege.stanford.edu/RukLj4ncErKh8J4d2m4K5p
-<http://webprotege.stanford.edu/RukLj4ncErKh8J4d2m4K5p> rdf:type owl:Class ;
-                                                        rdfs:subClassOf :ServiciosCiudad ;
-                                                        rdfs:label "Teatro" .
-
-
-###  http://webprotege.stanford.edu/Ry7IAbXvSbUJahiN6ydfvD
-<http://webprotege.stanford.edu/Ry7IAbXvSbUJahiN6ydfvD> rdf:type owl:Class ;
-                                                        rdfs:subClassOf :ServiciosCiudad ;
-                                                        rdfs:label "Tienda"^^xsd:string .
-
-
-###  http://webprotege.stanford.edu/RzgBmfSuixcofS22t6Jlhp
-<http://webprotege.stanford.edu/RzgBmfSuixcofS22t6Jlhp> rdf:type owl:Class ;
-                                                        rdfs:subClassOf :ServiciosCiudad ;
-                                                        rdfs:label "Grandes Almacenes" .
-
-
 ###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Adosado
 :Adosado rdf:type owl:Class ;
          rdfs:subClassOf :Chalet .
@@ -660,14 +657,6 @@
       rdfs:subClassOf :Viviendas .
 
 
-###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#ServiciosCiudad
-:ServiciosCiudad rdf:type owl:Class .
-
-
-###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#ServiciosVivienda
-:ServiciosVivienda rdf:type owl:Class .
-
-
 ###  http://www.semanticweb.org/carlacampas/ontologies/2021/10/SBC_Viviendas#Ubicacion
 :Ubicacion rdf:type owl:Class .
 
@@ -685,31 +674,6 @@ owl:Thing rdf:type owl:Class .
 
 
 #################################################################
-#    Individuals
-#################################################################
-
-###  http://webprotege.stanford.edu/R9mnqkRmgmngQA3TtdmQYm2
-<http://webprotege.stanford.edu/R9mnqkRmgmngQA3TtdmQYm2> rdf:type owl:NamedIndividual ,
-                                                                  :Piso ;
-                                                         <http://webprotege.stanford.edu/R8dH4GuUF8SGOqote736WTH> "true"^^xsd:boolean ;
-                                                         <http://webprotege.stanford.edu/R99cDExVngj8jD1VsWmKtco> "true"^^xsd:boolean ;
-                                                         <http://webprotege.stanford.edu/RDz7garco5iEjs9MuPHm5Fr> 1 ;
-                                                         <http://webprotege.stanford.edu/RgyAboTYKoqc42I05p5Qjo> 2 ;
-                                                         :precioMensual 1200 ;
-                                                         rdfs:label "vivienda1" .
-
-
-###  http://webprotege.stanford.edu/RDoBlQx4E9SgbEngum7MM8B
-<http://webprotege.stanford.edu/RDoBlQx4E9SgbEngum7MM8B> rdf:type owl:NamedIndividual ,
-                                                                  :Estudio ;
-                                                         <http://webprotege.stanford.edu/R8TkVpOvdkXoX1L4dHecMU> 0 ;
-                                                         <http://webprotege.stanford.edu/R8dH4GuUF8SGOqote736WTH> "false"^^xsd:boolean ;
-                                                         <http://webprotege.stanford.edu/R99cDExVngj8jD1VsWmKtco> "false"^^xsd:boolean ;
-                                                         :precioMensual 550 ;
-                                                         rdfs:label "vivienda2" .
-
-
-#################################################################
 #    General axioms
 #################################################################
 
@@ -723,4 +687,4 @@ owl:Thing rdf:type owl:Class .
 ] .
 
 
-###  Generated by the OWL API (version 4.5.13) https://github.com/owlcs/owlapi
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

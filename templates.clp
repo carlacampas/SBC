@@ -13,7 +13,7 @@
 )
 
 (deftemplate MAIN::preferencias
-	(multislot tipos-vivienda (type SYMBOL))
+    (multislot tipos-vivienda (type SYMBOL))
   (multislot caracteristicas-vivienda (type SYMBOL))
   (multislot caracteristicas-ciudad (type SYMBOL))
   (multislot caracteristicas-ciudad-lejos (type SYMBOL))
@@ -50,6 +50,11 @@
   (slot familia (type SYMBOL))
   (slot jubilado (type INTEGER))
   (slot grupo (type SYMBOL))
+)
+
+(deftemplate MAIN::calcular-puntos
+    (multislot lista-filtrada (type INSTANCE))
+    (multislot puntuacion-vivienda (type INTEGER) (default -1))
 )
 
 ;; PEQUEÑO: (< 3 -> TODDLER, > 3, < 12 PEQUEÑO)
