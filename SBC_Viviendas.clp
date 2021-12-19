@@ -1050,10 +1050,6 @@
     (preferencias (caracteristicas-vivienda $?caracteristicas-vivienda) (caracteristicas-ciudad $?caracteristicas-ciudad)
                     (tipos-vivienda $?tipos-vivienda))
     =>
-    (printout t crlf)
-    (printout t crlf)
-    (printout t crlf)
-    (printout t "PUNTOS POR VIVIENDA" crlf)
 
     (bind $?puntos (create$))
     (progn$ (?var $?vivienda-viables)
@@ -1064,13 +1060,34 @@
         (bind $?puntos (insert$ $?puntos (+ (length$ $?puntos) 1) ?pts))
     )
 
+    (bind $?aux (create$))
+    (bind $?auxPoints (create$))
+    (while (not (eq (length$ $?vivienda-viables) 0))  do
+        (bind ?max 0)
+        (bind ?maxPoint 0)
+        (bind ?i 0)
+        (progn$ (?idx $?puntos)
+            (bind ?i(+ ?i 1))
+            (if (> ?idx ?maxPoint)
+                then
+                (bind ?maxPoint ?idx)
+                (bind ?max ?i)
+            )
+        )
+
+        (bind ?aux (insert$ ?aux (+ (length$ ?aux) 1) (nth$ ?max ?vivienda-viables)))
+        (bind ?auxPoints (insert$ ?auxPoints (+ (length$ ?auxPoints) 1) (nth$ ?max ?puntos)))
+        (bind ?vivienda-viables (delete$ ?vivienda-viables ?max ?max))
+        (bind ?puntos (delete$ ?puntos ?max ?max))
+    )
+
     (bind ?i 0)
-    (progn$ (?var $?vivienda-viables)
+    (progn$ (?var $?aux)
         (bind ?i(+ ?i 1))
         (format t "Vivienda %d" ?i)
         (printout t crlf)
         (printout t (send ?var imprimir))
-        (bind ?idx (nth$ ?i $?puntos))
+        (bind ?idx (nth$ ?i $?auxPoints))
         (format t "Puntuación vivienda: %d" ?idx)
         (printout t crlf)
     )
