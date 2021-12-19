@@ -516,19 +516,17 @@
     )
     ?b
 )
-(deffunction computar-puntos::suma-puntos (?v $?cv)
-    (bind ?pts 0)
-    
-    ;;si el piso la contiene y el usuario la ha pedido
+(deffunction suma-puntos-cv (?v ?pts $?cv)
     (progn$ (?cv $?cv)
-        (bind  ?val (send ?v (sym-cat get- ?cv)))
-        (if (and (eq ?cv TRUE) (eq ?val TRUE))
+        (bind  ?tiene (send ?v (sym-cat get- ?cv)))
+        ;;si el piso la contiene y el usuario la ha pedido
+        (if (and (eq ?tiene TRUE) (eq ?cv TRUE))
             then
-            (bind ?pts(+ ?pts 2))
+            (bind ?pts (+ ?pts 2))
             
             else
             ;;el piso la tiene pero el usuario no lo había pedido
-                (if (eq ?val TRUE)
+                (if (and (eq ?tiene TRUE) (eq ?cv FALSE))
                     then
                     (bind ?pts(+ ?pts 1))
                 )
@@ -537,6 +535,51 @@
     )
     ?pts
 )
+(deffunction suma-puntos-cc (?v ?pts ?cerca $?cc)
+    
+    (if (eq ?cerca TRUE)
+        then
+        (progn$ (?cc $?cc)
+            (bind  ?dist (send ?v (sym-cat get- ?cc)))   ;dist a sc
+            ;usuario cerca cerca piso  --> 2 pt
+            (if (and (eq ?cc TRUE) (< ?dist 500))
+                then
+                (bind ?pts (+ ?pts 2))
+                
+                else
+                ;usuario cerca md piso  --> 1 pt
+                (if (and (eq ?cc TRUE) (< ?dist 1000))
+                    then
+                    (bind ?pts (+ ?pts 1))
+                    
+                    ;usuario cerca lejos piso --> restamos?
+                )
+            )
+        )
+        
+        else
+        (progn$ (?cc $?cc)
+            (bind  ?dist (send ?v (sym-cat get- ?cc)))   ;dist a sc
+            ;usuario lejos lejos piso --> 2 pt
+            (if (and (eq ?cc TRUE) (> ?dist 1000))
+                then
+                (bind ?pts (+ ?pts 2))
+                
+                else
+                ;usuario lejos md piso --> 1 pt
+                (if (and (eq ?cc TRUE) (< ?dist 1000))
+                    then
+                    (bind ?pts (+ ?pts 1))
+                    
+                    ;usuario lejos cerca piso --> restamos?
+                )
+            )
+        )
+    )
+    ?pts
+)
+
+
 ;;************************************************
 ;;**             PREGUNTAS USUARIO              **
 ;;************************************************
@@ -970,34 +1013,33 @@
 
 (defrule computar-puntos::puntos-cv-pref-usuario "Sumar puntos de las características de una vivienda para determinar cómo de deseable es para el usuario"
     ?hecho <- (sumar-pts-cv-pref-usuario ask)
-    (preferencias (caracteristicas-vivienda $?cv)) ;(caracteristicas-ciudad $?cc))la intencion es ponerlas en la misma rule pero quiero asegurarme de que funcione bien con una first
+    (preferencias (caracteristicas-vivienda $?cv) (caracteristicas-ciudad $?cc))
+    (preferencias-inferidas (caracteristicas-vivienda $?icv) (caracteristicas-ciudad $?icc))
+
     (calcular-puntos (lista-filtrada $?lista))
     ?pts-cv-pref-usr <- (calcular-puntos)
     =>
     (bind $?puntos (create$))
     (progn$ (?v $?lista)
-        (bind ?pts (suma-puntos ?v $?cv))
-        (bind $?puntos (insert$ $?puntos (+ (length$ $?puntos) 1) ?pts))
+    
+    (bind ?pts 0)
+    
+    ;puntos caract-viv
+    (bind ?pts (suma-puntos-cv ?v ?pts $?cv))           ;;preferencia
+    (bind ?pts (+ ?pts (suma-puntos-cv ?v $?icv)))      ;;inferencia
+    
+    ;puntos caract-ciudad
+    (bind ?pts (+ ?pts (suma-puntos-cc ?v ?pts TRUE $?cc)))     ;;preferencia
+    (bind ?pts (+ ?pts (suma-puntos-cc ?v ?pts FALSE $?icc)))   ;;inferencia
+
+    ;puntos dormitorios
+    
+    
+    (bind $?puntos (insert$ $?puntos (+ (length$ $?puntos) 1) ?pts))
     )
     (retract ?hecho)
     (modify ?pts-cv-pref-usr (puntuacion-vivienda $?puntos))
-    (assert (sumar-puntos-cv-inferidos ask))
-)
-    
-(defrule computar-puntos::puntos-cv-inferidos "Sumar puntos de las características de una vivienda para determinar cómo de deseable es para el usuario"
-    ?hecho <- (sumar-puntos-cv-inferidos ask)
-    (preferencias-inferidas (caracteristicas-vivienda $?cv)) ;(caracteristicas-ciudad $?cc)) la intencion es ponerlas en la misma rule pero quiero asegurarme de que funcione bien con una first
-    (calcular-puntos (lista-filtrada ?lista) (puntuacion-vivienda ?pv))
-    ?pts-cv-pref-usr <- (calcular-puntos)
-    =>
-    (bind $?puntos (create$))
-    (progn$ (?v $?lista)
-        (bind ?pts (suma-puntos ?v $?cv))
-        (bind $?puntos (insert$ $?puntos (+ (length$ $?puntos) 1) ?pts))
-    )
-    (retract ?hecho)
-    (modify ?pts-cv-pref-usr (puntuacion-vivienda (bind $?puntos(+ ?pv $?puntos))))
-    ;(assert (puntos-cc-pref-usuario ask))
+    ;(assert (sumar-puntos-cv-inferidos ask))
 )
     
 
