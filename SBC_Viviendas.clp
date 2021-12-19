@@ -516,259 +516,33 @@
     )
     ?b
 )
-(deffunction suma-puntos-cv (?v ?pts $?cv)
-    (bind  ?tiene (send ?v get-vistas))
-    ;;si el piso la contiene y el usuario la ha pedido
-    (if (and (eq ?tiene TRUE) (not (eq (member$ vistas $?cv) FALSE)))
-        then
-        (bind ?pts (+ ?pts 2))
-    
-        else
-        ;;el piso la tiene pero el usuario no lo había pedido
-        (if (and (eq ?tiene TRUE) (eq (member$ vistas $?cv) FALSE))
+(deffunction suma-puntos-cv (?v $?cv)
+    (bind ?pts 0)
+    (progn$ (?cv $?cv)
+        (bind ?tiene (send ?v (sym-cat get- ?cv)))
+        (if (eq ?tiene TRUE)
             then
-            (bind ?pts(+ ?pts 1))
-        )
-        ;;el usuario la ha pedido pero el piso no la tiene --> deberiamos restar?
-    )
-    (bind  ?tiene (send ?v get-vistasMar))
-    (if (and (eq ?tiene TRUE) (not (eq (member$ vistasMar $?cv) FALSE)))
-        then
-        (bind ?pts (+ ?pts 2))
-    
-        else
-        (if (and (eq ?tiene TRUE) (eq (member$ vistasMar $?cv) FALSE))
-            then
-            (bind ?pts(+ ?pts 1))
-        )
-    )
-    (bind  ?tiene (send ?v get-vistasMontaña))
-    (if (and (eq ?tiene TRUE) (not (eq (member$ vistasMontaña $?cv) FALSE)))
-        then
-        (bind ?pts (+ ?pts 2))
-    
-        else
-        (if (and (eq ?tiene TRUE) (eq (member$ vistasMontaña $?cv) FALSE))
-            then
-            (bind ?pts(+ ?pts 1))
-        )
-    )
-    (bind  ?tiene (send ?v get-balcon))
-    (if (and (eq ?tiene TRUE) (not (eq (member$ balcon $?cv) FALSE)))
-        then
-        (bind ?pts (+ ?pts 2))
-    
-        else
-        (if (and (eq ?tiene TRUE) (eq (member$ balcon $?cv) FALSE))
-            then
-            (bind ?pts(+ ?pts 1))
-        )
-    )
-    (bind  ?tiene (send ?v get-cocinaIntegrada))
-    (if (and (eq ?tiene TRUE) (not (eq (member$ cocinaIntegrada $?cv) FALSE)))
-        then
-        (bind ?pts (+ ?pts 2))
-    
-        else
-        (if (and (eq ?tiene TRUE) (eq (member$ cocinaIntegrada $?cv) FALSE))
-            then
-            (bind ?pts(+ ?pts 1))
-        )
-    )
-    (bind  ?tiene (send ?v get-sistemaAlarma))
-    (if (and (eq ?tiene TRUE) (not (eq (member$ sistemaAlarma $?cv) FALSE)))
-        then
-        (bind ?pts (+ ?pts 2))
-    
-        else
-        (if (and (eq ?tiene TRUE) (eq (member$ sistemaAlarma $?cv) FALSE))
-            then
-            (bind ?pts(+ ?pts 1))
-        )
-    )
-    (bind  ?tiene (send ?v get-garaje))
-    (if (and (eq ?tiene TRUE) (not (eq (member$ garaje $?cv) FALSE)))
-        then
-        (bind ?pts (+ ?pts 2))
-    
-        else
-        (if (and (eq ?tiene TRUE) (eq (member$ garaje $?cv) FALSE))
-            then
-            (bind ?pts(+ ?pts 1))
-        )
-    )
-    (bind  ?tiene (send ?v get-jardin))
-    (if (and (eq ?tiene TRUE) (not (eq (member$ jardin $?cv) FALSE)))
-        then
-        (bind ?pts (+ ?pts 2))
-    
-        else
-        (if (and (eq ?tiene TRUE) (eq (member$ jardin $?cv) FALSE))
-            then
-            (bind ?pts(+ ?pts 1))
-        )
-    )
-    (bind  ?tiene (send ?v get-sotano))
-    (if (and (eq ?tiene TRUE) (not (eq (member$ sotano $?cv) FALSE)))
-        then
-        (bind ?pts (+ ?pts 2))
-    
-        else
-        (if (and (eq ?tiene TRUE) (eq (member$ sotano $?cv) FALSE))
-            then
-            (bind ?pts(+ ?pts 1))
-        )
-    )
-    (bind  ?tiene (send ?v get-aireAcondicionado))
-    (if (and (eq ?tiene TRUE) (not (eq (member$ aireAcondicionado $?cv) FALSE)))
-        then
-        (bind ?pts (+ ?pts 2))
-    
-        else
-        (if (and (eq ?tiene TRUE) (eq (member$ aireAcondicionado $?cv) FALSE))
-            then
-            (bind ?pts(+ ?pts 1))
-        )
-    )
-    (bind  ?tiene (send ?v get-patio))
-    (if (and (eq ?tiene TRUE) (not (eq (member$ patio $?cv) FALSE)))
-        then
-        (bind ?pts (+ ?pts 2))
-    
-        else
-        (if (and (eq ?tiene TRUE) (eq (member$ patio $?cv) FALSE))
-            then
-            (bind ?pts(+ ?pts 1))
-        )
-    )
-    (bind  ?tiene (send ?v get-terraza))
-    (if (and (eq ?tiene TRUE) (not (eq (member$ terraza $?cv) FALSE)))
-        then
-        (bind ?pts (+ ?pts 2))
-    
-        else
-        (if (and (eq ?tiene TRUE) (eq (member$ terraza $?cv) FALSE))
-            then
-            (bind ?pts(+ ?pts 1))
-        )
-    )
-    (bind  ?tiene (send ?v get-gimnasio))
-    (if (and (eq ?tiene TRUE) (not (eq (member$ gimnasio $?cv) FALSE)))
-        then
-        (bind ?pts (+ ?pts 2))
-    
-        else
-        (if (and (eq ?tiene TRUE) (eq (member$ gimnasio $?cv) FALSE))
-            then
-            (bind ?pts(+ ?pts 1))
-        )
-    )
-    (bind  ?tiene (send ?v get-primeraLineaDeMar))
-    (if (and (eq ?tiene TRUE) (not (eq (member$ primeraLineaDeMar $?cv) FALSE)))
-        then
-        (bind ?pts (+ ?pts 2))
-    
-        else
-        (if (and (eq ?tiene TRUE) (eq (member$ primeraLineaDeMar $?cv) FALSE))
-            then
-            (bind ?pts(+ ?pts 1))
-        )
-    )
-    (bind  ?tiene (send ?v get-obraNueva))
-    (if (and (eq ?tiene TRUE) (not (eq (member$ obraNueva $?cv) FALSE)))
-        then
-        (bind ?pts (+ ?pts 2))
-    
-        else
-        (if (and (eq ?tiene TRUE) (eq (member$ obraNueva $?cv) FALSE))
-            then
-            (bind ?pts(+ ?pts 1))
-        )
-    )
-    (bind  ?tiene (send ?v get-piscina))
-    (if (and (eq ?tiene TRUE) (not (eq (member$ piscina $?cv) FALSE)))
-        then
-        (bind ?pts (+ ?pts 2))
-    
-        else
-        (if (and (eq ?tiene TRUE) (eq (member$ piscina $?cv) FALSE))
-            then
-            (bind ?pts(+ ?pts 1))
-        )
-    )
-    (bind  ?tiene (send ?v get-estudio))
-    (if (and (eq ?tiene TRUE) (not (eq (member$ estudio $?cv) FALSE)))
-        then
-        (bind ?pts (+ ?pts 2))
-    
-        else
-        (if (and (eq ?tiene TRUE) (eq (member$ estudio $?cv) FALSE))
-            then
-            (bind ?pts(+ ?pts 1))
-        )
-    )
-    (bind  ?tiene (send ?v get-calefaccion))
-    (if (and (eq ?tiene TRUE) (not (eq (member$ calefaccion $?cv) FALSE)))
-        then
-        (bind ?pts (+ ?pts 2))
-    
-        else
-        (if (and (eq ?tiene TRUE) (eq (member$ calefaccion $?cv) FALSE))
-            then
-            (bind ?pts(+ ?pts 1))
-        )
-    )
-    (bind  ?tiene (send ?v get-ascensor))
-    (if (and (eq ?tiene TRUE) (not (eq (member$ ascensor $?cv) FALSE)))
-        then
-        (bind ?pts (+ ?pts 2))
-    
-        else
-        (if (and (eq ?tiene TRUE) (eq (member$ ascensor $?cv) FALSE))
-            then
-            (bind ?pts(+ ?pts 1))
+            (bind ?pts (+ ?pts 2))
         )
     )
     ?pts
 )
-(deffunction suma-puntos-cc (?v ?pts ?cerca $?cc)
-    
-    (if (eq ?cerca TRUE)
-        then
-        (progn$ (?cc $?cc)
-            (bind  ?dist (send ?v (sym-cat get- ?cc)))   ;dist a sc
-            ;usuario cerca cerca piso  --> 2 pt
-            (if (and (eq ?cc TRUE) (< ?dist 500))
+(deffunction suma-puntos-cc (?v ?cerca $?cc)
+    (bind ?pts 0)
+    (progn$ (?cc $?cc)
+        (bind  ?dist (send ?v (sym-cat get- ?cc)))   ;dist a sc
+        ;usuario cerca cerca piso OR usuario lejos lejos piso --> 2 pt
+        (if (or (and (eq cerca? TRUE) (< ?dist 500)) (and (eq ?cerca FALSE) (> ?dist 1000)))
+            then
+            (bind ?pts (+ ?pts 2))
+            
+            else
+            ;usuario cerca md piso  --> 1 pt
+            (if (< ?dist 1000)
                 then
-                (bind ?pts (+ ?pts 2))
+                (bind ?pts (+ ?pts 1))
                 
-                else
-                ;usuario cerca md piso  --> 1 pt
-                (if (and (eq ?cc TRUE) (< ?dist 1000))
-                    then
-                    (bind ?pts (+ ?pts 1))
-                    
-                    ;usuario cerca lejos piso --> restamos?
-                )
-            )
-        )
-        
-        else
-        (progn$ (?cc $?cc)
-            (bind  ?dist (send ?v (sym-cat get- ?cc)))   ;dist a sc
-            ;usuario lejos lejos piso --> 2 pt
-            (if (and (eq ?cc TRUE) (> ?dist 1000))
-                then
-                (bind ?pts (+ ?pts 2))
-                
-                else
-                ;usuario lejos md piso --> 1 pt
-                (if (and (eq ?cc TRUE) (< ?dist 1000))
-                    then
-                    (bind ?pts (+ ?pts 1))
-                    
-                    ;usuario lejos cerca piso --> restamos?
-                )
+                ;usuario cerca lejos piso --> restamos?
             )
         )
     )
@@ -1187,16 +961,16 @@
 ;;************************************************
 ;;**             GESTIÓN DE PUNTOS              **
 ;;************************************************
-(deffacts computar-puntos::hechos-iniciales "Establece hechos para poder ejecutar las reglas"
-    (sumar-pts-cv-pref-usuario ask)
-    (preferencias)
-    (preferencias-inferidas)
-    (calcular-puntos)
+;(deffacts computar-puntos::hechos-iniciales "Establece hechos para poder ejecutar las reglas"
+;    (sumar-pts-cv-pref-usuario ask)
+;    (preferencias)
+;    (preferencias-inferidas)
+;    (calcular-puntos)
     
-)
+;)
 
 (defrule computar-puntos::puntos "Sumar puntos de las características de una vivienda para determinar cómo de deseable es para el usuario"
-    ?hecho <- (sumar-pts-cv-pref-usuario ask)
+    ;?hecho <- (sumar-pts-cv-pref-usuario ask)
     (preferencias (caracteristicas-vivienda $?cv) (caracteristicas-ciudad $?cc))
     (preferencias-inferidas (caracteristicas-vivienda $?icv) (caracteristicas-ciudad $?icc))
 
@@ -1216,8 +990,8 @@
         (progn$ (?v $?lista)
             (bind ?pts 0)
             ;puntos caract-viv
-            (bind ?pts (suma-puntos-cv ?v ?pts $?cv))           ;;preferencia
-            (bind ?pts (+ ?pts (suma-puntos-cv ?v ?pts $?icv))) ;;inferencia
+            (bind ?pts (suma-puntos-cv ?v $?cv))           ;;preferencia
+            (bind ?pts (+ ?pts (suma-puntos-cv ?v $?icv))) ;;inferencia
             ;puntos caract-ciudad
             ;(bind ?cerca TRUE)
             ;(bind ?pts (+ ?pts (suma-puntos-cc ?v ?pts ?cerca $?cc)))     ;;preferencia
@@ -1227,7 +1001,6 @@
      
             (bind $?puntos (insert$ $?puntos (+ (length$ $?puntos) 1) ?pts))
         )
-        (retract ?hecho)
         (modify ?pts-cv-pref-usr (puntuacion-vivienda $?puntos))
         
         (bind ?i 0)
