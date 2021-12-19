@@ -31,7 +31,6 @@
 
 (deftemplate MAIN::viviendas-usuario 
   (multislot vivienda-viables (type INSTANCE))
-  (multislot viviendas-preferidas (type INSTANCE))
   (multislot vivienda-inviables (type INSTANCE))
 )
 
