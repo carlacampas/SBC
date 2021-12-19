@@ -270,6 +270,10 @@
         (type INTEGER)
         (create-accessor read-write)
         (default 0))
+    (single-slot distMinZonaVerde
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0))
 )
 
 (defclass Apartamento
