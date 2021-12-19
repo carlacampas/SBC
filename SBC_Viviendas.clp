@@ -1068,7 +1068,7 @@
         (bind ?i 0)
         (progn$ (?idx $?puntos)
             (bind ?i(+ ?i 1))
-            (if (> ?idx ?maxPoint)
+            (if (>= ?idx ?maxPoint)
                 then
                 (bind ?maxPoint ?idx)
                 (bind ?max ?i)
