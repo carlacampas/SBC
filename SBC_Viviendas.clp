@@ -516,230 +516,24 @@
     )
     ?b
 )
-(deffunction computar-puntos:suma-puntos (?v $?lista)
-    (preferencias (caracteristicas-vivienda $?cv))
+(deffunction computar-puntos::suma-puntos (?v $?cv)
     (bind ?pts 0)
+    
     ;;si el piso la contiene y el usuario la ha pedido
-    (if (and (eq ?v amueblado) (eq ?cv:amueblado TRUE))
-        then
-        (bind ?pts(+ ?pts 2))
-        
-        else
-            (if (eq ?cv:amueblado TRUE)
-                then
-                (bind ?pts(+ ?pts 1))
-            )
-        
-    )
-    (if (and (eq ?v:vistas TRUE) (eq ?cv:vistas TRUE))
-        then
-        (bind ?pts(+ ?pts 2))
-        
-        else
-            (if (eq ?cv:vistas TRUE)
-                then
-                (bind ?pts(+ ?pts 1))
-            )
-        
-    )
-    (if (and (eq ?v:vistasMar TRUE) (eq ?cv:vistasMar TRUE))
-        then
-        (bind ?pts(+ ?pts 2))
-        
-        else
-            (if (eq ?cv:vistasMar TRUE)
-                then
-                (bind ?pts(+ ?pts 1))
-            )
-        
-    )
-    (if (and (eq ?v:vistasMontaña TRUE) (eq ?cv:vistasMontaña TRUE))
-        then
-        (bind ?pts(+ ?pts 2))
-        
-        else
-            (if (eq ?cv:vistasMontaña TRUE)
-                then
-                (bind ?pts(+ ?pts 1))
-            )
-        
-    )
-    (if (and (eq ?v:balcon TRUE) (eq ?cv:balcon TRUE))
-        then
-        (bind ?pts(+ ?pts 2))
-        
-        else
-            (if (eq ?cv:balcon TRUE)
-                then
-                (bind ?pts(+ ?pts 1))
-            )
-        
-    )
-    (if (and (eq ?v:cocinaIntegrada TRUE) (eq ?cv:cocinaIntegrada TRUE))
-        then
-        (bind ?pts(+ ?pts 2))
-        
-        else
-            (if (eq ?cv:cocinaIntegrada TRUE)
-                then
-                (bind ?pts(+ ?pts 1))
-            )
-        
-    )
-    (if (and (eq ?v:sistemaAlarma TRUE) (eq ?cv:sistemaAlarma TRUE))
-        then
-        (bind ?pts(+ ?pts 2))
-        
-        else
-            (if (eq ?cv:sistemaAlarma TRUE)
-                then
-                (bind ?pts(+ ?pts 1))
-            )
-        
-    )
-    (if (and (eq ?v:garaje TRUE) (eq ?cv:garaje TRUE))
-        then
-        (bind ?pts(+ ?pts 2))
-        
-        else
-            (if (eq ?cv:garaje TRUE)
-                then
-                (bind ?pts(+ ?pts 1))
-            )
-        
-    )
-    (if (and (eq ?v:jardin TRUE) (eq ?cv:jardin TRUE))
-        then
-        (bind ?pts(+ ?pts 2))
-        
-        else
-            (if (eq ?cv:jardin TRUE)
-                then
-                (bind ?pts(+ ?pts 1))
-            )
-        
-    )
-    (if (and (eq ?v:sotano TRUE) (eq ?cv:sotano TRUE))
-        then
-        (bind ?pts(+ ?pts 2))
-        
-        else
-            (if (eq ?cv:sotano TRUE)
-                then
-                (bind ?pts(+ ?pts 1))
-            )
-        
-    )
-    (if (and (eq ?v:aireAcondicionado TRUE) (eq ?cv:aireAcondicionado TRUE))
-        then
-        (bind ?pts(+ ?pts 2))
-        
-        else
-            (if (eq ?cv:aireAcondicionado TRUE)
-                then
-                (bind ?pts(+ ?pts 1))
-            )
-        
-    )
-    (if (and (eq ?v:patio TRUE) (eq ?cv:patio TRUE))
-        then
-        (bind ?pts(+ ?pts 2))
-        
-        else
-            (if (eq ?cv:patio TRUE)
-                then
-                (bind ?pts(+ ?pts 1))
-            )
-        
-    )
-    (if (and (eq ?v:terraza TRUE) (eq ?cv:terraza TRUE))
-        then
-        (bind ?pts(+ ?pts 2))
-        
-        else
-            (if (eq ?cv:terraza TRUE)
-                then
-                (bind ?pts(+ ?pts 1))
-            )
-        
-    )
-    (if (and (eq ?v:gimnasio TRUE) (eq ?cv:gimnasio TRUE))
-        then
-        (bind ?pts(+ ?pts 2))
-        
-        else
-            (if (eq ?cv:gimnasio TRUE)
-                then
-                (bind ?pts(+ ?pts 1))
-            )
-        
-    )
-    (if (and (eq ?v:primeraLineaDeMar TRUE) (eq ?cv:primeraLineaDeMar TRUE))
-        then
-        (bind ?pts(+ ?pts 2))
-        
-        else
-            (if (eq ?cv:primeraLineaDeMar TRUE)
-                then
-                (bind ?pts(+ ?pts 1))
-            )
-        
-    )
-    (if (and (eq ?v:obraNueva TRUE) (eq ?cv:obraNueva TRUE))
-        then
-        (bind ?pts(+ ?pts 2))
-        
-        else
-            (if (eq ?cv:obraNueva TRUE)
-                then
-                (bind ?pts(+ ?pts 1))
-            )
-        
-    )
-    ;;PISICINA JAJAJAJ
-    (if (and (eq ?v:pisicina TRUE) (eq ?cv:pisicina TRUE))
-        then
-        (bind ?pts(+ ?pts 2))
-        
-        else
-            (if (eq ?cv:pisicina TRUE)
-                then
-                (bind ?pts(+ ?pts 1))
-            )
-        
-    )
-    (if (and (eq ?v:estudio TRUE) (eq ?cv:estudio TRUE))
-        then
-        (bind ?pts(+ ?pts 2))
-        
-        else
-            (if (eq ?cv:estudio TRUE)
-                then
-                (bind ?pts(+ ?pts 1))
-            )
-        
-    )
-    (if (and (eq ?v:calefaccion TRUE) (eq ?cv:calefaccion TRUE))
-        then
-        (bind ?pts(+ ?pts 2))
-        
-        else
-            (if (eq ?cv:calefaccion TRUE)
-                then
-                (bind ?pts(+ ?pts 1))
-            )
-        
-    )
-    (if (and (eq ?v:ascensor TRUE) (eq ?cv:ascensor TRUE))
-        then
-        (bind ?pts(+ ?pts 2))
-        
-        else
-            (if (eq ?cv:ascensor TRUE)
-                then
-                (bind ?pts(+ ?pts 1))
-            )
-        
+    (progn$ (?cv $?cv)
+        (bind  ?val (send ?v (sym-cat get- ?cv)))
+        (if (and (eq ?cv TRUE) (eq ?val TRUE))
+            then
+            (bind ?pts(+ ?pts 2))
+            
+            else
+            ;;el piso la tiene pero el usuario no lo había pedido
+                (if (eq ?val TRUE)
+                    then
+                    (bind ?pts(+ ?pts 1))
+                )
+            ;;el usuario la ha pedido pero el piso no la tiene --> deberiamos restar?
+        )
     )
     ?pts
 )
@@ -1166,11 +960,12 @@
 ;;************************************************
 ;;**             GESTIÓN DE PUNTOS              **
 ;;************************************************
-(deffacts computar-puntos::hecho-inicial
+(deffacts computar-puntos::hechos-iniciales "Establece hechos para poder ejecutar las reglas"
     (sumar-pts-cv-pref-usuario ask)
-    (calcular-puntos)
     (preferencias)
     (preferencias-inferidas)
+    (calcular-puntos)
+    
 )
 
 (defrule computar-puntos::puntos-cv-pref-usuario "Sumar puntos de las características de una vivienda para determinar cómo de deseable es para el usuario"
@@ -1181,11 +976,11 @@
     =>
     (bind $?puntos (create$))
     (progn$ (?v $?lista)
-        (bind ?pts (computar-puntos::suma-puntos ?v $?lista))
+        (bind ?pts (suma-puntos ?v $?cv))
         (bind $?puntos (insert$ $?puntos (+ (length$ $?puntos) 1) ?pts))
     )
     (retract ?hecho)
-    (modify ?pts-cv-pref-usr (puntuacion-vivienda ?puntos))
+    (modify ?pts-cv-pref-usr (puntuacion-vivienda $?puntos))
     (assert (sumar-puntos-cv-inferidos ask))
 )
     
@@ -1197,11 +992,11 @@
     =>
     (bind $?puntos (create$))
     (progn$ (?v $?lista)
-        (bind ?pts 0);(suma-puntos ?v $?cv $?lista))
+        (bind ?pts (suma-puntos ?v $?cv))
         (bind $?puntos (insert$ $?puntos (+ (length$ $?puntos) 1) ?pts))
     )
     (retract ?hecho)
-    (modify ?pts-cv-pref-usr (puntuacion-vivienda (bind ?puntos(+ ?pv ?puntos))))
+    (modify ?pts-cv-pref-usr (puntuacion-vivienda (bind $?puntos(+ ?pv $?puntos))))
     ;(assert (puntos-cc-pref-usuario ask))
 )
     
