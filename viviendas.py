@@ -775,6 +775,7 @@ f.write("(definstances instances\n")
 
 for d in districtes:
     for b in barris[d]:
+        calBarrio = randrange(3) + 1
         dirs = []
         if b == "el Raval":
             dirs = raval
@@ -931,18 +932,18 @@ for d in districtes:
             primeraLinea = bools[1]
             if (vistas == "TRUE"):
                 vistasMar = bools[randrange(len(bools))]
-                if (vistasMar == "TRUE"):
+                if vistasMar == "TRUE":
                     primeraLinea = bools[randrange(len(bools))]
 
                 vistasMont = bools[randrange(len(bools))]
 
             garaje = bools[randrange(len(bools))]
             plazas = 0
-            calBarrio = randrange(3) + 1
-            pm2 = randrange(8, 12)
-            
-            if calBarrio == 2: pm2 = randrange(12, 14)
-            elif calBarrio == 3: pm2 = randrange(14, 18)
+            pm = randrange(12-8) + 8
+            if calBarrio == 2: 
+                pm = randrange(14-12) + 12
+            elif calBarrio == 3: 
+                pm = randrange(18 - 14) + 14
             
             if garaje == "TRUE":
                 plazas = randrange(3) + 1
@@ -968,13 +969,13 @@ for d in districtes:
 
             viv = ("([vivienda" + str(i) + "] of " + vivType + "\n" +
             "   (seEncuentraEn [ubicacionVivienda" + str(i) + "])\n" +
-            "   (calBarrio " + calBarrio + ")\n" +
+            "   (calBarrio " + str(calBarrio) + ")\n" +
             "   (altura " + str(randrange(200) + 200) + ")\n" +
             "   (amueblado " + bools[randrange(len(bools))] + ")\n" +
             '   (certificadoEnergetico "' + certEn[randrange(len(certEn))] + '")\n' +
             "   (mascota " + bools[randrange(len(bools))] + ")\n" +
             '   (orientacion "' + orient[randrange(len(orient))] + '")\n' +
-            "   (precioMensual " + str(pm2 * tr) + ")\n" +
+            "   (precioMensual " + str(pm * tr) + ")\n" +
             "   (vistas " + vistas + ")\n" +
             "   (vistasMar " + vistasMar + ")\n" +
             "   (vistasMontaña " + vistasMont + ")\n" +
@@ -1038,6 +1039,7 @@ for d in districtes:
             "   (distMinTram " + str(randrange(1500)) + ")\n" +
             "   (distMinTren " + str(randrange(3000)) + ")\n" +
             "   (distMinUniversidad " + str(randrange(5000)) + ")\n" +
+            "   (distMinZonaVerde " + str(randrange(1500)) + ")\n" +
             ")\n")
 
             f.write(viv)

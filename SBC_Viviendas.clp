@@ -842,6 +842,7 @@
         
     )
     (if (eq ?familia FALSE)
+        then
         (if (eq ?bebesFuturo TRUE)
             then
             (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) guarderia))
@@ -849,7 +850,7 @@
             (bind $?caracteristicas-vivienda (insert$ $?caracteristicas-vivienda (+ (length$ $?caracteristicas-vivienda) 1) ascensor))
         )
             
-        (if (eq ?adulto 1)
+        (if (eq ?adultos 1)
             then
             (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) bar))
             (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cafeteria))
