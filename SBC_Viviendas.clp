@@ -773,6 +773,12 @@
     (if (eq ?coche TRUE)
         then
         (bind $?caracteristicas-vivienda (insert$ $?caracteristicas-vivienda (+ (length$ $?caracteristicas-vivienda) 1) garaje))
+
+        else
+        (bind $?caracteristicas-vivienda (insert$ $?caracteristicas-vivienda (+ (length$ $?caracteristicas-vivienda) 1) tram))
+        (bind $?caracteristicas-vivienda (insert$ $?caracteristicas-vivienda (+ (length$ $?caracteristicas-vivienda) 1) tren))
+        (bind $?caracteristicas-vivienda (insert$ $?caracteristicas-vivienda (+ (length$ $?caracteristicas-vivienda) 1) metro))
+        (bind $?caracteristicas-vivienda (insert$ $?caracteristicas-vivienda (+ (length$ $?caracteristicas-vivienda) 1) bus))
     )
 
     (modify ?inf 
