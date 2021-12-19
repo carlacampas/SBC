@@ -39,7 +39,7 @@
       gimnasio
       primeraLineaDeMar
       obraNueva
-      pisicina
+      piscina
       estudio
       calefaccion
       ascensor

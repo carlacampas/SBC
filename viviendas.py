@@ -939,7 +939,7 @@ for d in districtes:
             garaje = bools[randrange(len(bools))]
             plazas = 0
             if garaje == "TRUE":
-                plazas = randrange(3)
+                plazas = randrange(3) + 1
 
             sH = randrange(150) + 10
             tr = randrange(20) + sH
