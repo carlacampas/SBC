@@ -449,6 +449,16 @@
             (bind ?var (send ?inst get-distMinUniversidad))
             (bind ?pts (+ ?pts (calculate-points ?lejos ?var)))
         )
+        (if (eq ?c guarderia)
+            then
+            (bind ?var (send ?inst get-distMinGuarderia))
+            (bind ?pts (+ ?pts (calculate-points ?lejos ?var)))
+        )
+        (if (eq ?c zonaVerde)
+            then
+            (bind ?var (send ?inst get-distMinZonaVerde))
+            (bind ?pts (+ ?pts (calculate-points ?lejos ?var)))
+        )
     )
     ?pts
 )
@@ -773,6 +783,7 @@
     (if (eq ?coche TRUE)
         then
         (bind $?caracteristicas-vivienda (insert$ $?caracteristicas-vivienda (+ (length$ $?caracteristicas-vivienda) 1) garaje))
+        (bind $?caracteristicas-vivienda (insert$ $?caracteristicas-vivienda (+ (length$ $?caracteristicas-vivienda) 1) zonaVerde))
 
         else
         (bind $?caracteristicas-vivienda (insert$ $?caracteristicas-vivienda (+ (length$ $?caracteristicas-vivienda) 1) tram))
@@ -920,15 +931,21 @@
         (bind ?puntos (delete$ ?puntos ?max ?max))
     )
 
-    (bind ?i 0)
-    (progn$ (?var $?aux)
-        (bind ?i(+ ?i 1))
-        (format t "Vivienda %d" ?i)
-        (printout t crlf)
-        (printout t (send ?var imprimir))
-        (bind ?idx (nth$ ?i $?auxPoints))
-        (format t "Puntuación vivienda: %d" ?idx)
-        (printout t crlf)
+    (if (eq (length$ ?aux) 0)
+        then 
+        (printout t "No hay viviendas dispoibles con esas condiciones" crlf)
+
+        else 
+        (bind ?i 0)
+        (progn$ (?var $?aux)
+            (bind ?i(+ ?i 1))
+            (format t "Vivienda %d" ?i)
+            (printout t crlf)
+            (printout t (send ?var imprimir))
+            (bind ?idx (nth$ ?i $?auxPoints))
+            (format t "Puntuación vivienda: %d" ?idx)
+            (printout t crlf)
+        )
     )
     (retract ?hecho)
 )

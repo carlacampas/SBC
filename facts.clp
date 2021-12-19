@@ -105,6 +105,7 @@
       tram
       tren
       universidad
+      zonaVerde
     )
   )
 )
