@@ -1024,18 +1024,32 @@
     (viviendas-usuario (vivienda-viables $?vivienda-viables))
     (preferencias (caracteristicas-vivienda $?caracteristicas-vivienda) (caracteristicas-ciudad $?caracteristicas-ciudad)
         (caracteristicas-ciudad-lejos $?caracteristicas-ciudad-lejos) (tipos-vivienda $?tipos-vivienda))
-    (preferencias-inferidas (minDormSingles ?minDormSingles) (minDormDoubles ?minDormDoubles) (maxDormSingles ?maxDormSingles) (maxDormDoubles ?maxDormDoubles))
+    (preferencias-inferidas (minDormSingles ?minDormSingles) (minDormDoubles ?minDormDoubles) 
+                            (maxDormSingles ?maxDormSingles) (maxDormDoubles ?maxDormDoubles)
+                            (caracteristicas-vivienda $?inf-caracteristicas-vivienda) 
+                            (caracteristicas-ciudad $?inf-caracteristicas-ciudad)
+                            (caracteristicas-ciudad-lejos $?inf-caracteristicas-ciudad-lejos)
+    )
     =>
     (bind $?puntos (create$))
     (progn$ (?var $?vivienda-viables)
         (bind ?pts 0)
-        (bind ?pts (respeta-preferencias-vivienda ?var $?caracteristicas-vivienda))           ;;preferencia
+        (bind ?pts (respeta-preferencias-vivienda ?var $?caracteristicas-vivienda))
 
         (bind ?lejos FALSE)
         (bind ?pts (+ ?pts (respeta-preferencias-ciudad ?lejos ?var $?caracteristicas-ciudad)))
 
         (bind ?lejos TRUE)
         (bind ?pts (+ ?pts (respeta-preferencias-ciudad ?lejos ?var $?caracteristicas-ciudad-lejos)))
+
+        (bind ?pts 0)
+        (bind ?pts (respeta-preferencias-vivienda ?var $?inf-caracteristicas-vivienda))
+
+        (bind ?lejos FALSE)
+        (bind ?pts (+ ?pts (respeta-preferencias-ciudad ?lejos ?var $?inf-caracteristicas-ciudad)))
+
+        (bind ?lejos TRUE)
+        (bind ?pts (+ ?pts (respeta-preferencias-ciudad ?lejos ?var $?inf-caracteristicas-ciudad-lejos)))
         
         (bind ?pts (+ ?pts (respeta-dormitorios ?var ?minDormDoubles ?minDormSingles ?maxDormDoubles ?maxDormSingles)))
         ;(bind ?pts (+ ?pts (suma-puntos-cv ?v ?pts $?icv))) ;;inferencia 
