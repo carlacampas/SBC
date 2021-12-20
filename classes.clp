@@ -33,6 +33,18 @@
     (single-slot precioMensual
         (type FLOAT)
         (create-accessor read-write))
+    (single-slot soleadoMañana
+        (type SYMBOL)
+        (create-accessor read-write)
+        (default FALSE))
+    (single-slot soleadoTarde
+        (type SYMBOL)
+        (create-accessor read-write)
+        (default FALSE))
+    (single-slot soleadoSiempre
+        (type SYMBOL)
+        (create-accessor read-write)
+        (default FALSE))    
     (single-slot vistas
         (type SYMBOL)
         (create-accessor read-write)

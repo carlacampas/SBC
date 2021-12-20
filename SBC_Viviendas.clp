@@ -277,6 +277,30 @@
                 (bind ?pts (+ ?pts 2))
             )
         )
+        (if (eq ?c soleadoMañana)
+            then
+            (bind ?var (send ?inst get-soleadoMañana))
+            (if (eq ?var TRUE)
+                then
+                (bind ?pts (+ ?pts 2))
+            )
+        )
+        (if (eq ?c soleadoTarde)
+            then
+            (bind ?var (send ?inst get-soleadoTarde))
+            (if (eq ?var TRUE)
+                then
+                (bind ?pts (+ ?pts 2))
+            )
+        )
+        (if (eq ?c soleadoSiempre)
+            then
+            (bind ?var (send ?inst get-soleadoSiempre))
+            (if (eq ?var TRUE)
+                then
+                (bind ?pts (+ ?pts 2))
+            )
+        )
     )
     ?pts
 )
@@ -1052,7 +1076,7 @@
         (bind ?pts (+ ?pts (respeta-preferencias-ciudad ?lejos ?var $?inf-caracteristicas-ciudad-lejos)))
         
         (bind ?pts (+ ?pts (respeta-dormitorios ?var ?minDormDoubles ?minDormSingles ?maxDormDoubles ?maxDormSingles)))
-        ;(bind ?pts (+ ?pts (suma-puntos-cv ?v ?pts $?icv))) ;;inferencia 
+
         (bind $?puntos (insert$ $?puntos (+ (length$ $?puntos) 1) ?pts))
     )
 

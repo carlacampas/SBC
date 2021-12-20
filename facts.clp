@@ -2,6 +2,9 @@
   (slots-and-names
     (nombres-vivienda
       "Amueblado"
+      "Soleado Mañana"
+      "Soleado Tarde"
+      "Soleado Todo el Dia"
       "Vistas"
       "Vistas al Mar"
       "Vistas a la Montaña"
@@ -24,6 +27,9 @@
     )
     (campos-vivienda
       amueblado
+      soleadoMañana
+      soleadoTarde
+      soleadoSiempre
       vistas
       vistasMar
       vistasMontaña

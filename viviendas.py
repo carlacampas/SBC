@@ -935,6 +935,13 @@ for d in districtes:
 
                 vistasMont = bools[randrange(len(bools))]
 
+            soleadoMañana = bools[randrange(len(bools))]
+            soleadoTarde = bools[randrange(len(bools))]
+            if (soleadoMañana == bools[0] and soleadoTarde == bools[0]):
+                soleadoSiempre = bools[0]
+            else:
+                soleadoSiempre = bools[1]
+
             garaje = bools[randrange(len(bools))]
             plazas = 0
             pm = randrange(12-8) + 8
@@ -974,6 +981,9 @@ for d in districtes:
             "   (mascota " + bools[randrange(len(bools))] + ")\n" +
             '   (orientacion "' + orient[randrange(len(orient))] + '")\n' +
             "   (precioMensual " + str(pm * tr) + ")\n" +
+            "   (soleadoMañana " + soleadoMañana + ")\n" +
+            "   (soleadoTarde " + soleadoTarde + ")\n" +
+            "   (soleadoSiempre " + soleadoSiempre + ")\n" +
             "   (vistas " + vistas + ")\n" +
             "   (vistasMar " + vistasMar + ")\n" +
             "   (vistasMontaña " + vistasMont + ")\n" +
