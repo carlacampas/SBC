@@ -177,7 +177,6 @@
             (bind ?var (send ?inst get-garaje))
             (if (eq ?var TRUE)
                 then
-                (printout t "entra")
                 (bind ?pts (+ ?pts 2))
             )
         )
@@ -1288,6 +1287,9 @@
     (bind ?maxPuntuacion (+ ?maxPuntuacion (* (length$ ?inf-caracteristicas-ciudad-lejos) 2)))
     (bind ?maxPuntuacion (+ ?maxPuntuacion ?maxDormSingles))
     (bind ?maxPuntuacion (+ ?maxPuntuacion 1)) ;tipos de vivienda
+
+    (format t "max: %d" ?maxPuntuacion)
+    (printout t crlf)
 
     (bind $?puntos (create$))
     (progn$ (?var $?vivienda-viables)
