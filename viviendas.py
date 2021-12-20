@@ -1048,6 +1048,7 @@ for d in districtes:
             "   (distMinTren " + str(randrange(3000)) + ")\n" +
             "   (distMinUniversidad " + str(randrange(5000)) + ")\n" +
             "   (distMinZonaVerde " + str(randrange(1500)) + ")\n" +
+            "   (distMinCampoDeporte " + str(randrange(5000)) + ")\n" +
             ")\n")
 
             f.write(viv)

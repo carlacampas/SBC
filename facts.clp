@@ -84,6 +84,7 @@
       "Tren"
       "Universidad"
       "Zona Verde"
+      "Campo Deporte"
     )
     (campos-ciudad
       aeropuerto
@@ -119,6 +120,7 @@
       tren
       universidad
       zonaVerde
+      campoDeporte
     )
     (nombres-calidad
         "Me es indiferente"

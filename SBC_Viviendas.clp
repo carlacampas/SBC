@@ -484,6 +484,11 @@
             (bind ?var (send ?inst get-distMinZonaVerde))
             (bind ?pts (+ ?pts (calculate-points ?lejos ?var)))
         )
+        (if (eq ?c campoDeporte)
+            then
+            (bind ?var (send ?inst get-distMinCampoDeporte))
+            (bind ?pts (+ ?pts (calculate-points ?lejos ?var)))
+        )
     )
     ?pts
 )

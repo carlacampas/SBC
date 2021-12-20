@@ -301,6 +301,10 @@
         (type INTEGER)
         (create-accessor read-write)
         (default 0))
+    (single-slot distMinCampoDeporte
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0))
 )
 
 (defclass Apartamento
