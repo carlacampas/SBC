@@ -1024,8 +1024,8 @@
     (viviendas-usuario (vivienda-viables $?vivienda-viables))
     (preferencias (caracteristicas-vivienda $?caracteristicas-vivienda) (caracteristicas-ciudad $?caracteristicas-ciudad)
         (caracteristicas-ciudad-lejos $?caracteristicas-ciudad-lejos) (tipos-vivienda $?tipos-vivienda))
+    (preferencias-inferidas (minDormSingles ?minDormSingles) (minDormDoubles ?minDormDoubles) (maxDormSingles ?maxDormSingles) (maxDormDoubles ?maxDormDoubles))
     =>
-
     (bind $?puntos (create$))
     (progn$ (?var $?vivienda-viables)
         (bind ?pts 0)
@@ -1036,6 +1036,8 @@
 
         (bind ?lejos TRUE)
         (bind ?pts (+ ?pts (respeta-preferencias-ciudad ?lejos ?var $?caracteristicas-ciudad-lejos)))
+        
+        (bind ?pts (+ ?pts (respeta-dormitorios ?var ?minDormDoubles ?minDormSingles ?maxDormDoubles ?maxDormSingles)))
         ;(bind ?pts (+ ?pts (suma-puntos-cv ?v ?pts $?icv))) ;;inferencia 
         (bind $?puntos (insert$ $?puntos (+ (length$ $?puntos) 1) ?pts))
     )
