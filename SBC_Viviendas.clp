@@ -776,6 +776,7 @@
             (if (<= ?edad 25)
                 then
                 (bind ?universitario (+ ?universitario 1))
+                (bind ?adultos(+ ?adultos 1))
                 else (if (>= ?edad 70)
                     then
                         (bind ?jubilado(+ ?jubilado 1))
