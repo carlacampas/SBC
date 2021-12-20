@@ -488,6 +488,45 @@
     ?pts
 )
 
+(deffunction MAIN::determinar-puntos-calidad (?calidad ?var)
+    (bind ?peligro (send ?var get-calBarrio))
+    (bind ?pts 0)
+    (if (eq ?calidad buena)
+        then 
+        (if (eq ?peligro buena)
+            then
+            (bind ?pts (+ ?pts 1))
+        )
+        
+        else (if (eq ?calidad media)
+            then
+            (if (eq ?peligro buena)
+                then
+                    (bind ?pts (+ ?pts 2))
+                    else (if (eq ?peligro media)
+                        then
+                        (bind ?pts (+ ?pts 2))
+                    )
+            )
+
+            else (if (eq ?calidad baja)
+                then
+                (if (eq ?peligro buena)
+                then
+                    (bind ?pts (+ ?pts 2))
+                    else (if (eq ?peligro media)
+                        then
+                        (bind ?pts (+ ?pts 2))
+
+                        else (bind ?pts (+ ?pts 1))
+                    )
+                )
+            )
+        )
+    )
+    ?pts
+)
+
 (deffunction MAIN::respeta-dormitorios (?inst ?minDormDoubles ?minDormSingles ?maxDormDoubles ?maxDormSingles)
     (bind ?pts 0)
     (bind ?singles (send ?inst get-numDormitoriosSimples))
@@ -512,6 +551,7 @@
     )
     ?pts
 )
+
 ;;************************************************
 ;;**             PREGUNTAS USUARIO              **
 ;;************************************************
@@ -566,6 +606,7 @@
     (bind ?e (pregunta-si-no "¿La vivienda tiene que ser accesible en silla de ruedas? "))
     (modify ?u (movilidadReducida ?e))
 )
+
 (defrule preguntas-usuario::establecer-plazo "Establecer si pretenden vivir a corto o largo plazo"
     ?u <- (pregunta-usuario (cortoPlazo ?cortoPlazo) (bebesFuturo ?bebesFuturo))
     (test (eq ?cortoPlazo NONE))
@@ -786,7 +827,7 @@
     (bind $?caracteristicas-ciudad (create$ ))
     (bind $?caracteristicas-ciudad-lejos (create$ ))
     (bind $?caracteristicas-vivienda (create$ ))
-    (bind $?calidad-barrio (create$))
+    (bind ?calidad-barrio indif)
     (if (> ?bebe 0)
         then 
         (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) guarderia))
@@ -870,11 +911,10 @@
         (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) hospitalNinos))
         (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) mercado))
         (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) plaza))
+
         (bind $?caracteristicas-vivienda (insert$ $?caracteristicas-vivienda (+ (length$ $?caracteristicas-vivienda) 1) sistemaAlarma))
-        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) zonaVerde))
-        (bind $?calidad-barrio (insert$ $?calidad-barrio (+ (length$ $?calidad-barrio) 1) buena))
 
-
+        (bind ?calidad-barrio  buena)
         
         (bind $?caracteristicas-ciudad-lejos (insert$ $?caracteristicas-ciudad-lejos (+ (length$ $?caracteristicas-ciudad-lejos) 1) clubNocturno))
         (bind $?caracteristicas-ciudad-lejos (insert$ $?caracteristicas-ciudad-lejos (+ (length$ $?caracteristicas-ciudad-lejos) 1) bar))
@@ -893,7 +933,7 @@
             (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) plaza))
             (bind $?caracteristicas-vivienda (insert$ $?caracteristicas-vivienda (+ (length$ $?caracteristicas-vivienda) 1) sistemaAlarma))
             (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) zonaVerde))
-            (bind $?calidad-barrio (insert$ $?calidad-barrio (+ (length$ $?calidad-barrio) 1) buena))
+            (bind ?calidad-barrio  buena)
             
             (bind $?caracteristicas-ciudad-lejos (insert$ $?caracteristicas-ciudad-lejos (+ (length$ $?caracteristicas-ciudad-lejos) 1) clubNocturno))
             (bind $?caracteristicas-ciudad-lejos (insert$ $?caracteristicas-ciudad-lejos (+ (length$ $?caracteristicas-ciudad-lejos) 1) bar))
@@ -944,7 +984,8 @@
     (modify ?inf 
         (caracteristicas-ciudad ?caracteristicas-ciudad)
         (caracteristicas-ciudad-lejos ?caracteristicas-ciudad-lejos)
-        (caracteristicas-vivienda ?caracteristicas-vivienda))
+        (caracteristicas-vivienda ?caracteristicas-vivienda)
+        (calidad-barrio ?calidad-barrio))
     (retract ?hecho)
     (assert (inferir-dormitorios ask))   
 )
@@ -1047,9 +1088,11 @@
     ?hecho <- (preferencias-viviendas ask)
     (viviendas-usuario (vivienda-viables $?vivienda-viables))
     (preferencias (caracteristicas-vivienda $?caracteristicas-vivienda) (caracteristicas-ciudad $?caracteristicas-ciudad)
-        (caracteristicas-ciudad-lejos $?caracteristicas-ciudad-lejos) (tipos-vivienda $?tipos-vivienda))
+        (caracteristicas-ciudad-lejos $?caracteristicas-ciudad-lejos) (tipos-vivienda $?tipos-vivienda)
+        (calidad-barrio ?calidad-barrio))
     (preferencias-inferidas (minDormSingles ?minDormSingles) (minDormDoubles ?minDormDoubles) 
                             (maxDormSingles ?maxDormSingles) (maxDormDoubles ?maxDormDoubles)
+                            (calidad-barrio ?inf-calidad-barrio)
                             (caracteristicas-vivienda $?inf-caracteristicas-vivienda) 
                             (caracteristicas-ciudad $?inf-caracteristicas-ciudad)
                             (caracteristicas-ciudad-lejos $?inf-caracteristicas-ciudad-lejos)
@@ -1076,6 +1119,16 @@
         (bind ?pts (+ ?pts (respeta-preferencias-ciudad ?lejos ?var $?inf-caracteristicas-ciudad-lejos)))
         
         (bind ?pts (+ ?pts (respeta-dormitorios ?var ?minDormDoubles ?minDormSingles ?maxDormDoubles ?maxDormSingles)))
+
+        (if (not (eq ?calidad-barrio indf))
+            then 
+            (bind ?pts (+ ?pts (determinar-puntos-calidad ?calidad-barrio ?var)))
+            ;determinar-puntos-calidad (?calidad ?inst)
+            else (if (not (eq ?inf-calidad-barrio indf))
+                then
+                (bind ?pts (+ ?pts (determinar-puntos-calidad ?inf-calidad-barrio ?var)))
+            )
+        )
 
         (bind $?puntos (insert$ $?puntos (+ (length$ $?puntos) 1) ?pts))
     )
@@ -1111,7 +1164,7 @@
             (bind ?i(+ ?i 1))
             (format t "Vivienda %d" ?i)
             (printout t crlf)
-            (printout t (send ?var imprimir))
+            (send ?var imprimir)
             (bind ?idx (nth$ ?i $?auxPoints))
             (format t "Puntuación vivienda: %d" ?idx)
             (printout t crlf)
