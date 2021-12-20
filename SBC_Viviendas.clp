@@ -1020,9 +1020,9 @@
 
         (bind ?calidad-barrio  buena)
         
-        (if (not (member$ clubNocturno $?pcc))
+        (if (not (member$ clubNoct $?pcc))
             then
-            (bind $?caracteristicas-ciudad-lejos (insert$ $?caracteristicas-ciudad-lejos (+ (length$ $?caracteristicas-ciudad-lejos) 1) clubNocturno))
+            (bind $?caracteristicas-ciudad-lejos (insert$ $?caracteristicas-ciudad-lejos (+ (length$ $?caracteristicas-ciudad-lejos) 1) clubNoct))
         )
 
         (if (not (member$ bar $?pcc))
@@ -1074,9 +1074,9 @@
             (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) zonaVerde))
             (bind ?calidad-barrio  buena)
             
-            (if (not (member$ clubNocturno $?pcc))
+            (if (not (member$ clubNoct $?pcc))
             then
-                (bind $?caracteristicas-ciudad-lejos (insert$ $?caracteristicas-ciudad-lejos (+ (length$ $?caracteristicas-ciudad-lejos) 1) clubNocturno))
+                (bind $?caracteristicas-ciudad-lejos (insert$ $?caracteristicas-ciudad-lejos (+ (length$ $?caracteristicas-ciudad-lejos) 1) clubNoct))
             )
 
             (if (not (member$ bar $?pcc))
@@ -1268,7 +1268,7 @@
 
 (defrule inferencia-datos::filtrar-preferencias "Filtrar las viviendas con las preferencias del usuario"
     ?hecho <- (preferencias-viviendas ask)
-    (viviendas-usuario (vivienda-viables $?vivienda-viables))
+    ?inf <- (viviendas-usuario (vivienda-viables $?vivienda-viables))
     (preferencias (caracteristicas-vivienda $?caracteristicas-vivienda) (caracteristicas-ciudad $?caracteristicas-ciudad)
         (caracteristicas-ciudad-lejos $?caracteristicas-ciudad-lejos) (tipos-vivienda $?tipos-vivienda)
         (calidad-barrio ?calidad-barrio))
@@ -1363,6 +1363,7 @@
         (bind ?puntos (delete$ ?puntos ?max ?max))
     )
 
+    (modify ?inf (vivienda-viables $?aux))
 
     (if (eq (length$ ?aux) 0)
         then 
