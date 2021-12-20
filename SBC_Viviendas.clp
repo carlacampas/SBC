@@ -837,6 +837,7 @@
     (determinacion-edades (bebe ?bebe) (pequeno ?pequeno) (adolescente ?adolescente) (universitario ?universitario)
                             (adultos ?adultos) (familia ?familia) (jubilado ?jubilado) (grupo ?grupo))
     (pregunta-usuario (coche ?coche) (cortoPlazo ?cortoPlazo) (bebesFuturo ?bebesFuturo))
+    (preferencias (caracteristicas-ciudad $?pcc) (caracteristicas-ciudad-lejos $?pccl)(calidad-barrio ?cb))
     ?inf <- (preferencias-inferidas)
     =>
 
@@ -846,60 +847,109 @@
     (bind ?calidad-barrio indif)
     (if (> ?bebe 0)
         then 
-        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) guarderia))
-        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-vivienda (+ (length$ $?caracteristicas-vivienda) 1) adaptadoMovilidadReducida))
+        (if (not (member$ guarderia $?pccl))
+            then
+            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) guarderia))
+        )
+        (bind $?caracteristicas-vivienda (insert$ $?caracteristicas-vivienda (+ (length$ $?caracteristicas-vivienda) 1) adaptadoMovilidadReducida))
         (bind $?caracteristicas-vivienda (insert$ $?caracteristicas-vivienda (+ (length$ $?caracteristicas-vivienda) 1) ascensor))
         
         (if (eq ?cortoPlazo FALSE)
             then
             (if (eq ?pequeno 0)
                 then
-                (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) escuela))
-                (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) parque))
-                (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) jardin))
+
+                (if (not (member$ escuela $?pccl))
+                    then
+                    (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) escuela))
+                )
+                (if (not (member$ parque $?pccl))
+                    then
+                    (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) parque))
+                )
+                (if (not (member$ jardin $?pccl))
+                    then
+                    (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) jardin))
+                )
             )
             (if (eq ?adolescente 0)
                 then
-                (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) instituto))
+                (if (not (member$ instituto $?pccl))
+                    then
+                    (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) instituto))
+                )
             )
             (if (eq ?universitario 0)
                 then
-                (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) bar))
-                (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) universidad))
+                (if (not (member$ bar $?pccl))
+                    then
+                    (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) bar))
+                )
+                (if (not (member$ universidad $?pccl))
+                    then
+                    (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) universidad))
+                )
                 ;;el resto de servicios de universitario se añaden también en familia, y como si hay un bebé hay familia se terminan añadiendo siempre
             )
         )
     )
     (if (> ?pequeno 0)
         then
-        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) escuela))
-        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) parque))
-        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) jardin))
+        (if (not (member$ escuela $?pccl))
+            then
+            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) escuela))
+        )
+        (if (not (member$ parque $?pccl))
+            then
+            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) parque))
+        )
+        (if (not (member$ jardin $?pccl))
+            then
+            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) jardin))
+        )
         
         (if (eq ?cortoPlazo FALSE)
             then
             (if (eq ?adolescente 0)
                 then
-                (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) instituto))
+                (if (not (member$ instituto $?pccl))
+                    then
+                    (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) instituto))
+                )
             )
             (if (eq ?universitario 0)
                 then
-                (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) bar))
-                (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) universidad))
+                (if (not (member$ bar $?pccl))
+                    then
+                    (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) bar))
+                )
+                (if (not (member$ universidad $?pccl))
+                    then
+                    (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) universidad))
+                )
                 ;;el resto de servicios de universitario se añaden también en familia, y como si hay un peque hay familia se terminan añadiendo siempre
             )
         )
     )
     (if (> ?adolescente 0)
         then
-        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) instituto))
+        (if (not (member$ instituto $?pccl))
+            then
+            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) instituto))
+        )
         
         (if (eq ?cortoPlazo FALSE)
             then
             (if (eq ?universitario 0)
                 then
-                (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) bar))
-                (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) universidad))
+                (if (not (member$ bar $?pccl))
+                    then
+                    (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) bar))
+                )
+                (if (not (member$ universidad $?pccl))
+                    then
+                    (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) universidad))
+                )
                 ;;el resto de servicios de universitario se añaden también en familia, y como si hay un peque hay familia se terminan añadiendo siempre
             )
         )
@@ -908,54 +958,144 @@
         then
         (if (eq ?familia FALSE)
             then
-            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) bar))
-            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cafeteria))
-            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cine))
-            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) centroComercial))
-            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) supermercado))
+            (if (not (member$ bar $?pccl))
+                then
+                (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) bar))
+            )
+            (if (not (member$ cafeteria $?pccl))
+                then
+                (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cafeteria))
+            )
+            (if (not (member$ cine $?pccl))
+                then
+                (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cine))
+            )
+            (if (not (member$ centroComercial $?pccl))
+                then
+                (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) centroComercial))
+            )
+            (if (not (member$ supermercado $?pccl))
+                then
+                (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) supermercado))
+            )
         )
         
-        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) universidad))
+        (if (not (member$ universidad $?pccl))
+            then
+            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) universidad))
+        )
     )
     (if (eq ?familia TRUE)
         then
-        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cafeteria))
-        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cine))
-        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) centroComercial))
-        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) supermercado))
+        (if (not (member$ cafeteria $?pccl))
+            then
+            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cafeteria))
+        )
+        (if (not (member$ cine $?pccl))
+            then
+            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cine))
+        )
+        (if (not (member$ centroComercial $?pccl))
+            then
+            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) centroComercial))
+        )
+        (if (not (member$ supermercado $?pccl))
+            then
+            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) supermercado))
+        )
         
-        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) hospitalNinos))
-        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) mercado))
-        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) plaza))
+        (if (not (member$ hospitalNinos $?pccl))
+            then
+            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) hospitalNinos))
+        )
+        (if (not (member$ mercado $?pccl))
+            then
+            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) mercado))
+        )
+        (if (not (member$ plaza $?pccl))
+            then
+            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) plaza))
+        )
 
         (bind $?caracteristicas-vivienda (insert$ $?caracteristicas-vivienda (+ (length$ $?caracteristicas-vivienda) 1) sistemaAlarma))
 
         (bind ?calidad-barrio  buena)
         
-        (bind $?caracteristicas-ciudad-lejos (insert$ $?caracteristicas-ciudad-lejos (+ (length$ $?caracteristicas-ciudad-lejos) 1) clubNocturno))
-        (bind $?caracteristicas-ciudad-lejos (insert$ $?caracteristicas-ciudad-lejos (+ (length$ $?caracteristicas-ciudad-lejos) 1) bar))
+        (if (not (member$ clubNocturno $?pcc))
+            then
+            (bind $?caracteristicas-ciudad-lejos (insert$ $?caracteristicas-ciudad-lejos (+ (length$ $?caracteristicas-ciudad-lejos) 1) clubNocturno))
+        )
+
+        (if (not (member$ bar $?pcc))
+            then
+            (bind $?caracteristicas-ciudad-lejos (insert$ $?caracteristicas-ciudad-lejos (+ (length$ $?caracteristicas-ciudad-lejos) 1) bar))
+        )
+
+        (if (not (member$ campoDeporte $?pcc))
+            then
+            (bind $?caracteristicas-ciudad-lejos (insert$ $?caracteristicas-ciudad-lejos (+ (length$ $?caracteristicas-ciudad-lejos) 1) campoDeporte))
+        )
     )
     (if (> ?jubilado 0)
         then
         
         (if (eq ?familia FALSE)
             then
-            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cafeteria))
-            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cine))
-            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) centroComercial))
-            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) supermercado))
-            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) hospital))
-            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) mercado))
-            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) plaza))
+            (if (not (member$ cafeteria $?pccl))
+                then
+                (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cafeteria))
+            )
+            (if (not (member$ cine $?pccl))
+                then
+                (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cine))
+            )
+            (if (not (member$ centroComercial $?pccl))
+                then
+                (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) centroComercial))
+            )
+            (if (not (member$ supermercado $?pccl))
+                then
+                (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) supermercado))
+            )
+            
+            (if (not (member$ hospital $?pccl))
+                then
+                (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) hospital))
+            )
+            (if (not (member$ mercado $?pccl))
+                then
+                (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) mercado))
+            )
+            (if (not (member$ plaza $?pccl))
+                then
+                (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) plaza))
+            )        
+            
             (bind $?caracteristicas-vivienda (insert$ $?caracteristicas-vivienda (+ (length$ $?caracteristicas-vivienda) 1) sistemaAlarma))
             (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) zonaVerde))
             (bind ?calidad-barrio  buena)
             
-            (bind $?caracteristicas-ciudad-lejos (insert$ $?caracteristicas-ciudad-lejos (+ (length$ $?caracteristicas-ciudad-lejos) 1) clubNocturno))
-            (bind $?caracteristicas-ciudad-lejos (insert$ $?caracteristicas-ciudad-lejos (+ (length$ $?caracteristicas-ciudad-lejos) 1) bar))
+            (if (not (member$ clubNocturno $?pcc))
+            then
+                (bind $?caracteristicas-ciudad-lejos (insert$ $?caracteristicas-ciudad-lejos (+ (length$ $?caracteristicas-ciudad-lejos) 1) clubNocturno))
+            )
+
+            (if (not (member$ bar $?pcc))
+                then
+                (bind $?caracteristicas-ciudad-lejos (insert$ $?caracteristicas-ciudad-lejos (+ (length$ $?caracteristicas-ciudad-lejos) 1) bar))
+            )
+
+            (if (not (member$ campoDeporte $?pcc))
+                then
+                (bind $?caracteristicas-ciudad-lejos (insert$ $?caracteristicas-ciudad-lejos (+ (length$ $?caracteristicas-ciudad-lejos) 1) campoDeporte))
+            )
         )
 
-        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) geriatrico))
+        (if (not (member$ geriatrico $?pccl))
+            then
+            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) geriatrico))
+        )
+        
         (bind $?caracteristicas-vivienda (insert$ $?caracteristicas-vivienda (+ (length$ $?caracteristicas-vivienda) 1) adaptadoMovilidadReducida))
         (bind $?caracteristicas-vivienda (insert$ $?caracteristicas-vivienda (+ (length$ $?caracteristicas-vivienda) 1) ascensor))
         
@@ -964,25 +1104,52 @@
         then
         (if (eq ?bebesFuturo TRUE)
             then
-            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) guarderia))
-            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-vivienda (+ (length$ $?caracteristicas-vivienda) 1) adaptadoMovilidadReducida))
+            (if (not (member$ guarderia $?pccl))
+                then
+                (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) guarderia))
+            )
+            (bind $?caracteristicas-vivienda (insert$ $?caracteristicas-vivienda (+ (length$ $?caracteristicas-vivienda) 1) adaptadoMovilidadReducida))
             (bind $?caracteristicas-vivienda (insert$ $?caracteristicas-vivienda (+ (length$ $?caracteristicas-vivienda) 1) ascensor))
         )
             
         (if (eq ?adultos 1)
             then
-            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) bar))
-            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cafeteria))
-            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) centro-comercial))
-            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cine))
+            (if (not (member$ bar $?pccl))
+                then
+                (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) bar))
+            )
+            (if (not (member$ cafeteria $?pccl))
+                then
+                (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cafeteria))
+            )
+            (if (not (member$ centroComercial $?pccl))
+                then
+                (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) centroComercial))
+            )
+            (if (not (member$ cine $?pccl))
+                then
+                (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cine))
+            )
         )
     )
     (if (eq ?grupo TRUE) 
         then
-        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) bar))
-        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cafeteria))
-        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) centro-comercial))
-        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cine))
+        (if (not (member$ bar $?pccl))
+            then
+            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) bar))
+        )
+        (if (not (member$ cafeteria $?pccl))
+            then
+            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cafeteria))
+        )
+        (if (not (member$ centroComercial $?pccl))
+            then
+            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) centroComercial))
+        )
+        (if (not (member$ cine $?pccl))
+            then
+            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cine))
+        )
     )
 
     (if (eq ?coche TRUE)
@@ -1114,6 +1281,14 @@
                             (caracteristicas-ciudad-lejos $?inf-caracteristicas-ciudad-lejos)
     )
     =>
+    (bind ?maxPuntuacion (+ (* (length$ ?caracteristicas-ciudad) 2) (* (length$ ?caracteristicas-vivienda) 2)))
+    (bind ?maxPuntuacion (+ ?maxPuntuacion (* (length$ ?caracteristicas-ciudad-lejos) 2)))
+    (bind ?maxPuntuacion (+ ?maxPuntuacion (* (length$ ?inf-caracteristicas-vivienda) 2)))
+    (bind ?maxPuntuacion (+ ?maxPuntuacion (* (length$ ?inf-caracteristicas-ciudad) 2)))
+    (bind ?maxPuntuacion (+ ?maxPuntuacion (* (length$ ?inf-caracteristicas-ciudad-lejos) 2)))
+    (bind ?maxPuntuacion (+ ?maxPuntuacion ?maxDormSingles))
+    (bind ?maxPuntuacion (+ ?maxPuntuacion 1)) ;tipos de vivienda
+
     (bind $?puntos (create$))
     (progn$ (?var $?vivienda-viables)
         (bind ?pts 0)
@@ -1142,10 +1317,23 @@
         (if (not (eq ?calidad-barrio indf))
             then 
             (bind ?pts (+ ?pts (determinar-puntos-calidad ?calidad-barrio ?var)))
+            (if (eq ?inf-calidad-barrio buena)
+                then
+                (bind ?maxPuntuacion (+ ?maxPuntuacion 1))
+            )
+            (if (eq ?inf-calidad-barrio media)
+                then
+                (bind ?maxPuntuacion (+ ?maxPuntuacion 2))
+            )
+            (if (eq ?inf-calidad-barrio baja)
+                then
+                (bind ?maxPuntuacion (+ ?maxPuntuacion 3))
+            )
             ;determinar-puntos-calidad (?calidad ?inst)
             else (if (not (eq ?inf-calidad-barrio indf))
                 then
                 (bind ?pts (+ ?pts (determinar-puntos-calidad ?inf-calidad-barrio ?var)))
+                (bind ?maxPuntuacion (+ ?maxPuntuacion 1))
             )
         )
 
@@ -1173,6 +1361,7 @@
         (bind ?puntos (delete$ ?puntos ?max ?max))
     )
 
+
     (if (eq (length$ ?aux) 0)
         then 
         (printout t "No hay viviendas dispoibles con esas condiciones" crlf)
@@ -1181,10 +1370,12 @@
         (bind ?i 0)
         (progn$ (?var $?aux)
             (bind ?i(+ ?i 1))
+            (bind ?idx (nth$ ?i $?auxPoints))
             (format t "Vivienda %d" ?i)
+            (printout t)
+            (format t ", %f porcentage de similitud con preferencias" (* (/ ?idx ?maxPuntuacion) 100))
             (printout t crlf)
             (send ?var imprimir)
-            (bind ?idx (nth$ ?i $?auxPoints))
             (format t "Puntuación vivienda: %d" ?idx)
             (printout t crlf)
         )
