@@ -15,7 +15,7 @@
 )
 
 (deftemplate MAIN::preferencias
-    (multislot tipos-vivienda (type SYMBOL))
+  (multislot tipos-vivienda (type SYMBOL))
   (multislot caracteristicas-vivienda (type SYMBOL))
   (multislot calidad-barrio (type SYMBOL))
   (multislot caracteristicas-ciudad (type SYMBOL))
@@ -25,8 +25,8 @@
 (deftemplate MAIN::preferencias-inferidas
   (slot minDormSingles (type INTEGER)) ;minimizar dormitorios singles
   (slot minDormDoubles (type INTEGER)) ;minimizar dormitorios doubles
-  (slot maxSingles (type INTEGER)) ;maximizar dormitorios singles
-  (slot maxDoubles (type INTEGER)) ;maximizar dormitorios doubles
+  (slot maxDormSingles (type INTEGER)) ;maximizar dormitorios singles
+  (slot maxDormDoubles (type INTEGER)) ;maximizar dormitorios doubles
   (multislot caracteristicas-vivienda (type SYMBOL))
   (slot calidad-barrio (type SYMBOL))
   (multislot caracteristicas-ciudad (type SYMBOL))
@@ -35,7 +35,6 @@
 
 (deftemplate MAIN::viviendas-usuario 
   (multislot vivienda-viables (type INSTANCE))
-  (multislot vivienda-inviables (type INSTANCE))
 )
 
 (deftemplate slots-and-names
@@ -56,11 +55,6 @@
   (slot familia (type SYMBOL))
   (slot jubilado (type INTEGER))
   (slot grupo (type SYMBOL))
-)
-
-(deftemplate MAIN::calcular-puntos
-    (multislot lista-filtrada (type INSTANCE))
-    (multislot puntuacion-vivienda (type INTEGER) (default -1))
 )
 
 ;; PEQUEÑO: (< 3 -> TODDLER, > 3, < 12 PEQUEÑO)

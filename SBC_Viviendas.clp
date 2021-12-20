@@ -74,7 +74,7 @@
 )
 
 ;;; Funcion para hacer una pregunta multi-respuesta con indices
-(deffunction pregunta-multi (?pregunta $?valores-posibles)
+(deffunction MAIN::pregunta-multi (?pregunta $?valores-posibles)
     (bind ?linea (format nil "%s" ?pregunta))
     (printout t ?linea crlf)
     (progn$ (?var ?valores-posibles)
@@ -97,7 +97,7 @@
 )
 
 ;;; Funcion para hacer una pregunta multi-respuesta con indices
-(deffunction pregunta-multi-rango (?pregunta ?min ?max)
+(deffunction MAIN::pregunta-multi-rango (?pregunta ?min ?max)
     (bind ?linea (format nil "%s" ?pregunta))
     (printout t ?linea crlf)
     (format t "%s" "Indica los numeros separados por un espacio: ")
@@ -113,7 +113,7 @@
     ?lista
 )
 
-(deffunction respecta-preferencias-vivienda (?inst $?car)
+(deffunction MAIN::respeta-preferencias-vivienda (?inst $?car)
     (bind ?pts 0)
     (progn$ (?c ?car)
         (if (eq ?c amueblado)
@@ -307,7 +307,7 @@
     ?pts
 )
 
-(deffunction respecta-preferencias-ciudad (?lejos ?inst $?car)
+(deffunction MAIN::respeta-preferencias-ciudad (?lejos ?inst $?car)
     (bind ?pts 0)
     (progn$ (?c ?car)
         (if (eq ?c aeropuerto)
@@ -459,6 +459,31 @@
             then
             (bind ?var (send ?inst get-distMinZonaVerde))
             (bind ?pts (+ ?pts (calculate-points ?lejos ?var)))
+        )
+    )
+    ?pts
+)
+
+(deffunction MAIN::respeta-dormitorios (?inst ?minDormDoubles ?minDormSingles ?maxDormDoubles ?maxDormSingles)
+    (bind ?pts 0)
+    (bind ?singles (send ?inst get-numDormitoriosSimples))
+    (bind ?doubles (send ?inst get-numDormitoriosDobles))
+
+    (if (and (>= ?singles ?minDormSingles) (>= ?doubles ?maxDormDoubles))
+        then
+        (bind ?have (+ (- ?singles ?minDormSingles) (* (- ?doubles ?maxDormDoubles) 2)))
+        (bind ?need (- ?maxDormSingles ?minDormSingles))
+        
+        (if (>= ?have ?need)
+            then
+            (bind ?dif (- ?maxDormSingles ?singles))
+            (if (<= ?dif 0)
+                then
+                (bind ?pts ?maxDormSingles)
+
+                else 
+                (bind ?pts ?singles)
+            )
         )
     )
     ?pts
@@ -904,6 +929,7 @@
     ?hecho <- (inferir-dormitorios ask)
     (determinacion-edades (bebe ?bebe) (pequeno ?pequeno) (adolescente ?adolescente) (universitario ?universitario)
                             (adultos ?adultos) (familia ?familia) (jubilado ?jubilado) (grupo ?grupo))
+    ?inf <- (preferencias-inferidas)
     =>
     (bind ?minDormSingles 0)
     (bind ?minDormDoubles 0)
@@ -941,6 +967,11 @@
         )
     )
 
+    (modify ?inf (minDormSingles ?minDormSingles)
+                (minDormDoubles ?minDormDoubles)
+                (maxDormSingles ?maxDormSingles)
+                (maxDormDoubles ?maxDormDoubles)
+    )
     (retract ?hecho)
     (focus inferencia-datos)
 )
@@ -962,6 +993,12 @@
                             (movilidadReducida ?movilidadReducida)
                             (cortoPlazo ?cortoPlazo))
     
+    (preferencias-inferidas (minDormSingles ?minDormSingles)
+                            (minDormDoubles ?minDormDoubles)
+                            (maxDormSingles ?maxDormSingles) 
+                            (maxDormDoubles ?maxDormDoubles)
+    )
+    
     ?list <- (viviendas-usuario)
   	=>
     (bind $?lista_adecuados (create$ ))
@@ -973,27 +1010,18 @@
             (>= ?inst:precioMensual ?minPrecio)
             (or (eq ?mascotas FALSE) (eq ?inst:mascota TRUE))
             (or (eq ?movilidadReducida FALSE) (eq ?inst:adaptadoMovilidadReducida TRUE))
-        )
-    ))
-
-    (bind $?lista_inadecuados (find-all-instances ((?inst Viviendas))
-        (or
-            (> ?inst:precioMensual ?maxPrecio)
-            (< ?inst:precioMensual ?minPrecio)
-            (and (eq ?mascotas TRUE) (eq ?inst:mascota FALSE))
-            (and (eq ?movilidadReducida TRUE) (eq ?inst:adaptadoMovilidadReducida FALSE))
+            (> (respeta-dormitorios ?inst ?minDormDoubles ?minDormSingles ?maxDormDoubles ?maxDormSingles) 0)
         )
     ))
 
     (retract ?hecho)
-    (modify ?list (vivienda-viables $?lista_adecuados)
-        (vivienda-inviables $?lista_inadecuados))
+    (modify ?list (vivienda-viables $?lista_adecuados))
     (assert (preferencias-viviendas ask))
 )
 
 (defrule inferencia-datos::filtrar-preferencias "Filtrar las viviendas con las preferencias del usuario"
     ?hecho <- (preferencias-viviendas ask)
-    (viviendas-usuario (vivienda-viables $?vivienda-viables) (vivienda-inviables $?vivienda-inviables))
+    (viviendas-usuario (vivienda-viables $?vivienda-viables))
     (preferencias (caracteristicas-vivienda $?caracteristicas-vivienda) (caracteristicas-ciudad $?caracteristicas-ciudad)
         (caracteristicas-ciudad-lejos $?caracteristicas-ciudad-lejos) (tipos-vivienda $?tipos-vivienda))
     =>
@@ -1001,13 +1029,13 @@
     (bind $?puntos (create$))
     (progn$ (?var $?vivienda-viables)
         (bind ?pts 0)
-        (bind ?pts (respecta-preferencias-vivienda ?var $?caracteristicas-vivienda))           ;;preferencia
+        (bind ?pts (respeta-preferencias-vivienda ?var $?caracteristicas-vivienda))           ;;preferencia
 
         (bind ?lejos FALSE)
-        (bind ?pts (+ ?pts (respecta-preferencias-ciudad ?lejos ?var $?caracteristicas-ciudad)))
+        (bind ?pts (+ ?pts (respeta-preferencias-ciudad ?lejos ?var $?caracteristicas-ciudad)))
 
         (bind ?lejos TRUE)
-        (bind ?pts (+ ?pts (respecta-preferencias-ciudad ?lejos ?var $?caracteristicas-ciudad-lejos)))
+        (bind ?pts (+ ?pts (respeta-preferencias-ciudad ?lejos ?var $?caracteristicas-ciudad-lejos)))
         ;(bind ?pts (+ ?pts (suma-puntos-cv ?v ?pts $?icv))) ;;inferencia 
         (bind $?puntos (insert$ $?puntos (+ (length$ $?puntos) 1) ?pts))
     )
