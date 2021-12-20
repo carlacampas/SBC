@@ -760,7 +760,7 @@ vernedaLaPau = [
 #don't put numero, es inecessario rn creo
 # USA LOS ESQUEMAS
 
-tipos = ["Apartamento", "Atico", "Bajo", "Buhardilla", "Casa_Independiente", "Chalet", "Adosado", "Pareado",
+tipos = ["Apartamento", "Atico", "Bajo", "Buhardilla", "Casa_Independiente", "Pareado",
     "Duplex", "Estudio", "Loft", "Piso"]
 
 certEn = ["A", "B", "C", "D", "E", "F", "G"]

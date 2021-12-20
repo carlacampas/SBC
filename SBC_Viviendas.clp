@@ -552,6 +552,17 @@
     ?pts
 )
 
+(deffunction MAIN::puntos-tipo-vivienda (?inst $?tipos)
+    (bind ?pts 0)
+    (progn$ (?t ?tipos)
+        (if (eq (type ?inst) ?t)
+            then
+            (bind ?pts (+ ?pts 1))
+        )
+    )
+    ?pts
+)
+
 ;;************************************************
 ;;**             PREGUNTAS USUARIO              **
 ;;************************************************
@@ -1119,6 +1130,9 @@
         (bind ?pts (+ ?pts (respeta-preferencias-ciudad ?lejos ?var $?inf-caracteristicas-ciudad-lejos)))
         
         (bind ?pts (+ ?pts (respeta-dormitorios ?var ?minDormDoubles ?minDormSingles ?maxDormDoubles ?maxDormSingles)))
+
+        (bind ?pts (+ ?pts (puntos-tipo-vivienda ?var $?tipos-vivienda)))
+        ;(deffunction MAIN::
 
         (if (not (eq ?calidad-barrio indf))
             then 
