@@ -49,6 +49,7 @@
       "Bar"
       "Bus"
       "Cafeteria"
+      "Cementerio"
       "Centro Comercial"
       "Centro de Dia"
       "Cine"
@@ -58,6 +59,7 @@
       "Geriatrico"
       "Grandes Almacenes"
       "Hospital"
+      "Hospital de Niños"
       "Instituto"
       "Jardin"
       "Mercado"
@@ -70,16 +72,19 @@
       "Restaurante"
       "Rocodromo"
       "Supermercado"
+      "Tanatorio"
       "Teatro"
       "Tram"
       "Tren"
       "Universidad"
+      "Zona Verde"
     )
     (campos-ciudad
       aeropuerto
       bar
       bus
       cafeteria
+      cementerio
       centroComercial
       centroDia
       cine
@@ -89,6 +94,7 @@
       geriatrico
       grandesAlm
       hospital
+      hospitalNinos
       instituto
       jardin
       mercado
@@ -101,11 +107,24 @@
       restaurante
       rocordromo
       supermercado
+      tanatorio
       teatro
       tram
       tren
       universidad
       zonaVerde
+    )
+    (nombres-calidad
+        "Me es indiferente"
+        "Buena calidad"
+        "Calidad media"
+        "Baja calidad"
+    )
+    (campos-calidad
+        indif
+        buena
+        media
+        baja
     )
   )
 )

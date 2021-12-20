@@ -42,7 +42,22 @@
 
     (format t "     CARACTERÍSTICAS DE LA VIVIENDA:")
     (printout t crlf)
-
+    
+    (if (eq ?self:calBarrio 1)
+        then
+            (format t "         -Situada en un barrio de baja calidad")
+            (printout t crlf)
+        else
+            (if (eq ?self:calBarrio 1)
+                then
+                    (format t "         -Situada en un barrio de calidad media")
+                    (printout t crlf)
+                else
+                    (format t "         -Situada en un barrio de buena calidad")
+                    (printout t crlf)
+           )
+    )
+    
     (if (> ?self:altura 0)
         then
         (format t "         - altura: %d" ?self:altura)
