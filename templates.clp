@@ -17,6 +17,7 @@
 (deftemplate MAIN::preferencias
     (multislot tipos-vivienda (type SYMBOL))
   (multislot caracteristicas-vivienda (type SYMBOL))
+  (multislot calidad-barrio (type SYMBOL))
   (multislot caracteristicas-ciudad (type SYMBOL))
   (multislot caracteristicas-ciudad-lejos (type SYMBOL))
 )
@@ -27,6 +28,7 @@
   (slot maxSingles (type INTEGER)) ;maximizar dormitorios singles
   (slot maxDoubles (type INTEGER)) ;maximizar dormitorios doubles
   (multislot caracteristicas-vivienda (type SYMBOL))
+  (slot calidad-barrio (type SYMBOL))
   (multislot caracteristicas-ciudad (type SYMBOL))
   (multislot caracteristicas-ciudad-lejos (type SYMBOL))
 )
@@ -41,6 +43,8 @@
   (multislot campos-vivienda (type SYMBOL))
   (multislot nombres-ciudad (type STRING))
   (multislot campos-ciudad (type SYMBOL))
+  (multislot nombres-calidad (type STRING))
+  (multislot campos-calidad (type SYMBOL))
 )
 
 (deftemplate MAIN::determinacion-edades 

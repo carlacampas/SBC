@@ -507,7 +507,6 @@
     (bind ?e (pregunta-si-no "¿La vivienda tiene que ser accesible en silla de ruedas? "))
     (modify ?u (movilidadReducida ?e))
 )
-
 (defrule preguntas-usuario::establecer-plazo "Establecer si pretenden vivir a corto o largo plazo"
     ?u <- (pregunta-usuario (cortoPlazo ?cortoPlazo) (bebesFuturo ?bebesFuturo))
     (test (eq ?cortoPlazo NONE))
@@ -575,6 +574,17 @@
     )
     (retract ?hecho)
     (modify ?pref (caracteristicas-vivienda ?respuesta))
+    (assert (calidad-ciudad ask))
+)
+
+(defrule recopilacion-preferencias::establecer-calidad-barrio "Establecer la calidad o calidades del barrio al que desean mudarse"
+    ?hecho <- (calidad-ciudad ask)
+    ?pref <- (preferencias)
+    ?p <- (slots-and-names (nombres-calidad $?nombres-calidad) (campos-calidad $?campos-calidad))
+    =>
+    (bind ?calidad (pregunta-indice "¿Qué calidad encuentran aceptable en el barrio al que desean mudarse?" $?nombres-calidad))
+    (retract ?hecho)
+    (modify ?pref (calidad-barrio ?calidad))
     (assert (caracteristicas-ciudad ask))
 )
 
@@ -717,6 +727,7 @@
     (bind $?caracteristicas-ciudad (create$ ))
     (bind $?caracteristicas-ciudad-lejos (create$ ))
     (bind $?caracteristicas-vivienda (create$ ))
+    (bind $?calidad-barrio (create$))
     (if (> ?bebe 0)
         then 
         (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) guarderia))
@@ -782,38 +793,29 @@
         (if (eq ?familia FALSE)
             then
             (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) bar))
+            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cafeteria))
+            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cine))
+            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) centroComercial))
+            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) supermercado))
         )
         
         (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) universidad))
-
+    )
+    (if (eq ?familia TRUE)
+        then
         (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cafeteria))
         (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cine))
         (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) centroComercial))
         (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) supermercado))
-    )
-    (if (eq ?familia TRUE)
-        then
-        (if (eq (member$ cafeteria $?caracteristicas-ciudad) FALSE)
-            then
-            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cafeteria))
-        )
-        (if (eq (member$ cine $?caracteristicas-ciudad) FALSE)
-            then
-            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) cine))
-        )
-        (if (eq (member$ centroComercial $?caracteristicas-ciudad) FALSE)
-            then
-            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) centroComercial))
-        )
-        (if (eq (member$ supermercado $?caracteristicas-ciudad) FALSE)
-            then
-            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) supermercado))
-        )
         
-        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) hospital))
+        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) hospitalNinos))
         (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) mercado))
         (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) plaza))
         (bind $?caracteristicas-vivienda (insert$ $?caracteristicas-vivienda (+ (length$ $?caracteristicas-vivienda) 1) sistemaAlarma))
+        (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) zonaVerde))
+        (bind $?calidad-barrio (insert$ $?calidad-barrio (+ (length$ $?calidad-barrio) 1) buena))
+
+
         
         (bind $?caracteristicas-ciudad-lejos (insert$ $?caracteristicas-ciudad-lejos (+ (length$ $?caracteristicas-ciudad-lejos) 1) clubNocturno))
         (bind $?caracteristicas-ciudad-lejos (insert$ $?caracteristicas-ciudad-lejos (+ (length$ $?caracteristicas-ciudad-lejos) 1) bar))
@@ -831,6 +833,8 @@
             (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) mercado))
             (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) plaza))
             (bind $?caracteristicas-vivienda (insert$ $?caracteristicas-vivienda (+ (length$ $?caracteristicas-vivienda) 1) sistemaAlarma))
+            (bind $?caracteristicas-ciudad (insert$ $?caracteristicas-ciudad (+ (length$ $?caracteristicas-ciudad) 1) zonaVerde))
+            (bind $?calidad-barrio (insert$ $?calidad-barrio (+ (length$ $?calidad-barrio) 1) buena))
             
             (bind $?caracteristicas-ciudad-lejos (insert$ $?caracteristicas-ciudad-lejos (+ (length$ $?caracteristicas-ciudad-lejos) 1) clubNocturno))
             (bind $?caracteristicas-ciudad-lejos (insert$ $?caracteristicas-ciudad-lejos (+ (length$ $?caracteristicas-ciudad-lejos) 1) bar))
