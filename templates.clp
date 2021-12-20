@@ -35,6 +35,8 @@
 
 (deftemplate MAIN::viviendas-usuario 
   (multislot vivienda-viables (type INSTANCE))
+  (multislot aux-points (type INSTANCE))
+  (multislot max-pts (type INTEGER))
 )
 
 (deftemplate slots-and-names

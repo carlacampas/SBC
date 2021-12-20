@@ -33,6 +33,12 @@
 	(export ?ALL)
 )
 
+(defmodule imprimir-preferencias
+	(import MAIN ?ALL)
+    ;(import preguntas-usuario ?ALL)
+	(export ?ALL)
+)
+
 ;;************************************************
 ;;**               DEFFUNCTIONS                 **
 ;;************************************************
@@ -1381,8 +1387,17 @@
         (bind ?puntos (delete$ ?puntos ?max ?max))
     )
 
-    (modify ?inf (vivienda-viables $?aux))
+    (modify ?inf (vivienda-viables $?aux)
+        (max-pts ?maxPuntuacion)
+        (aux-points $?auxPoints)
+    )
+    (retract ?hecho)
+    (focus imprimir-preferencias)
+)
 
+(defrule imprimir-preferencias::imprimir-recomendaciones
+    (viviendas-usuario (vivienda-viables $?aux) (max-pts ?maxPuntuacion) (aux-points $?auxPoints))
+    =>
     (if (eq (length$ ?aux) 0)
         then 
         (printout t "No hay viviendas dispoibles con esas condiciones" crlf)
@@ -1401,5 +1416,4 @@
             (printout t crlf)
         )
     )
-    (retract ?hecho)
 )
