@@ -1196,6 +1196,18 @@
         (bind ?maxDormSingles 1)
     )
 
+    (if (eq (mod ?jubilado 2) 0)
+        then
+        (bind ?minDormDoubles (+ ?minDormDoubles (/ ?jubilado 2))) 
+        (bind ?maxDormDoubles (+ ?maxDormDoubles (/ ?jubilado 2))) 
+        
+        else 
+        (bind ?minDormDoubles (+ ?minDormDoubles (/ (- ?jubilado 1) 2)))
+        (bind ?maxDormDoubles (+ ?maxDormDoubles (/ (- ?jubilado 1) 2)))
+        (bind ?minDormSingles (+ ?minDormSingles 1))
+        (bind ?maxDormSingles (+ ?maxDormSingles 1))
+    )
+
     (if (eq ?familia TRUE)
         then
         (if (eq (mod ?pequeno 2) 0)
@@ -1205,13 +1217,18 @@
             (bind ?minDormDoubles (+ ?minDormDoubles (/ (- ?pequeno 1) 2)))
             (bind ?minDormSingles (+ ?minDormSingles 1))
         )
-        (bind ?minDormSingles (+ (+ ?minDormSingles ?adolescente) ?jubilado))
-        (bind ?maxDormSingles (+ ?maxDormSingles ?adolescente ?pequeno ?bebe ?jubilado))
+        (bind ?minDormSingles (+ ?minDormSingles ?adolescente))
+        (bind ?maxDormSingles (+ ?maxDormSingles ?adolescente ?pequeno ?bebe))
 
-        else (if (eq ?grupo TRUE)
+        else (if (eq ?grupo TRUE) 
             then
-            (bind ?maxDormSingles ?adultos)
-            (bind ?maxDormDoubles 0)
+            (if (> ?jubilado 0)
+                then
+                    (bind ?maxDormSingles (+ ?maxDormSingles ?adultos))
+                else
+                    (bind ?maxDormSingles ?adultos)
+                    (bind ?maxDormDoubles 0)
+            )
         )
     )
 
